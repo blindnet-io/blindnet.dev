@@ -7,9 +7,9 @@ You can manage your users’ interaction with blindnet and their access to data 
 - etc.
 
 ## Creating user tokens
-Each request to blindnet needs to be authenticated, which is done through user tokens. You `generate` user tokens on your server by using **blindnet server SDK**, and then `pass` the generated token in the initialisation of **blindnet client SDK**. 
+Each request to blindnet needs to be authenticated, which is done through user tokens. You `generate` user tokens on your server by using **blindnet server SDK**, and then `pass` the generated token in the initialization of **blindnet client SDK**. 
 
-To generate a user token, after [initialising blindnet server SDK](./installation.md#server_sdk_2){target=_blank} call the following blindnet **Server SDK** method:
+To generate a user token, after [initializing blindnet server SDK](./installation.md#server_sdk_2){target=_blank} call the following blindnet **Server SDK** method:
 
 === "PHP"
     ```php linenums="1"
@@ -98,7 +98,7 @@ To give access to other user, use the following **Client SDK** method:
 
 === "JavaScript"
     ```js linenums="1"
-    const userId = 'id_of_user_to_give_acces_to’
+    const userId = 'id_of_user_to_give_access_to’
     blindnet.giveAccess(userId)
     ```
 

@@ -2,9 +2,6 @@
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
-[yo](about.md#lol)  
-[yo yo](test/test1.md)
-
 ## admonitions
 
 The `#!python range()` function is used to generate a sequence of numbers.

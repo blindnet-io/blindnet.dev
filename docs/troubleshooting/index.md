@@ -3,6 +3,6 @@
 
 ### Client SDK
 
-[Javascript](client/javascript.md)
+[Javascript](error_reference/client/javascript.md)
 
 ### Server SDK

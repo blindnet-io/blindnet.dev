@@ -1454,7 +1454,10 @@
 </td></tr></table>
 <h2 id="init">Init<a class="headerlink" href="#init" title="Permanent link">#</a></h2>
 <p>Initializes blindnet server SDK.</p>
-<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">string</span> <span class="nx">$appKey</span><span class="p">,</span> <span class="nx">string</span> <span class="nx">$appId</span><span class="p">,</span> <span class="nx">string</span> <span class="nx">$apiEndpoint</span> <span class="o">=</span> <span class="s1">&#39;https://api.blindnet.io&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span>
+  <span class="nx">string</span> <span class="nx">$appKey</span><span class="p">,</span>
+  <span class="nx">string</span> <span class="nx">$appId</span><span class="p">,</span>
+  <span class="nx">string</span> <span class="nx">$apiEndpoint</span> <span class="o">=</span> <span class="s1">&#39;https://api.blindnet.io&#39;</span>
 <span class="p">)</span><span class="o">:</span> <span class="nx">Blindnet</span>
 </code></pre></div>
 <h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h4>
@@ -1470,29 +1473,29 @@
 <tbody>
 <tr>
 <td>$appKey</td>
-<td>string</td>
+<td><code>string</code></td>
 <td>true</td>
-<td>Application private key. For more information, click <here>.</td>
+<td><a href="../../../other/glossary.html" target="_blank">Application private key</a></td>
 </tr>
 <tr>
 <td>$appId</td>
-<td>string</td>
+<td><code>string</code></td>
 <td>true</td>
-<td>Application ID. For more information, click <here>.</td>
+<td><a href="../../../other/glossary.html" target="_blank">Application ID</a></td>
 </tr>
 <tr>
 <td>$apiEndpoint</td>
-<td>string</td>
+<td><code>string</code></td>
 <td>false</td>
-<td>Endpoint of the blindnet server. Default value is https://api.blindnet.io. For testing, use https://test.blindnet.io.</td>
+<td>Endpoint of the blindnet server. Default value is <code>https://api.blindnet.io</code>. For testing, use <code>https://test.blindnet.io</code>.</td>
 </tr>
 </tbody>
 </table>
 <h4 id="return_type">Return type<a class="headerlink" href="#return_type" title="Permanent link">#</a></h4>
 <p><code>Blindnet</code></p>
 <h2 id="createtempusertoken">createTempUserToken<a class="headerlink" href="#createtempusertoken" title="Permanent link">#</a></h2>
-<p>Creates a token for non-registered users of your application, usually data senders.
-When this token is used for encrypting data, all users that belong to a specified group will have access to the encrypted data.</p>
+<p>Creates a <a href="../../../other/glossary.html" target="_blank">token</a> for <a href="../../../other/glossary.html" target="_blank">non-registered users</a> of your application, usually data senders.
+When this token is used for <a href="../../../guides/encrypt.html" target="_blank">encrypting data</a>, all users that belong to a specified <a href="../../../other/glossary.html" target="_blank">group</a> will have access to the encrypted data.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">createTempUserToken</span><span class="p">(</span><span class="nx">string</span> <span class="nx">$groupId</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
 </code></pre></div>
 <h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">#</a></h4>
@@ -1508,16 +1511,16 @@ When this token is used for encrypting data, all users that belong to a specifie
 <tbody>
 <tr>
 <td>$groupId</td>
-<td>string</td>
+<td><code>string</code></td>
 <td>true</td>
-<td>ID of the group for which the data is being encrypted. For more information, click <here>.</td>
+<td>ID of the <a href="../../../other/glossary.html" target="_blank">group</a> for which the data is being encrypted.</td>
 </tr>
 </tbody>
 </table>
 <h4 id="return_type_1">Return type<a class="headerlink" href="#return_type_1" title="Permanent link">#</a></h4>
 <p><code>String</code></p>
 <h2 id="createusertoken">createUserToken<a class="headerlink" href="#createusertoken" title="Permanent link">#</a></h2>
-<p>Creates a token for registered users of your application, usually data receivers.</p>
+<p>Creates a <a href="../../../other/glossary.html" target="_blank">token</a> for <a href="../../../other/glossary.html" target="_blank">registered</a> users of your application, usually data receivers.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">createUserToken</span><span class="p">(</span><span class="nx">string</span> <span class="nx">$userId</span><span class="p">,</span> <span class="nx">string</span> <span class="nx">$groupId</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
 </code></pre></div>
 <table>
@@ -1532,22 +1535,22 @@ When this token is used for encrypting data, all users that belong to a specifie
 <tbody>
 <tr>
 <td>$userId</td>
-<td>string</td>
+<td><code>string</code></td>
 <td>true</td>
-<td>ID of a registered user.</td>
+<td>ID of a <a href="../../../other/glossary.html" target="_blank">registered user</a>.</td>
 </tr>
 <tr>
 <td>$groupId</td>
-<td>string</td>
+<td><code>string</code></td>
 <td>true</td>
-<td>ID of the group to which a registered user belongs.</td>
+<td>ID of the <a href="../../../other/glossary.html" target="_blank">group</a> to which a <a href="../../../other/glossary.html" target="_blank">registered user</a> belongs.</td>
 </tr>
 </tbody>
 </table>
 <h4 id="return_type_2">Return type<a class="headerlink" href="#return_type_2" title="Permanent link">#</a></h4>
 <p><code>String</code></p>
 <h2 id="forgetdata">forgetData<a class="headerlink" href="#forgetdata" title="Permanent link">#</a></h2>
-<p>Deletes the encrypted data key from blindnet.</p>
+<p>Deletes the <a href="../../../other/glossary.html" target="_blank">encrypted data key</a> from blindnet.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">forgetData</span><span class="p">(</span><span class="nx">string</span> <span class="nx">$dataId</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">#</a></h4>
@@ -1563,7 +1566,7 @@ When this token is used for encrypting data, all users that belong to a specifie
 <tbody>
 <tr>
 <td>$dataId</td>
-<td>string</td>
+<td><code>string</code></td>
 <td>true</td>
 <td>ID of a data to be deleted.</td>
 </tr>
@@ -1582,7 +1585,7 @@ When this token is used for encrypting data, all users that belong to a specifie
 <tbody>
 <tr>
 <td>AuthenticationError</td>
-<td>Implies invalid token, which further implies invalid <code>appKey</code> or <code>appId</code>.</td>
+<td>Implies invalid <a href="../../../other/glossary.html" target="_blank">token</a>, which further implies invalid <a href="../../../other/glossary.html" target="_blank">application id</a> or <a href="../../../other/glossary.html" target="_blank">application key</a>.</td>
 </tr>
 <tr>
 <td>BlindnetServiceError</td>
@@ -1591,7 +1594,7 @@ When this token is used for encrypting data, all users that belong to a specifie
 </tbody>
 </table>
 <h2 id="revokeaccess">revokeAccess<a class="headerlink" href="#revokeaccess" title="Permanent link">#</a></h2>
-<p>Deletes all encrypted data keys of a given user.</p>
+<p>Deletes all <a href="../../../other/glossary.html" target="_blank">encrypted data keys</a> of a given user.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">revokeAccess</span><span class="p">(</span><span class="nx">string</span> <span class="nx">$userId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
 </code></pre></div>
 <h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">#</a></h4>
@@ -1607,9 +1610,9 @@ When this token is used for encrypting data, all users that belong to a specifie
 <tbody>
 <tr>
 <td>$userId</td>
-<td>string</td>
+<td><code>string</code></td>
 <td>true</td>
-<td>ID of a user to revoke access.</td>
+<td>ID of a user to revoke access to the encrypted data.</td>
 </tr>
 </tbody>
 </table>
@@ -1626,7 +1629,7 @@ When this token is used for encrypting data, all users that belong to a specifie
 <tbody>
 <tr>
 <td>AuthenticationError</td>
-<td>Implies invalid token, which further implies invalid <code>appKey</code> or <code>appId</code>.</td>
+<td>Implies invalid <a href="../../../other/glossary.html" target="_blank">token</a>, which further implies invalid <a href="../../../other/glossary.html" target="_blank">application id</a> or <a href="../../../other/glossary.html" target="_blank">application key</a>.</td>
 </tr>
 <tr>
 <td>BlindnetServiceError</td>
@@ -1651,7 +1654,7 @@ When this token is used for encrypting data, all users that belong to a specifie
 <tbody>
 <tr>
 <td>$userId</td>
-<td>string</td>
+<td><code>string</code></td>
 <td>true</td>
 <td>ID of a user to delete.</td>
 </tr>
@@ -1670,7 +1673,7 @@ When this token is used for encrypting data, all users that belong to a specifie
 <tbody>
 <tr>
 <td>AuthenticationError</td>
-<td>Implies invalid token, which further implies invalid <code>appKey</code> or <code>appId</code>.</td>
+<td>Implies invalid <a href="../../../other/glossary.html" target="_blank">token</a>, which further implies invalid <a href="../../../other/glossary.html" target="_blank">application id</a> or <a href="../../../other/glossary.html" target="_blank">application key</a>.</td>
 </tr>
 <tr>
 <td>BlindnetServiceError</td>
@@ -1679,8 +1682,8 @@ When this token is used for encrypting data, all users that belong to a specifie
 </tbody>
 </table>
 <h2 id="forgetgroup">forgetGroup<a class="headerlink" href="#forgetgroup" title="Permanent link">#</a></h2>
-<p>Deletes all encrypted data keys of a given user.<br />
-Deletes all users that belong to the group and all their encrypted data keys.</p>
+<p>Deletes all <a href="../../../other/glossary.html" target="_blank">encrypted data keys</a> of a given user.<br />
+Deletes all users that belong to the <a href="../../../other/glossary.html" target="_blank">group</a> and all their <a href="../../../other/glossary.html" target="_blank">encrypted data keys</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">forgetGroup</span><span class="p">(</span><span class="nx">string</span> <span class="nx">$groupId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
 </code></pre></div>
 <h4 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">#</a></h4>
@@ -1696,7 +1699,7 @@ Deletes all users that belong to the group and all their encrypted data keys.</p
 <tbody>
 <tr>
 <td>$groupId</td>
-<td>string</td>
+<td><code>string</code></td>
 <td>true</td>
 <td>ID of a group to delete.</td>
 </tr>
@@ -1715,7 +1718,7 @@ Deletes all users that belong to the group and all their encrypted data keys.</p
 <tbody>
 <tr>
 <td>AuthenticationError</td>
-<td>Implies invalid token, which further implies invalid <code>appKey</code> or <code>appId</code>.</td>
+<td>Implies invalid <a href="../../../other/glossary.html" target="_blank">token</a>, which further implies invalid <a href="../../../other/glossary.html" target="_blank">application id</a> or <a href="../../../other/glossary.html" target="_blank">application key</a>.</td>
 </tr>
 <tr>
 <td>BlindnetServiceError</td>

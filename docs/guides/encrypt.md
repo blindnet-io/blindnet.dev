@@ -13,9 +13,9 @@ The following workflow is applied when encrypting data:
 Encryption is completed by a user of your application ([registered](../other/glossary.md){target=_blank} or [unregistered](../other/glossary.md){target=_blank}) to another registered user. A user does not need to be logged into blindnet in order to encrypt the data.
 Data can be encrypted for a single user, a list of users or a [user group](../other/glossary.md){target=_blank}.
 
-In the current api, the [encryption destination](./managing_users_access.html#creating_temporary_tokens){target=_blank} is specified in the **Server SDK**.
+In the current api, the [encryption destination](./managing_users_access.md#creating_temporary_tokens){target=_blank} is specified in the **Server SDK**.
 
-To encrypt the data, the client SDK needs to be initialized with the [temporary token](./managing_users_access.html#creating_temporary_tokens){target=_blank} which contains information to whom the data is encrypted (user group or a list of users). To encrypt to a different destination, a new token needs to be generated.
+To encrypt the data, the client SDK needs to be initialized with the [temporary token](./managing_users_access.md#creating_temporary_tokens){target=_blank} which contains information to whom the data is encrypted (user group or a list of users). To encrypt to a different destination, a new token needs to be generated.
 
 To encrypt the data for a specific users, obtain a [temporary token](../other/glossary.md){target=_blank} using the following **Server SDK** method:
 
@@ -83,4 +83,4 @@ Object keys are left in plain text. This method can be used to e.g. encrypt the 
 
 `dataId` and `encryptedData` should be stored by you.  
 `dataId` is used to delete the keys from blindnet using the server SDK.  
-To drcrypt `encryptedData`, pass it to the [decryptValues](./decrypt.md#decryptvalues){target=_blank} method.
+To decrypt `encryptedData`, pass it to the [decryptValues](./decrypt.md#decryptvalues){target=_blank} method.

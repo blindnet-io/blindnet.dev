@@ -1057,8 +1057,8 @@
 </ol>
 <p>Encryption is completed by a user of your application (<a href="../other/glossary.html" target="_blank">registered</a> or <a href="../other/glossary.html" target="_blank">unregistered</a>) to another registered user. A user does not need to be logged into blindnet in order to encrypt the data.
 Data can be encrypted for a single user, a list of users or a <a href="../other/glossary.html" target="_blank">user group</a>.</p>
-<p>In the current api, the <a href="./managing_users_access.html#creating_temporary_tokens" target="_blank">encryption destination</a> is specified in the <strong>Server SDK</strong>.</p>
-<p>To encrypt the data, the client SDK needs to be initialized with the <a href="./managing_users_access.html#creating_temporary_tokens" target="_blank">temporary token</a> which contains information to whom the data is encrypted (user group or a list of users). To encrypt to a different destination, a new token needs to be generated.</p>
+<p>In the current api, the <a href="managing_users_access.html#creating_temporary_tokens" target="_blank">encryption destination</a> is specified in the <strong>Server SDK</strong>.</p>
+<p>To encrypt the data, the client SDK needs to be initialized with the <a href="managing_users_access.html#creating_temporary_tokens" target="_blank">temporary token</a> which contains information to whom the data is encrypted (user group or a list of users). To encrypt to a different destination, a new token needs to be generated.</p>
 <p>To encrypt the data for a specific users, obtain a <a href="../other/glossary.html" target="_blank">temporary token</a> using the following <strong>Server SDK</strong> method:</p>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">PHP</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1129,7 +1129,7 @@ Object keys are left in plain text. This method can be used to e.g. encrypt the 
 </div>
 <p><code>dataId</code> and <code>encryptedData</code> should be stored by you.<br />
 <code>dataId</code> is used to delete the keys from blindnet using the server SDK.<br />
-To drcrypt <code>encryptedData</code>, pass it to the <a href="decrypt.html#decryptvalues" target="_blank">decryptValues</a> method.</p>
+To decrypt <code>encryptedData</code>, pass it to the <a href="decrypt.html#decryptvalues" target="_blank">decryptValues</a> method.</p>
                 
               
               

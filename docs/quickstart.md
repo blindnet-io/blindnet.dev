@@ -22,14 +22,14 @@ You can get the application id and application key using the blindnet [dashboard
 !!! note
     For the sake of simplicity, you can skip creating a new application and just use the following application id and key
 
-    id: `d8874507-c77e-4659-9f6a-d903f9d8d98e`  
-    key: `mUWnnwzLXXbVYzX3p7Q/tvGHkB28J0ljVtkPJ9gUgGvdXko0kqqxaQ1DPqxxjgd7wbxriqtMaEhhITdD46gjxg==`
+    id: `3544e7cd-64a9-41b7-88dc-397bfdaeeaf3`  
+    key: `zB5IiU0xzkVdsH4NMXxrF90ZISL5kJnTHlt7h/Wbi/qVhch7Fw8J5AQ5j2PazaG5q114uApZRH4X1/kTKVx0Cw==`
 
     Be sure not to use those in production environments!
 
 ## **STEP 1**: Set-up the SDK
 
-In this guide, only the [client SDK](./guides/introcution.md){target=_blank} is needed. To generate the authentication tokens, we will use a [dedicated client library](https://www.npmjs.com/package/@blindnet/token-generator){target=_blank}. In your production environment, you will need both **client** and **server SDKs** and [generate](./guides/managing_users_access.md#creating_user_tokens){target=_blank} the tokens on the server side.
+In this guide, only the [client SDK](./guides/introduction.md){target=_blank} is needed. To generate the authentication tokens, we will use a [dedicated client library](https://www.npmjs.com/package/@blindnet/token-generator){target=_blank}. In your production environment, you will need both **client** and **server SDKs** and [generate](./guides/managing_users_access.md#creating_user_tokens){target=_blank} the tokens on the server side.
 
 ### Installation
 To install the blindnet SDK and the token generator

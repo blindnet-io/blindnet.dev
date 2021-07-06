@@ -1220,8 +1220,8 @@
 <li>etc.</li>
 </ul>
 <h2 id="creating_user_tokens">Creating user tokens<a class="headerlink" href="#creating_user_tokens" title="Permanent link">#</a></h2>
-<p>Each request to blindnet needs to be authenticated, which is done through user tokens. You <code>generate</code> user tokens on your server by using <strong>blindnet server SDK</strong>, and then <code>pass</code> the generated token in the initialisation of <strong>blindnet client SDK</strong>. </p>
-<p>To generate a user token, after <a href="installation.html#server_sdk_2" target="_blank">initialising blindnet server SDK</a> call the following blindnet <strong>Server SDK</strong> method:</p>
+<p>Each request to blindnet needs to be authenticated, which is done through user tokens. You <code>generate</code> user tokens on your server by using <strong>blindnet server SDK</strong>, and then <code>pass</code> the generated token in the initialization of <strong>blindnet client SDK</strong>. </p>
+<p>To generate a user token, after <a href="installation.html#server_sdk_2" target="_blank">initializing blindnet server SDK</a> call the following blindnet <strong>Server SDK</strong> method:</p>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">PHP</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1303,7 +1303,7 @@ It means Alice will download her <a href="../other/glossary.html" target="_blank
 <p>To give access to other user, use the following <strong>Client SDK</strong> method:</p>
 <div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">JavaScript</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">userId</span> <span class="o">=</span> <span class="err">&#39;</span><span class="nx">id_of_user_to_give_acces_to</span><span class="err">’</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">userId</span> <span class="o">=</span> <span class="err">&#39;</span><span class="nx">id_of_user_to_give_access_to</span><span class="err">’</span>
 <span class="nx">blindnet</span><span class="p">.</span><span class="nx">giveAccess</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>

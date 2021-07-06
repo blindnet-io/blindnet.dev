@@ -2,11 +2,11 @@ The following programming languages are currently supported:
 
 Client SDK:
 
-- [JavaScript](../api_reference/client/javascript/latest.html){target=_blank}
+- [JavaScript](../api_reference/client/javascript/latest.md){target=_blank}
 
 Server SDK:
 
-- [PHP](../api_reference/server/php/latest.html){target=_blank}
+- [PHP](../api_reference/server/php/latest.md){target=_blank}
 
 ## Installation
 
@@ -31,7 +31,7 @@ Server SDK:
         <script src="blindnet.umd.js"></script>
         ```
 
-    For more info, check the [api reference](../api_reference/client/javascript/latest.html#installation){target=_blank}.
+    For more info, check the [api reference](../api_reference/client/javascript/latest.md#installation){target=_blank}.
 
 ### Server SDK
 === "PHP"
@@ -39,7 +39,7 @@ Server SDK:
     composer require blindnet/blindnet-sdk-php
     ```
 
-    For more info, check the [api reference](../api_reference/server/php/latest.html#installation){target=_blank}.
+    For more info, check the [api reference](../api_reference/server/php/latest.md#installation){target=_blank}.
 
 ## Imports
 
@@ -58,7 +58,7 @@ The blindnet SDK api is enclosed in the `Blindnet` module. It should be imported
     const { Blindnet, util, error } = blindnet
     ```
 
-    For more info, check the [api reference](../api_reference/client/javascript/latest.html#imports){target=_blank}.
+    For more info, check the [api reference](../api_reference/client/javascript/latest.md#imports){target=_blank}.
 
 ### Server SDK
 === "PHP"
@@ -67,7 +67,7 @@ The blindnet SDK api is enclosed in the `Blindnet` module. It should be imported
     use Blindnet\BlindnetSDKPHP\Blindnet;
     ```
 
-    For more info, check the [api reference](../api_reference/server/php/latest.html#imports){target=_blank}.
+    For more info, check the [api reference](../api_reference/server/php/latest.md#imports){target=_blank}.
 
 
 ## Initialization
