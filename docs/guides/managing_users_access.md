@@ -7,9 +7,9 @@ You can manage your users’ interaction with blindnet and their access to data 
 - etc.
 
 ## Creating user tokens
-Each request to blindnet needs to be authenticated, which is done through user tokens. You `generate` user tokens on your server by using **blindnet server SDK**, and then `pass` the generated token in the initialization of **blindnet client SDK**. 
+Each request to blindnet needs to be authenticated, which is done through user tokens. You `generate` user tokens on your server by using **blindnet Server SDK**, and then `pass` the generated token in the initialization of **blindnet Client SDK**. 
 
-To generate a user token, after [initializing blindnet server SDK](./installation.md#server_sdk_2){target=_blank} call the following blindnet **Server SDK** method:
+To generate a user token, after [initializing blindnet Server SDK](./installation.md#server_sdk_2){target=_blank} call the following blindnet **Server SDK** method:
 
 === "PHP"
     ```php linenums="1"
@@ -35,14 +35,14 @@ You associate a user to a group by specifying the `group ID` in a `user token` w
 Currently, you can't assign already created user to a different group. [Delete](#deleting_users) the user and create it again with a different `group id`.
 
 ## Connecting users with blindnet
-The core of security of blindnet are user’s private keys. They are randomly generated on the user’s local device and encrypted using a secret code (e.g. user’s password) and then securely stored in blindnet.  
-Blindnet allows you to reuse existing user passwords so that your users still use [one password](../other/glossary.md){target=_blank} in your application. To do so safely, you need to use blindnet SDK to split user passwords before you connect a user to blindnet.
+The core of security of blindnet are user’s [private keys](../howitworks/security.md#user_private_keys). They are randomly generated on the user’s local device and encrypted using a secret code (e.g. user’s password) and then securely stored in blindnet.  
+Blindnet allows you to reuse existing user passwords so that your users still use [one password](../other/glossary.md){target=_blank} in your application. To do so safely, you need to use blindnet Client SDK to split user passwords before you connect a user to blindnet (check our [Security page](../howitworks/security.md#user_passwords) to see why this is inportant).
 
 ### Splitting passwords
 !!! info "Splitting user's password"
     In the case that you send plaintext passwords to your server for user authentication, we advise that you update the authentication workflow in the following way.
 
-    When a user is logging into your application and enters a password, you should use blindnet SDK to split the password into two parts: you use the `second part` (*appSecret*) to authenticate the user on your app, while you use the `first part` ((*blindnetSecret*) for registering and logging users to blindnet. It is advisable not to use the same password for both actions since a party that can read the user's password (i.e., you) would be able to decrypt the user's private keys.
+    When a user is logging into your application and enters a password, you should use blindnet Client SDK to split the password into two parts: you use the `second part` (*appSecret*) to authenticate the user on your app, while you use the `first part` ((*blindnetSecret*) for registering and logging users to blindnet. It is advisable not to use the same password for both actions since a party that can read the user's password (i.e., you) would be able to decrypt the user's private keys.
 
 To split the password use the following **Client SDK** method:
 
