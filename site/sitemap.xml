@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.blindnet.io/delete_me.html</loc>
+
          <lastmod>2021-07-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -12,7 +13,7 @@
     </url>
     <url>
          <loc>https://docs.blindnet.io/api_reference/index.html</loc>
-         <lastmod>2021-07-08</lastmod>
+          <lastmod>2021-07-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
@@ -82,6 +83,11 @@
     </url>
     <url>
          <loc>https://docs.blindnet.io/other/qna.html</loc>
+         <lastmod>2021-07-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.blindnet.io/release_notes/index.html</loc>
          <lastmod>2021-07-08</lastmod>
          <changefreq>daily</changefreq>
     </url>
