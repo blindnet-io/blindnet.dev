@@ -1,6 +1,6 @@
 site_name: blindnet
 site_url: https://docs.blindnet.io/
-repo_url: https://github.com/blindnet-io/blindsend-be
+repo_url: https://github.com/blindnet-io/blindnet-docs
 repo_name: blindnet-docs
 edit_uri: ""
 
@@ -8,6 +8,10 @@ copyright: Copyright &copy; 2021 blindnet
 
 nav:
   - Quick start: quickstart.md
+  - How it works: 
+    - Introduction: how_it_works/introduction.md
+    - How it works: how_it_works/how_it_works.md
+    - Security: how_it_works/security.md
   - Guides:
     - Introduction: guides/introduction.md
     - Installation: guides/installation.md
