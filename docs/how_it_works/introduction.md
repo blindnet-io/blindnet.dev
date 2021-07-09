@@ -8,9 +8,9 @@ Blindnet can protect your users’ data (e.g., files, images, documents) both in
 
 | You app clients      | Communication | Solutions
 | ----------- | ----------- | ----------- 
-| Web app only | web-to-web | [Solution 1: encryption only](./howitworks.md#blindnet_in_web_applications)
-| Mixed: web and standalone apps (mobile/desktop) | web-to-web, web-to-standalone, standalone-to-standalone | [Solution 1: encryption only](./howitworks.md#blindnet_in_web_applications)
-| Standalone app only (mobile/desktop) | standalone-to-standalone | [Solution 2: encryption and transfers](./howitworks#blindnet_in_mobiledesktop_only_applications) (coming soon)
+| Web app only | web-to-web | [Solution 1: encryption only](./how_it_works.md#blindnet_in_web_applications){target=_blank}
+| Mixed: web and standalone apps (mobile/desktop) | web-to-web, web-to-standalone, standalone-to-standalone | [Solution 1: encryption only](./how_it_works.md#blindnet_in_web_applications){target=_blank}
+| Standalone app only (mobile/desktop) | standalone-to-standalone | [Solution 2: encryption and transfers](./how_it_works.md#blindnet_in_mobiledesktop_only_applications){target=_blank} (coming soon)
 
 When using a blindnet SDK in your application, the SDK encrypts and decrypts user data directly on user local machines (e.g, browsers or mobile phones), while managing the encryption keys in the background.
 
@@ -24,7 +24,7 @@ Blindnet for web application offers:
 - Data exchange between registered users of your application, and from unregistered to registered users.
 - Zero-trust service: no one except senders and intended recipients can read the data.
 
-![Blindnet in web and mixed applications.](img/web_enc_high.svg)
+![Blindnet in web and mixed applications.](../img/how_it_works/web_enc_high.svg)
 <p align="center">
     Blindnet in web and mixed applications.
 </p>
@@ -39,7 +39,7 @@ Blindnet SDK is available for your mobile or desktop application, offering:
 - Private backup of data that users receive from other users, retrievable in case of device loss
 - Zero-trust service: no one except senders and intended recipients can read the data or backups.
 
-![Blindnet in mobile/desktop applications.](img/mob_enc_high.svg)
+![Blindnet in mobile/desktop applications.](../img/how_it_works/mob_enc_high.svg)
 <p align="center">
     Blindnet in mobile/desktop applications.
 </p>

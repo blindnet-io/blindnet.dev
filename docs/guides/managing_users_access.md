@@ -35,8 +35,8 @@ You associate a user to a group by specifying the `group ID` in a `user token` w
 Currently, you can't assign already created user to a different group. [Delete](#deleting_users) the user and create it again with a different `group id`.
 
 ## Connecting users with blindnet
-The core of security of blindnet are user’s [private keys](../howitworks/security.md#user_private_keys). They are randomly generated on the user’s local device and encrypted using a secret code (e.g. user’s password) and then securely stored in blindnet.  
-Blindnet allows you to reuse existing user passwords so that your users still use [one password](../other/glossary.md){target=_blank} in your application. To do so safely, you need to use blindnet Client SDK to split user passwords before you connect a user to blindnet (check our [Security page](../howitworks/security.md#user_passwords) to see why this is inportant).
+The core of security of blindnet are user’s [private keys](../how_it_works/security.md#user_private_keys){target=_blank}. They are randomly generated on the user’s local device and encrypted using a secret code (e.g. user’s password) and then securely stored in blindnet.  
+Blindnet allows you to reuse existing user passwords so that your users still use [one password](../other/glossary.md){target=_blank} in your application. To do so safely, you need to use blindnet Client SDK to split user passwords before you connect a user to blindnet (check our [Security page](../how_it_works/security.md#user_passwords){target=_blank} to see why this is inportant).
 
 ### Splitting passwords
 !!! info "Splitting user's password"

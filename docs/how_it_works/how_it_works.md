@@ -3,7 +3,7 @@
 
 The figure below shows different components of blindnet.
 
-![Blindnet components.](img/components.svg)
+![Blindnet components.](../img/how_it_works/components.svg)
 <p align="center">
     Blindnet components.
 </p>
@@ -12,7 +12,7 @@ The figure below shows different components of blindnet.
 
 To protect user data in your web application, blindnet provides an SDK for data encryption and decryption, and for managing encryption keys. 
 
-![Blindnet in web and mixed applications.](img/web_enc_detail.svg)
+![Blindnet in web and mixed applications.](../img/how_it_works/web_enc_detail.svg)
 <p align="center">
     Blindnet in web and mixed applications.
 </p>
