@@ -46,12 +46,34 @@ A set of libraries for front-end applications. Client-side SDK is used for [encr
 ### Server-side SDK
 A set of libraries for back-end applications. Server-side SDK is used mainly for user [authentication](){target=_blank} in blindnet by providing the api to [generate the authentication tokens](){target=_blank}. Additionally, you can use it to [delete users] and [encryption keys](){target=_blank} of your application registered in blindnet.
 
+## Data
+Data is anything a user is encrypting. It is in a plain, unencrypted format. Data never leaves user's device until it is [encrypted](){target=_blank}.   
+Depending on the [Client SDK](){target=_blank}, multiple formats are supported - `String`, `File`, `byte array`. If the format of the provided data is not supporetd by the SDK, you should encode it to a byte array before [encrypting](){target=_blank}, and decode it after [decrypting](){target=_blank}.
+
+## Data key
+Every piece of [data](){target=_blank} in blindnet is encrypted with a different symmetric key.  
+Only a user who encrypted the data and the users to whom it was encrypted have access to the data key.  
+The key is stored on the blindnet servers encrypted.
+
 ## Digital signature
 An algorithm used to validate the authenticity and integrity of a message. In assymetric key encryption schemes, [private key](){target=_blank} is used to *sign* a message while the associated [public key](){target=_blank} is used to *validate* the signature. Signatures can't be forged and we can be sure the message was created by the owner of the private key.
+
+## Encrypted data
+When a [data](){target=_blank} is [encrypted](){target=_blank} from any method in the [Client SDK](){target=_blank}, it can be safely transferred to your or blindnet server.  
+Only a user who encrypted the data and the users to whom it was encrypted can decrypt the data.  
+To obtain the orginal [data](){target=_blank}, the encrypted data has to be [decrypted](){target=_blank}.
+
+## Encrypted data key
+An encrypted [key](){target=_blank} stored on the blindnet servers.  
+Only a user who created the key to encrypt the data and the users to whom it was encrypted have access can decrypt the data key. 
 
 ## Key pair
 A pair of [private](){target=_blank} and [public](){target=_blank} keys. Private keys are usually generated randomly while the public keys are calculated from the them.  
 Derivation of a public key from a private key is is fast (having linear complexity) while vice-versa, the derivation is should be impossible with current computing power. That's it's important to keep the private keys "private" while public keys can be safely distributed.
+
+## Metadata
+Additional data that can be [encrypted](){target=_blank} alongside the [data](){target=_blank}.  
+It is provided in a JSON serializable format.
 
 ## Private key
 Every application and user in blindnet owns at least one private key (paired with a publicly available [public key](){target=_blank}) which is stored locally on the app server or user's devices and encrypted on the blindnet servers.  
@@ -97,13 +119,3 @@ Currently, [token]() for an anonymous user is used to [encrypt](){target=_blank}
 A logical grouping of users in your application.  
 When [encrypting](){target=_blank} the data, a [group can be specified](){target=_blank}. Any user belonging the specified group will be able to [decrypt](){target=_blank} the data.  
 Currently, a user can belong only to a single group specified when [registering](){target=_blank} the user to blindnet and it can't be changed afterwards.
-
-## Data
-
-## Encrypted data
-
-## Data key
-
-## Encrypted data key
-
-## Metadata

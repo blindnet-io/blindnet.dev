@@ -15,7 +15,7 @@
         
       
       <link rel="icon" href="../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10+insiders-2.10.0">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.11+insiders-2.11.0">
     
     
       
@@ -23,12 +23,13 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.204e8399.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.84bd30f0.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.73e53a79.min.css">
         
       
+      <link rel="preload" as="style" href="../assets/stylesheets/vendor/mermaid.733f213f.min.css">
       
     
     
@@ -42,7 +43,7 @@
     
     
     
-    <script>function __md_scope(t,e=".."){return new URL(e,location).pathname+"."+t}function __md_get(t,e=localStorage,_){return JSON.parse(e.getItem(__md_scope(t,_)))}function __md_set(t,e,_=localStorage,n){try{_.setItem(__md_scope(t,n),JSON.stringify(e))}catch(t){}}</script>
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"..":".."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
     
       
 
@@ -1142,6 +1143,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data_key" class="md-nav__link">
+    Data key
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#digital_signature" class="md-nav__link">
     Digital signature
   </a>
@@ -1149,8 +1164,29 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#encrypted_data" class="md-nav__link">
+    Encrypted data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encrypted_data_key" class="md-nav__link">
+    Encrypted data key
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#key_pair" class="md-nav__link">
     Key pair
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    Metadata
   </a>
   
 </li>
@@ -1227,41 +1263,6 @@
         <li class="md-nav__item">
   <a href="#user_groups" class="md-nav__link">
     User groups
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data" class="md-nav__link">
-    Data
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#encrypted_data" class="md-nav__link">
-    Encrypted data
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data_key" class="md-nav__link">
-    Data key
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#encrypted_data_key" class="md-nav__link">
-    Encrypted data key
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#metadata" class="md-nav__link">
-    Metadata
   </a>
   
 </li>
@@ -1564,6 +1565,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data_key" class="md-nav__link">
+    Data key
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#digital_signature" class="md-nav__link">
     Digital signature
   </a>
@@ -1571,8 +1586,29 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#encrypted_data" class="md-nav__link">
+    Encrypted data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encrypted_data_key" class="md-nav__link">
+    Encrypted data key
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#key_pair" class="md-nav__link">
     Key pair
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    Metadata
   </a>
   
 </li>
@@ -1653,41 +1689,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#data" class="md-nav__link">
-    Data
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#encrypted_data" class="md-nav__link">
-    Encrypted data
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data_key" class="md-nav__link">
-    Data key
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#encrypted_data_key" class="md-nav__link">
-    Encrypted data key
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#metadata" class="md-nav__link">
-    Metadata
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1740,11 +1741,28 @@ To use blindnet, both Client and Server SDKs must be integrated in your applicat
 <p>A set of libraries for front-end applications. Client-side SDK is used for <a href="" target="_blank">encryption</a> and <a href="" target="_blank">decryption</a> of data shared between users of your application. Other functionalities are e.g. <a href="" target="_blank">giving access</a> to encrypted data to a user who doesn’t possess the <a href="" target="_blank">encryption keys</a>.</p>
 <h3 id="server-side_sdk">Server-side SDK<a class="headerlink" href="#server-side_sdk" title="Permanent link">#</a></h3>
 <p>A set of libraries for back-end applications. Server-side SDK is used mainly for user <a href="" target="_blank">authentication</a> in blindnet by providing the api to <a href="" target="_blank">generate the authentication tokens</a>. Additionally, you can use it to [delete users] and <a href="" target="_blank">encryption keys</a> of your application registered in blindnet.</p>
+<h2 id="data">Data<a class="headerlink" href="#data" title="Permanent link">#</a></h2>
+<p>Data is anything a user is encrypting. It is in a plain, unencrypted format. Data never leaves user's device until it is <a href="" target="_blank">encrypted</a>. <br />
+Depending on the <a href="" target="_blank">Client SDK</a>, multiple formats are supported - <code>String</code>, <code>File</code>, <code>byte array</code>. If the format of the provided data is not supporetd by the SDK, you should encode it to a byte array before <a href="" target="_blank">encrypting</a>, and decode it after <a href="" target="_blank">decrypting</a>.</p>
+<h2 id="data_key">Data key<a class="headerlink" href="#data_key" title="Permanent link">#</a></h2>
+<p>Every piece of <a href="" target="_blank">data</a> in blindnet is encrypted with a different symmetric key.<br />
+Only a user who encrypted the data and the users to whom it was encrypted have access to the data key.<br />
+The key is stored on the blindnet servers encrypted.</p>
 <h2 id="digital_signature">Digital signature<a class="headerlink" href="#digital_signature" title="Permanent link">#</a></h2>
 <p>An algorithm used to validate the authenticity and integrity of a message. In assymetric key encryption schemes, <a href="" target="_blank">private key</a> is used to <em>sign</em> a message while the associated <a href="" target="_blank">public key</a> is used to <em>validate</em> the signature. Signatures can't be forged and we can be sure the message was created by the owner of the private key.</p>
+<h2 id="encrypted_data">Encrypted data<a class="headerlink" href="#encrypted_data" title="Permanent link">#</a></h2>
+<p>When a <a href="" target="_blank">data</a> is <a href="" target="_blank">encrypted</a> from any method in the <a href="" target="_blank">Client SDK</a>, it can be safely transferred to your or blindnet server.<br />
+Only a user who encrypted the data and the users to whom it was encrypted can decrypt the data.<br />
+To obtain the orginal <a href="" target="_blank">data</a>, the encrypted data has to be <a href="" target="_blank">decrypted</a>.</p>
+<h2 id="encrypted_data_key">Encrypted data key<a class="headerlink" href="#encrypted_data_key" title="Permanent link">#</a></h2>
+<p>An encrypted <a href="" target="_blank">key</a> stored on the blindnet servers.<br />
+Only a user who created the key to encrypt the data and the users to whom it was encrypted have access can decrypt the data key. </p>
 <h2 id="key_pair">Key pair<a class="headerlink" href="#key_pair" title="Permanent link">#</a></h2>
 <p>A pair of <a href="" target="_blank">private</a> and <a href="" target="_blank">public</a> keys. Private keys are usually generated randomly while the public keys are calculated from the them.<br />
 Derivation of a public key from a private key is is fast (having linear complexity) while vice-versa, the derivation is should be impossible with current computing power. That's it's important to keep the private keys "private" while public keys can be safely distributed.</p>
+<h2 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">#</a></h2>
+<p>Additional data that can be <a href="" target="_blank">encrypted</a> alongside the <a href="" target="_blank">data</a>.<br />
+It is provided in a JSON serializable format.</p>
 <h2 id="private_key">Private key<a class="headerlink" href="#private_key" title="Permanent link">#</a></h2>
 <p>Every application and user in blindnet owns at least one private key (paired with a publicly available <a href="" target="_blank">public key</a>) which is stored locally on the app server or user's devices and encrypted on the blindnet servers.<br />
 In an asymmetric key encryption scheme, secret key is used to decrypt the data encrypted by it's associated <a href="" target="_blank">public key</a>.<br />
@@ -1780,11 +1798,6 @@ Currently, <a href="">token</a> for an anonymous user is used to <a href="" targ
 <p>A logical grouping of users in your application.<br />
 When <a href="" target="_blank">encrypting</a> the data, a <a href="" target="_blank">group can be specified</a>. Any user belonging the specified group will be able to <a href="" target="_blank">decrypt</a> the data.<br />
 Currently, a user can belong only to a single group specified when <a href="" target="_blank">registering</a> the user to blindnet and it can't be changed afterwards.</p>
-<h2 id="data">Data<a class="headerlink" href="#data" title="Permanent link">#</a></h2>
-<h2 id="encrypted_data">Encrypted data<a class="headerlink" href="#encrypted_data" title="Permanent link">#</a></h2>
-<h2 id="data_key">Data key<a class="headerlink" href="#data_key" title="Permanent link">#</a></h2>
-<h2 id="encrypted_data_key">Encrypted data key<a class="headerlink" href="#encrypted_data_key" title="Permanent link">#</a></h2>
-<h2 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">#</a></h2>
                 
               
               
@@ -1902,7 +1915,7 @@ Currently, a user can belong only to a single group specified when <a href="" ta
 
 
     
-      <script src="../assets/javascripts/bundle.b748f191.min.js"></script>
+      <script src="../assets/javascripts/bundle.b46138cb.min.js"></script>
       
     
   </body>
