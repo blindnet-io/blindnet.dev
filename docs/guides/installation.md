@@ -73,7 +73,7 @@ The blindnet SDK api is enclosed in the `Blindnet` module. It should be imported
 ## Initialization
 
 ### Client SDK 
-Blindnet SDK must be initialized before you can use it (with the exception for some static methods, e.g. [secret derivation](./managing_users_access.md#splitting_passwords){target=_blank}).
+Blindnet SDK must be initialized before you can use it (with the exception for some static methods, e.g. [secret derivation](./managing_users_access.md#splitting_secrets){target=_blank}).
 
 To initialize the library, you need to provide the [authentication token generated](./managing_users_access.md#creating_user_tokens){target=_blank} using the **server SDK**.
 
@@ -90,7 +90,7 @@ Initialization is done with the `init` method.
     ```
 
 ### Server SDK
-To initialize the server SDK, you need to obtain [application id](../other/glossary.md){target=_blank} and [application key](../other/glossary.md){target=_blank}. You can obtain them from the [dashboard](){target=_blank}.
+To initialize the server SDK, you need to obtain [application id](../other/glossary.md){target=_blank} and [application key](../other/glossary.md){target=_blank}. You can obtain them from the [dashboard](https://dashboard.blindnet.io){target=_blank}.
 
 As for the client SDK, you can provide an endpoint. For testing, use `https://test.blindnet.io`.
 

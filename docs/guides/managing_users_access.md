@@ -38,7 +38,7 @@ Currently, you can't assign already created user to a different group. [Delete](
 The core of security of blindnet are user’s [private keys](../how_it_works/security.md#user_private_keys){target=_blank}. They are randomly generated on the user’s local device and encrypted using a secret code (e.g. user’s password) and then securely stored in blindnet.  
 Blindnet allows you to reuse existing user passwords so that your users still use [one password](../other/glossary.md){target=_blank} in your application. To do so safely, you need to use blindnet Client SDK to split user passwords before you connect a user to blindnet (check our [Security page](../how_it_works/security.md#user_passwords){target=_blank} to see why this is inportant).
 
-### Splitting passwords
+### Splitting secrets
 !!! info "Splitting user's password"
     In the case that you send plaintext passwords to your server for user authentication, we advise that you update the authentication workflow in the following way.
 
@@ -53,7 +53,7 @@ To split the password use the following **Client SDK** method:
     ```
 
 ### Registering and logging users in blindnet
-When a user logs into your system, you also need to login that user to blindnet. To do so, you first obtain blindnet secret by [splitting user password](#splitting_passwords), and then use the following **Client SDK** method:
+When a user logs into your system, you also need to login that user to blindnet. To do so, you first obtain blindnet secret by [splitting user password](#splitting_secrets), and then use the following **Client SDK** method:
 
 === "JavaScript"
     ```js
@@ -75,7 +75,7 @@ This will remove the user's private keys from the user's local device.
 ## Changing secrets
 Since user's keys are encrypted with the [user's secret](../other/glossary.md){target=_blank}, changing the secret means the keys must be re-encrypted with the new secret value.  
 
-Your users can change their passwords in your applications at any time without losing access to previously encrypted data. To ensure that access is not lost, when your user changes password, [split](#splitting_passwords) the new password and use the corresponding **Client SDK** method:
+Your users can change their passwords in your applications at any time without losing access to previously encrypted data. To ensure that access is not lost, when your user changes password, [split](#splitting_secrets) the new password and use the corresponding **Client SDK** method:
 
 === "JavaScript"
     ```js linenums="1"

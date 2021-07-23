@@ -6,8 +6,8 @@ All user key pairs are always randomly generated. Before users' private keys are
 ## User passwords
 
 !!! note
-    To allow your users to use only one password for both your application and blindnet, you must first [split](../guides/managing_users_access.md#splitting_passwords){target=_blank} their passwords (i.e., you must use user password to derive two secrets, one for your application and one for blindnet).
+    To allow your users to use only one password for both your application and blindnet, you must first [split](../guides/managing_users_access.md#splitting_secrets){target=_blank} their passwords (i.e., you must use user password to derive two secrets, one for your application and one for blindnet).
 
 To provide seamless user experience in your application while preserving the highest level of data privacy for your users, your users can still input only one password for both authenticating on your application and securing blindnet private keys. However, it is important that under the hood you split this password into two secrets by using blindnet client SDK. This is needed because using the same secret in both your application and blindnet would give you access to user private keys. 
 
-See our [documentation](../guides/managing_users_access.md#splitting_passwords){target=_blank} to see how to easily split user passwords with our SDKs.
+See our [documentation](../guides/managing_users_access.md#splitting_secrets){target=_blank} to see how to easily split user passwords with our SDKs.

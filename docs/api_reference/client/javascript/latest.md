@@ -37,7 +37,7 @@ const { Blindnet, util, error } = blindnet
 The api is encapsulated in the `Blindnet` class.
 
 ## Initialization
-Blindnet SDK must be initialized before you can use it (with the exception of some static methods, e.g. [secret derivation](../../../guides/managing_users_access.md#splitting_passwords){target=_blank} method).
+Blindnet SDK must be initialized before you can use it (with the exception of some static methods, e.g. [secret derivation](../../../guides/managing_users_access.md#splitting_secrets){target=_blank} method).
 
 Initialization is done with the `init` method.
   
@@ -87,7 +87,7 @@ function connect(secret: string): Promise<void>
 #### Parameters
 name | type | required | description
 ---- | ---- | -------- | -----------
-secret | `string` | true | A secret value used to encrypt and decrypt [user’s keys](../../../other/glossary.md){target=_blank}. Usually, should be derived from user’s password using the [deriveSecrets](../../../guides/managing_users_access.md#splitting_passwords){target=_blank} method.
+secret | `string` | true | A secret value used to encrypt and decrypt [user’s keys](../../../other/glossary.md){target=_blank}. Usually, should be derived from user’s password using the [deriveSecrets](../../../guides/managing_users_access.md#splitting_secrets){target=_blank} method.
 
 #### Return type
 `Promise<void>`

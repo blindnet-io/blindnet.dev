@@ -1,12 +1,13 @@
 site_name: blindnet
 site_url: https://docs.blindnet.io/
-repo_url: https://github.com/blindnet-io/blindnet-docs
-repo_name: blindnet-docs
+# repo_url: https://github.com/blindnet-io/blindnet-docs
+# repo_name: blindnet-docs
 edit_uri: ""
 
 copyright: Copyright &copy; 2021 blindnet
 
 nav:
+  - index.md
   - Quick start: quickstart.md
   - How it works: 
     - Introduction: how_it_works/introduction.md

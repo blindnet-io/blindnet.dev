@@ -17,7 +17,7 @@ You will learn how to:
 Obtain blindnet authentication data. To authenticate to blindnet, your application needs the [application id](./other/glossary.md){target=_blank} and [application key](./other/glossary.md){target=_blank}.
 **Application key** is a cryptographic secret key which is used to sign the authentication tokens and must be kept secret (and accessible by your server).
 
-You can get the application id and application key using the blindnet [dashboard](){target=_blank} after you [create a new application](){target=_blank}.
+You can get the application id and application key using the blindnet [dashboard](https://dashboard.blindnet.io){target=_blank} after you create a new application.
 
 !!! note
     For the sake of simplicity, you can skip creating a new application and just use the following application id and key
@@ -82,7 +82,7 @@ Specify the [testing endpoint](./other/glossary.md){target=_blank} and [initiali
 Blindnet can encrypt files with a particular destination (list of users or a [user group](./other/glossary.md){target=_blank}) in mind. So in order to start encrypting, you first need to have some users (Alice in this case) that you’ve connected to blindnet.
 
 To connect a user to blindnet, a [secret value](./other/glossary.md){target=_blank} has to be provided. That value must only be known 
-by the user (e.g. user's password). In that case, **it’s important not to use the same value to log-into your system and connect to blindnet** for which we provide a method [deriveSecrets](./guides/managing_users_access.md#splitting_passwords){target=_blank}.
+by the user (e.g. user's password). In that case, **it’s important not to use the same value to log-into your system and connect to blindnet** for which we provide a method [deriveSecrets](./guides/managing_users_access.md#splitting_secrets){target=_blank}.
 
 === "JavaScript"
     ```js linenums="1"
