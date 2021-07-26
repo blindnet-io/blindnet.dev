@@ -72,8 +72,8 @@ use_directory_urls: false
 theme:
   name: material
   custom_dir: theme
-  logo: img/favicon.ico
-  favicon: img/favicon.ico
+  logo: img/favicon.png
+  favicon: img/favicon.png
   font:
     text: Roboto
 
