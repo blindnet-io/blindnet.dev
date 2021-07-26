@@ -7,7 +7,7 @@ You can manage your users’ interaction with blindnet and their access to data 
 - etc.
 
 ## Creating user tokens
-Each request to blindnet needs to be authenticated, which is done through user tokens. You `generate` user tokens on your server by using **blindnet Server SDK**, and then `pass` the generated token in the initialization of **blindnet Client SDK**. 
+Each request to blindnet needs to be authenticated, which is done through user tokens. You `generate` user tokens on your server by using **blindnet Server SDK**, and then `pass` the generated token in the [initialization of **blindnet Client SDK**](./installation.md#client_sdk_2){target=_blank}. 
 
 To generate a user token, after [initializing blindnet Server SDK](./installation.md#server_sdk_2){target=_blank} call the following blindnet **Server SDK** method:
 
@@ -18,6 +18,8 @@ To generate a user token, after [initializing blindnet Server SDK](./installatio
     $userToken = $blindnet->createUserToken($userId, $groupId);
     ```
 
+User tokens expire 12 hours after they have been created.
+
 ### Creating temporary tokens
 Temporary tokens are used to authenticate when [encrypting](./encrypt.md){target=_blank} the data. They contain the information to whom the data is being encrypted.
 
@@ -26,6 +28,8 @@ Temporary tokens are used to authenticate when [encrypting](./encrypt.md){target
     $groupId = 'your_user_group_id';
     $userToken = $blindnet->createTempUserToken($groupId);
     ```
+
+Temporary tokens expire 30 minutes after they have been created.
 
 ## Assigning a user to a group
 Each of your users can belong to one user group or no group at all.  
@@ -61,6 +65,8 @@ When a user logs into your system, you also need to login that user to blindnet.
     ```
 
 Blindnet SDK does not expose separate methods for user registration and logging in. You always use the `connect` method while its internals handle user registration and logging in. If it is the first time that a user is being connected to blindnet, the SDK will register that user by using the information you provide in a [token](#creating_user_tokens).
+
+When you use the `connect` method, it locally initiates user’s [private keys](../how_it_works/security.md#user_private_keys) so that later users can decrypt their data.
 
 ### Logging out users
 When a user logs out of your application, you also need to log out that user from blindnet by using the following **Client SDK** method:

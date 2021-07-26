@@ -39,6 +39,11 @@ However, in addition to security of data transfers, GDPR grants users many addit
 ## If I use blindnet, will I be HDS-compliant(FR)?
 Yes. First blindnet helps you store encrypted information. Even medical information, in its encrypted form, can not officially be considered medical information since the content bears no semantics in that particular form. However, blindnet does use HDS-compliant cloud storage providers, just to be safe. If you have any questions, or you want to use blindent on a particular cloud storage that you prefer, please get in touch with our support team.
 
+## What is the difference between Blindnet.init(token) and blindnet.connect(blindnetSecret)
+[Blindnet.init(token)](../guides/installation.html#client_sdk_2){target=_blank} is about initialising blindnet SDK itself, since blindnet API requires a JWT to authenticate the requests, and the `token` passed as argument is actually the JWT that you [generate on your backend](../guides/managing_users_access.html#creating_user_tokens){target=_blank}. Instead of passing the token on each SDK function call, the SDK maintains the state and uses the token in each call to our API. This is why when the token expires you need to refresh it.
+
+[blindnet.connect(blindnetSecret)](../guides/managing_users_access.md#registering_and_logging_users_in_blindnet){target=_blank} is about logging your users to blindnet. When this method is called, the SDK uses `blindnetSecret` (argument to the connect function) to initiate the user's private keys, and then stores them to be used later when decrypting documents.
+
 [^1]:
     "At the end of 2016, a business fell victim to a ransomware attack every 40 seconds. Cybersecurity Ventures predicts that will rise to every 14 seconds by 2019 — and every 11 seconds by 2021". [Cybersecurity Ventures report](https://www.herjavecgroup.com/wp-content/uploads/2018/12/CV-HG-2019-Official-Annual-Cybercrime-Report.pdf){target=_blank}  
     A Clark School study is one of the first to quantify the near-constant rate of hacker attacks of computers with Internet access—every 39 seconds on average—and the non-secure usernames and passwords we use that give attackers more chance of success. [Study](https://eng.umd.edu/news/story/study-hackers-attack-every-39-seconds){target=_blank}
