@@ -114,7 +114,7 @@ Initialization is done with the `init` method.
     ```
 
 ### Server SDK
-To initialize the server SDK, you need to obtain [application id](../other/glossary.md){target=_blank} and [application key](../other/glossary.md){target=_blank}. You can obtain them from the [dashboard](https://dashboard.blindnet.io){target=_blank}.
+To initialize the server SDK, you need to obtain [application id](../other/glossary.md#application_id){target=_blank} and [application key](../other/glossary.md#application_key){target=_blank}. You can obtain them from the [dashboard](https://dashboard.blindnet.io){target=_blank}.
 
 As for the client SDK, you can provide an endpoint. For testing, use `https://test.blindnet.io`.
 

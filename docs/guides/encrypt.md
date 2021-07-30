@@ -4,20 +4,20 @@ We provide two methods to encrypt the data: [encrypt](#encrypt) and [encryptValu
 
 The following workflow is applied when encrypting data:
 
-1. A list of user ids (specified in a [temporary token](../other/glossary.md){target=_blank}) is sent to blindnet to obtain the corresponding [public keys](../other/glossary.md){target=_blank}
-1. An [ephemeral symmetric key](../other/glossary.md){target=_blank} is generated
+1. A list of user ids (specified in a [temporary token](../other/glossary.md#short_term_token){target=_blank}) is sent to blindnet to obtain the corresponding [public keys](../other/glossary.md#public_key){target=_blank}
+1. An [ephemeral symmetric key](../other/glossary.md#data_key){target=_blank} is generated
 1. Data is encrypted with the `symmetric key`
 1. For each public key, the `symmetric key` is encrypted
 1. A list of `encrypted symmetric keys` is sent to blindnet
 
-Encryption is completed by a user of your application ([registered](../other/glossary.md){target=_blank} or [unregistered](../other/glossary.md){target=_blank}) to another registered user. A user does not need to be logged into blindnet in order to encrypt the data.
-Data can be encrypted for a single user, a list of users or a [user group](../other/glossary.md){target=_blank}.
+Encryption is completed by a user of your application ([registered](../other/glossary.md#registered_user){target=_blank} or [unregistered](../other/glossary.md#anonymous_user){target=_blank}) to another registered user. A user does not need to be logged into blindnet in order to encrypt the data.
+Data can be encrypted for a single user, a list of users or a [user group](../other/glossary.md#user_groups){target=_blank}.
 
 In the current api, the [encryption destination](./managing_users_access.md#creating_temporary_tokens){target=_blank} is specified in the **Server SDK**.
 
 To encrypt the data, the client SDK needs to be initialized with the [temporary token](./managing_users_access.md#creating_temporary_tokens){target=_blank} which contains information to whom the data is encrypted (user group or a list of users). To encrypt to a different destination, a new token needs to be generated.
 
-To encrypt the data for a specific users, obtain a [temporary token](../other/glossary.md){target=_blank} using the following **Server SDK** method:
+To encrypt the data for a specific users, obtain a [temporary token](../other/glossary.md#short_term_token){target=_blank} using the following **Server SDK** method:
 
 === "PHP"
     ```PHP linenums="1"
@@ -25,7 +25,7 @@ To encrypt the data for a specific users, obtain a [temporary token](../other/gl
     $tempUserJwt = $blindnet->createTempUserToken($userIds);
     ```
 
-To encrypt the data for a [group](../other/glossary.md){target=_blank}, obtain a [temporary token](../other/glossary.md){target=_blank} using the following **server SDK** method:
+To encrypt the data for a [group](../other/glossary.md#user_groups){target=_blank}, obtain a [temporary token](../other/glossary.md#short_term_token){target=_blank} using the following **server SDK** method:
 
 === "PHP"
     ```PHP linenums="1"
@@ -37,7 +37,7 @@ To encrypt the data for a [group](../other/glossary.md){target=_blank}, obtain a
 
 This method encrypts the entire data passed as a parameter.
 Depending on a language, multiple formats are supported.  
-Besides the _data_, a [metadata](../other/glossary.md){target=_blank} can be passed as a second argument. It can be any `JSON serializable object`.
+Besides the _data_, a [metadata](../other/glossary.md#metadata){target=_blank} can be passed as a second argument. It can be any `JSON serializable object`.
 
 === "JavaScript"
     `data` can be `string`, `File`, `Uint8Array` or `ArrayBuffer`

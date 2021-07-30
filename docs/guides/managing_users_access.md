@@ -56,7 +56,7 @@ Currently, you can't assign already created user to a different group. [Delete](
 
 ## Connecting users with blindnet
 The core of security of blindnet are user’s [private keys](../how_it_works/security.md#user_private_keys){target=_blank}. They are randomly generated on the user’s local device and encrypted using a secret code (e.g. user’s password) and then securely stored in blindnet.  
-Blindnet allows you to reuse existing user passwords so that your users still use [one password](../other/glossary.md){target=_blank} in your application. To do so safely, you need to use blindnet Client SDK to split user passwords before you connect a user to blindnet (check our [Security page](../how_it_works/security.md#user_passwords){target=_blank} to see why this is inportant).
+Blindnet allows you to reuse existing user passwords so that your users still use [one password](../other/glossary.md#secret_value){target=_blank} in your application. To do so safely, you need to use blindnet Client SDK to split user passwords before you connect a user to blindnet (check our [Security page](../how_it_works/security.md#user_passwords){target=_blank} to see why this is inportant).
 
 ### Splitting secrets
 !!! info "Splitting user's password"
@@ -95,7 +95,7 @@ When a user logs out of your application, you also need to log out that user fro
 This will remove the user's private keys from the user's local device.
 
 ## Changing secrets
-Since user's keys are encrypted with the [user's secret](../other/glossary.md){target=_blank}, changing the secret means the keys must be re-encrypted with the new secret value.  
+Since user's keys are encrypted with the [user's secret](../other/glossary.md#secret_value){target=_blank}, changing the secret means the keys must be re-encrypted with the new secret value.  
 
 Your users can change their passwords in your applications at any time without losing access to previously encrypted data. To ensure that access is not lost, when your user changes password, [split](#splitting_secrets) the new password and use the corresponding **Client SDK** method:
 
@@ -110,7 +110,7 @@ This will re-encrypt the user’s private keys with the new secret and post them
 
 ## Giving access to other users
 A user (Alice) can give access to [encrypted data](./encrypt.md){target=_blank} to another user (Bob).  
-It means Alice will download her [encrypted data keys](../other/glossary.md){target=_blank} and re-encrypt them with Bob's [public key](../other/glossary.md){target=_blank}. This way Bob can download and decrypt the keys with his [private key](../other/glossary.md){target=_blank}.
+It means Alice will download her [encrypted data keys](../other/glossary.md#encrypted_data_key){target=_blank} and re-encrypt them with Bob's [public key](../other/glossary.md#public_key){target=_blank}. This way Bob can download and decrypt the keys with his [private key](../other/glossary.md#private_key){target=_blank}.
 
 Possible use-case for this is when a new user registers to blindnet and needs an access to e.g. customers' data. Think of a new hotel employee accessing guest's encrypted passport during check-in.
 
@@ -151,7 +151,7 @@ Revoking an access to a user means the user will lose all the keys necessary to 
     await blindnet.revokeAccess(userId)
     ```
 
-In the situation where all users in a [user group](../other/glossary.md){target=_blank} always have access to all the data, this action is not meaningful and [deletion](#deleting_users) of users should be performed instead.
+In the situation where all users in a [user group](../other/glossary.md#user_groups){target=_blank} always have access to all the data, this action is not meaningful and [deletion](#deleting_users) of users should be performed instead.
 
 ## Deleting encrypted data keys
 When data is deleted from your server, it's encrypted keys should be deleted from blindnet. User the following **Server SDK** method to delete the keys:
@@ -185,10 +185,10 @@ When a user is deleted from your application, you must inform blindnet about the
 
 Deleting a user from blindnet implies that the deleted user will no longer be able to decrypt any data, and other users will no longer be able to [encrypt data](./encrypt.md){target=_blank} for that user.
 
-When deleting users, you must be careful not to delete the last user of a [group](../other/glossary.md){target=_blank} because in that case all existing data will become undecryptable. Deleting the last user has the same effect as [deleting a user group](#deleting_user_groups).
+When deleting users, you must be careful not to delete the last user of a [group](../other/glossary.md#user_groups){target=_blank} because in that case all existing data will become undecryptable. Deleting the last user has the same effect as [deleting a user group](#deleting_user_groups).
 
 ## Deleting user groups
-To delete a [user group](../other/glossary.md){target=_blank}, use the following blindnet **Server SDK** method:
+To delete a [user group](../other/glossary.md#user_groups){target=_blank}, use the following blindnet **Server SDK** method:
 
 === "PHP"
     ```php linenums="1"

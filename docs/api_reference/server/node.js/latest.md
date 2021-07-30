@@ -35,15 +35,15 @@ static async function init(
 #### Parameters
 name | type | required | description
 ---- | ---- | -------- | -----------
-appKey | `string` | true | [Application private key](../../../other/glossary.md){target=_blank}
-appId | `string` | true | [Application ID](../../../other/glossary.md){target=_blank}
+appKey | `string` | true | [Application private key](../../../other/glossary.md#application_key){target=_blank}
+appId | `string` | true | [Application ID](../../../other/glossary.md#application_id){target=_blank}
 endpoint | `string` | false | Endpoint of the blindnet server. Default value is `https://api.blindnet.io`. For testing, use `https://test.blindnet.io`.
 
 #### Return type
 `Blindnet` (An instance which you use to call SDK methods.)
 
 ## Creating user tokens
-Two types of [tokens](../../../other/glossary.md){target=_blank} are needed: **tokens for registered users** and **temporary tokens**.
+Two types of [tokens](../../../other/glossary.md#authentication_token){target=_blank} are needed: **tokens for registered users** and **temporary tokens**.
 
 ### Create a token for a registered user
 
@@ -56,8 +56,8 @@ function createUserToken(userId: string, groupId?: string): Promise<string>
 #### Parameters
 name | type | required | description
 ---- | ---- | -------- | -----------
-userId | `string` | true | ID of a [registered user](../../../other/glossary.md){target=_blank}.
-groupId | `string` | true | ID of the [group](../../../other/glossary.md){target=_blank} to which a [registered user](../../../other/glossary.md){target=_blank} belongs.
+userId | `string` | true | ID of a [registered user](../../../other/glossary.md#registered_user){target=_blank}.
+groupId | `string` | true | ID of the [group](../../../other/glossary.md#user_groups){target=_blank} to which a [registered user](../../../other/glossary.md#registered_user){target=_blank} belongs.
 
 #### Return type
 `Promise<string>`
@@ -76,18 +76,18 @@ static function createUserToken(
 #### Parameters
 name | type | required | description
 ---- | ---- | -------- | -----------
-appKey | `string` | true | [Application private key](../../../other/glossary.md){target=_blank}
-appId | `string` | true | [Application ID](../../../other/glossary.md){target=_blank}
-userId | `string` | true | ID of a [registered user](../../../other/glossary.md){target=_blank}.
-groupId | `string` | true | ID of the [group](../../../other/glossary.md){target=_blank} to which a [registered user](../../../other/glossary.md){target=_blank} belongs.
+appKey | `string` | true | [Application private key](../../../other/glossary.md#application_key){target=_blank}
+appId | `string` | true | [Application ID](../../../other/glossary.md#application_id){target=_blank}
+userId | `string` | true | ID of a [registered user](../../../other/glossary.md#registered_user){target=_blank}.
+groupId | `string` | true | ID of the [group](../../../other/glossary.md#user_groups){target=_blank} to which a [registered user](../../../other/glossary.md#registered_user){target=_blank} belongs.
 
 #### Return type
 `Promise<string>`
 
 ### Create a temporary token
 
-Creates a [token](../../../other/glossary.md){target=_blank} for [non-registered users](../../../other/glossary.md){target=_blank} of your application, usually data senders.
-When this token is used for [encrypting data](../../../guides/encrypt.md){target=_blank}, all specified users or users that belong to a specified [group](../../../other/glossary.md){target=_blank} will have access to the encrypted data.
+Creates a [token](../../../other/glossary.md#short_term_token){target=_blank} for [non-registered users](../../../other/glossary.md#anonymous_user){target=_blank} of your application, usually data senders.
+When this token is used for [encrypting data](../../../guides/encrypt.md){target=_blank}, all specified users or users that belong to a specified [group](../../../other/glossary.md#user_groups){target=_blank} will have access to the encrypted data.
 
 ```typescript
 function createTempUserToken(param: string | string[]): Promise<string>
@@ -96,7 +96,7 @@ function createTempUserToken(param: string | string[]): Promise<string>
 #### Parameters
 name | type | required | description
 ---- | ---- | -------- | -----------
-param | `string` \| `string[]` | true | ID of the [group](../../../other/glossary.md){target=_blank} for which the data is being encrypted OR list of IDs of users to whom the data is being encrypted.
+param | `string` \| `string[]` | true | ID of the [group](../../../other/glossary.md#user_groups){target=_blank} for which the data is being encrypted OR list of IDs of users to whom the data is being encrypted.
 
 #### Return type
 `Promise<string>`
@@ -112,16 +112,16 @@ static createTempUserToken(
 #### Parameters
 name | type | required | description
 ---- | ---- | -------- | -----------
-appKey | `string` | true | [Application private key](../../../other/glossary.md){target=_blank}
-appId | `string` | true | [Application ID](../../../other/glossary.md){target=_blank}
-userId | `string` | true | ID of a [registered user](../../../other/glossary.md){target=_blank}.
-param | `string` \| `string[]` | true | ID of the [group](../../../other/glossary.md){target=_blank} for which the data is being encrypted OR list of IDs of users to whom the data is being encrypted.
+appKey | `string` | true | [Application private key](../../../other/glossary.md#application_key){target=_blank}
+appId | `string` | true | [Application ID](../../../other/glossary.md#application_id){target=_blank}
+userId | `string` | true | ID of a [registered user](../../../other/glossary.md#registered_user){target=_blank}.
+param | `string` \| `string[]` | true | ID of the [group](../../../other/glossary.md#user_groups){target=_blank} for which the data is being encrypted OR list of IDs of users to whom the data is being encrypted.
 
 #### Return type
 `Promise<string>`
 
 ## Deleting data keys
-Deletes the [encrypted data key](../../../other/glossary.md){target=_blank} from blindnet.
+Deletes the [encrypted data key](../../../other/glossary.md#encrypted_data_key){target=_blank} from blindnet.
 
 ```js
 async function forgetData(dataId: string): Promise<void>
@@ -140,11 +140,11 @@ The operation succeeded if an exception wasn’t thrown.
 #### Errors
 type | description
 ---- | -----------
-AuthenticationError | [Client token](../../../other/glossary.md){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md){target=_blank} or [application id](../../../other/glossary.md){target=_blank} is provided.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
+AuthenticationError | [Client token](../../../other/glossary.md#client_token){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md#application_key){target=_blank} or [application id](../../../other/glossary.md#application_id){target=_blank} is provided.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
 BlindnetServiceError | Error on blindnet server.
 
 ## Revoking access to users
-Deletes all [encrypted data keys](../../../other/glossary.md){target=_blank} of a given user.
+Deletes all [encrypted data keys](../../../other/glossary.md#encrypted_data_key){target=_blank} of a given user.
 
 ```js
 async function revokeAccess(userId: string): Promise<void>
@@ -163,7 +163,7 @@ The operation succeeded if an exception wasn’t thrown.
 #### Errors
 type | description
 ---- | -----------
-AuthenticationError | [Client token](../../../other/glossary.md){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md){target=_blank} or [application id](../../../other/glossary.md){target=_blank} is provided.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
+AuthenticationError | [Client token](../../../other/glossary.md#client_token){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md#application_key){target=_blank} or [application id](../../../other/glossary.md#application_id){target=_blank} is provided.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
 BlindnetServiceError | Error on blindnet server.
 
 ## Deleting users
@@ -186,12 +186,12 @@ The operation succeeded if an exception wasn’t thrown.
 #### Errors
 type | description
 ---- | -----------
-AuthenticationError | [Client token](../../../other/glossary.md){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md){target=_blank} or [application id](../../../other/glossary.md){target=_blank} is provided.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
+AuthenticationError | [Client token](../../../other/glossary.md#client_token){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md#application_key){target=_blank} or [application id](../../../other/glossary.md#application_id){target=_blank} is provided.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
 BlindnetServiceError | Error on blindnet server.
 
 ## Deleting user groups
-Deletes all [encrypted data keys](../../../other/glossary.md){target=_blank} of a given user.  
-Deletes all users that belong to the [group](../../../other/glossary.md){target=_blank} and all their [encrypted data keys](../../../other/glossary.md){target=_blank}.
+Deletes all [encrypted data keys](../../../other/glossary.md#encrypted_data_key){target=_blank} of a given user.  
+Deletes all users that belong to the [group](../../../other/glossary.md#user_groups){target=_blank} and all their [encrypted data keys](../../../other/glossary.md#encrypted_data_key){target=_blank}.
 
 ```js
 async function forgetGroup(groupId: string): Promise<void>
@@ -210,5 +210,5 @@ The operation succeeded if an exception wasn’t thrown.
 #### Errors
 type | description
 ---- | -----------
-AuthenticationError | [Client token](../../../other/glossary.md){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md){target=_blank} or [application id](../../../other/glossary.md){target=_blank} is provided.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
+AuthenticationError | [Client token](../../../other/glossary.md#client_token){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md#application_key){target=_blank} or [application id](../../../other/glossary.md#application_id){target=_blank} is provided.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
 BlindnetServiceError | Error on blindnet server.

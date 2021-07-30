@@ -4,7 +4,7 @@ We provide two methods to decrypt the data: [decrypt](#decrypt) and [decryptValu
 
 The following workflow is applied when decrypting data:
 
-1. The [encrypted symmetric key](../other/glossary.md){target=_blank} of the user for the provided encrypted data is obtained from blindnet 
+1. The [encrypted symmetric key](../other/glossary.mdl#encrypted_data_key){target=_blank} of the user for the provided encrypted data is obtained from blindnet 
 1. The `encrypted symmetric key` is decrypted using the user’s secret key
 1. Data is decrypted with the `symmetric key`
 
@@ -34,7 +34,7 @@ To decrypt the data, use
     `data` is the original data provided in the encrypt method.  
     `metadata` is the object provided in the encrypt method.
 
-    [Metadata](../other/glossary.md){target=_blank}, besides the object fields provided in the [encrypt](./encrypt.md#encrypt){target=_blank} method, will contain additional information on data format so it can be treated accordingly.
+    [Metadata](../other/glossary.md#metadata){target=_blank}, besides the object fields provided in the [encrypt](./encrypt.md#encrypt){target=_blank} method, will contain additional information on data format so it can be treated accordingly.
 
     Additional information in metadata is under the key `dataType`, which can have following values:
     

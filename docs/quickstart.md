@@ -14,7 +14,7 @@ You will learn how to:
 - decrypt a file as Alice
 
 ### Before you start
-Obtain blindnet authentication data. To authenticate to blindnet, your application needs the [application id](./other/glossary.md){target=_blank} and [application key](./other/glossary.md){target=_blank}.
+Obtain blindnet authentication data. To authenticate to blindnet, your application needs the [application id](./other/glossary.md#application_id){target=_blank} and [application key](./other/glossary.md#application_key){target=_blank}.
 **Application key** is a cryptographic secret key which is used to sign the authentication tokens and must be kept secret (and accessible by your server).
 
 You can get the application id and application key using the blindnet [dashboard](https://dashboard.blindnet.io){target=_blank} after you create a new application.
@@ -53,12 +53,12 @@ Import the library to your project with
     ```
 
 ### Generate a user token for **Alice**
-[Tokens](./other/glossary.md){target=_blank} are used to authenticate the users of your application to blindnet. They can be used multiple times and should be regenerated when they expire using the same method. 
+[Tokens](./other/glossary.md#authentication_token){target=_blank} are used to authenticate the users of your application to blindnet. They can be used multiple times and should be regenerated when they expire using the same method. 
 
 !!! warning
     We use the `token generation` library to generate the tokens. It should be only used for testing purposes and tokens should be [generated on the server](./guides/managing_users_access.md#creating_user_tokens){target=_blank} in production environment, after your user is authenticated.
 
-Use the [application id](./other/glossary.md){target=_blank} and key you obtained in [Before you start](#before_you_start) section.
+Use the [application id](./other/glossary.md#application_id){target=_blank} and key you obtained in [Before you start](#before_you_start) section.
 
 === "JavaScript"
     ```js linenums="1"
@@ -69,7 +69,7 @@ Use the [application id](./other/glossary.md){target=_blank} and key you obtaine
     const token = await createUserToken(aliceId, groupId, appId, appKey)
     ```
 
-Specify the [testing endpoint](./other/glossary.md){target=_blank} and [initialize](./guides/installation.md#initialization){target=_blank} the library for Alice
+Specify the [testing endpoint](./other/glossary.md#testing_endpoint){target=_blank} and [initialize](./guides/installation.md#initialization){target=_blank} the library for Alice
 
 === "JavaScript"
     ```js linenums="1"
@@ -79,9 +79,9 @@ Specify the [testing endpoint](./other/glossary.md){target=_blank} and [initiali
 
 ### Connect Alice to blindnet
 
-Blindnet can encrypt files with a particular destination (list of users or a [user group](./other/glossary.md){target=_blank}) in mind. So in order to start encrypting, you first need to have some users (Alice in this case) that you’ve connected to blindnet.
+Blindnet can encrypt files with a particular destination (list of users or a [user group](./other/glossary.md#user_groups){target=_blank}) in mind. So in order to start encrypting, you first need to have some users (Alice in this case) that you’ve connected to blindnet.
 
-To connect a user to blindnet, a [secret value](./other/glossary.md){target=_blank} has to be provided. That value must only be known 
+To connect a user to blindnet, a [secret value](./other/glossary.md#secret_value){target=_blank} has to be provided. That value must only be known 
 by the user (e.g. user's password). In that case, **it’s important not to use the same value to log-into your system and connect to blindnet** for which we provide a method [deriveSecrets](./guides/managing_users_access.md#splitting_secrets){target=_blank}.
 
 === "JavaScript"
@@ -96,11 +96,11 @@ by the user (e.g. user's password). In that case, **it’s important not to use 
 ## **STEP 2**: Encrypt a file
 
 After Alice has connected to blindnet, data can be [encrypted](./guides/encrypt.md){target=_blank} for her.
-We will simulate an [anonymous](./other/glossary.md){target=_blank} user Bob encrypting a file for Alice.
+We will simulate an [anonymous](./other/glossary.md#anonymous_user){target=_blank} user Bob encrypting a file for Alice.
 
 ### Initialize SDK for Bob
 
-You need to initialize the library with the [temporary token](./other/glossary.md){target=_blank} in order to encrypt the data. Pass the ids of the users you want to encrypt a file to.
+You need to initialize the library with the [temporary token](./other/glossary.md#short_term_token){target=_blank} in order to encrypt the data. Pass the ids of the users you want to encrypt a file to.
 
 === "JavaScript"
     ```js linenums="1"
