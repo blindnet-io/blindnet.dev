@@ -9,26 +9,27 @@
       
       
       
-        <link rel="canonical" href="https://docs.blindnet.io/api_reference/client/javascript/0.1.3.html">
+        <link rel="canonical" href="https://docs.blindnet.io/api_reference/server/node.js/latest.html">
       
       
         
       
       <link rel="icon" href="../../../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9+insiders-2.9.2">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.2.1+insiders-2.12.0">
     
     
       
-        <title>JavaScript client SDK v0.1.3 - blindnet</title>
+        <title>Node.js server SDK v0.0.2 - blindnet</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.086df014.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84bd30f0.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.73e53a79.min.css">
         
       
+      <link rel="preload" as="style" href="../../../assets/stylesheets/vendor/mermaid.733f213f.min.css">
       
     
     
@@ -42,10 +43,12 @@
     
     
     
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
     
       
 
 
+    
     
     
   </head>
@@ -61,9 +64,8 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
   
     
-    <script>function __scope(t,e="../../.."){return new URL(e,location).pathname+"."+t}function __get(t,e=localStorage,n){return JSON.parse(e.getItem(__scope(t,n)))}function __set(t,e,n=localStorage,o){try{n.setItem(__scope(t,o),JSON.stringify(e))}catch(t){}}</script>
     
-      <script>var palette=__get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -109,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              JavaScript client SDK v0.1.3
+              Node.js server SDK v0.0.2
             
           </span>
         </div>
@@ -625,14 +627,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" data-md-state="indeterminate" type="checkbox" id="__nav_5_2" checked>
       
       
       
@@ -657,14 +657,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_1" type="checkbox" id="__nav_5_2_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_1" data-md-state="indeterminate" type="checkbox" id="__nav_5_2_1" checked>
       
       
       
@@ -693,13 +691,176 @@
   
   
     <li class="md-nav__item">
-      <a href="latest.html" class="md-nav__link">
+      <a href="../../client/javascript/latest.html" class="md-nav__link">
         latest
       </a>
     </li>
   
 
             
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../client/javascript/0.1.4.html" class="md-nav__link">
+        v0.1.4
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_3">
+          Server SDK
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Server SDK" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          Server SDK
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_5_3_1" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_3_1">
+          PHP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PHP" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          PHP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../php/latest.html" class="md-nav__link">
+        latest
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../php/0.9.2.html" class="md-nav__link">
+        v0.9.2
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2" type="checkbox" id="__nav_5_3_2" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_3_2">
+          Node.js
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Node.js" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Node.js
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
             
               
@@ -715,12 +876,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          v0.1.3
+          latest
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="0.1.3.html" class="md-nav__link md-nav__link--active">
-        v0.1.3
+      <a href="latest.html" class="md-nav__link md-nav__link--active">
+        latest
       </a>
       
         
@@ -777,11 +938,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#refreshing_the_session" class="md-nav__link">
-    Refreshing the session
+  <a href="#creating_user_tokens" class="md-nav__link">
+    Creating user tokens
   </a>
   
-    <nav class="md-nav" aria-label="Refreshing the session">
+    <nav class="md-nav" aria-label="Creating user tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_a_token_for_a_registered_user" class="md-nav__link">
+    Create a token for a registered user
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a token for a registered user">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -798,19 +967,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#logging-in" class="md-nav__link">
-    Logging-in
-  </a>
-  
-    <nav class="md-nav" aria-label="Logging-in">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#parameters_2" class="md-nav__link">
     Parameters
@@ -825,19 +981,17 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#errors" class="md-nav__link">
-    Errors
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#deriving_secrets" class="md-nav__link">
-    Deriving secrets
+  <a href="#create_a_temporary_token" class="md-nav__link">
+    Create a temporary token
   </a>
   
-    <nav class="md-nav" aria-label="Deriving secrets">
+    <nav class="md-nav" aria-label="Create a temporary token">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -854,31 +1008,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#logging-out" class="md-nav__link">
-    Logging-out
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#changing_login_secret" class="md-nav__link">
-    Changing login secret
-  </a>
-  
-    <nav class="md-nav" aria-label="Changing login secret">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#parameters_4" class="md-nav__link">
     Parameters
@@ -888,6 +1017,72 @@
         
           <li class="md-nav__item">
   <a href="#return_type_4" class="md-nav__link">
+    Return type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting_data_keys" class="md-nav__link">
+    Deleting data keys
+  </a>
+  
+    <nav class="md-nav" aria-label="Deleting data keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return_type_5" class="md-nav__link">
+    Return type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errors" class="md-nav__link">
+    Errors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revoking_access_to_users" class="md-nav__link">
+    Revoking access to users
+  </a>
+  
+    <nav class="md-nav" aria-label="Revoking access to users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_6" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return_type_6" class="md-nav__link">
     Return type
   </a>
   
@@ -906,79 +1101,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#encrypting" class="md-nav__link">
-    Encrypting
+  <a href="#deleting_users" class="md-nav__link">
+    Deleting users
   </a>
   
-    <nav class="md-nav" aria-label="Encrypting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parameters_5" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#return_type_5" class="md-nav__link">
-    Return type
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#errors_2" class="md-nav__link">
-    Errors
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#encrypting_values" class="md-nav__link">
-    Encrypting values
-  </a>
-  
-    <nav class="md-nav" aria-label="Encrypting values">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parameters_6" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#return_type_6" class="md-nav__link">
-    Return type
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#errors_3" class="md-nav__link">
-    Errors
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#decrypting" class="md-nav__link">
-    Decrypting
-  </a>
-  
-    <nav class="md-nav" aria-label="Decrypting">
+    <nav class="md-nav" aria-label="Deleting users">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -996,18 +1123,23 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#errors_4" class="md-nav__link">
+  <a href="#errors_2" class="md-nav__link">
     Errors
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#decrypting_values" class="md-nav__link">
-    Decrypting values
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting_user_groups" class="md-nav__link">
+    Deleting user groups
   </a>
   
-    <nav class="md-nav" aria-label="Decrypting values">
+    <nav class="md-nav" aria-label="Deleting user groups">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1025,115 +1157,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#errors_5" class="md-nav__link">
+  <a href="#errors_3" class="md-nav__link">
     Errors
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#giving_access_to_a_user" class="md-nav__link">
-    Giving access to a user
-  </a>
-  
-    <nav class="md-nav" aria-label="Giving access to a user">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parameters_9" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#return_type_9" class="md-nav__link">
-    Return type
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#errors_6" class="md-nav__link">
-    Errors
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#helper_methods" class="md-nav__link">
-    Helper methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Helper methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#encoding" class="md-nav__link">
-    Encoding
-  </a>
-  
-    <nav class="md-nav" aria-label="Encoding">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#encode_to_base64_string" class="md-nav__link">
-    Encode to base64 string
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#encode_to_hexadecimal_string" class="md-nav__link">
-    Encode to hexadecimal string
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#decoding" class="md-nav__link">
-    Decoding
-  </a>
-  
-    <nav class="md-nav" aria-label="Decoding">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#decode_from_base64_string" class="md-nav__link">
-    Decode from base64 string
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#decode_from_hexadecimal_string" class="md-nav__link">
-    Decode from hexadecimal string
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1151,104 +1177,14 @@
 
             
           
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" data-md-state="indeterminate" type="checkbox" id="__nav_5_3" checked>
-      
-      
-      
-        
-          
-        
-      
-      
-        <label class="md-nav__link" for="__nav_5_3">
-          Server SDK
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Server SDK" data-md-level="2">
-        <label class="md-nav__title" for="__nav_5_3">
-          <span class="md-nav__icon md-icon"></span>
-          Server SDK
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_1" data-md-state="indeterminate" type="checkbox" id="__nav_5_3_1" checked>
-      
-      
-      
-        
-          
-        
-          
-        
-      
-      
-        <label class="md-nav__link" for="__nav_5_3_1">
-          PHP
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="PHP" data-md-level="3">
-        <label class="md-nav__title" for="__nav_5_3_1">
-          <span class="md-nav__icon md-icon"></span>
-          PHP
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
             
               
   
   
   
     <li class="md-nav__item">
-      <a href="../../server/php/latest.html" class="md-nav__link">
-        latest
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../server/php/0.9.2.html" class="md-nav__link">
-        v0.9.2
+      <a href="0.0.2.html" class="md-nav__link">
+        v0.0.2
       </a>
     </li>
   
@@ -1688,11 +1624,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#refreshing_the_session" class="md-nav__link">
-    Refreshing the session
+  <a href="#creating_user_tokens" class="md-nav__link">
+    Creating user tokens
   </a>
   
-    <nav class="md-nav" aria-label="Refreshing the session">
+    <nav class="md-nav" aria-label="Creating user tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_a_token_for_a_registered_user" class="md-nav__link">
+    Create a token for a registered user
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a token for a registered user">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1709,19 +1653,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#logging-in" class="md-nav__link">
-    Logging-in
-  </a>
-  
-    <nav class="md-nav" aria-label="Logging-in">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#parameters_2" class="md-nav__link">
     Parameters
@@ -1736,19 +1667,17 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#errors" class="md-nav__link">
-    Errors
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#deriving_secrets" class="md-nav__link">
-    Deriving secrets
+  <a href="#create_a_temporary_token" class="md-nav__link">
+    Create a temporary token
   </a>
   
-    <nav class="md-nav" aria-label="Deriving secrets">
+    <nav class="md-nav" aria-label="Create a temporary token">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1765,31 +1694,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#logging-out" class="md-nav__link">
-    Logging-out
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#changing_login_secret" class="md-nav__link">
-    Changing login secret
-  </a>
-  
-    <nav class="md-nav" aria-label="Changing login secret">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#parameters_4" class="md-nav__link">
     Parameters
@@ -1799,6 +1703,72 @@
         
           <li class="md-nav__item">
   <a href="#return_type_4" class="md-nav__link">
+    Return type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting_data_keys" class="md-nav__link">
+    Deleting data keys
+  </a>
+  
+    <nav class="md-nav" aria-label="Deleting data keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return_type_5" class="md-nav__link">
+    Return type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errors" class="md-nav__link">
+    Errors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revoking_access_to_users" class="md-nav__link">
+    Revoking access to users
+  </a>
+  
+    <nav class="md-nav" aria-label="Revoking access to users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_6" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return_type_6" class="md-nav__link">
     Return type
   </a>
   
@@ -1817,79 +1787,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#encrypting" class="md-nav__link">
-    Encrypting
+  <a href="#deleting_users" class="md-nav__link">
+    Deleting users
   </a>
   
-    <nav class="md-nav" aria-label="Encrypting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parameters_5" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#return_type_5" class="md-nav__link">
-    Return type
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#errors_2" class="md-nav__link">
-    Errors
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#encrypting_values" class="md-nav__link">
-    Encrypting values
-  </a>
-  
-    <nav class="md-nav" aria-label="Encrypting values">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parameters_6" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#return_type_6" class="md-nav__link">
-    Return type
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#errors_3" class="md-nav__link">
-    Errors
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#decrypting" class="md-nav__link">
-    Decrypting
-  </a>
-  
-    <nav class="md-nav" aria-label="Decrypting">
+    <nav class="md-nav" aria-label="Deleting users">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1907,18 +1809,23 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#errors_4" class="md-nav__link">
+  <a href="#errors_2" class="md-nav__link">
     Errors
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#decrypting_values" class="md-nav__link">
-    Decrypting values
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting_user_groups" class="md-nav__link">
+    Deleting user groups
   </a>
   
-    <nav class="md-nav" aria-label="Decrypting values">
+    <nav class="md-nav" aria-label="Deleting user groups">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1936,115 +1843,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#errors_5" class="md-nav__link">
+  <a href="#errors_3" class="md-nav__link">
     Errors
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#giving_access_to_a_user" class="md-nav__link">
-    Giving access to a user
-  </a>
-  
-    <nav class="md-nav" aria-label="Giving access to a user">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#parameters_9" class="md-nav__link">
-    Parameters
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#return_type_9" class="md-nav__link">
-    Return type
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#errors_6" class="md-nav__link">
-    Errors
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#helper_methods" class="md-nav__link">
-    Helper methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Helper methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#encoding" class="md-nav__link">
-    Encoding
-  </a>
-  
-    <nav class="md-nav" aria-label="Encoding">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#encode_to_base64_string" class="md-nav__link">
-    Encode to base64 string
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#encode_to_hexadecimal_string" class="md-nav__link">
-    Encode to hexadecimal string
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#decoding" class="md-nav__link">
-    Decoding
-  </a>
-  
-    <nav class="md-nav" aria-label="Decoding">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#decode_from_base64_string" class="md-nav__link">
-    Decode from base64 string
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#decode_from_hexadecimal_string" class="md-nav__link">
-    Decode from hexadecimal string
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -2067,39 +1868,31 @@
                 
                 
                 
-                  <h1>v0.1.3</h1>
+                  <h1>latest</h1>
                 
                 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
-<p>Pick one of the following methods to install the blindnet SDK.</p>
-<div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">npm</label><div class="tabbed-content">
+<p>Pick one of the following methods to install the SDK.</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">npm</label><div class="tabbed-content">
 <p>Run the following command in your terminal.
-<div class="highlight"><pre><span></span><code><span class="go">npm i -S @blindnet/sdk-javascript</span>
+<div class="highlight"><pre><span></span><code><span class="go">npm i -S @blindnet/sdk-node</span>
 </code></pre></div></p>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">yarn</label><div class="tabbed-content">
 <p>Run the following command in your terminal.
-<div class="highlight"><pre><span></span><code><span class="go">yarn add @blindnet/sdk-javascript</span>
-</code></pre></div></p>
-</div>
-<input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">umd</label><div class="tabbed-content">
-<p>Download the <a href="https://irian.to/blogs/what-are-cjs-amd-umd-and-esm-in-javascript/" target="_blank">umd</a> file and include it in your <code>HTML</code> file.<br />
-File can be downloaded <a href="" target="_blank">here</a>.
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;blindnet.umd.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="go">yarn add @blindnet/sdk-node</span>
 </code></pre></div></p>
 </div>
 </div>
 <h2 id="imports">Imports<a class="headerlink" href="#imports" title="Permanent link">#</a></h2>
-<p>If the SDK was installed as an <code>npm</code> package, it is imported as</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Blindnet</span><span class="p">,</span> <span class="nx">util</span><span class="p">,</span> <span class="nx">error</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;@blindnet/sdk-javascript&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">Blindnet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@blindnet/sdk-node&#39;</span><span class="p">)</span>
 </code></pre></div>
-<p>If it was imported as an <code>umd</code> package, use
-<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">Blindnet</span><span class="p">,</span> <span class="nx">util</span><span class="p">,</span> <span class="nx">error</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">blindnet</span>
-</code></pre></div></p>
-<p>The api is encapsulated in the <code>Blindnet</code> class.</p>
 <h2 id="initialization">Initialization<a class="headerlink" href="#initialization" title="Permanent link">#</a></h2>
-<p>Blindnet SDK must be initialized before you can use it (with the exception of some static methods, e.g. <a href="../../../guides/managing_users_access.html#splitting_secrets" target="_blank">secret derivation</a> method).</p>
-<p>Initialization is done with the <code>init</code> method.</p>
-<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="nx">token</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">endpoint?</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="nx">Blindnet</span>
+<p>Blindnet SDK must be initialized before you can use it (with the exception of the static token generation methods).</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span>
+  <span class="nx">appKey</span>: <span class="kt">string</span><span class="p">,</span>
+  <span class="nx">appId</span>: <span class="kt">string</span><span class="p">,</span>
+  <span class="nx">endpoint?</span>: <span class="kt">string</span>
+<span class="p">)</span><span class="o">:</span> <span class="nx">Blindnet</span>
 </code></pre></div>
 <h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h4>
 <table>
@@ -2113,448 +1906,34 @@ File can be downloaded <a href="" target="_blank">here</a>.
 </thead>
 <tbody>
 <tr>
-<td>token</td>
+<td>appKey</td>
 <td><code>string</code></td>
 <td>true</td>
-<td><a href="../../../guides/managing_users_access.html#creating_user_tokens" target="_blank">Authentication token generated</a> by server SDK.</td>
+<td><a href="../../../other/glossary.html#application_key" target="_blank">Application private key</a></td>
+</tr>
+<tr>
+<td>appId</td>
+<td><code>string</code></td>
+<td>true</td>
+<td><a href="../../../other/glossary.html#application_id" target="_blank">Application ID</a></td>
 </tr>
 <tr>
 <td>endpoint</td>
 <td><code>string</code></td>
 <td>false</td>
-<td>URL of the blindnet server. Default value is <code>https://api.blindnet.io</code>. For testing, use <code>https://test.blindnet.io</code>.</td>
+<td>Endpoint of the blindnet server. Default value is <code>https://api.blindnet.io</code>. For testing, use <code>https://test.blindnet.io</code>.</td>
 </tr>
 </tbody>
 </table>
 <h4 id="return_type">Return type<a class="headerlink" href="#return_type" title="Permanent link">#</a></h4>
 <p><code>Blindnet</code> (An instance which you use to call SDK methods.)</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">blindnet</span> <span class="o">=</span> <span class="nx">Blindnet</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span>
-<span class="nx">blindnet</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">secret</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="refreshing_the_session">Refreshing the session<a class="headerlink" href="#refreshing_the_session" title="Permanent link">#</a></h2>
-<p>After the token expires, <a href="../../../troubleshooting/error_reference/client/javascript.html#authenticationerror" target="_blank">AuthenticationError</a> will be thrown on api calls.
-<a href="../../../guides/managing_users_access.html#creating_user_tokens" target="_blank">Generate a new token</a> using server SDK and call <code>refreshToken</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">refreshToken</span><span class="p">(</span><span class="nx">token</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="k">void</span>
+<h2 id="creating_user_tokens">Creating user tokens<a class="headerlink" href="#creating_user_tokens" title="Permanent link">#</a></h2>
+<p>Two types of <a href="../../../other/glossary.html#authentication_token" target="_blank">tokens</a> are needed: <strong>tokens for registered users</strong> and <strong>temporary tokens</strong>.</p>
+<h3 id="create_a_token_for_a_registered_user">Create a token for a registered user<a class="headerlink" href="#create_a_token_for_a_registered_user" title="Permanent link">#</a></h3>
+<p>These tokens are used by the <a href="../../../guides/encrypt.html" target="_blank">registered users</a> to invoke SDK methods.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">createUserToken</span><span class="p">(</span><span class="nx">userId</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">groupId?</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span>
 </code></pre></div>
 <h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>type</th>
-<th>required</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>token</td>
-<td><code>string</code></td>
-<td>true</td>
-<td><a href="../../../guides/managing_users_access.html#creating_user_tokens" target="_blank">Authentication token generated</a> by server SDK.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="return_type_1">Return type<a class="headerlink" href="#return_type_1" title="Permanent link">#</a></h4>
-<p><code>void</code></p>
-<h2 id="logging-in">Logging-in<a class="headerlink" href="#logging-in" title="Permanent link">#</a></h2>
-<p>A user must be logged-into to blindnet before using any Blindnet api methods (with the of some static methods or when <a href="../../../guides/encrypt.html" target="_blank">encrypting</a>).
-The user both <a href="../../../guides/managing_users_access.html#registering_and_logging_users_in_blindnet" target="_blank">registers and later authenticates</a> in blindnet with the method <code>connect</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">connect</span><span class="p">(</span><span class="nx">secret</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
-</code></pre></div>
-<h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>type</th>
-<th>required</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>secret</td>
-<td><code>string</code></td>
-<td>true</td>
-<td>A secret value used to encrypt and decrypt <a href="../../../other/glossary.html" target="_blank">user’s keys</a>. Usually, should be derived from user’s password using the <a href="../../../guides/managing_users_access.html#splitting_secrets" target="_blank">deriveSecrets</a> method.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="return_type_2">Return type<a class="headerlink" href="#return_type_2" title="Permanent link">#</a></h4>
-<p><code>Promise&lt;void&gt;</code></p>
-<p>The operation succeeded if an exception wasn’t thrown.</p>
-<h4 id="errors">Errors<a class="headerlink" href="#errors" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AuthenticationError</td>
-<td><a href="../../../other/glossary.html" target="_blank">Token</a> has expired or is invalid. <a href="../../../guides/managing_users_access.html#creating_user_tokens" target="_blank">Generate a new token</a> and call <a href="#refreshing_the_session">refreshToken</a>.</td>
-</tr>
-<tr>
-<td>BlindnetServiceError</td>
-<td>Error on blindnet server.</td>
-</tr>
-<tr>
-<td>PasswordError</td>
-<td>A bad <a href="../../../other/glossary.html" target="_blank">secret</a> has been provided. Could not decrypt the <a href="../../../other/glossary.html" target="_blank">user’s keys</a>.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="deriving_secrets">Deriving secrets<a class="headerlink" href="#deriving_secrets" title="Permanent link">#</a></h3>
-<p>User’s password is a sensitive data. As it can be used both to log-into your application and to encrypt user’s keys in blindnet, it should be split into two parts and each part should be used for different purposes.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">deriveSecrets</span><span class="p">(</span>
-    <span class="nx">password</span>: <span class="kt">string</span>
-<span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="p">{</span> <span class="nx">blindnetSecret</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">appSecret</span>: <span class="kt">string</span> <span class="p">}</span><span class="o">&gt;</span>
-</code></pre></div>
-<h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>type</th>
-<th>required</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>password</td>
-<td><code>string</code></td>
-<td>true</td>
-<td>A value generated by a user. It can be the user's password or e.g. answer to a security question.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="return_type_3">Return type<a class="headerlink" href="#return_type_3" title="Permanent link">#</a></h4>
-<p><code>Promise&lt;{ blindnetSecret: string, appSecret: string }&gt;</code></p>
-<p>If a user's log-in password is used as an input parameter, use <code>blindnetSecret</code> in the <a href="#logging-in">connect</a> method and <code>appSecret</code> to log-into your application.</p>
-<h2 id="logging-out">Logging-out<a class="headerlink" href="#logging-out" title="Permanent link">#</a></h2>
-<p>After the user is logged out of your app, following method should be called to clean the <a href="../../../other/glossary.html" target="_blank">user’s keys</a> from the browser</p>
-<div class="highlight"><pre><span></span><code><span class="nx">Blindnet</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">()</span>
-</code></pre></div>
-<h2 id="changing_login_secret">Changing login secret<a class="headerlink" href="#changing_login_secret" title="Permanent link">#</a></h2>
-<p>If an app password is used to log-in users into blindnet, make sure to call this method after a user changes the password. Remember to call <a href="#deriving_secrets">deriveSecrets</a>.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">changeSecret</span><span class="p">(</span><span class="nx">newSecret</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">oldSecret?</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
-</code></pre></div>
-<h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>type</th>
-<th>required</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>newSecret</td>
-<td><code>string</code></td>
-<td>true</td>
-<td>A new secret used to encrypt <a href="../../../other/glossary.html" target="_blank">user’s keys</a>.</td>
-</tr>
-<tr>
-<td>oldSecret</td>
-<td><code>string</code></td>
-<td>false</td>
-<td>Current secret used to encrypt <a href="../../../other/glossary.html" target="_blank">user’s keys</a>. If the user is currently not <a href="../../../guides/managing_users_access.html#registering_and_logging_users_in_blindnet" target="_blank">logged into</a> blindnet, <code>oldSecret</code> should be provided into the method <code>changeSecret</code>.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="return_type_4">Return type<a class="headerlink" href="#return_type_4" title="Permanent link">#</a></h4>
-<p><code>Promise&lt;void&gt;</code></p>
-<p>The operation succeeded if an exception wasn’t thrown.</p>
-<h4 id="errors_1">Errors<a class="headerlink" href="#errors_1" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AuthenticationError</td>
-<td><a href="../../../other/glossary.html" target="_blank">Token</a> has expired or is invalid. <a href="../../../guides/managing_users_access.html#creating_user_tokens" target="_blank">Generate a new token</a> and call <a href="#refreshing_the_session">refreshToken</a>.</td>
-</tr>
-<tr>
-<td>BlindnetServiceError</td>
-<td>Error on blindnet server.</td>
-</tr>
-<tr>
-<td>PasswordError</td>
-<td>Bad <code>oldSecret</code> is provided.</td>
-</tr>
-<tr>
-<td>UserNotInitializedError</td>
-<td>A user is not <a href="../../../guides/managing_users_access.html#registering_and_logging_users_in_blindnet" target="_blank">logged into</a> blindnet and <code>oldSecret</code> is not provided.</td>
-</tr>
-<tr>
-<td>UserNotFoundError</td>
-<td>A user was not <a href="../../../guides/managing_users_access.html#registering_and_logging_users_in_blindnet" target="_blank">registered</a> or was <a href="../../../guides/managing_users_access.html#deleting_encrypted_data_keys" target="_blank">deleted</a> from blindnet.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="encrypting">Encrypting<a class="headerlink" href="#encrypting" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">encrypt</span><span class="p">(</span>
-    <span class="nx">data</span>: <span class="kt">string</span> <span class="o">|</span> <span class="nx">File</span> <span class="o">|</span> <span class="nx">ArrayBuffer</span> <span class="o">|</span> <span class="nx">Uint8Array</span><span class="p">,</span>
-    <span class="nx">metadata</span><span class="o">?:</span> <span class="p">{</span> <span class="p">[</span><span class="nx">key</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="nx">any</span> <span class="p">}</span>
-<span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="p">{</span> <span class="nx">dataId</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">encryptedData</span>: <span class="kt">ArrayBuffer</span> <span class="p">}</span><span class="o">&gt;</span>
-</code></pre></div>
-<h4 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>type</th>
-<th>required</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>data</td>
-<td><code>string | File | ArrayBuffer | Uint8Array</code></td>
-<td>true</td>
-<td>Data to encrypt. Multiple types are supported.</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td><code>{ [key: string]: any }</code></td>
-<td>false</td>
-<td>Metadata in JSON format.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="return_type_5">Return type<a class="headerlink" href="#return_type_5" title="Permanent link">#</a></h4>
-<p><code>Promise&lt;{ dataId: string, encryptedData: ArrayBuffer }&gt;</code></p>
-<p><code>dataId</code> can be used to <a href="../../../guides/managing_users_access.html#deleting_encrypted_data_keys" target="_blank">delete a data keys</a> using the <strong>Server SDK</strong>.<br />
-<code>encryptedData</code> can be <a href="../../../guides/encrypt.html#encode" target="_blank">encoded</a> using <a href="#encode_to_base64_string">toBase64</a> and <a href="#encode_to_hexadecimal_string">toHex</a> methods.</p>
-<h4 id="errors_2">Errors<a class="headerlink" href="#errors_2" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AuthenticationError</td>
-<td><a href="../../../other/glossary.html" target="_blank">Token</a> has expired or is invalid. <a href="../../../guides/managing_users_access.html#creating_user_tokens" target="_blank">Generate a new token</a> and call <a href="#refreshing_the_session">refreshToken</a>.</td>
-</tr>
-<tr>
-<td>BlindnetServiceError</td>
-<td>Error on blindnet server.</td>
-</tr>
-<tr>
-<td>BadFormatError</td>
-<td><code>data</code> or <code>metadata</code> has a wrong type.</td>
-</tr>
-<tr>
-<td>NotEncryptabeError</td>
-<td>There are no users to encrypt the <code>data</code> to.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="encrypting_values">Encrypting values<a class="headerlink" href="#encrypting_values" title="Permanent link">#</a></h3>
-<p>This method encrypts only the values of a provided JavaScript object.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">encryptValues</span><span class="p">(</span>
-    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span> <span class="p">[</span><span class="nx">key</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="kt">string</span> <span class="p">},</span>
-    <span class="nx">noPrefix?</span>: <span class="kt">boolean</span>
-<span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="p">{</span> <span class="nx">dataId</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">encryptedData</span><span class="o">:</span> <span class="p">{</span> <span class="p">[</span><span class="nx">key</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="kt">string</span> <span class="p">}</span> <span class="p">}</span><span class="o">&gt;</span>
-</code></pre></div>
-<h4 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>type</th>
-<th>required</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>data</td>
-<td><code>{ [key: string]: string }</code></td>
-<td>true</td>
-<td>An object whose values to encrypt. Both object’s keys and values should be strings.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="return_type_6">Return type<a class="headerlink" href="#return_type_6" title="Permanent link">#</a></h4>
-<p><code>Promise&lt;{ dataId: string, encryptedData: { [key: string]: string } }&gt;</code></p>
-<p><code>dataId</code> can be used to <a href="../../../guides/managing_users_access.html#deleting_encrypted_data_keys" target="_blank">delete a data keys</a> using the <strong>Server SDK</strong>.<br />
-<code>encryptedData</code> is a JavaScript object with encrypted values, encoded to <code>hex</code> string. Object keys are left in plain text.</p>
-<h4 id="errors_3">Errors<a class="headerlink" href="#errors_3" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AuthenticationError</td>
-<td><a href="../../../other/glossary.html" target="_blank">Token</a> has expired or is invalid. <a href="../../../guides/managing_users_access.html#creating_user_tokens" target="_blank">Generate a new token</a> and call <a href="#refreshing_the_session">refreshToken</a>.</td>
-</tr>
-<tr>
-<td>BlindnetServiceError</td>
-<td>Error on blindnet server.</td>
-</tr>
-<tr>
-<td>BadFormatError</td>
-<td><code>data</code> is not the expected type.</td>
-</tr>
-<tr>
-<td>NotEncryptabeError</td>
-<td>There are no users to encrypt the <code>data</code> to.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="decrypting">Decrypting<a class="headerlink" href="#decrypting" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">decrypt</span><span class="p">(</span>
-    <span class="nx">encryptedData</span>: <span class="kt">ArrayBuffer</span> <span class="o">|</span> <span class="nx">Uint8Array</span>
-<span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="p">{</span>
-    <span class="nx">data</span>: <span class="kt">string</span> <span class="o">|</span> <span class="nx">File</span> <span class="o">|</span> <span class="nx">Bytes</span><span class="p">,</span>
-    <span class="nx">metadata</span><span class="o">:</span> <span class="p">{</span> <span class="nx">dataType</span>: <span class="kt">DataType</span><span class="p">,</span> <span class="p">[</span><span class="nx">key</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="nx">any</span><span class="p">;</span> <span class="p">}}</span><span class="o">&gt;</span>
-</code></pre></div>
-<h4 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>type</th>
-<th>required</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>encryptedData</td>
-<td><code>ArrayBuffer | Uint8Array</code></td>
-<td>true</td>
-<td>Encrypted data to decrypt (the result of the <a href="#encrypting">encrypt</a> method). If it was <a href="../../../guides/encrypt.html#encode" target="_blank">encoded</a>, it can be decoded using <a href="#decode_from_base64_string">fromBase64</a> or <a href="#decode_from_hexadecimal_string">fromHex</a>.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="return_type_7">Return type<a class="headerlink" href="#return_type_7" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code>Promise&lt;{
-    data: string | File | ArrayBuffer | Uint8Array,
-    metadata: { dataType: DataType, [key: string]: any; }}&gt;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>type DataType =
-    | { type: &#39;STRING&#39; }
-    | { type: &#39;FILE&#39;, name: string }
-    | { type: &#39;BYTES&#39; }
-</code></pre></div>
-<p><code>data</code> is in format it was originally provided to the <a href="#encrypting">encrypt</a> method. If not known, it can be inspected from the <code>dataType</code> property of the <code>metadata</code>.</p>
-<h4 id="errors_4">Errors<a class="headerlink" href="#errors_4" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AuthenticationError</td>
-<td><a href="../../../other/glossary.html" target="_blank">Token</a> has expired or is invalid. <a href="../../../guides/managing_users_access.html#creating_user_tokens" target="_blank">Generate a new token</a> and call <a href="#refreshing_the_session">refreshToken</a>.</td>
-</tr>
-<tr>
-<td>BlindnetServiceError</td>
-<td>Error on blindnet server.</td>
-</tr>
-<tr>
-<td>UserNotInitializedError</td>
-<td>A user is not <a href="../../../guides/managing_users_access.html#registering_and_logging_users_in_blindnet" target="_blank">logged into</a> blindnet.</td>
-</tr>
-<tr>
-<td>NoAccessError</td>
-<td>A user has no <a href="../../../guides/managing_users_access.html#giving_access_to_other_users" target="_blank">access</a> to encrypted data.</td>
-</tr>
-<tr>
-<td>EncryptionError</td>
-<td>Data could not be decrypted. Either due to wrong data format or the keys were <a href="../../../guides/managing_users_access.html#deleting_encrypted_data_keys" target="_blank">deleted</a> from blindnet.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="decrypting_values">Decrypting values<a class="headerlink" href="#decrypting_values" title="Permanent link">#</a></h3>
-<p>This method decrypts the encrypted values of an object encrypted using <a href="#encrypting_values">encryptValues</a> method.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">decryptValues</span><span class="p">(</span>
-    <span class="nx">encryptedData</span><span class="o">:</span> <span class="p">{</span> <span class="p">[</span><span class="nx">key</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="kt">string</span> <span class="p">}</span>
-<span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="p">{</span> <span class="nx">data</span><span class="o">:</span> <span class="p">{</span> <span class="p">[</span><span class="nx">key</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="kt">string</span> <span class="p">}</span> <span class="p">}</span><span class="o">&gt;</span>
-</code></pre></div>
-<h4 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>type</th>
-<th>required</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>encryptedData</td>
-<td><code>{ [key: string]: string }</code></td>
-<td>true</td>
-<td>An object whose values are encrypted. Result from the <a href="#encrypting_values">encryptValues</a> method.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="return_type_8">Return type<a class="headerlink" href="#return_type_8" title="Permanent link">#</a></h4>
-<p><code>Promise&lt;{ data: { [key: string]: string } }&gt;</code></p>
-<p><code>data</code> is the original data passed to <a href="#encrypting_values">encryptValues</a> method.</p>
-<h4 id="errors_5">Errors<a class="headerlink" href="#errors_5" title="Permanent link">#</a></h4>
-<table>
-<thead>
-<tr>
-<th>type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AuthenticationError</td>
-<td><a href="../../../other/glossary.html" target="_blank">Token</a> has expired or is invalid. <a href="../../../guides/managing_users_access.html#creating_user_tokens" target="_blank">Generate a new token</a> and call <a href="#refreshing_the_session">refreshToken</a>.</td>
-</tr>
-<tr>
-<td>BlindnetServiceError</td>
-<td>Error on blindnet server.</td>
-</tr>
-<tr>
-<td>UserNotInitializedError</td>
-<td>A user is not <a href="../../../guides/managing_users_access.html#registering_and_logging_users_in_blindnet" target="_blank">logged into</a> blindnet.</td>
-</tr>
-<tr>
-<td>NoAccessError</td>
-<td>A user has no <a href="../../../guides/managing_users_access.html#giving_access_to_other_users" target="_blank">access</a> to encrypted data.</td>
-</tr>
-<tr>
-<td>EncryptionError</td>
-<td>Data could not be decrypted. Either due to wrong data format or the keys were <a href="../../../guides/managing_users_access.html#deleting_encrypted_data_keys" target="_blank">deleted</a> from blindnet.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="giving_access_to_a_user">Giving access to a user<a class="headerlink" href="#giving_access_to_a_user" title="Permanent link">#</a></h2>
-<p>A user can give access to all the encrypted data (to which the user already has access to) to another user.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">giveAccess</span><span class="p">(</span><span class="nx">userId</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
-</code></pre></div>
-<h4 id="parameters_9">Parameters<a class="headerlink" href="#parameters_9" title="Permanent link">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2569,14 +1948,163 @@ The user both <a href="../../../guides/managing_users_access.html#registering_an
 <td>userId</td>
 <td><code>string</code></td>
 <td>true</td>
-<td>Id of a user to whom access is being given.</td>
+<td>ID of a <a href="../../../other/glossary.html#registered_user" target="_blank">registered user</a>.</td>
+</tr>
+<tr>
+<td>groupId</td>
+<td><code>string</code></td>
+<td>true</td>
+<td>ID of the <a href="../../../other/glossary.html#user_groups" target="_blank">group</a> to which a <a href="../../../other/glossary.html#registered_user" target="_blank">registered user</a> belongs.</td>
 </tr>
 </tbody>
 </table>
-<h4 id="return_type_9">Return type<a class="headerlink" href="#return_type_9" title="Permanent link">#</a></h4>
+<h4 id="return_type_1">Return type<a class="headerlink" href="#return_type_1" title="Permanent link">#</a></h4>
+<p><code>Promise&lt;string&gt;</code></p>
+<p>A static method can also be used.</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kd">function</span> <span class="nx">createUserToken</span><span class="p">(</span>
+  <span class="nx">appKey</span>: <span class="kt">string</span><span class="p">,</span>
+  <span class="nx">appId</span>: <span class="kt">string</span><span class="p">,</span>
+  <span class="nx">userId</span>: <span class="kt">string</span><span class="p">,</span>
+  <span class="nx">groupId?</span>: <span class="kt">string</span>
+<span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span>
+</code></pre></div>
+<h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>required</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appKey</td>
+<td><code>string</code></td>
+<td>true</td>
+<td><a href="../../../other/glossary.html#application_key" target="_blank">Application private key</a></td>
+</tr>
+<tr>
+<td>appId</td>
+<td><code>string</code></td>
+<td>true</td>
+<td><a href="../../../other/glossary.html#application_id" target="_blank">Application ID</a></td>
+</tr>
+<tr>
+<td>userId</td>
+<td><code>string</code></td>
+<td>true</td>
+<td>ID of a <a href="../../../other/glossary.html#registered_user" target="_blank">registered user</a>.</td>
+</tr>
+<tr>
+<td>groupId</td>
+<td><code>string</code></td>
+<td>true</td>
+<td>ID of the <a href="../../../other/glossary.html#user_groups" target="_blank">group</a> to which a <a href="../../../other/glossary.html#registered_user" target="_blank">registered user</a> belongs.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return_type_2">Return type<a class="headerlink" href="#return_type_2" title="Permanent link">#</a></h4>
+<p><code>Promise&lt;string&gt;</code></p>
+<h3 id="create_a_temporary_token">Create a temporary token<a class="headerlink" href="#create_a_temporary_token" title="Permanent link">#</a></h3>
+<p>Creates a <a href="../../../other/glossary.html#short_term_token" target="_blank">token</a> for <a href="../../../other/glossary.html#anonymous_user" target="_blank">non-registered users</a> of your application, usually data senders.
+When this token is used for <a href="../../../guides/encrypt.html" target="_blank">encrypting data</a>, all specified users or users that belong to a specified <a href="../../../other/glossary.html#user_groups" target="_blank">group</a> will have access to the encrypted data.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">createTempUserToken</span><span class="p">(</span><span class="nx">param</span>: <span class="kt">string</span> <span class="o">|</span> <span class="kt">string</span><span class="p">[])</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span>
+</code></pre></div>
+<h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>required</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>param</td>
+<td><code>string</code> | <code>string[]</code></td>
+<td>true</td>
+<td>ID of the <a href="../../../other/glossary.html#user_groups" target="_blank">group</a> for which the data is being encrypted OR list of IDs of users to whom the data is being encrypted.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return_type_3">Return type<a class="headerlink" href="#return_type_3" title="Permanent link">#</a></h4>
+<p><code>Promise&lt;string&gt;</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="nx">createTempUserToken</span><span class="p">(</span>
+  <span class="nx">appKey</span>: <span class="kt">string</span><span class="p">,</span>
+  <span class="nx">appId</span>: <span class="kt">string</span><span class="p">,</span>
+  <span class="nx">param</span>: <span class="kt">string</span> <span class="o">|</span> <span class="kt">string</span><span class="p">[]</span>
+<span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span>
+</code></pre></div>
+<h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>required</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appKey</td>
+<td><code>string</code></td>
+<td>true</td>
+<td><a href="../../../other/glossary.html#application_key" target="_blank">Application private key</a></td>
+</tr>
+<tr>
+<td>appId</td>
+<td><code>string</code></td>
+<td>true</td>
+<td><a href="../../../other/glossary.html#application_id" target="_blank">Application ID</a></td>
+</tr>
+<tr>
+<td>userId</td>
+<td><code>string</code></td>
+<td>true</td>
+<td>ID of a <a href="../../../other/glossary.html#registered_user" target="_blank">registered user</a>.</td>
+</tr>
+<tr>
+<td>param</td>
+<td><code>string</code> | <code>string[]</code></td>
+<td>true</td>
+<td>ID of the <a href="../../../other/glossary.html#user_groups" target="_blank">group</a> for which the data is being encrypted OR list of IDs of users to whom the data is being encrypted.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return_type_4">Return type<a class="headerlink" href="#return_type_4" title="Permanent link">#</a></h4>
+<p><code>Promise&lt;string&gt;</code></p>
+<h2 id="deleting_data_keys">Deleting data keys<a class="headerlink" href="#deleting_data_keys" title="Permanent link">#</a></h2>
+<p>Deletes the <a href="../../../other/glossary.html#encrypted_data_key" target="_blank">encrypted data key</a> from blindnet.</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">forgetData</span><span class="p">(</span><span class="nx">dataId</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
+</code></pre></div>
+<h4 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>required</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dataId</td>
+<td><code>string</code></td>
+<td>true</td>
+<td>ID of a data to be deleted.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return_type_5">Return type<a class="headerlink" href="#return_type_5" title="Permanent link">#</a></h4>
 <p><code>Promise&lt;void&gt;</code></p>
 <p>The operation succeeded if an exception wasn’t thrown.</p>
-<h4 id="errors_6">Errors<a class="headerlink" href="#errors_6" title="Permanent link">#</a></h4>
+<h4 id="errors">Errors<a class="headerlink" href="#errors" title="Permanent link">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -2587,40 +2115,150 @@ The user both <a href="../../../guides/managing_users_access.html#registering_an
 <tbody>
 <tr>
 <td>AuthenticationError</td>
-<td><a href="../../../other/glossary.html" target="_blank">Token</a> has expired or is invalid. <a href="../../../guides/managing_users_access.html#creating_user_tokens" target="_blank">Generate a new token</a> and call <a href="#refreshing_the_session">refreshToken</a>.</td>
+<td><a href="../../../other/glossary.html#client_token" target="_blank">Client token</a> has expired or is invalid. A wrong <a href="../../../other/glossary.html#application_key" target="_blank">application key</a> or <a href="../../../other/glossary.html#application_id" target="_blank">application id</a> is provided.md#creating_user_tokens){target=_blank} and call <a href="#refreshing_the_session">refreshToken</a>.</td>
 </tr>
 <tr>
 <td>BlindnetServiceError</td>
 <td>Error on blindnet server.</td>
 </tr>
+</tbody>
+</table>
+<h2 id="revoking_access_to_users">Revoking access to users<a class="headerlink" href="#revoking_access_to_users" title="Permanent link">#</a></h2>
+<p>Deletes all <a href="../../../other/glossary.html#encrypted_data_key" target="_blank">encrypted data keys</a> of a given user.</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">revokeAccess</span><span class="p">(</span><span class="nx">userId</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
+</code></pre></div>
+<h4 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">#</a></h4>
+<table>
+<thead>
 <tr>
-<td>UserNotFoundError</td>
-<td>A user whose id was provided as a parameter was not registered or was <a href="../../../guides/managing_users_access.html#deleting_encrypted_data_keys" target="_blank">deleted</a> from blindnet.</td>
+<th>name</th>
+<th>type</th>
+<th>required</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userId</td>
+<td><code>string</code></td>
+<td>true</td>
+<td>ID of a user to revoke access to the encrypted data.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="helper_methods">Helper methods<a class="headerlink" href="#helper_methods" title="Permanent link">#</a></h2>
-<p>Blindnet SDK provides the methods to encode and decode encrypted data, so it can be easily transferred and stored.</p>
-<p>Helper methods can be imported as</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">util</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;@blindnet/sdk-javascript&#39;</span>
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">toBase64</span><span class="p">,</span> <span class="nx">fromBase64</span><span class="p">,</span> <span class="nx">toHex</span><span class="p">,</span> <span class="nx">fromHex</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">util</span>
+<h4 id="return_type_6">Return type<a class="headerlink" href="#return_type_6" title="Permanent link">#</a></h4>
+<p><code>Promise&lt;void&gt;</code></p>
+<p>The operation succeeded if an exception wasn’t thrown.</p>
+<h4 id="errors_1">Errors<a class="headerlink" href="#errors_1" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AuthenticationError</td>
+<td><a href="../../../other/glossary.html#client_token" target="_blank">Client token</a> has expired or is invalid. A wrong <a href="../../../other/glossary.html#application_key" target="_blank">application key</a> or <a href="../../../other/glossary.html#application_id" target="_blank">application id</a> is provided.md#creating_user_tokens){target=_blank} and call <a href="#refreshing_the_session">refreshToken</a>.</td>
+</tr>
+<tr>
+<td>BlindnetServiceError</td>
+<td>Error on blindnet server.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deleting_users">Deleting users<a class="headerlink" href="#deleting_users" title="Permanent link">#</a></h2>
+<p>Deletes a user from blindnet.</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">forgetUser</span><span class="p">(</span><span class="nx">userId</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
 </code></pre></div>
-<h3 id="encoding">Encoding<a class="headerlink" href="#encoding" title="Permanent link">#</a></h3>
-<p>Encrypted data (result of the <a href="#encrypting">encrypt</a> method) can be encoded using the following methods:</p>
-<h4 id="encode_to_base64_string">Encode to base64 string<a class="headerlink" href="#encode_to_base64_string" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">toBase64</span><span class="p">(</span><span class="nx">encryptedData</span>: <span class="kt">ArrayBuffer</span><span class="p">)</span><span class="o">:</span> <span class="kt">string</span>
+<h4 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>required</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userId</td>
+<td><code>string</code></td>
+<td>true</td>
+<td>ID of a user to delete.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return_type_7">Return type<a class="headerlink" href="#return_type_7" title="Permanent link">#</a></h4>
+<p><code>Promise&lt;void&gt;</code></p>
+<p>The operation succeeded if an exception wasn’t thrown.</p>
+<h4 id="errors_2">Errors<a class="headerlink" href="#errors_2" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AuthenticationError</td>
+<td><a href="../../../other/glossary.html#client_token" target="_blank">Client token</a> has expired or is invalid. A wrong <a href="../../../other/glossary.html#application_key" target="_blank">application key</a> or <a href="../../../other/glossary.html#application_id" target="_blank">application id</a> is provided.md#creating_user_tokens){target=_blank} and call <a href="#refreshing_the_session">refreshToken</a>.</td>
+</tr>
+<tr>
+<td>BlindnetServiceError</td>
+<td>Error on blindnet server.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deleting_user_groups">Deleting user groups<a class="headerlink" href="#deleting_user_groups" title="Permanent link">#</a></h2>
+<p>Deletes all <a href="../../../other/glossary.html#encrypted_data_key" target="_blank">encrypted data keys</a> of a given user.<br />
+Deletes all users that belong to the <a href="../../../other/glossary.html#user_groups" target="_blank">group</a> and all their <a href="../../../other/glossary.html#encrypted_data_key" target="_blank">encrypted data keys</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">forgetGroup</span><span class="p">(</span><span class="nx">groupId</span><span class="o">:</span> <span class="nx">string</span><span class="p">)</span><span class="o">:</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span>
 </code></pre></div>
-<h4 id="encode_to_hexadecimal_string">Encode to hexadecimal string<a class="headerlink" href="#encode_to_hexadecimal_string" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">toHex</span><span class="p">(</span><span class="nx">encryptedData</span>: <span class="kt">ArrayBuffer</span><span class="p">)</span><span class="o">:</span> <span class="kt">string</span>
-</code></pre></div>
-<h3 id="decoding">Decoding<a class="headerlink" href="#decoding" title="Permanent link">#</a></h3>
-<p>A <code>base64</code> or <code>hex</code> encoded string can be decoded into <code>ArrayBuffer</code> (and then passed to the <a href="#decrypting_values">decrypt</a> method) using the following methods:</p>
-<h4 id="decode_from_base64_string">Decode from base64 string<a class="headerlink" href="#decode_from_base64_string" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">fromBase64</span><span class="p">(</span><span class="nx">encoded</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="nx">ArrayBuffer</span>
-</code></pre></div>
-<h4 id="decode_from_hexadecimal_string">Decode from hexadecimal string<a class="headerlink" href="#decode_from_hexadecimal_string" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">fromHex</span><span class="p">(</span><span class="nx">encoded</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="nx">ArrayBuffer</span>
-</code></pre></div>
+<h4 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>required</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>groupId</td>
+<td><code>string</code></td>
+<td>true</td>
+<td>ID of a group to delete.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="return_type_8">Return type<a class="headerlink" href="#return_type_8" title="Permanent link">#</a></h4>
+<p><code>Promise&lt;void&gt;</code></p>
+<p>The operation succeeded if an exception wasn’t thrown.</p>
+<h4 id="errors_3">Errors<a class="headerlink" href="#errors_3" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AuthenticationError</td>
+<td><a href="../../../other/glossary.html#client_token" target="_blank">Client token</a> has expired or is invalid. A wrong <a href="../../../other/glossary.html#application_key" target="_blank">application key</a> or <a href="../../../other/glossary.html#application_id" target="_blank">application id</a> is provided.md#creating_user_tokens){target=_blank} and call <a href="#refreshing_the_session">refreshToken</a>.</td>
+</tr>
+<tr>
+<td>BlindnetServiceError</td>
+<td>Error on blindnet server.</td>
+</tr>
+</tbody>
+</table>
                 
                   
                 
@@ -2632,7 +2270,7 @@ The user both <a href="../../../guides/managing_users_access.html#registering_an
               
             </article>
             
-  <script>var tabs=__get("__tabs");if(Array.isArray(tabs))for(var set of document.querySelectorAll("[data-tabs]")){var labels=set.querySelectorAll(":scope > label");e:for(var tab of tabs)for(var label of labels)if(label.innerText.trim()===tab){var input=label.previousElementSibling;input.checked=!0;break e}}</script>
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))for(var set of document.querySelectorAll("[data-tabs]")){var labels=set.querySelectorAll(":scope > label");e:for(var tab of tabs)for(var label of labels)if(label.innerText.trim()===tab){var input=label.previousElementSibling;input.checked=!0;break e}}</script>
 
           </div>
         </div>
@@ -2650,7 +2288,7 @@ The user both <a href="../../../guides/managing_users_access.html#registering_an
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="latest.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: latest" rel="prev">
+        <a href="../php/0.9.2.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: v0.9.2" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -2659,20 +2297,20 @@ The user both <a href="../../../guides/managing_users_access.html#registering_an
               <span class="md-footer__direction">
                 Previous
               </span>
-              latest
+              v0.9.2
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../server/php/latest.html" class="md-footer__link md-footer__link--next" aria-label="Next: latest" rel="next">
+        <a href="0.0.2.html" class="md-footer__link md-footer__link--next" aria-label="Next: v0.0.2" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              latest
+              v0.0.2
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -2731,7 +2369,8 @@ The user both <a href="../../../guides/managing_users_access.html#registering_an
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.expand", "navigation.top", "navigation.tabs", "content.tabs.link", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.ae6eae72.min.js", "version": {"provider": "mike"}}</script>
+    
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.expand", "navigation.top", "navigation.tabs", "content.tabs.link", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.74af7bc3.min.js", "version": {"provider": "mike"}}</script>
     
 
 <script src="../../../assets/js/iframe-worker.js"></script>
@@ -2739,7 +2378,7 @@ The user both <a href="../../../guides/managing_users_access.html#registering_an
 
 
     
-      <script src="../../../assets/javascripts/bundle.bc2488c3.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.1afabad3.min.js"></script>
       
     
   </body>

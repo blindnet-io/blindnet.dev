@@ -15,7 +15,7 @@
         
       
       <link rel="icon" href="../../../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9+insiders-2.9.2">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.2.1+insiders-2.12.0">
     
     
       
@@ -23,12 +23,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.086df014.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84bd30f0.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.73e53a79.min.css">
         
       
+      <link rel="preload" as="style" href="../../../assets/stylesheets/vendor/mermaid.733f213f.min.css">
       
     
     
@@ -42,10 +43,12 @@
     
     
     
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
     
       
 
 
+    
     
     
   </head>
@@ -61,9 +64,8 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
   
     
-    <script>function __scope(t,e="../../.."){return new URL(e,location).pathname+"."+t}function __get(t,e=localStorage,n){return JSON.parse(e.getItem(__scope(t,n)))}function __set(t,e,n=localStorage,o){try{n.setItem(__scope(t,o),JSON.stringify(e))}catch(t){}}</script>
     
-      <script>var palette=__get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -703,8 +705,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../client/javascript/0.1.3.html" class="md-nav__link">
-        v0.1.3
+      <a href="../../client/javascript/0.1.4.html" class="md-nav__link">
+        v0.1.4
       </a>
     </li>
   
@@ -740,6 +742,8 @@
       
       
       
+        
+          
         
           
         
@@ -1067,6 +1071,73 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_5_3_2" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_3_2">
+          Node.js
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Node.js" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Node.js
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node.js/latest.html" class="md-nav__link">
+        latest
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../node.js/0.0.2.html" class="md-nav__link">
+        v0.0.2
+      </a>
     </li>
   
 
@@ -1735,13 +1806,13 @@
 <td>$appKey</td>
 <td><code>string</code></td>
 <td>true</td>
-<td><a href="../../../other/glossary.html" target="_blank">Application private key</a></td>
+<td><a href="../../../other/glossary.html#application_key" target="_blank">Application private key</a></td>
 </tr>
 <tr>
 <td>$appId</td>
 <td><code>string</code></td>
 <td>true</td>
-<td><a href="../../../other/glossary.html" target="_blank">Application ID</a></td>
+<td><a href="../../../other/glossary.html#application_id" target="_blank">Application ID</a></td>
 </tr>
 <tr>
 <td>$apiEndpoint</td>
@@ -1754,9 +1825,8 @@
 <h4 id="return_type">Return type<a class="headerlink" href="#return_type" title="Permanent link">#</a></h4>
 <p><code>Blindnet</code></p>
 <h2 id="createtempusertoken">createTempUserToken<a class="headerlink" href="#createtempusertoken" title="Permanent link">#</a></h2>
-<p>Creates a <a href="../../../other/glossary.html" target="_blank">token</a> for <a href="../../../other/glossary.html" target="_blank">non-registered users</a> of your application, usually data senders.
-When this token is used for <a href="../../../guides/encrypt.html" target="_blank">encrypting data</a>, all users that belong to a specified <a href="../../../other/glossary.html" target="_blank">group</a> will have access to the encrypted data.</p>
-<p>Lifetime of this token is 30 minutes.</p>
+<p>Creates a <a href="../../../other/glossary.html#authentication_token" target="_blank">token</a> for <a href="../../../other/glossary.html#anonymous_user" target="_blank">non-registered users</a> of your application, usually data senders.
+When this token is used for <a href="../../../guides/encrypt.html" target="_blank">encrypting data</a>, all users that belong to a specified <a href="../../../other/glossary.html#user_groups" target="_blank">group</a> will have access to the encrypted data.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">createTempUserToken</span><span class="p">(</span><span class="nx">string</span> <span class="nx">$groupId</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
 </code></pre></div>
 <h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">#</a></h4>
@@ -1774,15 +1844,14 @@ When this token is used for <a href="../../../guides/encrypt.html" target="_blan
 <td>$groupId</td>
 <td><code>string</code></td>
 <td>true</td>
-<td>ID of the <a href="../../../other/glossary.html" target="_blank">group</a> for which the data is being encrypted.</td>
+<td>ID of the <a href="../../../other/glossary.html#user_groups" target="_blank">group</a> for which the data is being encrypted.</td>
 </tr>
 </tbody>
 </table>
 <h4 id="return_type_1">Return type<a class="headerlink" href="#return_type_1" title="Permanent link">#</a></h4>
 <p><code>String</code></p>
 <h2 id="createusertoken">createUserToken<a class="headerlink" href="#createusertoken" title="Permanent link">#</a></h2>
-<p>Creates a <a href="../../../other/glossary.html" target="_blank">token</a> for <a href="../../../other/glossary.html" target="_blank">registered</a> users of your application, usually data receivers.</p>
-<p>Lifetime of this token is 12 hours.</p>
+<p>Creates a <a href="../../../other/glossary.html#authentication_token" target="_blank">token</a> for <a href="../../../other/glossary.html#registered_user" target="_blank">registered users</a> of your application, usually data receivers.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">createUserToken</span><span class="p">(</span><span class="nx">string</span> <span class="nx">$userId</span><span class="p">,</span> <span class="nx">string</span> <span class="nx">$groupId</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
 </code></pre></div>
 <table>
@@ -1799,20 +1868,20 @@ When this token is used for <a href="../../../guides/encrypt.html" target="_blan
 <td>$userId</td>
 <td><code>string</code></td>
 <td>true</td>
-<td>ID of a <a href="../../../other/glossary.html" target="_blank">registered user</a>.</td>
+<td>ID of a <a href="../../../other/glossary.html#registered_user" target="_blank">registered user</a>.</td>
 </tr>
 <tr>
 <td>$groupId</td>
 <td><code>string</code></td>
 <td>true</td>
-<td>ID of the <a href="../../../other/glossary.html" target="_blank">group</a> to which a <a href="../../../other/glossary.html" target="_blank">registered user</a> belongs.</td>
+<td>ID of the <a href="../../../other/glossary.html#user_groups" target="_blank">group</a> to which a <a href="../../../other/glossary.html#registered_user" target="_blank">registered user</a> belongs.</td>
 </tr>
 </tbody>
 </table>
 <h4 id="return_type_2">Return type<a class="headerlink" href="#return_type_2" title="Permanent link">#</a></h4>
 <p><code>String</code></p>
 <h2 id="forgetdata">forgetData<a class="headerlink" href="#forgetdata" title="Permanent link">#</a></h2>
-<p>Deletes the <a href="../../../other/glossary.html" target="_blank">encrypted data key</a> from blindnet.</p>
+<p>Deletes the <a href="../../../other/glossary.html#encrypted_data_key" target="_blank">encrypted data key</a> from blindnet.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">forgetData</span><span class="p">(</span><span class="nx">string</span> <span class="nx">$dataId</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">#</a></h4>
@@ -1847,7 +1916,7 @@ When this token is used for <a href="../../../guides/encrypt.html" target="_blan
 <tbody>
 <tr>
 <td>AuthenticationError</td>
-<td>Implies invalid <a href="../../../other/glossary.html" target="_blank">token</a>, which further implies invalid <a href="../../../other/glossary.html" target="_blank">application id</a> or <a href="../../../other/glossary.html" target="_blank">application key</a>.</td>
+<td>Implies invalid <a href="../../../other/glossary.html#authentication_token" target="_blank">token</a>, which further implies invalid <a href="../../../other/glossary.html#application_id" target="_blank">application id</a> or <a href="../../../other/glossary.html#application_key" target="_blank">application key</a>.</td>
 </tr>
 <tr>
 <td>BlindnetServiceError</td>
@@ -1856,7 +1925,7 @@ When this token is used for <a href="../../../guides/encrypt.html" target="_blan
 </tbody>
 </table>
 <h2 id="revokeaccess">revokeAccess<a class="headerlink" href="#revokeaccess" title="Permanent link">#</a></h2>
-<p>Deletes all <a href="../../../other/glossary.html" target="_blank">encrypted data keys</a> of a given user.</p>
+<p>Deletes all <a href="../../../other/glossary.html#encrypted_data_key" target="_blank">encrypted data keys</a> of a given user.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">revokeAccess</span><span class="p">(</span><span class="nx">string</span> <span class="nx">$userId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
 </code></pre></div>
 <h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">#</a></h4>
@@ -1891,7 +1960,7 @@ When this token is used for <a href="../../../guides/encrypt.html" target="_blan
 <tbody>
 <tr>
 <td>AuthenticationError</td>
-<td>Implies invalid <a href="../../../other/glossary.html" target="_blank">token</a>, which further implies invalid <a href="../../../other/glossary.html" target="_blank">application id</a> or <a href="../../../other/glossary.html" target="_blank">application key</a>.</td>
+<td>Implies invalid <a href="../../../other/glossary.html#authentication_token" target="_blank">token</a>, which further implies invalid <a href="../../../other/glossary.html#application_id" target="_blank">application id</a> or <a href="../../../other/glossary.html#application_key" target="_blank">application key</a>.</td>
 </tr>
 <tr>
 <td>BlindnetServiceError</td>
@@ -1935,7 +2004,7 @@ When this token is used for <a href="../../../guides/encrypt.html" target="_blan
 <tbody>
 <tr>
 <td>AuthenticationError</td>
-<td>Implies invalid <a href="../../../other/glossary.html" target="_blank">token</a>, which further implies invalid <a href="../../../other/glossary.html" target="_blank">application id</a> or <a href="../../../other/glossary.html" target="_blank">application key</a>.</td>
+<td>Implies invalid <a href="../../../other/glossary.html#authentication_token" target="_blank">token</a>, which further implies invalid <a href="../../../other/glossary.html#application_id" target="_blank">application id</a> or <a href="../../../other/glossary.html#application_key" target="_blank">application key</a>.</td>
 </tr>
 <tr>
 <td>BlindnetServiceError</td>
@@ -1944,8 +2013,8 @@ When this token is used for <a href="../../../guides/encrypt.html" target="_blan
 </tbody>
 </table>
 <h2 id="forgetgroup">forgetGroup<a class="headerlink" href="#forgetgroup" title="Permanent link">#</a></h2>
-<p>Deletes all <a href="../../../other/glossary.html" target="_blank">encrypted data keys</a> of a given user.<br />
-Deletes all users that belong to the <a href="../../../other/glossary.html" target="_blank">group</a> and all their <a href="../../../other/glossary.html" target="_blank">encrypted data keys</a>.</p>
+<p>Deletes all <a href="../../../other/glossary.html#encrypted_data_key" target="_blank">encrypted data keys</a> of a given user.<br />
+Deletes all users that belong to the <a href="../../../other/glossary.html#user_groups" target="_blank">group</a> and all their <a href="../../../other/glossary.html#encrypted_data_key" target="_blank">encrypted data keys</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span> <span class="nx">forgetGroup</span><span class="p">(</span><span class="nx">string</span> <span class="nx">$groupId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
 </code></pre></div>
 <h4 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">#</a></h4>
@@ -1980,7 +2049,7 @@ Deletes all users that belong to the <a href="../../../other/glossary.html" targ
 <tbody>
 <tr>
 <td>AuthenticationError</td>
-<td>Implies invalid <a href="../../../other/glossary.html" target="_blank">token</a>, which further implies invalid <a href="../../../other/glossary.html" target="_blank">application id</a> or <a href="../../../other/glossary.html" target="_blank">application key</a>.</td>
+<td>Implies invalid <a href="../../../other/glossary.html#authentication_token" target="_blank">token</a>, which further implies invalid <a href="../../../other/glossary.html#application_id" target="_blank">application id</a> or <a href="../../../other/glossary.html#application_key" target="_blank">application key</a>.</td>
 </tr>
 <tr>
 <td>BlindnetServiceError</td>
@@ -1999,7 +2068,7 @@ Deletes all users that belong to the <a href="../../../other/glossary.html" targ
               
             </article>
             
-  <script>var tabs=__get("__tabs");if(Array.isArray(tabs))for(var set of document.querySelectorAll("[data-tabs]")){var labels=set.querySelectorAll(":scope > label");e:for(var tab of tabs)for(var label of labels)if(label.innerText.trim()===tab){var input=label.previousElementSibling;input.checked=!0;break e}}</script>
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))for(var set of document.querySelectorAll("[data-tabs]")){var labels=set.querySelectorAll(":scope > label");e:for(var tab of tabs)for(var label of labels)if(label.innerText.trim()===tab){var input=label.previousElementSibling;input.checked=!0;break e}}</script>
 
           </div>
         </div>
@@ -2033,13 +2102,13 @@ Deletes all users that belong to the <a href="../../../other/glossary.html" targ
       
       
         
-        <a href="../../../troubleshooting/index.html" class="md-footer__link md-footer__link--next" aria-label="Next: Troubleshooting" rel="next">
+        <a href="../node.js/latest.html" class="md-footer__link md-footer__link--next" aria-label="Next: latest" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Troubleshooting
+              latest
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -2098,7 +2167,8 @@ Deletes all users that belong to the <a href="../../../other/glossary.html" targ
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.expand", "navigation.top", "navigation.tabs", "content.tabs.link", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.ae6eae72.min.js", "version": {"provider": "mike"}}</script>
+    
+<script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.expand", "navigation.top", "navigation.tabs", "content.tabs.link", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.74af7bc3.min.js", "version": {"provider": "mike"}}</script>
     
 
 <script src="../../../assets/js/iframe-worker.js"></script>
@@ -2106,7 +2176,7 @@ Deletes all users that belong to the <a href="../../../other/glossary.html" targ
 
 
     
-      <script src="../../../assets/javascripts/bundle.bc2488c3.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.1afabad3.min.js"></script>
       
     
   </body>

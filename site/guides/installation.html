@@ -15,7 +15,7 @@
         
       
       <link rel="icon" href="../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9+insiders-2.9.2">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.2.1+insiders-2.12.0">
     
     
       
@@ -23,12 +23,13 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.086df014.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.84bd30f0.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.73e53a79.min.css">
         
       
+      <link rel="preload" as="style" href="../assets/stylesheets/vendor/mermaid.733f213f.min.css">
       
     
     
@@ -42,10 +43,12 @@
     
     
     
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"..":".."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
     
       
 
 
+    
     
     
   </head>
@@ -61,9 +64,8 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
   
     
-    <script>function __scope(t,e=".."){return new URL(e,location).pathname+"."+t}function __get(t,e=localStorage,n){return JSON.parse(e.getItem(__scope(t,n)))}function __set(t,e,n=localStorage,o){try{n.setItem(__scope(t,o),JSON.stringify(e))}catch(t){}}</script>
     
-      <script>var palette=__get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -813,8 +815,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../api_reference/client/javascript/0.1.3.html" class="md-nav__link">
-        v0.1.3
+      <a href="../api_reference/client/javascript/0.1.4.html" class="md-nav__link">
+        v0.1.4
       </a>
     </li>
   
@@ -848,6 +850,8 @@
       
       
       
+        
+          
         
           
         
@@ -919,6 +923,73 @@
     <li class="md-nav__item">
       <a href="../api_reference/server/php/0.9.2.html" class="md-nav__link">
         v0.9.2
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_5_3_2" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_3_2">
+          Node.js
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Node.js" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Node.js
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/server/node.js/latest.html" class="md-nav__link">
+        latest
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/server/node.js/0.0.2.html" class="md-nav__link">
+        v0.0.2
       </a>
     </li>
   
@@ -1421,6 +1492,7 @@
 <p>Server SDK:</p>
 <ul>
 <li><a href="../api_reference/server/php/latest.html" target="_blank">PHP</a></li>
+<li><a href="../api_reference/server/node.js/latest.html" target="_blank">Node.js</a></li>
 </ul>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
 <h3 id="client_sdk">Client SDK<a class="headerlink" href="#client_sdk" title="Permanent link">#</a></h3>
@@ -1438,7 +1510,7 @@
 </div>
 <input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">umd</label><div class="tabbed-content">
 <p>Download the <a href="https://irian.to/blogs/what-are-cjs-amd-umd-and-esm-in-javascript/" target="_blank">umd</a> file and include it in your <code>HTML</code> file.<br />
-File can be downloaded <a href="" target="_blank">here</a>.
+File can be downloaded <a href="https://raw.githubusercontent.com/blindnet-io/blindnet-sdk-js/develop/lib/index.umd.js" target="_blank">here</a>.
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;blindnet.umd.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div></p>
 </div>
@@ -1447,16 +1519,31 @@ File can be downloaded <a href="" target="_blank">here</a>.
 </div>
 </div>
 <h3 id="server_sdk">Server SDK<a class="headerlink" href="#server_sdk" title="Permanent link">#</a></h3>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">PHP</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">PHP</label><div class="tabbed-content">
 <div class="highlight"><pre><span></span><code><span class="go">composer require blindnet/blindnet-sdk-php</span>
 </code></pre></div>
 <p>For more info, check the <a href="../api_reference/server/php/latest.html#installation" target="_blank">api reference</a>.</p>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Node.js</label><div class="tabbed-content">
+<p>Pick one of the following methods to install the blindnet SDK.</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">npm</label><div class="tabbed-content">
+<p>Run the following command in your terminal.
+<div class="highlight"><pre><span></span><code><span class="go">npm i -S @blindnet/sdk-node</span>
+</code></pre></div></p>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">yarn</label><div class="tabbed-content">
+<p>Run the following command in your terminal.
+<div class="highlight"><pre><span></span><code><span class="go">yarn add @blindnet/sdk-node</span>
+</code></pre></div></p>
+</div>
+</div>
+<p>For more info, check the <a href="../api_reference/server/node.js/latest.html#installation" target="_blank">api reference</a>.</p>
 </div>
 </div>
 <h2 id="imports">Imports<a class="headerlink" href="#imports" title="Permanent link">#</a></h2>
 <h3 id="client_sdk_1">Client SDK<a class="headerlink" href="#client_sdk_1" title="Permanent link">#</a></h3>
 <p>The blindnet SDK api is enclosed in the <code>Blindnet</code> module. It should be imported together with the <code>error types</code> and optionally, <code>utilities</code> (e.g. to encode and decode the encrypted data).</p>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Javascript</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Javascript</label><div class="tabbed-content">
 <p>If the SDK was installed as an <code>npm</code> package, it is imported as</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Blindnet</span><span class="p">,</span> <span class="nx">util</span><span class="p">,</span> <span class="nx">error</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">&#39;@blindnet/sdk-javascript&#39;</span>
 </code></pre></div>
@@ -1467,13 +1554,18 @@ File can be downloaded <a href="" target="_blank">here</a>.
 </div>
 </div>
 <h3 id="server_sdk_1">Server SDK<a class="headerlink" href="#server_sdk_1" title="Permanent link">#</a></h3>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">PHP</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">PHP</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="x">require &#39;vendor/autoload.php&#39;;</span>
 <span class="x">use Blindnet\BlindnetSDKPHP\Blindnet;</span>
 </code></pre></div>
 </td></tr></table>
 <p>For more info, check the <a href="../api_reference/server/php/latest.html#imports" target="_blank">api reference</a>.</p>
+</div>
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Node.js</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">Blindnet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@blindnet/sdk-node&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>For more info, check the <a href="../api_reference/server/node.js/latest.html#imports" target="_blank">api reference</a>.</p>
 </div>
 </div>
 <h2 id="initialization">Initialization<a class="headerlink" href="#initialization" title="Permanent link">#</a></h2>
@@ -1483,7 +1575,7 @@ File can be downloaded <a href="" target="_blank">here</a>.
 <p>Also, blindnet endpoint url can be provided. The default value is <code>https://api.blindnet.io</code>.<br />
 If you are testing the library, use <code>https://test.blindnet.io</code>.</p>
 <p>Initialization is done with the <code>init</code> method.</p>
-<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">JavaScript</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">JavaScript</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">blindnet</span> <span class="o">=</span> <span class="nx">Blindnet</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span>
@@ -1494,14 +1586,23 @@ If you are testing the library, use <code>https://test.blindnet.io</code>.</p>
 </div>
 </div>
 <h3 id="server_sdk_2">Server SDK<a class="headerlink" href="#server_sdk_2" title="Permanent link">#</a></h3>
-<p>To initialize the server SDK, you need to obtain <a href="../other/glossary.html" target="_blank">application id</a> and <a href="../other/glossary.html" target="_blank">application key</a>. You can obtain them from the <a href="https://dashboard.blindnet.io" target="_blank">dashboard</a>.</p>
+<p>To initialize the server SDK, you need to obtain <a href="../other/glossary.html#application_id" target="_blank">application id</a> and <a href="../other/glossary.html#application_key" target="_blank">application key</a>. You can obtain them from the <a href="https://dashboard.blindnet.io" target="_blank">dashboard</a>.</p>
 <p>As for the client SDK, you can provide an endpoint. For testing, use <code>https://test.blindnet.io</code>.</p>
-<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">PHP</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">PHP</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="x">$blindnet=Blindnet.init($appKey, $appId)</span>
 <span class="x">// for testing</span>
 <span class="x">$blindnet=Blindnet.init($appKey, $appId, &#39;https://test.blindnet.io&#39;)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Node.js</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">blindnet</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Blindnet</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">appKey</span><span class="p">,</span> <span class="nx">appId</span><span class="p">)</span>
+<span class="c1">// for testing</span>
+<span class="kd">const</span> <span class="nx">blindnet</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">Blindnet</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">appKey</span><span class="p">,</span> <span class="nx">appId</span><span class="p">,</span> <span class="s1">&#39;https://test.blindnet.io&#39;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -1515,7 +1616,7 @@ If you are testing the library, use <code>https://test.blindnet.io</code>.</p>
               
             </article>
             
-  <script>var tabs=__get("__tabs");if(Array.isArray(tabs))for(var set of document.querySelectorAll("[data-tabs]")){var labels=set.querySelectorAll(":scope > label");e:for(var tab of tabs)for(var label of labels)if(label.innerText.trim()===tab){var input=label.previousElementSibling;input.checked=!0;break e}}</script>
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))for(var set of document.querySelectorAll("[data-tabs]")){var labels=set.querySelectorAll(":scope > label");e:for(var tab of tabs)for(var label of labels)if(label.innerText.trim()===tab){var input=label.previousElementSibling;input.checked=!0;break e}}</script>
 
           </div>
         </div>
@@ -1614,7 +1715,8 @@ If you are testing the library, use <code>https://test.blindnet.io</code>.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.expand", "navigation.top", "navigation.tabs", "content.tabs.link", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.ae6eae72.min.js", "version": {"provider": "mike"}}</script>
+    
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.expand", "navigation.top", "navigation.tabs", "content.tabs.link", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.74af7bc3.min.js", "version": {"provider": "mike"}}</script>
     
 
 <script src="../assets/js/iframe-worker.js"></script>
@@ -1622,7 +1724,7 @@ If you are testing the library, use <code>https://test.blindnet.io</code>.</p>
 
 
     
-      <script src="../assets/javascripts/bundle.bc2488c3.min.js"></script>
+      <script src="../assets/javascripts/bundle.1afabad3.min.js"></script>
       
     
   </body>

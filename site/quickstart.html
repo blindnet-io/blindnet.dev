@@ -15,7 +15,7 @@
         
       
       <link rel="icon" href="img/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9+insiders-2.9.2">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.2.1+insiders-2.12.0">
     
     
       
@@ -23,12 +23,13 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.086df014.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.84bd30f0.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.73e53a79.min.css">
         
       
+      <link rel="preload" as="style" href="assets/stylesheets/vendor/mermaid.733f213f.min.css">
       
     
     
@@ -42,10 +43,12 @@
     
     
     
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?".":"."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
     
       
 
 
+    
     
     
   </head>
@@ -61,9 +64,8 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
   
     
-    <script>function __scope(t,e="."){return new URL(e,location).pathname+"."+t}function __get(t,e=localStorage,n){return JSON.parse(e.getItem(__scope(t,n)))}function __set(t,e,n=localStorage,o){try{n.setItem(__scope(t,o),JSON.stringify(e))}catch(t){}}</script>
     
-      <script>var palette=__get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -812,8 +814,8 @@
   
   
     <li class="md-nav__item">
-      <a href="api_reference/client/javascript/0.1.3.html" class="md-nav__link">
-        v0.1.3
+      <a href="api_reference/client/javascript/0.1.4.html" class="md-nav__link">
+        v0.1.4
       </a>
     </li>
   
@@ -847,6 +849,8 @@
       
       
       
+        
+          
         
           
         
@@ -918,6 +922,73 @@
     <li class="md-nav__item">
       <a href="api_reference/server/php/0.9.2.html" class="md-nav__link">
         v0.9.2
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_5_3_2" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_3_2">
+          Node.js
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Node.js" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Node.js
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api_reference/server/node.js/latest.html" class="md-nav__link">
+        latest
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api_reference/server/node.js/0.0.2.html" class="md-nav__link">
+        v0.0.2
       </a>
     </li>
   
@@ -1428,7 +1499,7 @@ We assume two users exist - a user we know, <strong>Alice</strong>, and an anony
 <li>decrypt a file as Alice</li>
 </ul>
 <h3 id="before_you_start">Before you start<a class="headerlink" href="#before_you_start" title="Permanent link">#</a></h3>
-<p>Obtain blindnet authentication data. To authenticate to blindnet, your application needs the <a href="other/glossary.html" target="_blank">application id</a> and <a href="other/glossary.html" target="_blank">application key</a>.
+<p>Obtain blindnet authentication data. To authenticate to blindnet, your application needs the <a href="other/glossary.html#application_id" target="_blank">application id</a> and <a href="other/glossary.html#application_key" target="_blank">application key</a>.
 <strong>Application key</strong> is a cryptographic secret key which is used to sign the authentication tokens and must be kept secret (and accessible by your server).</p>
 <p>You can get the application id and application key using the blindnet <a href="https://dashboard.blindnet.io" target="_blank">dashboard</a> after you create a new application.</p>
 <div class="admonition note">
@@ -1461,12 +1532,12 @@ or
 </div>
 </div>
 <h3 id="generate_a_user_token_for_alice">Generate a user token for <strong>Alice</strong><a class="headerlink" href="#generate_a_user_token_for_alice" title="Permanent link">#</a></h3>
-<p><a href="other/glossary.html" target="_blank">Tokens</a> are used to authenticate the users of your application to blindnet. They can be used multiple times and should be regenerated when they expire using the same method. </p>
+<p><a href="other/glossary.html#authentication_token" target="_blank">Tokens</a> are used to authenticate the users of your application to blindnet. They can be used multiple times and should be regenerated when they expire using the same method. </p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>We use the <code>token generation</code> library to generate the tokens. It should be only used for testing purposes and tokens should be <a href="guides/managing_users_access.html#creating_user_tokens" target="_blank">generated on the server</a> in production environment, after your user is authenticated.</p>
 </div>
-<p>Use the <a href="other/glossary.html" target="_blank">application id</a> and key you obtained in <a href="#before_you_start">Before you start</a> section.</p>
+<p>Use the <a href="other/glossary.html#application_id" target="_blank">application id</a> and key you obtained in <a href="#before_you_start">Before you start</a> section.</p>
 <div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">JavaScript</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1481,7 +1552,7 @@ or
 </td></tr></table>
 </div>
 </div>
-<p>Specify the <a href="other/glossary.html" target="_blank">testing endpoint</a> and <a href="guides/installation.html#initialization" target="_blank">initialize</a> the library for Alice</p>
+<p>Specify the <a href="other/glossary.html#testing_endpoint" target="_blank">testing endpoint</a> and <a href="guides/installation.html#initialization" target="_blank">initialize</a> the library for Alice</p>
 <div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">JavaScript</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">endpoint</span> <span class="o">=</span> <span class="err">&#39;</span><span class="nx">https</span><span class="o">:</span><span class="c1">//test.blindnet.io’</span>
@@ -1491,8 +1562,8 @@ or
 </div>
 </div>
 <h3 id="connect_alice_to_blindnet">Connect Alice to blindnet<a class="headerlink" href="#connect_alice_to_blindnet" title="Permanent link">#</a></h3>
-<p>Blindnet can encrypt files with a particular destination (list of users or a <a href="other/glossary.html" target="_blank">user group</a>) in mind. So in order to start encrypting, you first need to have some users (Alice in this case) that you’ve connected to blindnet.</p>
-<p>To connect a user to blindnet, a <a href="other/glossary.html" target="_blank">secret value</a> has to be provided. That value must only be known 
+<p>Blindnet can encrypt files with a particular destination (list of users or a <a href="other/glossary.html#user_groups" target="_blank">user group</a>) in mind. So in order to start encrypting, you first need to have some users (Alice in this case) that you’ve connected to blindnet.</p>
+<p>To connect a user to blindnet, a <a href="other/glossary.html#secret_value" target="_blank">secret value</a> has to be provided. That value must only be known 
 by the user (e.g. user's password). In that case, <strong>it’s important not to use the same value to log-into your system and connect to blindnet</strong> for which we provide a method <a href="guides/managing_users_access.html#splitting_secrets" target="_blank">deriveSecrets</a>.</p>
 <div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">JavaScript</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1508,9 +1579,9 @@ by the user (e.g. user's password). In that case, <strong>it’s important not t
 </div>
 <h2 id="step_2_encrypt_a_file"><strong>STEP 2</strong>: Encrypt a file<a class="headerlink" href="#step_2_encrypt_a_file" title="Permanent link">#</a></h2>
 <p>After Alice has connected to blindnet, data can be <a href="guides/encrypt.html" target="_blank">encrypted</a> for her.
-We will simulate an <a href="other/glossary.html" target="_blank">anonymous</a> user Bob encrypting a file for Alice.</p>
+We will simulate an <a href="other/glossary.html#anonymous_user" target="_blank">anonymous</a> user Bob encrypting a file for Alice.</p>
 <h3 id="initialize_sdk_for_bob">Initialize SDK for Bob<a class="headerlink" href="#initialize_sdk_for_bob" title="Permanent link">#</a></h3>
-<p>You need to initialize the library with the <a href="other/glossary.html" target="_blank">temporary token</a> in order to encrypt the data. Pass the ids of the users you want to encrypt a file to.</p>
+<p>You need to initialize the library with the <a href="other/glossary.html#short_term_token" target="_blank">temporary token</a> in order to encrypt the data. Pass the ids of the users you want to encrypt a file to.</p>
 <div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">JavaScript</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">createTempUserToken</span><span class="p">([</span><span class="nx">aliceId</span><span class="p">],</span> <span class="nx">appId</span><span class="p">,</span> <span class="nx">appKey</span><span class="p">)</span>
@@ -1551,7 +1622,7 @@ We will simulate an <a href="other/glossary.html" target="_blank">anonymous</a> 
               
             </article>
             
-  <script>var tabs=__get("__tabs");if(Array.isArray(tabs))for(var set of document.querySelectorAll("[data-tabs]")){var labels=set.querySelectorAll(":scope > label");e:for(var tab of tabs)for(var label of labels)if(label.innerText.trim()===tab){var input=label.previousElementSibling;input.checked=!0;break e}}</script>
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))for(var set of document.querySelectorAll("[data-tabs]")){var labels=set.querySelectorAll(":scope > label");e:for(var tab of tabs)for(var label of labels)if(label.innerText.trim()===tab){var input=label.previousElementSibling;input.checked=!0;break e}}</script>
 
           </div>
         </div>
@@ -1650,7 +1721,8 @@ We will simulate an <a href="other/glossary.html" target="_blank">anonymous</a> 
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-<script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.expand", "navigation.top", "navigation.tabs", "content.tabs.link", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.ae6eae72.min.js", "version": {"provider": "mike"}}</script>
+    
+<script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "navigation.expand", "navigation.top", "navigation.tabs", "content.tabs.link", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.74af7bc3.min.js", "version": {"provider": "mike"}}</script>
     
 
 <script src="assets/js/iframe-worker.js"></script>
@@ -1658,7 +1730,7 @@ We will simulate an <a href="other/glossary.html" target="_blank">anonymous</a> 
 
 
     
-      <script src="assets/javascripts/bundle.bc2488c3.min.js"></script>
+      <script src="assets/javascripts/bundle.1afabad3.min.js"></script>
       
     
   </body>

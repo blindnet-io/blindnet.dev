@@ -15,7 +15,7 @@
         
       
       <link rel="icon" href="../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9+insiders-2.9.2">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.2.1+insiders-2.12.0">
     
     
       
@@ -23,12 +23,13 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.086df014.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.84bd30f0.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.73e53a79.min.css">
         
       
+      <link rel="preload" as="style" href="../assets/stylesheets/vendor/mermaid.733f213f.min.css">
       
     
     
@@ -42,10 +43,12 @@
     
     
     
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"..":".."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
     
       
 
 
+    
     
     
   </head>
@@ -61,9 +64,8 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
   
     
-    <script>function __scope(t,e=".."){return new URL(e,location).pathname+"."+t}function __get(t,e=localStorage,n){return JSON.parse(e.getItem(__scope(t,n)))}function __set(t,e,n=localStorage,o){try{n.setItem(__scope(t,o),JSON.stringify(e))}catch(t){}}</script>
     
-      <script>var palette=__get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -842,8 +844,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../api_reference/client/javascript/0.1.3.html" class="md-nav__link">
-        v0.1.3
+      <a href="../api_reference/client/javascript/0.1.4.html" class="md-nav__link">
+        v0.1.4
       </a>
     </li>
   
@@ -877,6 +879,8 @@
       
       
       
+        
+          
         
           
         
@@ -948,6 +952,73 @@
     <li class="md-nav__item">
       <a href="../api_reference/server/php/0.9.2.html" class="md-nav__link">
         v0.9.2
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_5_3_2" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_3_2">
+          Node.js
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Node.js" data-md-level="3">
+        <label class="md-nav__title" for="__nav_5_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Node.js
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/server/node.js/latest.html" class="md-nav__link">
+        latest
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_reference/server/node.js/0.0.2.html" class="md-nav__link">
+        v0.0.2
       </a>
     </li>
   
@@ -1482,7 +1553,7 @@
 <h2 id="creating_user_tokens">Creating user tokens<a class="headerlink" href="#creating_user_tokens" title="Permanent link">#</a></h2>
 <p>Each request to blindnet needs to be authenticated, which is done through user tokens. You <code>generate</code> user tokens on your server by using <strong>blindnet Server SDK</strong>, and then <code>pass</code> the generated token in the <a href="installation.html#client_sdk_2" target="_blank">initialization of <strong>blindnet Client SDK</strong></a>. </p>
 <p>To generate a user token, after <a href="installation.html#server_sdk_2" target="_blank">initializing blindnet Server SDK</a> call the following blindnet <strong>Server SDK</strong> method:</p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">PHP</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">PHP</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="x">$userId = &#39;your_user_id&#39;;</span>
@@ -1491,14 +1562,36 @@
 </code></pre></div>
 </td></tr></table>
 </div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Node.js</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">userId</span> <span class="o">=</span> <span class="s1">&#39;your_user_id&#39;</span><span class="p">;</span>
+<span class="nx">groupId</span> <span class="o">=</span> <span class="s1">&#39;your_user_group_id&#39;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">userToken</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">blindnet</span><span class="p">.</span><span class="nx">createUserToken</span><span class="p">(</span><span class="nx">userId</span><span class="p">,</span> <span class="nx">groupId</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
 </div>
 <p>User tokens expire 12 hours after they have been created.</p>
 <h3 id="creating_temporary_tokens">Creating temporary tokens<a class="headerlink" href="#creating_temporary_tokens" title="Permanent link">#</a></h3>
 <p>Temporary tokens are used to authenticate when <a href="encrypt.html" target="_blank">encrypting</a> the data. They contain the information to whom the data is being encrypted.</p>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">PHP</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">PHP</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="x">$groupId = &#39;your_user_group_id&#39;;</span>
 <span class="x">$userToken = $blindnet-&gt;createTempUserToken($groupId);</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Node.js</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">groupId</span> <span class="o">=</span> <span class="s1">&#39;your_user_group_id&#39;</span>
+<span class="kd">const</span> <span class="nx">userToken</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">blindnet</span><span class="p">.</span><span class="nx">createTempUserToken</span><span class="p">(</span><span class="nx">groupId</span><span class="p">)</span>
+<span class="c1">// or</span>
+<span class="nx">userIds</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;user_0&#39;</span><span class="p">,</span> <span class="s1">&#39;user_1&#39;</span><span class="p">]</span>
+<span class="kd">const</span> <span class="nx">userToken</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">blindnet</span><span class="p">.</span><span class="nx">createTempUserToken</span><span class="p">(</span><span class="nx">userIds</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -1511,7 +1604,7 @@ You associate a user to a group by specifying the <code>group ID</code> in a <co
 <p>Currently, you can't assign already created user to a different group. <a href="#deleting_users">Delete</a> the user and create it again with a different <code>group id</code>.</p>
 <h2 id="connecting_users_with_blindnet">Connecting users with blindnet<a class="headerlink" href="#connecting_users_with_blindnet" title="Permanent link">#</a></h2>
 <p>The core of security of blindnet are user’s <a href="../how_it_works/security.html#user_private_keys" target="_blank">private keys</a>. They are randomly generated on the user’s local device and encrypted using a secret code (e.g. user’s password) and then securely stored in blindnet.<br />
-Blindnet allows you to reuse existing user passwords so that your users still use <a href="../other/glossary.html" target="_blank">one password</a> in your application. To do so safely, you need to use blindnet Client SDK to split user passwords before you connect a user to blindnet (check our <a href="../how_it_works/security.html#user_passwords" target="_blank">Security page</a> to see why this is inportant).</p>
+Blindnet allows you to reuse existing user passwords so that your users still use <a href="../other/glossary.html#secret_value" target="_blank">one password</a> in your application. To do so safely, you need to use blindnet Client SDK to split user passwords before you connect a user to blindnet (check our <a href="../how_it_works/security.html#user_passwords" target="_blank">Security page</a> to see why this is inportant).</p>
 <h3 id="splitting_secrets">Splitting secrets<a class="headerlink" href="#splitting_secrets" title="Permanent link">#</a></h3>
 <div class="admonition info">
 <p class="admonition-title">Splitting user's password</p>
@@ -1545,7 +1638,7 @@ Blindnet allows you to reuse existing user passwords so that your users still us
 </div>
 <p>This will remove the user's private keys from the user's local device.</p>
 <h2 id="changing_secrets">Changing secrets<a class="headerlink" href="#changing_secrets" title="Permanent link">#</a></h2>
-<p>Since user's keys are encrypted with the <a href="../other/glossary.html" target="_blank">user's secret</a>, changing the secret means the keys must be re-encrypted with the new secret value.  </p>
+<p>Since user's keys are encrypted with the <a href="../other/glossary.html#secret_value" target="_blank">user's secret</a>, changing the secret means the keys must be re-encrypted with the new secret value.  </p>
 <p>Your users can change their passwords in your applications at any time without losing access to previously encrypted data. To ensure that access is not lost, when your user changes password, <a href="#splitting_secrets">split</a> the new password and use the corresponding <strong>Client SDK</strong> method:</p>
 <div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">JavaScript</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1560,7 +1653,7 @@ Blindnet allows you to reuse existing user passwords so that your users still us
 <p>This will re-encrypt the user’s private keys with the new secret and post them to blindnet.</p>
 <h2 id="giving_access_to_other_users">Giving access to other users<a class="headerlink" href="#giving_access_to_other_users" title="Permanent link">#</a></h2>
 <p>A user (Alice) can give access to <a href="encrypt.html" target="_blank">encrypted data</a> to another user (Bob).<br />
-It means Alice will download her <a href="../other/glossary.html" target="_blank">encrypted data keys</a> and re-encrypt them with Bob's <a href="../other/glossary.html" target="_blank">public key</a>. This way Bob can download and decrypt the keys with his <a href="../other/glossary.html" target="_blank">private key</a>.</p>
+It means Alice will download her <a href="../other/glossary.html#encrypted_data_key" target="_blank">encrypted data keys</a> and re-encrypt them with Bob's <a href="../other/glossary.html#public_key" target="_blank">public key</a>. This way Bob can download and decrypt the keys with his <a href="../other/glossary.html#private_key" target="_blank">private key</a>.</p>
 <p>Possible use-case for this is when a new user registers to blindnet and needs an access to e.g. customers' data. Think of a new hotel employee accessing guest's encrypted passport during check-in.</p>
 <p>Currently, Alice give access <strong>all the data</strong> for which she has the keys.</p>
 <p>To give access to other user, use the following <strong>Client SDK</strong> method:</p>
@@ -1586,43 +1679,71 @@ It means Alice will download her <a href="../other/glossary.html" target="_blank
 </div>
 <h2 id="revoking_user_access">Revoking user access<a class="headerlink" href="#revoking_user_access" title="Permanent link">#</a></h2>
 <p>Revoking an access to a user means the user will lose all the keys necessary to decrypt the data and consequently, lose access to data. Your server should inform blindnet about a user for which the access is being revoked, by using the following blindnet <strong>Server SDK</strong> method:</p>
-<div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">PHP</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">PHP</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="x">$userId = &#39;id_of_user_to_revoke_access&#39;;</span>
 <span class="x">$blindnet-&gt;revokeAccess($userId);</span>
 </code></pre></div>
 </td></tr></table>
 </div>
+<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Node.js</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">userId</span> <span class="o">=</span> <span class="s1">&#39;id_of_user_to_revoke_access&#39;</span>
+<span class="k">await</span> <span class="nx">blindnet</span><span class="p">.</span><span class="nx">revokeAccess</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
 </div>
-<p>In the situation where all users in a <a href="../other/glossary.html" target="_blank">user group</a> always have access to all the data, this action is not meaningful and <a href="#deleting_users">deletion</a> of users should be performed instead.</p>
+</div>
+<p>In the situation where all users in a <a href="../other/glossary.html#user_groups" target="_blank">user group</a> always have access to all the data, this action is not meaningful and <a href="#deleting_users">deletion</a> of users should be performed instead.</p>
 <h2 id="deleting_encrypted_data_keys">Deleting encrypted data keys<a class="headerlink" href="#deleting_encrypted_data_keys" title="Permanent link">#</a></h2>
 <p>When data is deleted from your server, it's encrypted keys should be deleted from blindnet. User the following <strong>Server SDK</strong> method to delete the keys:</p>
-<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">PHP</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">PHP</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="x">$dataId = &#39;id_of_deleted_data&#39;;</span>
 <span class="x">$blindnet-&gt;forgetData($dataId);</span>
 </code></pre></div>
 </td></tr></table>
 </div>
+<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">Node.js</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">dataId</span> <span class="o">=</span> <span class="s1">&#39;id_of_deleted_data&#39;</span>
+<span class="k">await</span> <span class="nx">blindnet</span><span class="p">.</span><span class="nx">forgetData</span><span class="p">(</span><span class="nx">dataId</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
 </div>
 <h2 id="deleting_users">Deleting users<a class="headerlink" href="#deleting_users" title="Permanent link">#</a></h2>
 <p>When a user is deleted from your application, you must inform blindnet about the event. This is done from your server by using the following blindnet <strong>Server SDK</strong> method:</p>
-<div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">PHP</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">PHP</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="x">$userId = &#39;id_of_user_to_delete&#39;;</span>
 <span class="x">$blindnet-&gt;forgetUser($userId);</span>
 </code></pre></div>
 </td></tr></table>
 </div>
+<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">Node.js</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">userId</span> <span class="o">=</span> <span class="s1">&#39;id_of_user_to_delete&#39;</span>
+<span class="k">await</span> <span class="nx">blindnet</span><span class="p">.</span><span class="nx">forgetUser</span><span class="p">(</span><span class="nx">userId</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
 </div>
 <p>Deleting a user from blindnet implies that the deleted user will no longer be able to decrypt any data, and other users will no longer be able to <a href="encrypt.html" target="_blank">encrypt data</a> for that user.</p>
-<p>When deleting users, you must be careful not to delete the last user of a <a href="../other/glossary.html" target="_blank">group</a> because in that case all existing data will become undecryptable. Deleting the last user has the same effect as <a href="#deleting_user_groups">deleting a user group</a>.</p>
+<p>When deleting users, you must be careful not to delete the last user of a <a href="../other/glossary.html#user_groups" target="_blank">group</a> because in that case all existing data will become undecryptable. Deleting the last user has the same effect as <a href="#deleting_user_groups">deleting a user group</a>.</p>
 <h2 id="deleting_user_groups">Deleting user groups<a class="headerlink" href="#deleting_user_groups" title="Permanent link">#</a></h2>
-<p>To delete a <a href="../other/glossary.html" target="_blank">user group</a>, use the following blindnet <strong>Server SDK</strong> method:</p>
-<div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">PHP</label><div class="tabbed-content">
+<p>To delete a <a href="../other/glossary.html#user_groups" target="_blank">user group</a>, use the following blindnet <strong>Server SDK</strong> method:</p>
+<div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">PHP</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="x">$groupId = &#39;id_of_group_to_delete&#39;;</span>
 <span class="x">$blindnet-&gt;forgetGroup($groupId);</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">Node.js</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">groupId</span> <span class="o">=</span> <span class="s1">&#39;id_of_group_to_delete&#39;</span>
+<span class="k">await</span> <span class="nx">blindnet</span><span class="p">.</span><span class="nx">forgetGroup</span><span class="p">(</span><span class="nx">groupId</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -1637,7 +1758,7 @@ It means Alice will download her <a href="../other/glossary.html" target="_blank
               
             </article>
             
-  <script>var tabs=__get("__tabs");if(Array.isArray(tabs))for(var set of document.querySelectorAll("[data-tabs]")){var labels=set.querySelectorAll(":scope > label");e:for(var tab of tabs)for(var label of labels)if(label.innerText.trim()===tab){var input=label.previousElementSibling;input.checked=!0;break e}}</script>
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))for(var set of document.querySelectorAll("[data-tabs]")){var labels=set.querySelectorAll(":scope > label");e:for(var tab of tabs)for(var label of labels)if(label.innerText.trim()===tab){var input=label.previousElementSibling;input.checked=!0;break e}}</script>
 
           </div>
         </div>
@@ -1736,7 +1857,8 @@ It means Alice will download her <a href="../other/glossary.html" target="_blank
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.expand", "navigation.top", "navigation.tabs", "content.tabs.link", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.ae6eae72.min.js", "version": {"provider": "mike"}}</script>
+    
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.expand", "navigation.top", "navigation.tabs", "content.tabs.link", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.74af7bc3.min.js", "version": {"provider": "mike"}}</script>
     
 
 <script src="../assets/js/iframe-worker.js"></script>
@@ -1744,7 +1866,7 @@ It means Alice will download her <a href="../other/glossary.html" target="_blank
 
 
     
-      <script src="../assets/javascripts/bundle.bc2488c3.min.js"></script>
+      <script src="../assets/javascripts/bundle.1afabad3.min.js"></script>
       
     
   </body>
