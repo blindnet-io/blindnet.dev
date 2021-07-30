@@ -101,8 +101,10 @@ param | `string` \| `string[]` | true | ID of the [group](../../../other/glossar
 #### Return type
 `Promise<string>`
 
+A static method can also be used.
+
 ```typescript
-static createTempUserToken(
+static function createTempUserToken(
   appKey: string,
   appId: string,
   param: string | string[]
