@@ -7,6 +7,7 @@ Client SDK:
 Server SDK:
 
 - [PHP](../api_reference/server/php/latest.md){target=_blank}
+- [Node.js](../api_reference/server/node.js/latest.md){target=_blank}
 
 ## Installation
 
@@ -26,7 +27,7 @@ Server SDK:
         ```
     === "umd"
         Download the [umd](https://irian.to/blogs/what-are-cjs-amd-umd-and-esm-in-javascript/){target=_blank} file and include it in your `HTML` file.  
-        File can be downloaded [here](){target=_blank}.
+        File can be downloaded [here](https://raw.githubusercontent.com/blindnet-io/blindnet-sdk-js/develop/lib/index.umd.js){target=_blank}.
         ```html
         <script src="blindnet.umd.js"></script>
         ```
@@ -40,6 +41,23 @@ Server SDK:
     ```
 
     For more info, check the [api reference](../api_reference/server/php/latest.md#installation){target=_blank}.
+
+=== "Node.js"
+    Pick one of the following methods to install the blindnet SDK.
+    
+    === "npm"
+        Run the following command in your terminal.
+        ```console
+        npm i -S @blindnet/sdk-node
+        ```
+    === "yarn"
+        Run the following command in your terminal.
+        ```console
+        yarn add @blindnet/sdk-node
+        ```
+
+    For more info, check the [api reference](../api_reference/server/node.js/latest.md#installation){target=_blank}.
+    
 
 ## Imports
 
@@ -69,6 +87,12 @@ The blindnet SDK api is enclosed in the `Blindnet` module. It should be imported
 
     For more info, check the [api reference](../api_reference/server/php/latest.md#imports){target=_blank}.
 
+=== "Node.js"
+    ```js
+    const Blindnet = require('@blindnet/sdk-node')
+    ```
+
+    For more info, check the [api reference](../api_reference/server/node.js/latest.md#imports){target=_blank}.
 
 ## Initialization
 
@@ -99,4 +123,11 @@ As for the client SDK, you can provide an endpoint. For testing, use `https://te
     $blindnet=Blindnet.init($appKey, $appId)
     // for testing
     $blindnet=Blindnet.init($appKey, $appId, 'https://test.blindnet.io')
+    ```
+
+=== "Node.js"
+    ```js linenums="1"
+    const blindnet = await Blindnet.init(appKey, appId)
+    // for testing
+    const blindnet = await Blindnet.init(appKey, appId, 'https://test.blindnet.io')
     ```

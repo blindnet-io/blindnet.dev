@@ -1,5 +1,5 @@
 ---
-title: JavaScript client SDK v0.1.3
+title: JavaScript client SDK v0.1.4
 ---
 
 ## Installation
@@ -17,7 +17,7 @@ Pick one of the following methods to install the blindnet SDK.
     ```
 === "umd"
     Download the [umd](https://irian.to/blogs/what-are-cjs-amd-umd-and-esm-in-javascript/){target=_blank} file and include it in your `HTML` file.  
-    File can be downloaded [here](){target=_blank}.
+    File can be downloaded [here](https://raw.githubusercontent.com/blindnet-io/blindnet-sdk-js/develop/lib/index.umd.js){target=_blank}.
     ```html
     <script src="blindnet.umd.js"></script>
     ```

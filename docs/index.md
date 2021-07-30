@@ -30,6 +30,7 @@
 ### Server SDK
 
 - [PHP](api_reference/server/php/latest.md)
+- [Node.js](api_reference/server/node.js/latest.md)
 
 ## Troubleshooting
 

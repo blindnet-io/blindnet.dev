@@ -18,6 +18,13 @@ To generate a user token, after [initializing blindnet Server SDK](./installatio
     $userToken = $blindnet->createUserToken($userId, $groupId);
     ```
 
+=== "Node.js"
+    ```js linenums="1"
+    userId = 'your_user_id';
+    groupId = 'your_user_group_id';
+    const userToken = await blindnet.createUserToken(userId, groupId)
+    ```
+
 User tokens expire 12 hours after they have been created.
 
 ### Creating temporary tokens
@@ -27,6 +34,15 @@ Temporary tokens are used to authenticate when [encrypting](./encrypt.md){target
     ```php linenums="1"
     $groupId = 'your_user_group_id';
     $userToken = $blindnet->createTempUserToken($groupId);
+    ```
+
+=== "Node.js"
+    ```js linenums="1"
+    groupId = 'your_user_group_id'
+    const userToken = await blindnet.createTempUserToken(groupId)
+    // or
+    userIds = ['user_0', 'user_1']
+    const userToken = await blindnet.createTempUserToken(userIds)
     ```
 
 Temporary tokens expire 30 minutes after they have been created.
@@ -129,6 +145,12 @@ Revoking an access to a user means the user will lose all the keys necessary to 
     $blindnet->revokeAccess($userId);
     ```
 
+=== "Node.js"
+    ```js linenums="1"
+    userId = 'id_of_user_to_revoke_access'
+    await blindnet.revokeAccess(userId)
+    ```
+
 In the situation where all users in a [user group](../other/glossary.md){target=_blank} always have access to all the data, this action is not meaningful and [deletion](#deleting_users) of users should be performed instead.
 
 ## Deleting encrypted data keys
@@ -140,6 +162,12 @@ When data is deleted from your server, it's encrypted keys should be deleted fro
     $blindnet->forgetData($dataId);
     ```
 
+=== "Node.js"
+    ```js linenums="1"
+    dataId = 'id_of_deleted_data'
+    await blindnet.forgetData(dataId)
+    ```
+
 ## Deleting users
 When a user is deleted from your application, you must inform blindnet about the event. This is done from your server by using the following blindnet **Server SDK** method:
 
@@ -147,6 +175,12 @@ When a user is deleted from your application, you must inform blindnet about the
     ```php linenums="1"
     $userId = 'id_of_user_to_delete';
     $blindnet->forgetUser($userId);
+    ```
+
+=== "Node.js"
+    ```js linenums="1"
+    userId = 'id_of_user_to_delete'
+    await blindnet.forgetUser(userId)
     ```
 
 Deleting a user from blindnet implies that the deleted user will no longer be able to decrypt any data, and other users will no longer be able to [encrypt data](./encrypt.md){target=_blank} for that user.
@@ -160,6 +194,12 @@ To delete a [user group](../other/glossary.md){target=_blank}, use the following
     ```php linenums="1"
     $groupId = 'id_of_group_to_delete';
     $blindnet->forgetGroup($groupId);
+    ```
+
+=== "Node.js"
+    ```js linenums="1"
+    groupId = 'id_of_group_to_delete'
+    await blindnet.forgetGroup(groupId)
     ```
 
 Deleting a user group in blindnet system implies deleting all its users and encrypted keys from blindnet. This means that encrypted data of this group stored on your servers will not be decryptable anymore.
