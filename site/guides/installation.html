@@ -15,7 +15,7 @@
         
       
       <link rel="icon" href="../img/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.2.1+insiders-2.12.0">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9+insiders-2.9.2">
     
     
       
@@ -23,13 +23,12 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.84bd30f0.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.086df014.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.73e53a79.min.css">
         
       
-      <link rel="preload" as="style" href="../assets/stylesheets/vendor/mermaid.733f213f.min.css">
       
     
     
@@ -43,12 +42,10 @@
     
     
     
-    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"..":".."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
     
       
 
 
-    
     
     
   </head>
@@ -64,8 +61,9 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
   
     
+    <script>function __scope(t,e=".."){return new URL(e,location).pathname+"."+t}function __get(t,e=localStorage,n){return JSON.parse(e.getItem(__scope(t,n)))}function __set(t,e,n=localStorage,o){try{n.setItem(__scope(t,o),JSON.stringify(e))}catch(t){}}</script>
     
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+      <script>var palette=__get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -628,6 +626,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating_application_keys" class="md-nav__link">
+    Generating application keys
+  </a>
   
 </li>
       
@@ -1468,6 +1473,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#generating_application_keys" class="md-nav__link">
+    Generating application keys
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1586,7 +1598,7 @@ If you are testing the library, use <code>https://test.blindnet.io</code>.</p>
 </div>
 </div>
 <h3 id="server_sdk_2">Server SDK<a class="headerlink" href="#server_sdk_2" title="Permanent link">#</a></h3>
-<p>To initialize the server SDK, you need to obtain <a href="../other/glossary.html#application_id" target="_blank">application id</a> and <a href="../other/glossary.html#application_key" target="_blank">application key</a>. You can obtain them from the <a href="https://dashboard.blindnet.io" target="_blank">dashboard</a>.</p>
+<p>To initialize the server SDK, you need to obtain <a href="../other/glossary.html#application_id" target="_blank">application id</a> and <a href="../other/glossary.html#application_key" target="_blank">application key</a>. You can obtain them from the <a href="https://dashboard.blindnet.io" target="_blank">dashboard</a>, or generate them on your own (see next section).</p>
 <p>As for the client SDK, you can provide an endpoint. For testing, use <code>https://test.blindnet.io</code>.</p>
 <div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">PHP</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1607,6 +1619,42 @@ If you are testing the library, use <code>https://test.blindnet.io</code>.</p>
 </td></tr></table>
 </div>
 </div>
+<h2 id="generating_application_keys">Generating application keys<a class="headerlink" href="#generating_application_keys" title="Permanent link">#</a></h2>
+<p><a href="../other/glossary.html#application_key" target="_blank">Application key</a> is actually an <a href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" target="_blank">Ed25519</a> private key used to sign the tokens that allow your users to access blindnet. You can generate it either in the blindnet <a href="https://dashboard.blindnet.io" target="_blank">dashboard</a> or on your own. If you decide to generate the application key on your own, you need to generate an Ed25519 key pair, take the private key as your blindnet application key, and register the public key in your application on the dashboard. </p>
+<p>Examples of how to generate the Ed25519 key pair: </p>
+<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">JavaScript</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">ed</span> <span class="k">from</span> <span class="s1">&#39;noble-ed25519&#39;</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">privateKey</span> <span class="o">=</span> <span class="nx">ed</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">randomPrivateKey</span><span class="p">(</span><span class="mf">32</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">publicKey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">ed</span><span class="p">.</span><span class="nx">getPublicKey</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;application key: &quot;</span> <span class="o">+</span> <span class="nx">btoa</span><span class="p">(</span><span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(...</span><span class="nx">privateKey</span><span class="p">,</span> <span class="p">...</span><span class="nx">publicKey</span><span class="p">)));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;public key: &quot;</span> <span class="o">+</span> <span class="nx">btoa</span><span class="p">(</span><span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(...</span><span class="nx">publicKey</span><span class="p">)));</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">PHP</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="x">$keypair = sodium_crypto_sign_keypair();</span>
+<span class="x">$publicKey = base64_encode(sodium_crypto_sign_publickey($keypair)); </span>
+<span class="x">$privateKey = base64_encode(sodium_crypto_sign_secretkey($keypair));</span>
+<span class="x">echo (&#39;application key: &#39; . $privateKey . &quot;\n&quot;);</span>
+<span class="x">echo (&#39;public key: &#39; . $publicKey . &quot;\n&quot;);</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<p>Examples of Ed25519 keys:</p>
+<div class="admonition ed25519 keys">
+<p class="admonition-title">Ed25519</p>
+<p>public key: QqglmSldC4PerNo+zQJIkV5+CkCHL2Tlq5aO1NXiY7Y=<br />
+private key: GWuUnD5bn0Xuk8GdbLGoX+0UBanFmY3/Qq8JY8Fff2pCqCWZKV0Lg96s2j7NAkiRXn4KQIcvZOWrlo7U1eJjtg==</p>
+</div>
                 
               
               
@@ -1616,7 +1664,7 @@ If you are testing the library, use <code>https://test.blindnet.io</code>.</p>
               
             </article>
             
-  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))for(var set of document.querySelectorAll("[data-tabs]")){var labels=set.querySelectorAll(":scope > label");e:for(var tab of tabs)for(var label of labels)if(label.innerText.trim()===tab){var input=label.previousElementSibling;input.checked=!0;break e}}</script>
+  <script>var tabs=__get("__tabs");if(Array.isArray(tabs))for(var set of document.querySelectorAll("[data-tabs]")){var labels=set.querySelectorAll(":scope > label");e:for(var tab of tabs)for(var label of labels)if(label.innerText.trim()===tab){var input=label.previousElementSibling;input.checked=!0;break e}}</script>
 
           </div>
         </div>
@@ -1715,8 +1763,7 @@ If you are testing the library, use <code>https://test.blindnet.io</code>.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.expand", "navigation.top", "navigation.tabs", "content.tabs.link", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.74af7bc3.min.js", "version": {"provider": "mike"}}</script>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.expand", "navigation.top", "navigation.tabs", "content.tabs.link", "navigation.tracking", "navigation.indexes", "search.suggest", "search.highlight"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.ae6eae72.min.js", "version": {"provider": "mike"}}</script>
     
 
 <script src="../assets/js/iframe-worker.js"></script>
@@ -1724,7 +1771,7 @@ If you are testing the library, use <code>https://test.blindnet.io</code>.</p>
 
 
     
-      <script src="../assets/javascripts/bundle.1afabad3.min.js"></script>
+      <script src="../assets/javascripts/bundle.bc2488c3.min.js"></script>
       
     
   </body>

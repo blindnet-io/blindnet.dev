@@ -114,7 +114,7 @@ Initialization is done with the `init` method.
     ```
 
 ### Server SDK
-To initialize the server SDK, you need to obtain [application id](../other/glossary.md#application_id){target=_blank} and [application key](../other/glossary.md#application_key){target=_blank}. You can obtain them from the [dashboard](https://dashboard.blindnet.io){target=_blank}.
+To initialize the server SDK, you need to obtain [application id](../other/glossary.md#application_id){target=_blank} and [application key](../other/glossary.md#application_key){target=_blank}. You can obtain them from the [dashboard](https://dashboard.blindnet.io){target=_blank}, or generate them on your own (see next section).
 
 As for the client SDK, you can provide an endpoint. For testing, use `https://test.blindnet.io`.
 
@@ -131,3 +131,30 @@ As for the client SDK, you can provide an endpoint. For testing, use `https://te
     // for testing
     const blindnet = await Blindnet.init(appKey, appId, 'https://test.blindnet.io')
     ```
+
+## Generating application keys
+
+[Application key](../other/glossary.md#application_key){target=_blank} is actually an [Ed25519](https://en.wikipedia.org/wiki/EdDSA#Ed25519){target=_blank} private key used to sign the tokens that allow your users to access blindnet. You can generate it either in the blindnet [dashboard](https://dashboard.blindnet.io){target=_blank} or on your own. If you decide to generate the application key on your own, you need to generate an Ed25519 key pair, take the private key as your blindnet application key, and register the public key in your application on the dashboard. 
+
+Examples of how to generate the Ed25519 key pair: 
+=== "JavaScript"
+    ```js linenums="1"
+    import * as ed from 'noble-ed25519';
+    const privateKey = ed.utils.randomPrivateKey(32);
+    const publicKey = await ed.getPublicKey(privateKey);
+    console.log("application key: " + btoa(String.fromCharCode(...privateKey, ...publicKey)));
+    console.log("public key: " + btoa(String.fromCharCode(...publicKey)));
+    ```
+=== "PHP"
+    ```php linenums="1"
+    $keypair = sodium_crypto_sign_keypair();
+    $publicKey = base64_encode(sodium_crypto_sign_publickey($keypair)); 
+    $privateKey = base64_encode(sodium_crypto_sign_secretkey($keypair));
+    echo ('application key: ' . $privateKey . "\n");
+    echo ('public key: ' . $publicKey . "\n");
+    ```
+
+Examples of Ed25519 keys:
+!!! Ed25519 keys
+    public key: QqglmSldC4PerNo+zQJIkV5+CkCHL2Tlq5aO1NXiY7Y=  
+    private key: GWuUnD5bn0Xuk8GdbLGoX+0UBanFmY3/Qq8JY8Fff2pCqCWZKV0Lg96s2j7NAkiRXn4KQIcvZOWrlo7U1eJjtg==

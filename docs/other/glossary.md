@@ -3,9 +3,11 @@ A randomly generated UUID which identifies an application in blindnet.
 Used as a parameter in the [initialization](../guides/installation.md#initialization){target=_blank} method of the [Server SDK](#server-side_sdk).
 
 ## Application key
-A secret value ([private key](#private_key)) which proves the ownership of an [application id](#application_id).  
-It is used to sign the [tokens](#authentication_token) in the [token generation](../guides/managing_users_access.md#creating_user_tokens){target=_blank} methods.  
-Used as a parameter in the [initialization](../guides/installation.md#initialization){target=_blank} method of the [Server SDK](#server-side_sdk).
+A secret value ([private key](#private_key)) which proves the ownership of an [application id](#application_id).
+It is used to sign the [tokens](#authentication_token) in the [token generation](../guides/managing_users_access.md#creating_user_tokens){target=_blank} methods. The corresponding [public key](#public_key) is stored by blindnet and is used to verify token signatures.  
+Used as a parameter in the [initialization](../guides/installation.md#initialization){target=_blank} method of the [Server SDK](#server-side_sdk).  
+For instructions on how to generate your application keys click [here](../guides/installation.md#generating_application_keys){target=_blank}.
+
 
 ## Asymmetric key encryption
 Type of encryption where [different keys](#key_pair) are used to encrypt and to decrypt the data.  
