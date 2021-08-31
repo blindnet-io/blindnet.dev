@@ -18,14 +18,14 @@ In blindnet, it is used to encrypt a [symmetric key](#symmetric_key_encryption) 
 Every request made to the blindnet servers through [blindnet SDK](#blindnet_sdk) must be authenticated.  
 Authentication is done through **authentication tokens** which are generated using the [Server SDK](#server-side_sdk).  
 Authentication tokens are used as parameters in the [initialization](../guides/installation.md#initialization){target=_blank} methods of the [Client SDK](#client-side_sdk).
-All tokens are [signed](#digital_signature) by an [application key](#application_key) and validated in blindnet.  
-We distinguish three types of tokens in blindnet: *tokens for registered users*, *short term tokens* and *client tokens*.
+All tokens are [signed](#digital_signature) by an [application key](#application_key) and validated by blindnet with the corresponding public key.  
+We distinguish three types of tokens in blindnet: *tokens for registered users*, *tokens for unregistered (temporary) users*, and *client tokens*.
 
 ### Registered user token
-A token which authenticates a [user known to your system](#registered_user) in blindnet. Contains the information about user's id and application id.
+A token which authenticates a [user known to your system](#registered_user) to blindnet. It contains information about user's id and application id.
 
-### Short term token
-A token which authenticates an [unregistered user](#anonymous_user) (in your system) in blindnet. Used e.g. when a user needs to upload a document using a form the user received by e-mail (no need to register an account).
+### Temp user token
+A token which authenticates an [unregistered user](#anonymous_user) (in your system) to blindnet. It is used for example when a user needs to upload a document using a form the user received by e-mail (no need to register an account in your system).
 
 ### Client token
 A token used by the [Server SDK](#server-side_sdk){target=_blank} for various [user and data management](../guides/managing_users_access.md){target=_blank} functionalities to authenticate your server.
@@ -90,7 +90,7 @@ The other usage of a public key is to verify a digital signature of a signed dat
 ## Session
 A session is identified by a [token](#authentication_token). It is valid until the timestamp specified in the token.  
 For a [registered user](#registered_user_token), token expires after **12 hours**.  
-For an [unregistered user](#short_term_token), token expires after **30 minutes**.  
+For an [unregistered user](#temp_user_token), token expires after **30 minutes**.  
 For a [client](#client_token) ([Server SDK](#server-side_sdk)), token expires after **24 hours**.    
 
 ## Symmetric key encryption
@@ -118,7 +118,7 @@ To authenticate a registered user in blindnet, [generate](../guides/managing_use
 
 ### Anonymous user
 A user which doesn't need to be identified in your application.  
-Currently, a (short term) [token](#short_term_token) for an anonymous user is used to [encrypt](../guides/encrypt.md){target=_blank} the data.
+Currently, a (temp user) [token](#temp_user_token) for an anonymous user is used to [encrypt](../guides/encrypt.md){target=_blank} the data.
 
 ## User groups
 A logical grouping of users in your application.  

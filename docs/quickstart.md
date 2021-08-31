@@ -100,7 +100,7 @@ We will simulate an [anonymous](./other/glossary.md#anonymous_user){target=_blan
 
 ### Initialize SDK for Bob
 
-You need to initialize the library with the [temporary token](./other/glossary.md#short_term_token){target=_blank} in order to encrypt the data. Pass the ids of the users you want to encrypt a file to.
+You need to initialize the library with the [temporary token](./other/glossary.md#temp_user_token){target=_blank} in order to encrypt the data. Pass the ids of the users you want to encrypt a file to.
 
 === "JavaScript"
     ```js linenums="1"

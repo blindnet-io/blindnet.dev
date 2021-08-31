@@ -2,112 +2,112 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.blindnet.io/index.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/quickstart.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/api_reference/index.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/api_reference/client/javascript/0.1.4.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/api_reference/client/javascript/latest.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/api_reference/server/node.js/0.0.2.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/api_reference/server/node.js/latest.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/api_reference/server/php/0.9.2.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/api_reference/server/php/latest.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/guides/decrypt.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/guides/encrypt.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/guides/installation.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/guides/introduction.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/guides/managing_users_access.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/how_it_works/how_it_works.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/how_it_works/introduction.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/how_it_works/security.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/other/glossary.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/other/qna.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/release_notes/index.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/troubleshooting/index.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.blindnet.io/troubleshooting/error_reference/client/javascript.html</loc>
-         <lastmod>2021-08-26</lastmod>
+         <lastmod>2021-08-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

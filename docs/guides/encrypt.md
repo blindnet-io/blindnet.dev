@@ -4,7 +4,7 @@ We provide two methods to encrypt the data: [encrypt](#encrypt) and [encryptValu
 
 The following workflow is applied when encrypting data:
 
-1. A list of user ids (specified in a [temporary token](../other/glossary.md#short_term_token){target=_blank}) is sent to blindnet to obtain the corresponding [public keys](../other/glossary.md#public_key){target=_blank}
+1. A list of user ids (specified in a [temporary token](../other/glossary.md#temp_user_token){target=_blank}) is sent to blindnet to obtain the corresponding [public keys](../other/glossary.md#public_key){target=_blank}
 1. An [ephemeral symmetric key](../other/glossary.md#data_key){target=_blank} is generated
 1. Data is encrypted with the `symmetric key`
 1. For each public key, the `symmetric key` is encrypted
@@ -17,7 +17,7 @@ In the current api, the [encryption destination](./managing_users_access.md#crea
 
 To encrypt the data, the client SDK needs to be initialized with the [temporary token](./managing_users_access.md#creating_temporary_tokens){target=_blank} which contains information to whom the data is encrypted (user group or a list of users). To encrypt to a different destination, a new token needs to be generated.
 
-To encrypt the data for a specific users, obtain a [temporary token](../other/glossary.md#short_term_token){target=_blank} using the following **Server SDK** method:
+To encrypt the data for a specific users, obtain a [temporary token](../other/glossary.md#temp_user_token){target=_blank} using the following **Server SDK** method:
 
 === "PHP"
     ```PHP linenums="1"
@@ -25,7 +25,7 @@ To encrypt the data for a specific users, obtain a [temporary token](../other/gl
     $tempUserJwt = $blindnet->createTempUserToken($userIds);
     ```
 
-To encrypt the data for a [group](../other/glossary.md#user_groups){target=_blank}, obtain a [temporary token](../other/glossary.md#short_term_token){target=_blank} using the following **server SDK** method:
+To encrypt the data for a [group](../other/glossary.md#user_groups){target=_blank}, obtain a [temporary token](../other/glossary.md#temp_user_token){target=_blank} using the following **server SDK** method:
 
 === "PHP"
     ```PHP linenums="1"
@@ -44,7 +44,7 @@ Besides the _data_, a [metadata](../other/glossary.md#metadata){target=_blank} c
     Other formats should be encoded to `Uint8Array` or `ArrayBuffer`. You can put the information on how to decode the _data_ into the _metadata_.
 
     ```javascript linenums="1"
-    // pass a short term token generated in the server SDK
+    // pass a temp user token generated in the server SDK
     const blindnet = Blindnet.init(tempUserJwt)
     // e.g. data is a file
     // const data = document.getElementById('file-picker').files[0]

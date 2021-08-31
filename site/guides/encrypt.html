@@ -1378,7 +1378,7 @@
 <p>We provide two methods to encrypt the data: <a href="#encrypt">encrypt</a> and <a href="#encryptvalues">encryptValues</a>.</p>
 <p>The following workflow is applied when encrypting data:</p>
 <ol>
-<li>A list of user ids (specified in a <a href="../other/glossary.html#short_term_token" target="_blank">temporary token</a>) is sent to blindnet to obtain the corresponding <a href="../other/glossary.html#public_key" target="_blank">public keys</a></li>
+<li>A list of user ids (specified in a <a href="../other/glossary.html#temp_user_token" target="_blank">temporary token</a>) is sent to blindnet to obtain the corresponding <a href="../other/glossary.html#public_key" target="_blank">public keys</a></li>
 <li>An <a href="../other/glossary.html#data_key" target="_blank">ephemeral symmetric key</a> is generated</li>
 <li>Data is encrypted with the <code>symmetric key</code></li>
 <li>For each public key, the <code>symmetric key</code> is encrypted</li>
@@ -1388,7 +1388,7 @@
 Data can be encrypted for a single user, a list of users or a <a href="../other/glossary.html#user_groups" target="_blank">user group</a>.</p>
 <p>In the current api, the <a href="managing_users_access.html#creating_temporary_tokens" target="_blank">encryption destination</a> is specified in the <strong>Server SDK</strong>.</p>
 <p>To encrypt the data, the client SDK needs to be initialized with the <a href="managing_users_access.html#creating_temporary_tokens" target="_blank">temporary token</a> which contains information to whom the data is encrypted (user group or a list of users). To encrypt to a different destination, a new token needs to be generated.</p>
-<p>To encrypt the data for a specific users, obtain a <a href="../other/glossary.html#short_term_token" target="_blank">temporary token</a> using the following <strong>Server SDK</strong> method:</p>
+<p>To encrypt the data for a specific users, obtain a <a href="../other/glossary.html#temp_user_token" target="_blank">temporary token</a> using the following <strong>Server SDK</strong> method:</p>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">PHP</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="x">$userIds = [‘1’, ‘2’, ‘3’]</span>
@@ -1397,7 +1397,7 @@ Data can be encrypted for a single user, a list of users or a <a href="../other/
 </td></tr></table>
 </div>
 </div>
-<p>To encrypt the data for a <a href="../other/glossary.html#user_groups" target="_blank">group</a>, obtain a <a href="../other/glossary.html#short_term_token" target="_blank">temporary token</a> using the following <strong>server SDK</strong> method:</p>
+<p>To encrypt the data for a <a href="../other/glossary.html#user_groups" target="_blank">group</a>, obtain a <a href="../other/glossary.html#temp_user_token" target="_blank">temporary token</a> using the following <strong>server SDK</strong> method:</p>
 <div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">PHP</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="x">$groupId = ‘1’</span>
@@ -1417,7 +1417,7 @@ Other formats should be encoded to <code>Uint8Array</code> or <code>ArrayBuffer<
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// pass a short term token generated in the server SDK</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// pass a temp user token generated in the server SDK</span>
 <span class="kd">const</span> <span class="nx">blindnet</span> <span class="o">=</span> <span class="nx">Blindnet</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">tempUserJwt</span><span class="p">)</span>
 <span class="c1">// e.g. data is a file</span>
 <span class="c1">// const data = document.getElementById(&#39;file-picker&#39;).files[0]</span>

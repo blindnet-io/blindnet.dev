@@ -1146,8 +1146,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#short_term_token" class="md-nav__link">
-    Short term token
+  <a href="#temp_user_token" class="md-nav__link">
+    Temp user token
   </a>
   
 </li>
@@ -1568,8 +1568,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#short_term_token" class="md-nav__link">
-    Short term token
+  <a href="#temp_user_token" class="md-nav__link">
+    Temp user token
   </a>
   
 </li>
@@ -1790,12 +1790,12 @@ In blindnet, it is used to encrypt a <a href="#symmetric_key_encryption">symmetr
 <p>Every request made to the blindnet servers through <a href="#blindnet_sdk">blindnet SDK</a> must be authenticated.<br />
 Authentication is done through <strong>authentication tokens</strong> which are generated using the <a href="#server-side_sdk">Server SDK</a>.<br />
 Authentication tokens are used as parameters in the <a href="../guides/installation.html#initialization" target="_blank">initialization</a> methods of the <a href="#client-side_sdk">Client SDK</a>.
-All tokens are <a href="#digital_signature">signed</a> by an <a href="#application_key">application key</a> and validated in blindnet.<br />
-We distinguish three types of tokens in blindnet: <em>tokens for registered users</em>, <em>short term tokens</em> and <em>client tokens</em>.</p>
+All tokens are <a href="#digital_signature">signed</a> by an <a href="#application_key">application key</a> and validated by blindnet with the corresponding public key.<br />
+We distinguish three types of tokens in blindnet: <em>tokens for registered users</em>, <em>tokens for unregistered (temporary) users</em>, and <em>client tokens</em>.</p>
 <h3 id="registered_user_token">Registered user token<a class="headerlink" href="#registered_user_token" title="Permanent link">#</a></h3>
-<p>A token which authenticates a <a href="#registered_user">user known to your system</a> in blindnet. Contains the information about user's id and application id.</p>
-<h3 id="short_term_token">Short term token<a class="headerlink" href="#short_term_token" title="Permanent link">#</a></h3>
-<p>A token which authenticates an <a href="#anonymous_user">unregistered user</a> (in your system) in blindnet. Used e.g. when a user needs to upload a document using a form the user received by e-mail (no need to register an account).</p>
+<p>A token which authenticates a <a href="#registered_user">user known to your system</a> to blindnet. It contains information about user's id and application id.</p>
+<h3 id="temp_user_token">Temp user token<a class="headerlink" href="#temp_user_token" title="Permanent link">#</a></h3>
+<p>A token which authenticates an <a href="#anonymous_user">unregistered user</a> (in your system) to blindnet. It is used for example when a user needs to upload a document using a form the user received by e-mail (no need to register an account in your system).</p>
 <h3 id="client_token">Client token<a class="headerlink" href="#client_token" title="Permanent link">#</a></h3>
 <p>A token used by the <a href="#server-side_sdk" target="_blank">Server SDK</a> for various <a href="../guides/managing_users_access.html" target="_blank">user and data management</a> functionalities to authenticate your server.</p>
 <h2 id="blindnet_endpoint">Blindnet endpoint<a class="headerlink" href="#blindnet_endpoint" title="Permanent link">#</a></h2>
@@ -1844,7 +1844,7 @@ The other usage of a public key is to verify a digital signature of a signed dat
 <h2 id="session">Session<a class="headerlink" href="#session" title="Permanent link">#</a></h2>
 <p>A session is identified by a <a href="#authentication_token">token</a>. It is valid until the timestamp specified in the token.<br />
 For a <a href="#registered_user_token">registered user</a>, token expires after <strong>12 hours</strong>.<br />
-For an <a href="#short_term_token">unregistered user</a>, token expires after <strong>30 minutes</strong>.<br />
+For an <a href="#temp_user_token">unregistered user</a>, token expires after <strong>30 minutes</strong>.<br />
 For a <a href="#client_token">client</a> (<a href="#server-side_sdk">Server SDK</a>), token expires after <strong>24 hours</strong>.    </p>
 <h2 id="symmetric_key_encryption">Symmetric key encryption<a class="headerlink" href="#symmetric_key_encryption" title="Permanent link">#</a></h2>
 <p>Type of encryption where a single secret key is used both to encrypt and to decrypt the data.<br />
@@ -1866,7 +1866,7 @@ To split the secret, use the provided <a href="#client-side_sdk">Client SDK meth
 To authenticate a registered user in blindnet, <a href="../guides/managing_users_access.html#creating_user_tokens" target="_blank">generate</a> a <a href="#registered_user_token">Registered user token</a> which will be sent in every request from the <a href="#blindnet_sdk">SDK</a> to blindnet.</p>
 <h3 id="anonymous_user">Anonymous user<a class="headerlink" href="#anonymous_user" title="Permanent link">#</a></h3>
 <p>A user which doesn't need to be identified in your application.<br />
-Currently, a (short term) <a href="#short_term_token">token</a> for an anonymous user is used to <a href="../guides/encrypt.html" target="_blank">encrypt</a> the data.</p>
+Currently, a (temp user) <a href="#temp_user_token">token</a> for an anonymous user is used to <a href="../guides/encrypt.html" target="_blank">encrypt</a> the data.</p>
 <h2 id="user_groups">User groups<a class="headerlink" href="#user_groups" title="Permanent link">#</a></h2>
 <p>A logical grouping of users in your application.<br />
 When <a href="../guides/encrypt.html" target="_blank">encrypting</a> the data, a <a href="../guides/managing_users_access.html#assigning_a_user_to_a_group" target="_blank">group can be specified</a>. Any user belonging the specified group will be able to <a href="../guides/decrypt.html" target="_blank">decrypt</a> the data.<br />
