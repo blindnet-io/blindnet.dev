@@ -142,7 +142,7 @@ The operation succeeded if an exception wasn’t thrown.
 #### Errors
 type | description
 ---- | -----------
-AuthenticationError | [Client token](../../../other/glossary.md#client_token){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md#application_key){target=_blank} or [application id](../../../other/glossary.md#application_id){target=_blank} is provided.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
+AuthenticationError | [Client token](../../../other/glossary.md#client_token){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md#application_key){target=_blank} or [application id](../../../other/glossary.md#application_id){target=_blank} is provided .[Generate a new token](../../../guides/managing_users_access.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
 BlindnetServiceError | Error on blindnet server.
 
 ## Revoking access to users
@@ -165,7 +165,7 @@ The operation succeeded if an exception wasn’t thrown.
 #### Errors
 type | description
 ---- | -----------
-AuthenticationError | [Client token](../../../other/glossary.md#client_token){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md#application_key){target=_blank} or [application id](../../../other/glossary.md#application_id){target=_blank} is provided.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
+AuthenticationError | [Client token](../../../other/glossary.md#client_token){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md#application_key){target=_blank} or [application id](../../../other/glossary.md#application_id){target=_blank} is provided .[Generate a new token](../../../guides/managing_users_access.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
 BlindnetServiceError | Error on blindnet server.
 
 ## Deleting users
@@ -188,7 +188,7 @@ The operation succeeded if an exception wasn’t thrown.
 #### Errors
 type | description
 ---- | -----------
-AuthenticationError | [Client token](../../../other/glossary.md#client_token){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md#application_key){target=_blank} or [application id](../../../other/glossary.md#application_id){target=_blank} is provided.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
+AuthenticationError | [Client token](../../../other/glossary.md#client_token){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md#application_key){target=_blank} or [application id](../../../other/glossary.md#application_id){target=_blank} is provided .[Generate a new token](../../../guides/managing_users_access.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
 BlindnetServiceError | Error on blindnet server.
 
 ## Deleting user groups
@@ -212,5 +212,5 @@ The operation succeeded if an exception wasn’t thrown.
 #### Errors
 type | description
 ---- | -----------
-AuthenticationError | [Client token](../../../other/glossary.md#client_token){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md#application_key){target=_blank} or [application id](../../../other/glossary.md#application_id){target=_blank} is provided.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
+AuthenticationError | [Client token](../../../other/glossary.md#client_token){target=_blank} has expired or is invalid. A wrong [application key](../../../other/glossary.md#application_key){target=_blank} or [application id](../../../other/glossary.md#application_id){target=_blank} is provided .[Generate a new token](../../../guides/managing_users_access.md#creating_user_tokens){target=_blank} and call [refreshToken](#refreshing_the_session).
 BlindnetServiceError | Error on blindnet server.

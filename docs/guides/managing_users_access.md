@@ -62,7 +62,7 @@ Blindnet allows you to reuse existing user passwords so that your users still us
 !!! info "Splitting user's password"
     In the case that you send plaintext passwords to your server for user authentication, we advise that you update the authentication workflow in the following way.
 
-    When a user is logging into your application and enters a password, you should use blindnet Client SDK to split the password into two parts: you use the `second part` (*appSecret*) to authenticate the user on your app, while you use the `first part` ((*blindnetSecret*) for registering and logging users to blindnet. It is advisable not to use the same password for both actions since a party that can read the user's password (i.e., you) would be able to decrypt the user's private keys.
+    When a user is logging into your application and enters a password, you should use blindnet Client SDK to split the password into two parts: you use the `second part` (*appSecret*) to authenticate the user on your app, while you use the `first part` (*blindnetSecret*) for registering and logging users to blindnet. It is advisable not to use the same password for both actions since a party that can read the user's password (i.e., you) would be able to decrypt the user's private keys.
 
 To split the password use the following **Client SDK** method:
 
