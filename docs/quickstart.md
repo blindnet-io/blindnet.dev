@@ -4,7 +4,7 @@ Try out **blindnet SDK** quickly and easily.
     While reading this quickstart guide you can download and follow the source code for a simple React front-end app with integrated blindnet client SDK from [here](https://github.com/blindnet-io/blindnet-client-js-example).
 
 In this quickstart guide, you will learn how to [encrypt](./guides/encrypt.md){target=_blank} and [decrypt](./guides/decrypt.md){target=_blank} a file using the [blindnet client SDK](./guides/introduction.md){target=_blank}.  
-We assume two users exist - a user we know, **Alice**, and an anonymous user **Bob**. For the sake of simplicity we’ll act as both Alice and Bob. We will register a known user Alice to blindnet, encrypt a file to her as an anonymous user Bob, and then decrypt the file as Alice.
+We assume two users exist - a user we know, **Alice**, and an anonymous user **Bob**. For the sake of simplicity we'll act as both Alice and Bob. We will register a known user Alice to blindnet, encrypt a file to her as an anonymous user Bob, and then decrypt the file as Alice.
 
 You will learn how to:
 
@@ -62,10 +62,10 @@ Use the [application id](./other/glossary.md#application_id){target=_blank} and 
 
 === "JavaScript"
     ```js linenums="1"
-    const appId = ‘your_application_id’
-    const appKey = ‘your_application_key’
-    const aliceId = ‘alice’
-    const groupId = test-group’
+    const appId = 'your_application_id'
+    const appKey = 'your_application_key'
+    const aliceId = 'alice'
+    const groupId = 'test-group'
     const token = await createUserToken(aliceId, groupId, appId, appKey)
     ```
 
@@ -73,16 +73,16 @@ Specify the [testing endpoint](./other/glossary.md#testing_endpoint){target=_bla
 
 === "JavaScript"
     ```js linenums="1"
-    const endpoint = 'https://test.blindnet.io’
+    const endpoint = 'https://test.blindnet.io'
     const blindnet = Blindnet.init(token, endpoint)
     ```
 
 ### Connect Alice to blindnet
 
-Blindnet can encrypt files with a particular destination (list of users or a [user group](./other/glossary.md#user_groups){target=_blank}) in mind. So in order to start encrypting, you first need to have some users (Alice in this case) that you’ve connected to blindnet.
+Blindnet can encrypt files with a particular destination (list of users or a [user group](./other/glossary.md#user_groups){target=_blank}) in mind. So in order to start encrypting, you first need to have some users (Alice in this case) that you've connected to blindnet.
 
 To connect a user to blindnet, a [secret value](./other/glossary.md#secret_value){target=_blank} has to be provided. That value must only be known 
-by the user (e.g. user's password). In that case, **it’s important not to use the same value to log-into your system and connect to blindnet** for which we provide a method [deriveSecrets](./guides/managing_users_access.md#splitting_secrets){target=_blank}.
+by the user (e.g. user's password). In that case, **it's important not to use the same value to log-into your system and connect to blindnet** for which we provide a method [deriveSecrets](./guides/managing_users_access.md#splitting_secrets){target=_blank}.
 
 === "JavaScript"
     ```js linenums="1"
@@ -113,7 +113,7 @@ Obtain a file from the `<input type="file" id="file-pick>` `HTML` element and pa
 
 === "JavaScript"
     ```js linenums="1"
-    const file = document.getElementById(‘file-pick’).files[0]
+    const file = document.getElementById('file-pick').files[0]
     const { encryptedData } = await blindnet.encrypt(file)
     ```
 

@@ -123,4 +123,4 @@ Currently, a (temp user) [token](#temp_user_token) for an anonymous user is used
 ## User groups
 A logical grouping of users in your application.  
 When [encrypting](../guides/encrypt.md){target=_blank} the data, a [group can be specified](../guides/managing_users_access.md#assigning_a_user_to_a_group){target=_blank}. Any user belonging the specified group will be able to [decrypt](../guides/decrypt.md){target=_blank} the data.  
-Currently, a user can belong only to a single group which is specified when [registering](../guides/managing_users_access.html#connecting_users_with_blindnet){target=_blank} the user to blindnet and it can't be changed afterwards.
+Currently, a user can belong only to a single group which is specified when [registering](../guides/managing_users_access.md#connecting_users_with_blindnet){target=_blank} the user to blindnet and it can't be changed afterwards.

@@ -4,7 +4,7 @@ We provide two methods to decrypt the data: [decrypt](#decrypt) and [decryptValu
 
 The following workflow is applied when decrypting data:
 
-1. The [encrypted symmetric key](../other/glossary.mdl#encrypted_data_key){target=_blank} of the user for the provided encrypted data is obtained from blindnet 
+1. The [encrypted symmetric key](../other/glossary.md#encrypted_data_key){target=_blank} of the user for the provided encrypted data is obtained from blindnet 
 1. The `encrypted symmetric key` is decrypted using the user’s secret key
 1. Data is decrypted with the `symmetric key`
 
