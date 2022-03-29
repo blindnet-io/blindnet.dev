@@ -1,0 +1,54 @@
+---
+title: Q&A
+sidebar_position: 2
+---
+
+## What is End-to-end Encryption?
+End-to-end encryption is an approach in which a software system encrypts data upon capture, supports encryption throughout transfer, and allows for data decrypting only at the endpoint of their consumption. In such a way user data is not accessible in the non-encrypted form at any central entity.
+
+Encryption is a process of converting a readable dataset into code in order to prevent unauthorized access. End-to-end encryption is a functionality in which a software system protects the data through its entire life cycle, from end-point capture and transit to storage and access.The intent of end-to-end encryption is to ensure that data is available only to authorized users and unreadable to anyone else. 
+
+The classic client-server architecture of internet software applications introduced the idea of centralized data storage on cloud or on-prem servers, while keeping software running on endpoints (i.e. the interfaces through which the users interact with the system), light in functionality, often reduced to data display and data entry. While convenient, this approach rests on the exposure of mass quantities of confidential user information to both data breaches (external threats) and misuse (internal threats).
+
+Due to growing concerns for user privacy, end-to-end encryption quickly gained ground over the last decade . Signal protocol has been recognized as a golden standard in the developer community. It is used across various applications, including widely popular  WhatsApp. Through Signal protocol,  users’ messages are encrypted on their devices  and exchanged with other users without the ability for the central entity to decrypt and access those messages. . The cryptographic primitives are exchanged in such a way that only the endpoints (sender and receiver) have access to the necessary decryption keys. 
+
+End-to-end encryption is currently spreading to various other businesses, augmenting the classic client-server architecture, and allowing developers to make privacy-first software in many other use-cases.
+
+Blindnet offers a simple solution to developers to embed end-to-end encryption in their software architecture, protect user data and limit exposure and liabilities to only critical sensitive information. 
+
+## Why do I need End-to-end Encryption
+
+1. **Fulfil users expectations and earn their trust**.  When users provide their personal and often sensitive information to a third-party , they assume  that the  data will remain private, confidential and protected. 
+1.**Reduce  liability in case of a breach**. In case of a breach, if an intruder gets hold of user data, they won’t be able to benefit from it if you only store and transmit encrypted data. At the current rate breaches happen every 39 seconds[^1]. Yep, you read it correctly. 
+1. **Comply with  regulations**. Depending on the location of your users (European, Californian, etc.) you are likely to be subject to regulation such as GDPR and CCPA imposing high standards in terms of user data privacy protection. Encrypting data, end-to-end, will meet compliance standards  with regards to such regulations.
+
+In short, there is no excuse not to protect user data. With blindnet, your application can ensure the highest level of integrity every time you retain or access sensitive information. 
+In other words, whenever you process data that your service is not exploiting to generate value, keeping it unencrypted makes it only a liability for you.
+
+## Is blindnet a Trusted Third Party?
+No. blindnet does not nor will ever have access to the data that transmits through its network. Therefore, we are a zero-trust third party. We constructed our services to ensure that user data stays protected, end-to-end.
+
+A Trusted Third Party is a software provider that has an ability to store, access or read user data. . You have to trust that they will do nothing to compromise the data you have provided.
+However, one can never be too cautious. At blindnet, we believe that internet users deserve better than to be at the mercy of a Trusted Third Party. Our goal is to break from this retrograde model, and offer a technological solution, such that blindnet (and in many cases even your client systems too) has no way of decrypting and reading the actual user data. 
+
+You don’t need to trust that blindnet will not read and misuse your users’ data, because we simply can’t. You can also go and inspect our source code on github, and make sure that our implementations are consistent with this core promise. 
+
+## If I use blindnet, will I be GDPR-compliant (EU)?
+Yes. The Article 32 of GDPR requires everyone who processes user information to apply appropriate techniques of protection; encryption being one of them. blindnet is designed to offer protection for even the most sensitive data, as it offers end-to-end encryption.
+
+However, in addition to security of data transfers, GDPR grants users many additional rights. Using blindnet is not a guarantee that your system will be compliant with this regulation in all other aspects. Being a software company, we also do not offer any legal advice, but we can strongly recommend that you have your data treatment practices reviewed by a lawyer.
+
+
+## If I use blindnet, will I be HIPAA-compliant (USA)?
+
+## If I use blindnet, will I be HDS-compliant(FR)?
+Yes. First blindnet helps you store encrypted information. Even medical information, in its encrypted form, can not officially be considered medical information since the content bears no semantics in that particular form. However, blindnet does use HDS-compliant cloud storage providers, just to be safe. If you have any questions, or you want to use blindent on a particular cloud storage that you prefer, please get in touch with our support team.
+
+## What is the difference between `Blindnet.init(token)` and `blindnet.connect(blindnetSecret)`
+[Blindnet.init(token)](../guides/installation#client-sdk-2) is about initialising blindnet SDK itself, since blindnet API requires a JWT to authenticate the requests, and the `token` passed as argument is actually the JWT that you [generate on your backend](../guides/managing_users_access#creating-user-tokens). Instead of passing the token on each SDK function call, the SDK maintains the state and uses the token in each call to our API. This is why when the token expires you need to refresh it.
+
+[blindnet.connect(blindnetSecret)](../guides/managing_users_access#registering-and-logging-users-in-blindnet) is about logging your users to blindnet. When this method is called, the SDK uses `blindnetSecret` (argument to the connect function) to initiate the user's private keys, and then stores them to be used later when decrypting documents.
+
+[^1]:
+    "At the end of 2016, a business fell victim to a ransomware attack every 40 seconds. Cybersecurity Ventures predicts that will rise to every 14 seconds by 2019 — and every 11 seconds by 2021". [Cybersecurity Ventures report](https://www.herjavecgroup.com/wp-content/uploads/2018/12/CV-HG-2019-Official-Annual-Cybercrime-Report.pdf)  
+    A Clark School study is one of the first to quantify the near-constant rate of hacker attacks of computers with Internet access—every 39 seconds on average—and the non-secure usernames and passwords we use that give attackers more chance of success. [Study](https://eng.umd.edu/news/story/study-hackers-attack-every-39-seconds)

@@ -1,0 +1,99 @@
+---
+title: Encrypting data
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Encryption is a core feature of the blindnet SDK. Depending on the language, multiple data formats can be encrypted - `strings`, `files` or simply just `byte arrays`. 
+
+We provide two methods to encrypt the data: [encrypt](#encrypt) and [encryptValues](#encryptvalues).
+
+The following workflow is applied when encrypting data:
+
+1. A list of user ids (specified in a [temporary token](../extra/glossary#temp-user-token)) is sent to blindnet to obtain the corresponding [public keys](../extra/glossary#public-key)
+1. An [ephemeral symmetric key](../extra/glossary#data-key) is generated
+1. Data is encrypted with the `symmetric key`
+1. For each public key, the `symmetric key` is encrypted
+1. A list of `encrypted symmetric keys` is sent to blindnet
+
+Encryption is completed by a user of your application ([registered](../extra/glossary#registered-user) or [unregistered](../extra/glossary#anonymous-user)) to another registered user. A user does not need to be logged into blindnet in order to encrypt the data.
+Data can be encrypted for a single user, a list of users or a [user group](../extra/glossary#user-groups).
+
+In the current api, the [encryption destination](./managing_users_access#creating-temporary-tokens) is specified in the **Server SDK**.
+
+To encrypt the data, the client SDK needs to be initialized with the [temporary token](./managing_users_access#creating-temporary-tokens) which contains information to whom the data is encrypted (user group or a list of users). To encrypt to a different destination, a new token needs to be generated.
+
+To encrypt the data for a specific users, obtain a [temporary token](../extra/glossary#temp-user-token) using the following **Server SDK** method:
+
+<Tabs groupId="lang-server">
+<TabItem value="php" label="PHP" default>
+
+```PHP
+$userIds = ['1', '2', '3']
+$tempUserJwt = $blindnet->createTempUserToken($userIds);
+```
+
+</TabItem>
+</Tabs>
+
+To encrypt the data for a [group](../extra/glossary#user-groups), obtain a [temporary token](../extra/glossary#temp-user-token) using the following **server SDK** method:
+
+<Tabs groupId="lang-server">
+<TabItem value="php" label="PHP" default>
+
+```PHP
+$groupId = '1'
+$tempUserJwt = $blindnet->createTempUserToken($groupId);
+```
+
+</TabItem>
+</Tabs>
+
+## encrypt
+
+This method encrypts the entire data passed as a parameter.
+Depending on a language, multiple formats are supported.  
+Besides the _data_, a [metadata](../extra/glossary#metadata) can be passed as a second argument. It can be any `JSON serializable object`.
+
+<Tabs groupId="lang-client">
+<TabItem value="js" label="JavaScript" default>
+
+`data` can be `string`, `File`, `Uint8Array` or `ArrayBuffer`
+Other formats should be encoded to `Uint8Array` or `ArrayBuffer`. You can put the information on how to decode the _data_ into the _metadata_.
+
+```javascript
+// pass a temp user token generated in the server SDK
+const blindnet = Blindnet.init(tempUserJwt)
+// e.g. data is a file
+// const data = document.getElementById('file-picker').files[0]
+const { dataId, encryptedData } = await blindnet.encrypt(data, metadata)    
+```
+`encryptedData` has a type `ArrayBuffer`.
+
+</TabItem>
+</Tabs>
+
+### Encode
+
+To be easily transferred, `encryptedData` can be encoded to `base64` or `hexadecimal` string.
+
+<Tabs groupId="lang-client">
+<TabItem value="js" label="JavaScript" default>
+
+```javascript
+import { util } from '@blindnet/sdk-javascript'
+
+const base64Encoded = util.toBase64(encryptedData)
+const hexEncoded = util.toHex(encryptedData)
+```
+
+</TabItem>
+</Tabs>
+
+`dataId` and `encryptedData` should be stored by you.  
+`dataId` is used to delete the keys from blindnet using the server SDK.
+To decrypt `encryptedData`, pass it to the [decrypt](./decrypt#decrypt) method.
+
+Currently, encryption of streams is **not supported** so the entire data is loaded into the memory and then encrypted. Make sure your application does not run out of memory if e.g. large files are passed to the `encrypt` method.

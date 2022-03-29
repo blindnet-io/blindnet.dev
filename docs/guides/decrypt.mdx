@@ -1,0 +1,60 @@
+---
+title: Decrypting data
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Encryption is a core feature of the blindnet SDK. Depending on the language, multiple data formats can be encrypted - `strings`, `files` or simply just `byte arrays`.  
+
+We provide two methods to decrypt the data: [decrypt](#decrypt) and [decryptValues](#decrypt).
+
+The following workflow is applied when decrypting data:
+
+1. The [encrypted symmetric key](../extra/glossary#encrypted-data-key) of the user for the provided encrypted data is obtained from blindnet 
+1. The `encrypted symmetric key` is decrypted using the user's secret key
+1. Data is decrypted with the `symmetric key`
+
+Only **registered users** can decrypt the data.
+
+## decrypt
+
+If the encrypted data is [encoded](./encrypt#encode), use the following helper methods to decode it before decrypting it.
+
+<Tabs groupId="lang">
+<TabItem value="js" label="JavaScript" default>
+
+```javascript linenums="1"
+import { util } from '@blindnet/sdk-javascript'
+
+// if you use base64 encoding
+const encryptedData = util.fromBase64(encodedData)
+// if you use hex encoding
+const encryptedData = util.fromHex(encodedData)
+```
+
+</TabItem>
+</Tabs>
+
+To decrypt the data, use
+
+<Tabs groupId="lang">
+<TabItem value="js" label="JavaScript" default>
+
+```javascript linenums="1"
+const { data, metadata } = await blindnet.decrypt(encryptedData)
+```
+
+`data` is the original data provided in the encrypt method.  
+`metadata` is the object provided in the encrypt method.
+
+[Metadata](../extra/glossary#metadata), besides the object fields provided in the [encrypt](./encrypt#encrypt) method, will contain additional information on data format so it can be treated accordingly.
+
+Additional information in metadata is under the key `dataType`, which can have following values:
+- `{ type: 'STRING' }` meaning data is a `string`
+- `{ type: 'FILE', name: string }` meaning data is a `file`
+- `{ type: 'BYTES' }` meaning data is `ArrayBuffer`
+
+</TabItem>
+</Tabs>

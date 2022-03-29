@@ -1,22 +1,41 @@
-# Documentation for the blindnet SDK
+# Website
 
-The documentation is built using a static site generator [MkDocs](https://www.mkdocs.org/) with the [Material](https://squidfunk.github.io/mkdocs-material/) theme.
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
-To build and run the docs locally, you need to have `pip3` installed in your system.
+### Installation
 
-Run the following commands in your terminal:  
-`pip3 install mkdocs-material`  
-`pip3 install mkdocs-localsearch`  
+```
+$ yarn
+```
 
-Install insiders fork for the `Material` theme:  
-https://squidfunk.github.io/mkdocs-material/insiders/getting-started/
+### Local Development
 
-To start the dev server, navigate to the project directory and run in your terminal:  
-on `Linux`:  
-`~/.local/bin/mkdocs serve`  
-on `macOS`:  
-`python3 -m mkdocs serve`  
+```
+$ yarn start
+```
 
-and visit `localhost:8000`
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-To build the docs, use `mkdocs build` instead.
+### Build
+
+```
+$ yarn build
+```
+
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+### Deployment
+
+Using SSH:
+
+```
+$ USE_SSH=true yarn deploy
+```
+
+Not using SSH:
+
+```
+$ GIT_USER=<Your GitHub username> yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
