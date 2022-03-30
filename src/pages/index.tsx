@@ -26,7 +26,6 @@ export default function Home(): JSX.Element {
         </div>
       </header>
       <main style={{ marginTop: '10px', textAlign: 'center' }}>
-        add something here
       </main>
     </Layout>
   );
