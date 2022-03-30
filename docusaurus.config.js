@@ -14,6 +14,17 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.svg',
 
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        highlightSearchTermsOnTargetPage: true,
+        language: ["en"],
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',
