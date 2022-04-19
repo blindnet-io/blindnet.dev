@@ -7,8 +7,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'blindnet SDK',
-  tagline: 'Privacy made simple ...',
-  url: 'https://your-docusaurus-test-site.com',
+  tagline: 'Privacy SDK',
+  url: '/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -70,6 +70,9 @@ const config = {
       },
       footer: {
         style: 'dark',
+        logo: {
+          src: 'img/blindnet.png'
+        },
         links: [
           {
             title: 'Docs',
@@ -81,25 +84,50 @@ const config = {
             ],
           },
           {
-            title: 'Community',
+            title: 'Social',
             items: [
               {
                 label: 'Twitter',
                 href: 'https://twitter.com/blindnet_io',
               },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/blindnet-io/blindnet-docs',
+                label: 'LinkedId',
+                href: 'https://www.linkedin.com/company/blindnet/',
+              },
+              {
+                label: 'Medium',
+                href: 'https://medium.com/blindnet',
               },
             ],
           },
+          {
+            title: 'Developers',
+            items: [
+              {
+                label: 'GitHub',
+                href: 'https://github.com/blindnet-io/',
+              },
+            ],
+          },
+          {
+            title: 'Legal',
+            items: [
+              {
+                label: 'Privacy Policy',
+                href: 'https://blindnet.io/privacy',
+              },
+              {
+                label: 'Legal Mentions',
+                href: 'https://blindnet.io/legal',
+              },
+              {
+                label: 'Terms and Conditions',
+                href: 'https://blindnet.io/terms',
+              }
+            ],
+          },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} blindnet.io`,
+        copyright: `Copyright © ${new Date().getFullYear()} blindnet. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
