@@ -1,8 +1,12 @@
 import React from 'react';
 import clsx from 'clsx';
+
+/* eslint-disable import/no-unresolved */
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+/* eslint-enable import/no-unresolved */
+
 import styles from './index.module.css';
 
 export default function Home(): JSX.Element {
@@ -25,8 +29,7 @@ export default function Home(): JSX.Element {
           </div>
         </div>
       </header>
-      <main style={{ marginTop: '10px', textAlign: 'center' }}>
-      </main>
+      <main style={{ marginTop: '10px', textAlign: 'center' }} />
     </Layout>
   );
 }
