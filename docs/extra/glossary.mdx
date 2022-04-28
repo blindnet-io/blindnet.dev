@@ -20,7 +20,7 @@ A [public key](#public-key) is used to encrypt the data while it's associated [p
 In blindnet, it is used to encrypt a [symmetric key](#symmetric-key-encryption) for an other user, as a way to do a symmetric key exchange so two users can securely communicate.  
 
 ## Authentication token
-Every request made to the blindnet servers through [blindnet SDK](#blindnet-sdk) must be authenticated.  
+Every request made to the blindnet servers through [blindnet devkit](#blindnet-sdk) must be authenticated.  
 Authentication is done through **authentication tokens** which are generated using the [Server SDK](#server-side-sdk).  
 Authentication tokens are used as parameters in the [initialization](../guides/installation#initialization) methods of the [Client SDK](#client-side-sdk).
 All tokens are [signed](#digital-signature) by an [application key](#application-key) and validated by blindnet with the corresponding public key.  
@@ -42,7 +42,7 @@ The default value is `https://api.blindnet.io`
 ### Testing endpoint
 URL of the blindnet api you should use when testing. It must be manually set to `https://test.blindnet.io`
 
-## Blindnet SDK
+## blindnet devkit
 Blindnet is integrated to your application using the libraries for you client and server applications. SDKs provide the methods to encrypt and decrypt the data, register a new user, delete a user etc.  
 [Multiple](../api_reference) programming languages are supported for both **Client-side** and **Server-side** SDKs.  
 To use blindnet, both Client and Server SDKs must be integrated in your application.

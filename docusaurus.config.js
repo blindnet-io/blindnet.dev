@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'blindnet SDK',
-  tagline: 'Privacy SDK',
+  title: 'blindnet devkit',
+  tagline: 'Helping developers make software that users love and trust.',
   url: '/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -58,7 +58,7 @@ const config = {
             type: 'doc',
             docId: 'quickstart',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Get Started',
           },
           // { to: '/blog', label: 'Blog', position: 'left' },
           {
@@ -78,7 +78,7 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Get Started',
                 to: '/docs/quickstart',
               },
             ],

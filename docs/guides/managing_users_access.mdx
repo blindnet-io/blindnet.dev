@@ -6,7 +6,7 @@ sidebar_position: 5
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can manage your users' interaction with blindnet and their access to data through blindnet SDK methods that you invoke in your application. These methods allow you to
+You can manage your users' interaction with blindnet and their access to data through blindnet devkit methods that you invoke in your application. These methods allow you to
 
 - connect your users to blindnet
 - cluster users in groups
@@ -113,7 +113,7 @@ await blindnet.connect(blindnetSecret)
 </TabItem>
 </Tabs>
 
-Blindnet SDK does not expose separate methods for user registration and logging in. You always use the `connect` method while its internals handle user registration and logging in. If it is the first time that a user is being connected to blindnet, the SDK will register that user by using the information you provide in a [token](#creating-user-tokens).
+blindnet devkit does not expose separate methods for user registration and logging in. You always use the `connect` method while its internals handle user registration and logging in. If it is the first time that a user is being connected to blindnet, the SDK will register that user by using the information you provide in a [token](#creating-user-tokens).
 
 When you use the `connect` method, it locally initiates user's [private keys](../how_it_works/security#user-private-keys) so that later users can decrypt their data.
 

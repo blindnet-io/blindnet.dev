@@ -20,7 +20,7 @@ const sidebars = {
   // tutorialSidebar: [
   //   {
   //     type: 'category',
-  //     label: 'Tutorial',
+  //     label: 'Get Started',
   //     items: ['quickstart'],
   //   },
   // ],

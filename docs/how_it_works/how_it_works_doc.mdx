@@ -25,10 +25,10 @@ To protect user data in your web application, blindnet provides an SDK for data 
 Let’s call our receiver Alice and our sender Bob. With blindnet, if Bob wants to send data (e.g., a text message or a file) to Alice, the process is as follows:
 
 - Bob inputs the data (e.g. a file) into the browser's interface
-- The browser will use blindnet SDK to encrypt the data
+- The browser will use blindnet devkit to encrypt the data
 - Encrypted data should then be transferred and stored on your app's server
 - When Alice requests the data (or immediately after the data was stored), your app delivers the encrypted data to her
-- The browser on Alice's device will use blindnet SDK to decrypt the data
+- The browser on Alice's device will use blindnet devkit to decrypt the data
 - Alice views the original data that Bob sent to her
 
 This workflow ensures that only Alice and Bob have access to the data. To be more precise, only Alice and Bob possess the encryption key used to encrypt the file.
@@ -43,7 +43,7 @@ In step 2. (The browser will use blindnet api to encrypt the message), blindnet 
 - Encrypts the ephemeral encryption key and saves it to the blinenet server
 - Returns the encrypted data
 
-In Step 4. (The browser on Alices's device will use blindnet api to decrypt the data), blindnet SDK performs the following steps:
+In Step 4. (The browser on Alices's device will use blindnet api to decrypt the data), blindnet devkit performs the following steps:
 
 - Obtains the encrypted ephemeral key from blindnet’s server
 - Uses Alice's private key to decrypt they key

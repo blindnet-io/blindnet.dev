@@ -6,7 +6,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Installation
-Pick one of the following methods to install the blindnet SDK.
+Pick one of the following methods to install the blindnet devkit.
 
 <Tabs>
 <TabItem value="npm" label="npm" default>
@@ -51,7 +51,7 @@ const { Blindnet, util, error } = blindnet
 The api is encapsulated in the `Blindnet` class.
 
 ## Initialization
-Blindnet SDK must be initialized before you can use it (with the exception of some static methods, e.g. [secret derivation](../../../guides/managing_users_access#splitting-secrets) method).
+blindnet devkit must be initialized before you can use it (with the exception of some static methods, e.g. [secret derivation](../../../guides/managing_users_access#splitting-secrets) method).
 
 Initialization is done with the `init` method.
   
@@ -213,13 +213,13 @@ name | type | required | description
 encryptedData | `ArrayBuffer | Uint8Array` | true | Encrypted data to decrypt (the result of the [encrypt](#encrypting) method). If it was [encoded](../../../guides/encrypt#encode), it can be decoded using [fromBase64](#decode-from-base64-string) or [fromHex](#decode-from-hexadecimal-string).
 
 #### Return type
-```
+```typescript
 Promise<{
     data: string | File | ArrayBuffer | Uint8Array,
     metadata: { dataType: DataType, [key: string]: any; }}>
 ```
 
-```
+```typescript
 type DataType =
     | { type: 'STRING' }
     | { type: 'FILE', name: string }
@@ -272,7 +272,7 @@ BlindnetServiceError | Error on blindnet server.
 UserNotFoundError | A user whose id was provided as a parameter was not registered or was [deleted](../../../guides/managing_users_access#deleting-encrypted-data-keys) from blindnet.
 
 ## Helper methods
-Blindnet SDK provides the methods to encode and decode encrypted data, so it can be easily transferred and stored.
+blindnet devkit provides the methods to encode and decode encrypted data, so it can be easily transferred and stored.
 
 Helper methods can be imported as
 
