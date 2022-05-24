@@ -1,7 +1,7 @@
 # blindnet devkit documentation
 
 <p align="center">
-  <strong>This project contains the documentation website for the blindnet devkit.</strong>
+  <strong>Documentation website for the blindnet devkit.</strong>
 </p>
 
 <p align="center">
@@ -24,10 +24,7 @@ The documentation is built using [Docusaurus](https://docusaurus.io/) engine.
 
 ## Installation
 
-Install `yarn`.
-```
-$ npm install -g yarn
-```
+Make sure [yarn](https://yarnpkg.com/getting-started/install) is installed.
 
 Install the project dependencies.
 ```
