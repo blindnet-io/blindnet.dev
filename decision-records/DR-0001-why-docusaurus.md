@@ -2,7 +2,7 @@
 
 | Status      | implemented                                                                             |
 | :---------- | :-------------------------------------------------------------------------------------- |
-| **PR #**    | [2](https://github.com/blindnet-io/blindnet-docs/issues/2)                              |
+| **PR #**    | [6](https://github.com/blindnet-io/blindnet-docs/issues/6)                              |
 | **Author**  | Marko Stakic (marko@blindnet.io)                                                        |
 | **Reviwer** | Noël Macé (noel@blindnet.io)                                                            |
 
