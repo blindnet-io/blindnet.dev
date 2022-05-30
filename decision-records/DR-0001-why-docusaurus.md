@@ -86,7 +86,10 @@ Docusaurus is for us the best suited project for rendering documentation. It is 
 - beautiful, modern look
 
 #### cons
-- premium product
+- premium subscription required (paid per team member)
+
+Free community tier can be requested if certain conditions are [met](https://docs.gitbook.com/pricing/plans/non-profit-and-open-source-discounts).  
+We might consider GitBook in the future since it provides tools for collaborative editing, commenting, simple deployments and integration with many third party services.
 
 ### Read the Docs
 
