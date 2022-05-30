@@ -3,12 +3,14 @@
 | Status      | implemented                                                                             |
 | :---------- | :-------------------------------------------------------------------------------------- |
 | **PR #**    | [6](https://github.com/blindnet-io/blindnet-docs/issues/6)                              |
-| **Author** & **Sponsor** | Marko Stakic (marko@blindnet.io)                                                        |
-| **Lead Reviewer** | Noël Macé (noel@blindnet.io)                                                            |
+| **Author** & **Sponsor** | Marko Stakic (marko@blindnet.io)                                           |
+| **Lead Reviewer** | Noël Macé (noel@blindnet.io)                                                      |
 
 ## Context and Problem Statement
 
-Blindnet devkit is a project aimed to developers and needs an appropriate documentation. There are multiple OSS engines to render the static documentation websites and we are exploring the best suited one.
+As specified in [this epic](https://github.com/blindnet-io/communication-management/issues/14), documentaion pages created in [MkDocs](https://www.mkdocs.org) [Material](https://squidfunk.github.io/mkdocs-material/) theme look outdated and its customization is cumbersome.
+
+Which OSS documentation rendering engine offers the [needed feature set](https://github.com/blindnet-io/communication-management/issues/63#issuecomment-1080364433) as well as a better look and feel without requiring important changes in the doc itself?
 
 ## Decision Drivers
 
@@ -23,7 +25,6 @@ Other drivers:
 ## Considered Options
 
 - [Docusaurus](https://docusaurus.io)
-- [MkDocs](https://www.mkdocs.org)
 - [Rocket](https://rocket.modern-web.dev)
 - [docsify](https://docsify.js.org)
 - [mdBook](https://rust-lang.github.io/mdBook)
@@ -48,17 +49,6 @@ Docusaurus is for us the best suited project for rendering documentation. It is 
 #### cons
 - only one theme
 - not so great plugins for offline search
-
-### MkDocs
-
-#### pros
-- feature rich
-- lot of themes (e.g. [material](https://squidfunk.github.io/mkdocs-material)
-- good community and a lot of plugins
-
-#### cons
-- changing the theme and adding custom HTML/CSS is cumbersome
-- outdated look
 
 ### Rocket
 
@@ -110,6 +100,6 @@ Docusaurus is for us the best suited project for rendering documentation. It is 
 
 ## Links
 
-- a part of [update docs epic](https://github.com/blindnet-io/communication-management/issues/14)
+- implemented in the [PR](https://github.com/blindnet-io/blindnet-docs/issues/6)
 
 <!-- markdownlint-disable-file MD013 -->
