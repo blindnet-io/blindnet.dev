@@ -135,6 +135,10 @@ const config = {
         additionalLanguages: ['java', 'php', 'scala'],
       },
     }),
+
+  scripts: [
+    { src: 'https://plausible.io/js/plausible.js', defer: true, 'data-domain': 'docs.blindnet.io' }
+  ]
 };
 
 module.exports = config;
