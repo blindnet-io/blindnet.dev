@@ -180,7 +180,7 @@ function encrypt(
 #### Parameters
 name | type | required | description
 ---- | ---- | -------- | -----------
-data | `string | File | ArrayBuffer | Uint8Array` | true | Data to encrypt. Multiple types are supported.
+data | `string` &#124; `File` &#124; `ArrayBuffer` &#124; `Uint8Array` | true | Data to encrypt. Multiple types are supported.
 metadata | `{ [key: string]: any }` | false | Metadata in JSON format.
 
 #### Return type
@@ -210,7 +210,7 @@ function decrypt(
 #### Parameters
 name | type | required | description
 ---- | ---- | -------- | -----------
-encryptedData | `ArrayBuffer | Uint8Array` | true | Encrypted data to decrypt (the result of the [encrypt](#encrypting) method). If it was [encoded](../../../guides/encrypt#encode), it can be decoded using [fromBase64](#decode-from-base64-string) or [fromHex](#decode-from-hexadecimal-string).
+encryptedData | `ArrayBuffer` &#124; `Uint8Array` | true | Encrypted data to decrypt (the result of the [encrypt](#encrypting) method). If it was [encoded](../../../guides/encrypt#encode), it can be decoded using [fromBase64](#decode-from-base64-string) or [fromHex](#decode-from-hexadecimal-string).
 
 #### Return type
 ```typescript

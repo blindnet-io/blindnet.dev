@@ -134,13 +134,13 @@ We will simulate an [anonymous](./extra/glossary#anonymous-user) user Bob encryp
 
 ### Initialize SDK for Bob
 
-You need to initialize the library with the [temporary token](./extra/glossary#temp-user-token) in order to encrypt the data. Pass the ids of the users you want to encrypt a file to.
+You need to initialize the library with the [temporary token](./extra/glossary#temp-user-token) in order to encrypt the data. Pass the id of the group Alice belongs to in order to give permission to encrypt data for her.
 
 <Tabs groupId="lang">
 <TabItem value="js" label="JavaScript" default>
 
 ```js
-const token = await createTempUserToken([aliceId], appId, appKey)
+const token = await createTempUserToken(groupId, appId, appKey)
 const blindnet = Blindnet.init(token, endpoint)
 ```
 
@@ -149,14 +149,14 @@ const blindnet = Blindnet.init(token, endpoint)
     
 
 ### Encrypt a file
-Obtain a file from the `<input type="file" id="file-pick>` `HTML` element and pass it to the [encrypt](./guides/encrypt#encrypt) method.
+Obtain a file from the `<input type="file" id="file-pick>` `HTML` element and pass it to the [encrypt](./guides/encrypt#encrypt) method. Add Alice as a recipient.
 
 <Tabs groupId="lang">
 <TabItem value="js" label="JavaScript" default>
 
 ```js
 const file = document.getElementById('file-pick').files[0]
-const { encryptedData } = await blindnet.encrypt(file)
+const { encryptedData } = await blindnet.capture(data).forUser(aliceId).encrypt()
 ```
 
 </TabItem>
@@ -177,7 +177,7 @@ const { data, metadata } = await blindnet.decrypt(encryptedData)
 
 There is a convenient library to save files [file-saver](https://github.com/eligrey/FileSaver.js).
 ```js
-saveAs(data, metadata.dataType.name)
+saveAs(data, metadata.name)
 ```
 
 </TabItem>
