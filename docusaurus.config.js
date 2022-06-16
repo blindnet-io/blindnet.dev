@@ -115,11 +115,15 @@ const config = {
             ],
           },
           {
-            title: 'Developers',
+            title: 'More',
             items: [
               {
                 label: 'GitHub',
                 href: 'https://github.com/blindnet-io/',
+              },
+              {
+                label: 'Medium',
+                href: 'https://medium.com/blindnet',
               },
             ],
           },
