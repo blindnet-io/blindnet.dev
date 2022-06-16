@@ -109,8 +109,8 @@ const config = {
                 href: 'https://www.linkedin.com/company/blindnet/',
               },
               {
-                label: 'Medium',
-                href: 'https://medium.com/blindnet',
+                label: 'Slack',
+                href: 'https://join.slack.com/t/blindnet/shared_invite/zt-1arqlhqt3-A8dPYXLbrnqz1ZKsz6ItOg',
               },
             ],
           },
