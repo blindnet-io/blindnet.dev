@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'blindnet devkit',
   tagline: 'Helping developers make software that users love and trust.',
-  url: '/',
+  url: 'https://blindnet.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
