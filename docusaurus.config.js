@@ -74,6 +74,11 @@ const config = {
             position: 'left',
             label: 'Get Started',
           },
+          {
+            to: 'docs/guides',
+            position: 'left',
+            label: 'Guides',
+          },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/blindnet-io/blindnet-docs',
