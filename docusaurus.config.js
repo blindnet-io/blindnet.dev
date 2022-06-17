@@ -12,8 +12,8 @@ const GithubSVG =
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'blindnet devkit',
-  tagline: 'Helping developers make software that users love and trust.',
+  title: 'blindnet.dev',
+  tagline: 'Helping developers build trustworthy applications through privacy.',
   url: 'https://blindnet.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -50,6 +50,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
       docs: {
         sidebar: {
           hideable: true
