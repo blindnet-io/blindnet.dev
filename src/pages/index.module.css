@@ -116,8 +116,11 @@
 .twoColumns {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
   margin: 0 auto;
-  max-width: 900px;
+  grid-gap: 2em;
+  max-width: 1400px;
 }
 
 .twoColumns__column {
@@ -126,7 +129,8 @@
 
 .twoColumns__illustration {
   max-width: 100%;
-  padding: 0 1.25rem;
+  padding: 1.25rem;
+  max-height: 300px;
 }
 
 @media screen and (max-width: 996px) {
@@ -136,5 +140,6 @@
 
   .twoColumns__illustration {
     max-width: 100%;
+    max-height: 350px;
   }
 }

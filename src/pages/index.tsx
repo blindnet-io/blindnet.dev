@@ -56,7 +56,7 @@ function E2EEncryption() {
     <section className={styles.explainerSection}>
       <div className={styles.twoColumns}>
         <div className={styles.twoColumns__column}>
-          <FilesSentSVG className={styles.twoColumns__illustration} height="400px" />
+          <FilesSentSVG className={styles.twoColumns__illustration} />
         </div>
         <div className={styles.twoColumns__column}>
           <h2>E2E Encryption in a Snap</h2>
@@ -108,7 +108,7 @@ function OpenSource() {
           </p>
         </div>
         <div className={styles.twoColumns__column}>
-          <OpenSourceSVG className={styles.twoColumns__illustration} height="400px" />
+          <OpenSourceSVG className={styles.twoColumns__illustration} />
         </div>
       </div>
     </section>
@@ -120,7 +120,7 @@ function Construction() {
     <section className={styles.explainerSection}>
       <div className={styles.twoColumns}>
         <div className={styles.twoColumns__column}>
-          <ScienceSVG className={styles.twoColumns__illustration} height="400px" />
+          <ScienceSVG className={styles.twoColumns__illustration} />
         </div>
         <div className={styles.twoColumns__column}>
           <h2>Constantly Innovating</h2>
