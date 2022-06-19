@@ -17,6 +17,21 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-color: rgb(36, 37, 38);
+  color: #fff;
+}
+
+.heroBanner__title {
+  font-size: 60px;
+}
+
+.heroBanner__title b {
+  color: var(--ifm-color-primary);
+}
+
+.heroBanner .indexCtas a,
+.heroBanner .indexCtas a:hover {
+  color: black;
 }
 
 .indexCtas {
@@ -26,11 +41,6 @@
   align-items: center;
   justify-content: center;
   margin-top: 24px;
-}
-
-.indexCtas a,
-.indexCtas a:hover {
-  color: black;
 }
 
 .indexCtas a:last-of-type {
@@ -86,5 +96,45 @@
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;
+  }
+}
+
+.explainerSection {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 100%;
+}
+
+.explainerSection + .explainerSection {
+  border-top: 1px solid var(--ifm-table-border-color);
+}
+
+.tint {
+  background-color: var(--ifm-menu-color-background-active);
+}
+
+.twoColumns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.twoColumns__column {
+  padding: 0 1.25rem;
+}
+
+.twoColumns__illustration {
+  max-width: 100%;
+  padding: 0 1.25rem;
+}
+
+@media screen and (max-width: 996px) {
+  .twoColumns {
+    grid-template-columns: 1fr;
+  }
+
+  .twoColumns__illustration {
+    max-width: 100%;
   }
 }
