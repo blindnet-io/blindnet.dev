@@ -101,8 +101,10 @@ function OpenSource() {
             we defined and constantly update.
           </p>
           <p>
-            Meaning all components of blindnet devkit are (or will be soon) open source, but not only. All related contents (including
-            discussions, decisions, documentation and specifications) are and will always stay available to anyone and open to contribution.
+            Obviously, this mean all the core components of blindnet devkit and privacy stack are Open Source, following an Open Core model. But we go further that that: except when absolutly needed, all the contents we build and work with are and will always stay available to anyone and open to contribution. This include every important <a href="https://github.com/blindnet-io/openness-framework/tree/main/DecisionFramework" target="_blank" rel="noopener noreferrer">decision</a> we take and every <a href="https://github.com/blindnet-io/product-management">specification and guiding documents</a> we work with.
+          </p>
+          <p>
+            Making all matters easily accessible and intelligible to everyone is a top priority at blindnet. If you feek any information is missing or incomplete, please <a href="https://github.com/blindnet-io/devrel-management/issues/new?assignees=noelmace&labels=request%2Ctriage&template=request.yml&title=%5BRequest%5D%3A+" target="_blank" rel="noopener noreferrer">let us know</a>!
           </p>
         </div>
         <div className={styles.twoColumns__column}>
