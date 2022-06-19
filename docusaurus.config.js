@@ -104,6 +104,18 @@ const config = {
                 label: 'Get Started',
                 to: '/docs/quickstart',
               },
+              {
+                label: 'Introduction',
+                to: '/docs/introduction',
+              },
+              {
+                label: 'Guides',
+                to: '/docs/guides',
+              },
+              {
+                label: 'Q&A',
+                to: '/docs/qna',
+              },
             ],
           },
           {
@@ -114,18 +126,26 @@ const config = {
                 href: 'https://twitter.com/blindnet_io',
               },
               {
-                label: 'LinkedId',
-                href: 'https://www.linkedin.com/company/blindnet/',
-              },
-              {
                 label: 'Slack',
                 href: 'https://join.slack.com/t/blindnet/shared_invite/zt-1arqlhqt3-A8dPYXLbrnqz1ZKsz6ItOg',
+              },
+              {
+                label: 'dev.to',
+                href: 'https://dev.to/blindnet',
+              },
+              {
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/company/blindnet/',
               },
             ],
           },
           {
             title: 'More',
             items: [
+              {
+                label: 'Blog',
+                to: '/blog',
+              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/blindnet-io/',
@@ -154,7 +174,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} blindnet. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://blindnet.io" target="_blank" rel="noopener noreferrer">blindnet</a>.<br />Built with <a href="https://docusaurus.io/" target="_blank" rel="noopener noreferrer">Docusaurus</a>.<br />Illustrations by <a href="https://undraw.co" target="_blank" rel="noopener noreferrer">Katerina Limpitsouni</a>.`,
       },
       prism: {
         theme: lightCodeTheme,
