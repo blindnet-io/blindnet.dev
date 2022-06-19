@@ -1,52 +1,51 @@
 ---
-title: Introduction
-sidebar_position: 1
+sidebar_position: 2
 ---
-
 
 # Introduction
 
-Blindnet offers a simple solution to enable data privacy and compliance with data minimization requirements in various data regulations, including GDPR and CCPA / CPRA. Beyond compliance, blindnet provides software developers with a zero-trust service to minimize the exposure to unnecessary user data and reduce the risk in case of data breaches.  
+The figure below shows different components of blindnet devkit and privacy stack:
 
-Blindnet enables protection of your users’ data via SDKs. Blindnet’s infrastructure is built for secured synchronous and asynchronous data transfers. The SDKs offer end-to-end encryption in your web or mobile applications, and are compatible with all available user authentication systems. The user experience does not change when you integrate blindnet.
+![Blindnet components.](/img/how_it_works/components.svg)
 
-Blindnet can protect your users’ data (e.g., files, images, documents) both in web applications and in mobile/desktop applications. We provide two solutions, based on whether your application has a web client or not:
+## Blindnet in web applications
 
-| You app clients      | Communication | Solutions
-| ----------- | ----------- | ----------- 
-| Web app only | web-to-web | [Solution 1: encryption only](./how_it_works_doc#blindnet-in-web-applications)
-| Mixed: web and standalone apps (mobile/desktop) | web-to-web, web-to-standalone, standalone-to-standalone | [Solution 1: encryption only](./how_it_works_doc#blindnet-in-web-applications)
-| Standalone app only (mobile/desktop) | standalone-to-standalone | [Solution 2: encryption and transfers](./how_it_works_doc#blindnet-in-mobiledesktop-only-applications) (coming soon)
+To protect user data in your web application, blindnet provides an SDK for data encryption and decryption, and for managing encryption keys. 
 
-When using a blindnet devkit in your application, the library encrypts and decrypts user data directly on user local machines (e.g, browsers or mobile phones), while managing the encryption keys in the background.
+![Blindnet in web and mixed applications.](/img/how_it_works/web_enc_detail.svg)
 
+Let’s call our receiver Alice and our sender Bob. With blindnet, if Bob wants to send data (e.g., a text message or a file) to Alice, the process is as follows:
 
-## **Solution 1**: Web applications and mixed applications
+- Bob inputs the data (e.g. a file) into the browser's interface
+- The browser will use blindnet devkit to encrypt the data
+- Encrypted data should then be transferred and stored on your app's server
+- When Alice requests the data (or immediately after the data was stored), your app delivers the encrypted data to her
+- The browser on Alice's device will use blindnet devkit to decrypt the data
+- Alice views the original data that Bob sent to her
 
-Blindnet for web application offers:
+This workflow ensures that only Alice and Bob have access to the data. To be more precise, only Alice and Bob possess the encryption key used to encrypt the file.
+While stored and in transfer, the file is encrypted and neither blindnet nor the app’s server are able to access it.
 
-- Symmetric encryption of documents (e.g., files, images); document keys are randomly generated and transferred between users with asymmetric key encryption.
-- A password-based secure backup of user private keys, which allows users to access their data from different browsers. Thanks to our password splitting function your users still use only one password to access your system and to secure their private keys.
-- Data exchange between registered users of your application, and from unregistered to registered users.
-- Zero-trust service: no one except senders and intended recipients can read the data.
+After the data is decrypted in Alice's browser, it can simply be saved on her device. The data stays encrypted on the app's server and Step 4 can be carried out multiple times.
 
-![Blindnet in web and mixed applications.](/img/how_it_works/web_enc_high.svg)
-<p align="center">
-    Blindnet in web and mixed applications.
-</p>
+In step 2. (The browser will use blindnet api to encrypt the message), blindnet api performs the following steps:
 
-## **Solution 2**: Mobile/desktop only applications (coming soon)
+- Generates an ephemeral encryption key and encrypts the data
+- Obtains Alice's public key and verifies it belongs to her
+- Encrypts the ephemeral encryption key and saves it to the blinenet server
+- Returns the encrypted data
 
-blindnet devkit is available for your mobile or desktop application, offering:
+In Step 4. (The browser on Alices's device will use blindnet api to decrypt the data), blindnet devkit performs the following steps:
 
-- A Signal protocol for end-to-end encryption
-- Asynchronous and synchronous data transfers, which means that your users do not have to use the system at the same time in order to exchange data
-- Data transfer from sender’s to recipient’s device, and secured temporary storage in case of asynchronous transfers
-- Private backup of data that users receive from other users, retrievable in case of device loss
-- Zero-trust service: no one except senders and intended recipients can read the data or backups.
+- Obtains the encrypted ephemeral key from blindnet’s server
+- Uses Alice's private key to decrypt they key
+- Uses the decrypted key to decrypt the encrypted data
+- Returns the original data
 
-![Blindnet in mobile/desktop applications.](/img/how_it_works/mob_enc_high.svg)
-<p align="center">
-    Blindnet in mobile/desktop applications.
-</p>
+Blindnet supports use cases in which data senders can be both registered or unregistered users of your application. Data exhange between two registered users works in a way similar to the one described above, with a difference that teh symmetric key for encrypting the data from Bob to Alice is always the same, and it is securely stored on blindnet servers after it has been previously encrypted with Bob's and Alice's public keys.
+
+## Blindnet in mobile/desktop only applications
+
+Coming soon...
+
 

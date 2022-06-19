@@ -74,15 +74,14 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'quickstart',
+            to: 'docs/quickstart',
             position: 'left',
-            label: 'Start Encrypting!',
+            label: 'Get Started',
           },
           {
-            to: 'docs/guides',
+            to: 'docs/introduction',
             position: 'left',
-            label: 'Guides',
+            label: 'Docs',
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {

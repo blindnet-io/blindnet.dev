@@ -61,19 +61,19 @@ function E2EEncryption() {
         <div className={styles.twoColumns__column}>
           <h2>E2E Encryption in a Snap</h2>
           <p>
-            Our JavaScript, PHP and Node.js SDKs, parts of the blindnet DevKit, allows to manage encrypted data with just a few lines of code, without requirering any complexe set-up or expertise in
+            Blindnet devkit allows to manage <Link to="docs/extra/qna#what-is-end-to-end-encryption">end-to-end encrypted</Link> data with just a few lines of code, without requirering any complexe set-up or expertise in
             cryptography.
           </p>
           <p>
-            Follow our <a href="/docs/quickstart">Quick Start</a> guide to see how in a few minutes, or read the advanced{' '}
-            <a href="/docs/guides">Guides</a> to learn more.
+            Follow our <a href="/docs/quickstart">Quick Start</a> guide to see how in a few minutes, or explore the{' '}
+            <a href="/docs/introduction">documentation</a> to learn more.
           </p>
           <div className={styles.indexCtas}>
             <Link className="button button--primary" to="/docs/quickstart">
               Get Started!
             </Link>
-            <Link className="button button--secondary" to="/docs/guides">
-              Follow the Guides
+            <Link className="button button--secondary" to="/docs/introduction">
+              Explore the docs
             </Link>
           </div>
         </div>
@@ -101,7 +101,7 @@ function OpenSource() {
             we defined and constantly update.
           </p>
           <p>
-            Meaning all components of blindnet DevKit are (or will be soon) open source, but not only. All related contents (including
+            Meaning all components of blindnet devkit are (or will be soon) open source, but not only. All related contents (including
             discussions, decisions, documentation and specifications) are and will always stay available to anyone and open to contribution.
           </p>
         </div>
@@ -123,7 +123,7 @@ function Construction() {
         <div className={styles.twoColumns__column}>
           <h2>Constantly Innovating</h2>
           <p>
-            Our team of PhDs, engineers, DevX experts and developers is constantly working on new ways to improve and extend the blindnet DevKit.
+            Our team of PhDs, engineers, DevX experts and developers is constantly working on new ways to improve and extend the blindnet devkit.
           </p>
           <p>
             We are always open to new ideas and suggestions, especially from <strong>You the developers</strong>, to help us build exactly what <strong>You</strong> need in order to make privacy ubiquitous.
