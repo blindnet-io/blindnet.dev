@@ -1,17 +1,17 @@
-# blindnet devkit documentation
+# blindnet.dev website
 
 <p align="center">
-  <strong>Documentation website for the blindnet devkit.</strong>
+  <strong>A complete portal helping developers build trustworthy applications through privacy..</strong>
 </p>
 
 <p align="center">
-  <a href="https://docs.blindnet.io/"><strong>docs.blindnet.io</strong></a>
+  <a href="https://blindnet.dev/"><strong>blindnet.dev</strong></a>
 </p>
 
 
 
 <p align="center">
-  <a href="https://github.com/blindnet-io/blindnet-docs/issues">Submit an Issue</a>
+  <a href="https://github.com/blindnet-io/blindnet.dev/issues">Submit an Issue</a>
   <br>
   <br>
 </p>

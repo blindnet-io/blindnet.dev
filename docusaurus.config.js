@@ -62,7 +62,7 @@ const config = {
       },
       announcementBar: {
         id: 'announcementBar-1', // Increment on change
-        content: `💫 &nbsp; If you care about trust and privacy, give blindnet.dev a star on <a class="announcementBar__link" target="_blank" rel="noopener noreferrer" href="https://github.com/blindnet-io/blindnet-docs">${GithubSVG} GitHub</a> and follow us on <a class="announcementBar__link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/blindnet_io">${TwitterSvg} Twitter</a>`,
+        content: `💫 &nbsp; If you care about trust and privacy, give blindnet.dev a star on <a class="announcementBar__link" target="_blank" rel="noopener noreferrer" href="https://github.com/blindnet-io/blindnet.dev">${GithubSVG} GitHub</a> and follow us on <a class="announcementBar__link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/blindnet_io">${TwitterSvg} Twitter</a>`,
       },
       navbar: {
         title: '.dev',
@@ -86,7 +86,7 @@ const config = {
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/blindnet-io/blindnet-docs',
+            href: 'https://github.com/blindnet-io/blindnet.dev',
             label: 'GitHub',
             position: 'right',
           },
