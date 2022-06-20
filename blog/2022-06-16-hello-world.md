@@ -18,6 +18,6 @@ A blog about privacy and trust, by developers, for developers.
 
 ![Hello](/img/blog/hello-lemonvlad.jpg)
 
-[Stay tuned](twitter.com/blindnet_io), more content will follow soon.
+[Stay tuned](https://twitter.com/blindnet_io), more content will follow soon.
 
-In the meantime, check out [our companies' blog](https://medium.com/blindnet) to learn more about blindnet itself with generic content with no tech jargon.
+In the meantime, check out [our company's blog](https://medium.com/blindnet) to learn more about blindnet itself with generic content with no tech jargon.

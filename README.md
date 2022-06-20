@@ -1,7 +1,7 @@
 # blindnet.dev website
 
 <p align="center">
-  <strong>A complete portal helping developers build trustworthy applications through privacy..</strong>
+  <strong>A portal helping developers build trustworthy applications through privacy..</strong>
 </p>
 
 <p align="center">

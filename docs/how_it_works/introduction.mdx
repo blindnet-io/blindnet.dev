@@ -4,9 +4,11 @@ sidebar_position: 2
 
 # Introduction
 
-The figure below shows different components of blindnet devkit and privacy stack:
-
 ![Blindnet components.](/img/how_it_works/components.svg)
+
+<p align="center">
+    components of blindnet devkit
+</p>
 
 ## Blindnet in web applications
 
@@ -16,26 +18,26 @@ To protect user data in your web application, blindnet provides an SDK for data 
 
 Let’s call our receiver Alice and our sender Bob. With blindnet, if Bob wants to send data (e.g., a text message or a file) to Alice, the process is as follows:
 
-- Bob inputs the data (e.g. a file) into the browser's interface
-- The browser will use blindnet devkit to encrypt the data
+- Bob inputs the data (e.g. a file) into the web application's interface
+- The web application will use blindnet devkit to encrypt the data
 - Encrypted data should then be transferred and stored on your app's server
 - When Alice requests the data (or immediately after the data was stored), your app delivers the encrypted data to her
-- The browser on Alice's device will use blindnet devkit to decrypt the data
+- The web application on Alice's device will use blindnet devkit to decrypt the data
 - Alice views the original data that Bob sent to her
 
 This workflow ensures that only Alice and Bob have access to the data. To be more precise, only Alice and Bob possess the encryption key used to encrypt the file.
 While stored and in transfer, the file is encrypted and neither blindnet nor the app’s server are able to access it.
 
-After the data is decrypted in Alice's browser, it can simply be saved on her device. The data stays encrypted on the app's server and Step 4 can be carried out multiple times.
+After the data is decrypted in Alice's web application, it can simply be saved on her device. The data stays encrypted on the app's server and Step 4 can be carried out multiple times.
 
-In step 2. (The browser will use blindnet api to encrypt the message), blindnet api performs the following steps:
+In step 2. (The web application will use blindnet api to encrypt the message), blindnet api performs the following steps:
 
 - Generates an ephemeral encryption key and encrypts the data
 - Obtains Alice's public key and verifies it belongs to her
 - Encrypts the ephemeral encryption key and saves it to the blinenet server
 - Returns the encrypted data
 
-In Step 4. (The browser on Alices's device will use blindnet api to decrypt the data), blindnet devkit performs the following steps:
+In Step 4. (The web application on Alices's device will use blindnet api to decrypt the data), blindnet devkit performs the following steps:
 
 - Obtains the encrypted ephemeral key from blindnet’s server
 - Uses Alice's private key to decrypt they key

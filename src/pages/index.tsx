@@ -61,11 +61,11 @@ function E2EEncryption() {
         <div className={styles.twoColumns__column}>
           <h2>E2E Encryption in a Snap</h2>
           <p>
-            Blindnet devkit allows to manage <Link to="docs/extra/qna#what-is-end-to-end-encryption">end-to-end encrypted</Link> data with just a few lines of code, without requirering any complexe set-up or expertise in
+            Blindnet devkit allows to manage sensitive data using <Link to="docs/qna#what-is-end-to-end-encryption">end-to-end encryption</Link> with just a few lines of code, without requiring any complex set-up or expertise in
             cryptography.
           </p>
           <p>
-            Follow our <a href="/docs/quickstart">Quick Start</a> guide to see how in a few minutes, or explore the{' '}
+            Follow our <a href="/docs/quickstart">Quick Start</a> guide to see how in just a few minutes, or explore the{' '}
             <a href="/docs/introduction">documentation</a> to learn more.
           </p>
           <div className={styles.indexCtas}>
@@ -101,10 +101,10 @@ function OpenSource() {
             we defined and constantly update.
           </p>
           <p>
-            Obviously, this mean all the core components of blindnet devkit and privacy stack are Open Source, following an Open Core model. But we go further that that: except when absolutly needed, all the contents we build and work with are and will always stay available to anyone and open to contribution. This include every important <a href="https://github.com/blindnet-io/openness-framework/tree/main/DecisionFramework" target="_blank" rel="noopener noreferrer">decision</a> we take and every <a href="https://github.com/blindnet-io/product-management">specification and guiding documents</a> we work with.
+            Obviously, this means all the core components of blindnet devkit are Open Source, following an Open Core model. But we go further than that: except when absolutely needed, all the contents we build and work with are and will always stay available to anyone and open to contribution. This includes every important <a href="https://github.com/blindnet-io/openness-framework/tree/main/DecisionFramework" target="_blank" rel="noopener noreferrer">decision</a> we take and every <a href="https://github.com/blindnet-io/product-management">specification and guiding document</a> we work with.
           </p>
           <p>
-            Making all matters easily accessible and intelligible to everyone is a top priority at blindnet. If you feek any information is missing or incomplete, please <a href="https://github.com/blindnet-io/devrel-management/issues/new?assignees=noelmace&labels=request%2Ctriage&template=request.yml&title=%5BRequest%5D%3A+" target="_blank" rel="noopener noreferrer">let us know</a>!
+            Making all matters easily accessible and intelligible to everyone is a top priority at blindnet. If you feel any information is missing or is incomplete, please <a href="https://github.com/blindnet-io/devrel-management/issues/new?assignees=noelmace&labels=request%2Ctriage&template=request.yml&title=%5BRequest%5D%3A+" target="_blank" rel="noopener noreferrer">let us know</a>!
           </p>
         </div>
         <div className={styles.twoColumns__column}>
@@ -125,7 +125,7 @@ function Construction() {
         <div className={styles.twoColumns__column}>
           <h2>Constantly Innovating</h2>
           <p>
-            Our team of PhDs, engineers, DevX experts and developers is constantly working on new ways to improve and extend the blindnet devkit.
+            Our team of developers, PhDs, security engineers and DevX experts is constantly working on new ways to improve and extend the blindnet devkit.
           </p>
           <p>
             We are always open to new ideas and suggestions, especially from <strong>You the developers</strong>, to help us build exactly what <strong>You</strong> need in order to make privacy ubiquitous.

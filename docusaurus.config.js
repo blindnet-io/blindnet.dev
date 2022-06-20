@@ -79,8 +79,9 @@ const config = {
             label: 'Get Started',
           },
           {
-            to: 'docs/introduction',
+            type: 'doc',
             position: 'left',
+            docId: 'introduction',
             label: 'Docs',
           },
           { to: '/blog', label: 'Blog', position: 'left' },
