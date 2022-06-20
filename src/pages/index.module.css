@@ -3,11 +3,94 @@
  * and scoped locally.
  */
 
+.banner {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 20px;
+  max-width: 768px;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-color: rgb(36, 37, 38);
+  color: #fff;
+}
+
+.heroBanner__title {
+  font-size: 60px;
+}
+
+.heroBanner__title b {
+  color: var(--ifm-color-primary);
+}
+
+.heroBanner .indexCtas a,
+.heroBanner .indexCtas a:hover {
+  color: black;
+}
+
+.indexCtas {
+  --ifm-button-size-multiplier: 1.6;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.indexCtas a:last-of-type {
+  margin: 20px 36px;
+}
+
+.indexCtasGitHubButtonWrapper {
+  display: flex;
+}
+
+.indexCtasGitHubButton {
+  overflow: hidden;
+}
+
+.indexCtaTryNowButton:hover {
+  color: var(--ifm-color-primary);
+}
+
+@media only screen and (max-width: 768px) {
+  .hero {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .heroInner {
+    padding: 0;
+  }
+
+  .heroProjectTagline {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .heroLogo {
+    display: block;
+    float: none;
+    margin: 0 auto;
+  }
+
+  .indexCtas {
+    justify-content: center;
+  }
+
+  .indexCtas a {
+    margin: 20px 36px;
+  }
+
+  .indexCtasGitHubButton {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 996px) {
@@ -16,8 +99,47 @@
   }
 }
 
-.buttons {
-  display: flex;
+.explainerSection {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 100%;
+}
+
+.explainerSection + .explainerSection {
+  border-top: 1px solid var(--ifm-table-border-color);
+}
+
+.tint {
+  background-color: var(--ifm-menu-color-background-active);
+}
+
+.twoColumns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  justify-content: center;
+  justify-items: center;
+  margin: 0 auto;
+  grid-gap: 2em;
+  max-width: 1400px;
+}
+
+.twoColumns__column {
+  padding: 0 1.25rem;
+}
+
+.twoColumns__illustration {
+  max-width: 100%;
+  padding: 1.25rem;
+  max-height: 300px;
+}
+
+@media screen and (max-width: 996px) {
+  .twoColumns {
+    grid-template-columns: 1fr;
+  }
+
+  .twoColumns__illustration {
+    max-width: 100%;
+    max-height: 350px;
+  }
 }

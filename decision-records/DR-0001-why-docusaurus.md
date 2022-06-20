@@ -2,7 +2,7 @@
 
 | Status      | implemented                                                                             |
 | :---------- | :-------------------------------------------------------------------------------------- |
-| **PR #**    | [6](https://github.com/blindnet-io/blindnet-docs/issues/6)                              |
+| **PR #**    | [6](https://github.com/blindnet-io/blindnet.dev/issues/6)                              |
 | **Author** & **Sponsor** | Marko Stakic (marko@blindnet.io)                                           |
 | **Lead Reviewer** | Noël Macé (noel@blindnet.io)                                                      |
 
@@ -103,6 +103,6 @@ We might consider GitBook in the future since it provides tools for collaborativ
 
 ## Links
 
-- implemented in the [PR](https://github.com/blindnet-io/blindnet-docs/issues/6)
+- implemented in the [PR](https://github.com/blindnet-io/blindnet.dev/issues/6)
 
 <!-- markdownlint-disable-file MD013 -->
