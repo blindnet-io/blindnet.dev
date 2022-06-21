@@ -1,6 +1,6 @@
 ---
 title: Time for a Summer of Privacy!
-description: Very first blog post on blindnet.dev
+description: Big annoucements and opportunities to contribute.
 slug: privacy-summer-time
 authors:
   - name: Noël Macé
@@ -20,7 +20,7 @@ The longest day of the year!
 We have worked a lot throughout the spring to improve our community experience and working processes.
 So we have a lot of stuff to announce to you today.
 
-Let's see what we'll do together during this new season, and all the new cool stuff we realised for that.
+Let's see what we'll do together during this new season, and all the new cool stuff we realized for that.
 
 ![Summer Time](/img/blog/summer-glasses.jpg)
 
@@ -30,7 +30,7 @@ This is what we call the ***Summer of Privacy***.
 
 ## Openly Chilling
 
-As summer is a time for cheeling and relaxing, we don't want this period to be stressful in any way.
+As summer is a time for chilling and relaxing, we don't want this period to be stressful in any way.
 
 After all, Summer has always been a time for opening up, and meeting new people.
 
@@ -61,21 +61,21 @@ Here, we already give you several opportunities to do that:
 
 1. our recently opened [Slack Workspace](https://join.slack.com/t/blindnet/shared_invite/zt-1arqlhqt3-A8dPYXLbrnqz1ZKsz6ItOg), to chat with the blindnet community and teams;
 1. an open [DevRel Management](https://github.com/blindnet-io/product-management) repository, when you can just [make simple informal requests](https://github.com/blindnet-io/devrel-management/issues/new?assignees=noelmace&labels=request%2Ctriage&template=request.yml&title=%5BRequest%5D%3A+);
-1. an open [Product Management](https://github.com/blindnet-io/product-management/) repository, where you can track, read, and contribute to all parts of our product development process, from simple bug fixes to complexe architecture reference documents.
+1. an open [Product Management](https://github.com/blindnet-io/product-management/) repository, where you can track, read, and contribute to all parts of our product development process, from simple bug fixes to thorough architecture reference documents.
 
-If those still seem to complexe or frightening to you, just email [hello@blindnet.io](mailto:hello@blindnet.io), and we'll make sure to give you an answer right away.
+If those still seem too complex or frightening to you, just email [hello@blindnet.io](mailto:hello@blindnet.io), and we'll make sure to give you an answer right away.
 
 ## Helping Everyone Better Understand Privacy
 
 While getting on with this huge project, we'll also make sure to keep you posted in any possible way.
 
-So first, you should definitly follow us on [Twitter](https://twitter.com/blindnet_io), as this will be the first place where we'll post short and constant updates on all technical matters.
+So first, you should definitely follow us on [Twitter](https://twitter.com/blindnet_io), as this will be the first place where we'll post short and constant updates on all technical matters.
 
 Our new engineering blog, on both [blindnet.dev](https://blindnet.dev/blog) and [dev.to](https://dev.to/blindnet), will then be a good place to share more in-depth explainers and update about our devkit and privacy in general.
 Where are open to any suggestion of topic to address, and even guest blog posts.
 So make sure to contact us whenever privacy inspire you.
 
-Finally, we'll soon open a new Twitch Channel and Youtube channel, with regular programs and  improvised streaming.
+Finally, we'll soon open a new Twitch Channel and Youtube channel, with regular programs and improvised streaming.
 Keep posted, and reach back to us if you'd like to be one of our next guests.
 
 ## And more...
