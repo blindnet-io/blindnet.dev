@@ -12,7 +12,7 @@ We provide two methods to decrypt the data: [decrypt](#decrypt) and [decryptValu
 
 The following workflow is applied when decrypting data:
 
-1. The [encrypted symmetric key](../extra/glossary#encrypted-data-key) of the user for the provided encrypted data is obtained from blindnet 
+1. The [encrypted symmetric key](../glossary#encrypted-data-key) of the user for the provided encrypted data is obtained from blindnet 
 1. The `encrypted symmetric key` is decrypted using the user's secret key
 1. Data is decrypted with the `symmetric key`
 
@@ -49,7 +49,7 @@ const { data, metadata } = await blindnet.decrypt(encryptedData)
 `data` is the original data provided in the encrypt method.  
 `metadata` is the object provided in the encrypt method.
 
-[Metadata](../extra/glossary#metadata), besides the object fields provided in the [encrypt](./encrypt#encrypt) method, will contain additional information on data format so it can be treated accordingly.
+[Metadata](../glossary#metadata), besides the object fields provided in the [encrypt](./encrypt#encrypt) method, will contain additional information on data format so it can be treated accordingly.
 
 Additional information in metadata is under the key `dataType`, which can have following values:
 - `{ type: 'STRING' }` meaning data is a `string`

@@ -172,7 +172,7 @@ const blindnet = Blindnet.init(token, 'https://test.blindnet.io')
 </Tabs>
 
 ### Server SDK
-To initialize the server SDK, you need to obtain [application id](../extra/glossary#application-id) and [application key](../extra/glossary#application-key). You can obtain them from the [dashboard](https://dashboard.blindnet.io), or generate them on your own (see next section).
+To initialize the server SDK, you need to obtain [application id](../glossary#application-id) and [application key](../glossary#application-key). You can obtain them from the [dashboard](https://dashboard.blindnet.io), or generate them on your own (see next section).
 
 As for the client SDK, you can provide an endpoint. For testing, use `https://test.blindnet.io`.
 
@@ -199,7 +199,7 @@ const blindnet = await Blindnet.init(appKey, appId, 'https://test.blindnet.io')
 
 ## Generating application keys
 
-[Application key](../extra/glossary#application-key) is actually an [Ed25519](https://en.wikipedia.org/wiki/EdDSA#Ed25519) private key used to sign the tokens that allow your users to access blindnet. You can generate it either in the blindnet [dashboard](https://dashboard.blindnet.io) or on your own. If you decide to generate the application key on your own, you need to generate an Ed25519 key pair, take the private key as your blindnet application key, and register the public key in your application on the dashboard. 
+[Application key](../glossary#application-key) is actually an [Ed25519](https://en.wikipedia.org/wiki/EdDSA#Ed25519) private key used to sign the tokens that allow your users to access blindnet. You can generate it either in the blindnet [dashboard](https://dashboard.blindnet.io) or on your own. If you decide to generate the application key on your own, you need to generate an Ed25519 key pair, take the private key as your blindnet application key, and register the public key in your application on the dashboard. 
 
 Examples of how to generate the Ed25519 key pair:
 
