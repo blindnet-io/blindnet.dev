@@ -65,7 +65,7 @@ Here, we already give you several opportunities to do that:
 
 If those still seem to complexe or frightening to you, just email [hello@blindnet.io](mailto:hello@blindnet.io), and we'll make sure to give you an answer right away.
 
-## Helping Everyone to Better Understand Privacy
+## Helping Everyone Better Understand Privacy
 
 While getting on with this huge project, we'll also make sure to keep you posted in any possible way.
 
