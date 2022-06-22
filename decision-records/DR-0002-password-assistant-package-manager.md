@@ -2,7 +2,7 @@
 
 | Status      | {draft}                                                                                  |
 |:------------|:-----------------------------------------------------------------------------------------|
-| **PR #**    | [22](https://github.com/blindnet-io/blindnet.dev/pull/22) (update when you have PR #)    |
+| **PR #**    | [22](https://github.com/blindnet-io/blindnet.dev/pull/22)   |
 | **Sponsor** | First-name Last-name (email)                                                             |
 
 ## Context and Problem Statement
@@ -59,7 +59,7 @@ Works very well for building, testing, and publishing libraries. If we end up ne
 ### [Nx](https://nx.dev/)
 
 Meets all criteria, however it's likely more than we need and may add 
-unnecessary overhead. 
+unnecessary overhead. For a much larger monorepo with multiple different languages, apps, and frameworks, nx warrants consideration.
 
 #### Fufilment of criteria
 
