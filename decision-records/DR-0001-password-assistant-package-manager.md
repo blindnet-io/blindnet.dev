@@ -1,4 +1,4 @@
-# Selecting Lerna as a monorepo package manager
+# Selecting a package manager for the password assistant monorepo
 
 | Status      | {_draft_ / proposed / rejected / accepted / deprecated / … / superseded by [XXX](XXX.md)} |
 | :---------- | :-------------------------------------------------------------------------------------- |
@@ -7,18 +7,22 @@
 
 ## Context and Problem Statement
 
-{Describe the context and problem statement, e.g., in free form using two to three sentences. You may want to articulate the problem in form of a question.}
+What monorepo package manager should we select for the password assistant repository?
 
 ## Decision Drivers <!-- optional -->
 
-- {driver 1, e.g., a force, facing concern, …}
-- {driver 2, e.g., a force, facing concern, …}
-- … <!-- numbers of drivers can vary -->
+1. Must support variety of languages, especially those which we currently or plan to use Typescript, Javascript, Scala
+2. Should for equally well for small and large monorepos, i.e. ease of use and scalability
+3. Should support publishing to npm 
+4. Should support testing on an integration and single package level
+5. Should be actively supported, and the larger the community the better
 
 ## Considered Options
 
 - Lerna
 - Nx
+- Pants
+- Turborepo
 
 ## Decision Outcome
 
@@ -36,7 +40,19 @@ Chosen option: "{option 1}", because {justification. e.g., only option, which me
 
 ## Pros and Cons of the Options <!-- optional -->
 
-### {option 1}
+### Lerna
+
+{example | description | pointer to more information | …} <!-- optional -->
+
+#### Fufilment of criteria
+
+1. Somewhat
+2. No
+3. Yes
+4. Yes
+5. Somewhat
+
+### Nx
 
 {example | description | pointer to more information | …} <!-- optional -->
 
@@ -45,7 +61,15 @@ Chosen option: "{option 1}", because {justification. e.g., only option, which me
 - Bad, because {argument c}
 - … <!-- numbers of pros and cons can vary -->
 
-### {option 2}
+#### Fufilment of criteria
+
+1. Yes
+2. Yes
+3. Yes
+4. Yes
+5. Yes
+
+### Pants
 
 {example | description | pointer to more information | …} <!-- optional -->
 
@@ -54,7 +78,15 @@ Chosen option: "{option 1}", because {justification. e.g., only option, which me
 - Bad, because {argument c}
 - … <!-- numbers of pros and cons can vary -->
 
-### {option 3}
+#### Fufilment of criteria
+
+1. Yes|No|Somewhat
+2. Yes|No|Somewhat
+3. Yes|No|Somewhat
+4. Yes|No|Somewhat
+5. Yes|No|Somewhat
+
+### Turborepo   
 
 {example | description | pointer to more information | …} <!-- optional -->
 
@@ -62,6 +94,14 @@ Chosen option: "{option 1}", because {justification. e.g., only option, which me
 - Good, because {argument b}
 - Bad, because {argument c}
 - … <!-- numbers of pros and cons can vary -->
+
+#### Fufilment of criteria
+
+1. Yes|No|Somewhat
+2. Yes|No|Somewhat
+3. Yes|No|Somewhat
+4. Yes|No|Somewhat
+5. Yes|No|Somewhat
 
 ## Links <!-- optional -->
 
