@@ -59,6 +59,8 @@ Chosen option: "{option 1}", because {justification. e.g., only option, which me
 
 ### [Nx](https://nx.dev/)
 
+Meets all criteria, however it's likely more than we need and may add 
+unnecessary overhead. 
 
 #### Fufilment of criteria
 
@@ -76,19 +78,17 @@ turborepo for our use case.
 #### Fufilment of criteria
 
 1. No - Doesn't natively support ts
-2. -
-3. -
-4. -
-5. -
+2. Yes
+3. Yes
+4. Yes
+5. Yes
 
 ### [Turborepo](https://turborepo.org/)
 
-{example | description | pointer to more information | …} <!-- optional -->
-
-- Good, because {argument a}
-- Good, because {argument b}
-- Bad, because {argument c}
-- … <!-- numbers of pros and cons can vary -->
+A monorepo tool mainly for js/ts projects. It is geared equally towards web 
+deployment as it is package publishing. Can also be used in tandem with 
+Lerna, so we could use lerna to manage the js/ts package portion and then 
+move to Turborepo once we start doing more web component stuff.
 
 #### Fufilment of criteria
 
