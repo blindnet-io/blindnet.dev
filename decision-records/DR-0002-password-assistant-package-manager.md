@@ -45,17 +45,16 @@ Chosen option: "{option 1}", because {justification. e.g., only option, which me
 
 ### [Lerna](https://lerna.js.org/)
 
-- Ownership and development was recently transferred to Nrwl, the company 
-  that created Nx.
+Lightweight tool for managing multiple js/ts packages in the same repository. Ownership and development was recently transferred to Nrwl, the company that created Nx.
+Works very well for building, testing, and publishing libraries. If we end up needing added functionality for the web component portion of the password assistant we could consider adding turborepo on top of Lerna.
 
 #### Fufilment of criteria
 
-1. No - does not natively support ts. However it's not to configure the build script to first compile ts.
+1. Somewhat - Must configure build scripts to first compile ts.
 2. Yes - very lightweight
 3. Yes
 4. Yes
-5. Somewhat - it is unclear what the future plan for Lerna is now that Nrwl 
-   has taken over.
+5. Somewhat - It appears that Lerna will continue to be developed and supported by Nrwl, so we don't have to worry about it being depricated in favour of Nx.
 
 ### [Nx](https://nx.dev/)
 
