@@ -50,12 +50,12 @@ Chosen option: "{option 1}", because {justification. e.g., only option, which me
 
 #### Fufilment of criteria
 
-1. No - does not natively support ts
+1. No - does not natively support ts. However it's not to configure the build script to first compile ts.
 2. Yes - very lightweight
 3. Yes
 4. Yes
 5. Somewhat - it is unclear what the future plan for Lerna is now that Nrwl 
-   has taken over, looks like it may be superseded by nx.
+   has taken over.
 
 ### [Nx](https://nx.dev/)
 
@@ -100,6 +100,7 @@ move to Turborepo once we start doing more web component stuff.
 
 ## Links <!-- optional -->
 
+- [Turborepo + Lerna](https://turborepo.org/docs/guides/migrate-from-lerna)
 - [Nx vs turborepo comparison](https://blog.theodo.com/2022/02/architecting-a-modern-monorepo/)
 
 <!-- markdownlint-disable-file MD013 -->
