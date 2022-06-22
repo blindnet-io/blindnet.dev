@@ -11,7 +11,8 @@ What monorepo package manager should we select for the password assistant reposi
 
 ## Decision Drivers <!-- optional -->
 
-1. Must support variety of languages, especially those which we currently or plan to use Typescript, Javascript, Scala
+1. Must support variety of languages, especially those which we plan to use in this monorepo
+   1. Typescript, Javascript, **_Scala?_**
 2. Should for equally well for small and large monorepos, i.e. ease of use and scalability
 3. Should support publishing to npm 
 4. Should support testing on an integration and single package level
@@ -64,7 +65,7 @@ Chosen option: "{option 1}", because {justification. e.g., only option, which me
 #### Fufilment of criteria
 
 1. Yes
-2. Yes
+2. Somewhat
 3. Yes
 4. Yes
 5. Yes
@@ -80,7 +81,7 @@ Chosen option: "{option 1}", because {justification. e.g., only option, which me
 
 #### Fufilment of criteria
 
-1. Yes|No|Somewhat
+1. No
 2. Yes|No|Somewhat
 3. Yes|No|Somewhat
 4. Yes|No|Somewhat
@@ -97,7 +98,7 @@ Chosen option: "{option 1}", because {justification. e.g., only option, which me
 
 #### Fufilment of criteria
 
-1. Yes|No|Somewhat
+1. Somewhat --> Determine 
 2. Yes|No|Somewhat
 3. Yes|No|Somewhat
 4. Yes|No|Somewhat
