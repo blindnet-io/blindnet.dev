@@ -39,9 +39,14 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           breadcrumbs: true,
+          editUrl: 'https://github.com/blindnet-io/blindnet.dev/edit/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
+        },
+        blog: {
+          path: 'blog',
+          editUrl: 'https://github.com/blindnet-io/blindnet.dev/edit/main/',
         },
       }),
     ],
