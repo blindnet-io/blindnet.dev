@@ -180,7 +180,10 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://blindnet.io" target="_blank" rel="noopener noreferrer">blindnet</a>.<br />Built with <a href="https://docusaurus.io/" target="_blank" rel="noopener noreferrer">Docusaurus</a>.<br />Illustrations by <a href="https://undraw.co" target="_blank" rel="noopener noreferrer">Katerina Limpitsouni</a>.`,
+        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://blindnet.io" target="_blank" rel="noopener noreferrer">blindnet</a>.<br />Built with <a href="https://docusaurus.io/" target="_blank" rel="noopener noreferrer">Docusaurus</a>.<br />Illustrations by <a href="https://undraw.co" target="_blank" rel="noopener noreferrer">Katerina Limpitsouni</a>.<br /><br />
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />
+        Except as otherwise noted, the content of this project is  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a><br />
+        Code samples and the website programming source code are licensed under the <a href="https://github.com/blindnet-io/blindnet.dev/blob/main/LICENSE">MIT</a> License.`
       },
       prism: {
         theme: lightCodeTheme,
