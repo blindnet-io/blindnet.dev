@@ -1,6 +1,6 @@
 ---
 title: Time for a Summer of Privacy!
-description: Big annoucements and opportunities to contribute.
+description: Big announcements and opportunities to contribute.
 slug: privacy-summer-time
 authors:
   - name: Noël Macé
