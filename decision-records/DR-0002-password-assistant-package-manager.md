@@ -2,8 +2,9 @@
 
 | Status      | {draft}                                                                                  |
 |:------------|:-----------------------------------------------------------------------------------------|
-| **PR #**    | [22](https://github.com/blindnet-io/blindnet.dev/pull/22)   |
-| **Sponsor** | First-name Last-name (email)                                                             |
+| **PR #**    | [22](https://github.com/blindnet-io/blindnet.dev/pull/22)                                |
+| **Author**  | Justin Boileau (justin@blindnet.io)                                                      |
+| **Sponsor** | Filip Radulovic (filip@blindnet.io)                                                      |
 
 ## Context and Problem Statement
 
@@ -21,10 +22,10 @@ What monorepo package manager should we select for the password assistant reposi
 
 ## Considered Options
 
-- Lerna
-- Nx
-- Pants
-- Turborepo
+- [Lerna](https://lerna.js.org/)
+- [Nx](https://nx.dev/)
+- [Pants](https://v1.pantsbuild.org/index.html)
+- [Turborepo](https://turborepo.org/)
 
 ## Decision Outcome
 
@@ -49,7 +50,7 @@ Works very well for building, testing, and publishing libraries. If we end up ne
 
 #### Fufilment of criteria
 
-**1. Must support languages which we plan to use in this monorepo: Typescript, Javascript, Web Components**
+**1. Must support languages which we plan to use in this monorepo: Typescript, Javascript, Web Components** - Fulfilled
     
 Technically Typescript support is not built in however it is simple to configure
 the build script to compile typescript.
@@ -80,7 +81,7 @@ nx warrants consideration.
 
 #### Fufilment of criteria
 
-**1. Must support languages which we plan to use in this monorepo: Typescript, Javascript, Web Components**
+**1. Must support languages which we plan to use in this monorepo: Typescript, Javascript, Web Components** - Fulfilled
 
 Like Lerna, can be configured to build Typescript.
 
