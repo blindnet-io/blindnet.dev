@@ -1,15 +1,15 @@
 # Selecting a package manager for the password assistant monorepo
 
-| Status      | {draft}                                                   |
-|:------------|:----------------------------------------------------------|
-| **PR #**    | [22](https://github.com/blindnet-io/blindnet.dev/pull/22) |
-| **Sponsor** | First-name Last-name (email)                              |
+| Status      | {draft}                                                                                  |
+|:------------|:-----------------------------------------------------------------------------------------|
+| **PR #**    | [22](https://github.com/blindnet-io/blindnet.dev/pull/22)   |
+| **Sponsor** | First-name Last-name (email)                                                             |
 
 ## Context and Problem Statement
 
 What monorepo package manager should we select for the password assistant repository?
 
-## Decision Drivers / Criteria
+## Decision Drivers / Criteria <!-- optional -->
 
 1. Must support languages which we plan to use in this monorepo: Typescript and 
    Javascript
@@ -41,8 +41,8 @@ Chosen option: **Lerna**, for the following reasons:
 
 ### [Lerna](https://lerna.js.org/)
 
-- Ownership and development was recently transferred to Nrwl, the company 
-  that created Nx.
+Lightweight tool for managing multiple js/ts packages in the same repository. Ownership and development was recently transferred to Nrwl, the company that created Nx.
+Works very well for building, testing, and publishing libraries. If we end up needing added functionality for the web component portion of the password assistant we could consider adding turborepo on top of Lerna.
 
 #### Fufilment of criteria
 
@@ -77,7 +77,7 @@ same company.
 ### [Nx](https://nx.dev/)
 
 Meets all criteria, however it's likely more than we need and may add 
-unnecessary overhead. 
+unnecessary overhead. For a much larger monorepo with multiple different languages, apps, and frameworks, nx warrants consideration.
 
 #### Fufilment of criteria
 
@@ -147,7 +147,7 @@ move to Turborepo once we start doing more web component work, if needed.
 4. Yes
 5. Yes
 
-## Links
+## Links <!-- optional -->
 
 - [Monorepo tool comparison](https://monorepo.tools/)
 - [Turborepo + Lerna](https://turborepo.org/docs/guides/migrate-from-lerna)
