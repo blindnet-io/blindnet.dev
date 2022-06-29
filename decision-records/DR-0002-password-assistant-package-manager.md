@@ -11,8 +11,7 @@ What monorepo package manager should we select for the password assistant reposi
 
 ## Decision Drivers / Criteria <!-- optional -->
 
-1. Must support languages which we plan to use in this monorepo: Typescript and 
-   Javascript
+1. Must support languages and technologies which we plan to use in this monorepo: Javascript, Typescript, Web Components
 2. The password assistant project will be relatively small, so we don't need 
    a tool built for large monorepos. It should not be cumbersome to use the 
    tool with a small monorepo.
@@ -36,6 +35,10 @@ Chosen option: **Lerna**, for the following reasons:
 - Excellent documentation
 - Leaves door open to transition to a more feature rich tool in the future, 
   such as Nx or Turborepo.
+  
+Initially, I was concerned that Lerna would not be suitable to developing web components. However
+further research has alleviated this concern and I believe it is the best choice. If our requirements change
+down the road, there is support from both Nx and Turborepo to transition to their tools from Lerna.
 
 ## Pros and Cons of the Options <!-- optional -->
 
@@ -46,10 +49,12 @@ Works very well for building, testing, and publishing libraries. If we end up ne
 
 #### Fufilment of criteria
 
-**1. Must support languages which we plan to use in this monorepo: Typescript and Javascript**
+**1. Must support languages which we plan to use in this monorepo: Typescript, Javascript, Web Components**
     
 Technically Typescript support is not built in however it is simple to configure
 the build script to compile typescript.
+
+Lerna can also be used for developing web components ([example](https://javascript.plainenglish.io/building-a-npm-library-with-web-components-using-lerna-rollup-and-jest-9f76f59348ba)).
 
 **2. Should not be cumbersome to use the tool with a small monorepo.** - Fulfilled
 
@@ -70,12 +75,12 @@ same company.
 ### [Nx](https://nx.dev/)
 
 Meets all criteria, however it's likely more than we need and may add 
-unnecessary overhead. For a much larger monorepo with multiple different languages, apps, and frameworks, nx warrants consideration.
+unnecessary overhead. For a much larger monorepo with multiple different languages, apps, and frameworks, 
+nx warrants consideration.
 
 #### Fufilment of criteria
 
-**1. Must support languages which we plan to use in this monorepo:
-Typescript and Javascript**
+**1. Must support languages which we plan to use in this monorepo: Typescript, Javascript, Web Components**
 
 Like Lerna, can be configured to build Typescript.
 
@@ -96,8 +101,7 @@ when compared to the other options, specifically Lerna.
 
 #### Fufilment of criteria
 
-**1. Must support languages which we plan to use in this monorepo:
-Typescript and Javascript** - Fulfilled
+**1. Must support languages which we plan to use in this monorepo: Typescript, Javascript, Web Components** - Fulfilled
 
 Same as previous two, can be configured to compile typescript.
 
@@ -112,7 +116,7 @@ Same as previous two, can be configured to compile typescript.
 ### [Turborepo](https://turborepo.org/)
 
 A monorepo tool mainly for js/ts projects. It is geared equally towards web 
-deployment as it is package publishing. Can also be used in tandem with 
+development/components as it is package publishing. Can also be used in tandem with 
 Lerna, so we could use lerna to manage the js/ts package portion and then 
 move to Turborepo once we start doing more web component work, if needed.
 
@@ -122,8 +126,7 @@ before considering it.
 
 #### Fufilment of criteria
 
-**1. Must support languages which we plan to use in this monorepo:
-Typescript and Javascript** - Fulfilled
+**1. Must support languages which we plan to use in this monorepo: Typescript, Javascript, Web Components** - Fulfilled
 
 Same as previous two, can be configured to compile typescript.
 
