@@ -1,21 +1,21 @@
 # Selecting a package manager for the password assistant monorepo
 
-| Status      | {draft}                                                                                  |
-|:------------|:-----------------------------------------------------------------------------------------|
-| **PR #**    | [22](https://github.com/blindnet-io/blindnet.dev/pull/22) (update when you have PR #)    |
-| **Sponsor** | First-name Last-name (email)                                                             |
+| Status      | {draft}                                                   |
+|:------------|:----------------------------------------------------------|
+| **PR #**    | [22](https://github.com/blindnet-io/blindnet.dev/pull/22) |
+| **Sponsor** | First-name Last-name (email)                              |
 
 ## Context and Problem Statement
 
 What monorepo package manager should we select for the password assistant repository?
 
-## Decision Drivers / Criteria <!-- optional -->
+## Decision Drivers / Criteria
 
 1. Must support languages which we plan to use in this monorepo: Typescript and 
    Javascript
 2. The password assistant project will be relatively small, so we don't need 
-   a tool built for large monorepos. Or at least it should not be cumbersome 
-   to use the tool with a smaller monorepo.
+   a tool built for large monorepos. It should not be cumbersome to use the 
+   tool with a small monorepo.
 3. Should support publishing to npm 
 4. Should support testing on an integration and single package level
 5. Should be actively supported
@@ -29,17 +29,13 @@ What monorepo package manager should we select for the password assistant reposi
 
 ## Decision Outcome
 
-Chosen option: "{option 1}", because {justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force {force} | … | comes out best (see below)}.
-
-### Positive Consequences <!-- optional -->
-
-- {e.g., improvement of quality attribute satisfaction, follow-up decisions required, …}
-- …
-
-### Negative Consequences <!-- optional -->
-
-- {e.g., compromising quality attribute, follow-up decisions required, …}
-- …
+Chosen option: **Lerna**, for the following reasons:
+- Meets all criteria
+- Lightweight
+- Easiest to use
+- Excellent documentation
+- Leaves door open to transition to a more feature rich tool in the future, 
+  such as Nx or Turborepo
 
 ## Pros and Cons of the Options <!-- optional -->
 
@@ -50,12 +46,33 @@ Chosen option: "{option 1}", because {justification. e.g., only option, which me
 
 #### Fufilment of criteria
 
-1. No - does not natively support ts. However it's not to configure the build script to first compile ts.
-2. Yes - very lightweight
-3. Yes
-4. Yes
-5. Somewhat - it is unclear what the future plan for Lerna is now that Nrwl 
-   has taken over.
+**1. Must support languages which we plan to use in this monorepo: 
+Typescript and Javascript**
+    
+Technically Typescript support is not built in however it is simple to configure
+the build script to compile typescript.
+
+**2. The password assistant project will be relatively small, so we don't need
+   a tool built for large monorepos. It should not be cumbersome to use the
+   tool with a small monorepo.**
+
+Yes - very lightweight
+
+**3. Should support publishing to npm**
+
+Yes
+
+**4. Should support testing on an integration and single package level**
+
+Yes
+
+**5. Should be actively maintained/supported**
+
+Somewhat - it is unclear what the future plan for Lerna is now that Nrwl
+has taken over but there is no indication that it is going away. If anything 
+this may be a benefit if we ever need to switch to nx, as there will likely be
+more support for making that transition as both tools are developed by the 
+same company.
 
 ### [Nx](https://nx.dev/)
 
@@ -64,31 +81,63 @@ unnecessary overhead.
 
 #### Fufilment of criteria
 
-1. Yes
-2. Somewhat
-3. Yes
-4. Yes
-5. Yes
+**1. Must support languages which we plan to use in this monorepo:
+Typescript and Javascript**
+
+Like Lerna, can be configured to build Typescript.
+
+**2. The password assistant project will be relatively small, so we don't need
+a tool built for large monorepos. It should not be cumbersome to use the
+tool with a small monorepo.**
+
+Intended more for large projects, which may make it cumbersome for our use case.
+
+**3. Should support publishing to npm**
+
+Yes
+
+**4. Should support testing on an integration and single package level**
+
+Yes
+
+**5. Should be actively maintained/supported**
+
+Yes
 
 ### [Pants](https://v1.pantsbuild.org/index.html)
 
-Lack of support for ts and seems overall less polished, essentially a worse 
-turborepo for our use case.
+Seems overall less polished, and offers no additional useful functionality 
+when compared to the other options, specifically Lerna.
 
 #### Fufilment of criteria
 
-1. No - Doesn't natively support ts
-2. Yes
-3. Yes
-4. Yes
-5. Yes
+**1. Must support languages which we plan to use in this monorepo:
+Typescript and Javascript**
+
+Same as previous two, can be configured to compile typescript.
+
+**2. Should not be cumbersome to use the tool with a small monorepo.**
+
+Intended more for large projects, which may make it cumbersome for our use case.
+
+**3. Should support publishing to npm**
+
+Yes
+
+**4. Should support testing on an integration and single package level**
+
+Yes
+
+**5. Should be actively maintained/supported**
+
+Yes
 
 ### [Turborepo](https://turborepo.org/)
 
 A monorepo tool mainly for js/ts projects. It is geared equally towards web 
 deployment as it is package publishing. Can also be used in tandem with 
 Lerna, so we could use lerna to manage the js/ts package portion and then 
-move to Turborepo once we start doing more web component stuff.
+move to Turborepo once we start doing more web component work, if needed.
 
 #### Fufilment of criteria
 
@@ -98,8 +147,9 @@ move to Turborepo once we start doing more web component stuff.
 4. Yes
 5. Yes
 
-## Links <!-- optional -->
+## Links
 
+- [Monorepo tool comparison](https://monorepo.tools/)
 - [Turborepo + Lerna](https://turborepo.org/docs/guides/migrate-from-lerna)
 - [Nx vs turborepo comparison](https://blog.theodo.com/2022/02/architecting-a-modern-monorepo/)
 
