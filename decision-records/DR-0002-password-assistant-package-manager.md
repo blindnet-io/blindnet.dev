@@ -39,7 +39,7 @@ Initially, I was concerned that Lerna would not be suitable to developing web co
 further research has alleviated this concern and I believe it is the best choice. If our requirements change
 down the road, there is support from both Nx and Turborepo to transition to their tools from Lerna.
 
-## Pros and Cons of the Options <!-- optional -->
+## Pros and Cons of the Options
 
 ### [Lerna](https://lerna.js.org/)
 
