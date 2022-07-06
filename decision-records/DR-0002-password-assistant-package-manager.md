@@ -13,9 +13,7 @@ What tooling should we use to manage several JS/TS packages in the same reposito
 ## Decision Drivers / Criteria
 
 1. Must support languages and technologies which we plan to use in this monorepo: Javascript, Typescript, Web Components
-2. The password assistant project will be relatively small, so we don't need 
-   a tool built for large monorepos. It should not be cumbersome to use the 
-   tool with a small monorepo.
+2. Must be as simple to use and configure as possible.
 3. Should support publishing to npm 
 4. Should support testing on an integration and single package level
 5. Should be actively supported
