@@ -16,7 +16,7 @@ What tooling should we use to manage several JS/TS packages in the same reposito
 2. Must be as simple to use and configure as possible.
 3. Should support publishing to npm 
 4. Should support testing on an integration and single package level
-5. Should be actively supported
+5. Should be actively supported by an active and large community.
 
 ## Considered Options
 
