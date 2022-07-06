@@ -1,4 +1,4 @@
-# Selecting a package manager for the password assistant monorepo
+# Selecting a tool to manage multiple JS/TS packages in the same repository
 
 | Status      | {draft}                                                                                  |
 |:------------|:-----------------------------------------------------------------------------------------|
