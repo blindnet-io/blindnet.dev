@@ -34,10 +34,6 @@ Chosen option: **Lerna**, for the following reasons:
 - Excellent documentation
 - Leaves door open to transition to a more feature rich tool in the future, 
   such as Nx or Turborepo.
-  
-Initially, I was concerned that Lerna would not be suitable to developing web components. However
-further research has alleviated this concern and I believe it is the best choice. If our requirements change
-down the road, there is support from both Nx and Turborepo to transition to their tools from Lerna.
 
 ## Pros and Cons of the Options
 
