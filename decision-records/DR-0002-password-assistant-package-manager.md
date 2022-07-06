@@ -4,7 +4,7 @@
 |:------------|:-----------------------------------------------------------------------------------------|
 | **PR #**    | [22](https://github.com/blindnet-io/blindnet.dev/pull/22)                                |
 | **Author**  | Justin Boileau (justin@blindnet.io)                                                      |
-| **Sponsor** | Filip Radulovic (filip@blindnet.io)                                                      |
+| **Sponsor** | Noël Macé (noel@blindnet.io)                                                      |
 
 ## Context and Problem Statement
 
