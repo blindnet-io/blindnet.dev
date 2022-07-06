@@ -1,6 +1,6 @@
 # Selecting a tool to manage multiple JS/TS packages in the same repository
 
-| Status      | {draft}                                                                                  |
+| Status      | accepted                                                                                |
 |:------------|:-----------------------------------------------------------------------------------------|
 | **PR #**    | [22](https://github.com/blindnet-io/blindnet.dev/pull/22)                                |
 | **Author**  | Justin Boileau (justin@blindnet.io)                                                      |
