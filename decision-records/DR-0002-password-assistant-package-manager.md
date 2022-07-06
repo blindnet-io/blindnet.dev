@@ -8,7 +8,7 @@
 
 ## Context and Problem Statement
 
-What monorepo package manager should we select for the password assistant repository?
+What tooling should we use to manage several JS/TS packages in the same repository?
 
 ## Decision Drivers / Criteria
 
