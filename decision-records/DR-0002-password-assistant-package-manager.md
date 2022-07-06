@@ -10,7 +10,7 @@
 
 What monorepo package manager should we select for the password assistant repository?
 
-## Decision Drivers / Criteria <!-- optional -->
+## Decision Drivers / Criteria
 
 1. Must support languages and technologies which we plan to use in this monorepo: Javascript, Typescript, Web Components
 2. The password assistant project will be relatively small, so we don't need 
