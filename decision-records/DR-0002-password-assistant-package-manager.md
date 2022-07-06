@@ -24,7 +24,7 @@ What tooling should we use to manage several JS/TS packages in the same reposito
 - [Nx](https://nx.dev/)
 - [Pants](https://v1.pantsbuild.org/index.html)
 - [Turborepo](https://turborepo.org/)
-
+- custom npm run scripts with [npm-run-all](https://github.com/mysticatea/npm-run-all) and/or [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/) (see [modern-web](https://github.com/modernweb-dev/web) and [open-wc](https://github.com/open-wc/open-wc) for examples)
 ## Decision Outcome
 
 Chosen option: **Lerna**, for the following reasons:
