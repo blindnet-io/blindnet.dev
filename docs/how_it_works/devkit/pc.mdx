@@ -33,18 +33,18 @@ For events of `event-type` `SERVICE-END` or `RELATIONSHIP-END`:
     > A Data reference can indicate a particular user account, contract, particular medical or legal file especially when the same Data Subject may have several ongoing files with the same Organization
     - The Privacy Compiler looks for Triples in the Eligible Privacy Scope that have that reference
     - Removes the reference and to it associated Legal Base
-    - Removes all the Triples that are left with no active Legal Base ([intersection](#intersection) operation)
+    - Removes from the Eligible Privacy Scope all the Triples that are left with no active Legal Base
 - when no `data-reference` is given:
     - The Privacy Compiler looks for all Triples associated with the `legal-base` of the Legal Base Event
     - Removes the Legal Base in question
-    - Removes all the Triples that are left with no active Legal Base ([intersection](#intersection) operation)
+    - Removes from the Eligible Privacy Scope all the Triples that are left with no active Legal Base
 
 ### `REVOKE-CONSENT` Privacy Requests
 
 The Privacy Compiler looks for the [Consent Restriction](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#consent-restriction) associated with the [Privacy Request](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-request).
 It retrieves `consent-ids` from it.
 Then, Privacy Compiler finds all the Triples associated to those consents, and removes those associations.
-Finally, it removes all the Triples that are left with no active Legal Base ([intersection](#intersection) operation) as a consequence of consent removal.
+Finally, it removes from the Eligible Privacy Scope all the Triples that are left with no active Legal Base as a consequence of consent removal.
 
 Alternatively, `REVOKE-CONSENT` Privacy Requests can be associated with a [Privacy Scope Restriction](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-scope).
 In this case, the Privacy Compiler alters all existing Consents.
@@ -52,6 +52,23 @@ The `scope` of every consent is replaced by the [intersection](#intersection) of
 As a result, new Consents are made and old ones removed.
 Finally, the Privacy Compiler removes all the Triples that are left with no active Legal Base ([intersection](#intersection) operation) as a consequence of consent change.
 See [Operations over Consents](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/expected-behavior.md#operations-over-consents) for more details.
+
+### `OBJECT` Privacy Requests
+The Privacy Compiler looks for a [Privacy Scope Restriction](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-scope) associated with the request.
+It removes from the from the Eligible Privacy Scope all the Triples found in the [intersection](#intersection) of the Eligible Privacy Scope and the scope of the given Privacy Scope Restriction.
+The removal does not apply to Triples associated with `NECESSARY` or `CONTRACT` Legal Bases.
+
+If there are any Consents, the Privacy Compiler proceeds with them the same way as with `REVOKE-CONSENT` Privacy Requests associated to a Privacy Scope Restriction.
+See [Operations over Consents](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/expected-behavior.md#operations-over-consents) for more details.
+
+### `RESTRICT` Privacy Requests
+The Privacy Compiler looks for a [Privacy Scope Restriction](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-scope) associated with the request.
+The Eligible Privacy Scope becomes the [intersection](#intersection) of the Eligible Privacy Scope and the scope of the given Privacy Scope Restriction.
+The trimming of Eligible Privacy Scope does not apply to Triples associated with `NECESSARY` or `CONTRACT` Legal Bases.
+
+If there are any Consents, the Privacy Compiler changes them to only leave the parts of their scopes found in the [intersection](#intersection) of the Eligible Privacy Scope and the scope of the given Privacy Scope Restriction.
+See [Operations over Consents](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/expected-behavior.md#operations-over-consents) for more details.
+
 
 ## Privacy Algebra
 
