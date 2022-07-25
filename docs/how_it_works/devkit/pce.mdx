@@ -17,10 +17,18 @@ To Configure your Privacy Computation Engine prepare the following information:
 | A link to your Privacy Policy | `URL` | `https://blindnet.io/privacy` |
 | A general description of the technical and organisational security measures referred to in Article 32 of GDPR | `string` | `We use administrative, technical, and physical safeguards to protect your personal data, taking into account the nature of the personal data and the processing, and the threats posed.`|
 | Countries where data servers are located (included those of the processors who are processing data on your behalf) | `string` | `France` |
+| A table of data categories, purposes, legal bases, ... | `Processing Record` | see bellow |
+| A table of data partners in data transfers, and data categories concerned | `Transfer Record` | see bellow |
+| A list of retention policies | [Retention Policies](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#retention-policy) | `data-categories`:`CONTACT`; `policy-type`:`NO-LONGER-THAN`, `duration`: `180 days`, `after`: `RELATIONSHIP-END` |
 
+A **Processing Record** has:
+-
 
+A **Transfer Record** has:
+-
 
-
+A **R** has:
+-
 
 ## Using your Privacy Computation Engine
 
