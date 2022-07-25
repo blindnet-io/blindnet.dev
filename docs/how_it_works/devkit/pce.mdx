@@ -17,10 +17,11 @@ To Configure your Privacy Computation Engine prepare the following information:
 | A link to your Privacy Policy | `URL` | `https://blindnet.io/privacy` |
 | A general description of the technical and organisational security measures referred to in Article 32 of GDPR | `string` | `We use administrative, technical, and physical safeguards to protect your personal data, taking into account the nature of the personal data and the processing, and the threats posed.`|
 | Countries where data servers are located (included those of the processors who are processing data on your behalf) | `string` | `France` |
-| A table of data categories, purposes, legal bases, ... | `Processing Record` | see bellow |
-| A list of retention policies | [Retention Policies](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#retention-policy) | `data-categories`:`CONTACT`; `policy-type`:`NO-LONGER-THAN`, `duration`: `180 days`, `after`: `RELATIONSHIP-END` |
+| A list of Retention Policies | [Retention Policies](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#retention-policy) | `data-categories`:`CONTACT`; `policy-type`:`NO-LONGER-THAN`, `duration`: `180 days`, `after`: `RELATIONSHIP-END` |
 | A list of Provenances | [Provenance](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#provenance) | `provenance-category`:`USER.DATA-SUBJECT`, `system`: `id of this system to which the user gives their e-mail address` |
 | A list of Legal Bases | [Legal Bases](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base) | `legal-base`: `CONTRACT` with no `scope` specified meaning it refers to all data, processing and purposes |
+| A table of data categories, purposes, legal bases, ... | `Processing Record` | see bellow |
+| A table of data transfers, ... | `Transfer Record` | see bellow |
 
 A **Processing Record** has:
 - Identification of the data field in your database. Table/Object and field/property. E.g. `USER`, `e_mail_address`
@@ -38,6 +39,10 @@ It is possible to define serval records for one Data Category, e.g.
 The records given in the example correspond to the situation of a System that is processing the user's e-mail address for purposes of providing services to the user and for compliance with regulation (KYC) under `CONTRACT` legal base.
 The same System is sending marketing and advertising e-mail to the user under `LEGITIMATE-INTEREST` assuming that as long as the user don't not object they might be interested in additional services.
 The System only shares the e-mail with partners under `CONSENT` legal base.
+
+A **Transfer Record** has:
+- One or more data categories being transferred outside of the system e.g. `CONTACT.EMAIL`
+- One or more Systems to which transfer is made (their IDs (URLs) and user-readable names)
 
 Multiple provenance objects can also be provided for the same data category. Consider the following examples:
 
