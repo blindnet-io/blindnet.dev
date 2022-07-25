@@ -8,7 +8,18 @@ It needs to know about:
 - Mappings of your data structures to [PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md) Data Categories
 - Few choices you have to make about when to authenticate the user (before or after they make a Privacy Request), and when to deliver automatic responses and when to wait for validation
 
-**TBD** - specify the format in which this is submitted
+To Configure your Privacy Computation Engine prepare the following information:
+| Information | Format | Example|
+| :----: | :-----: | :--------|
+| Name and contact details of your Organization and its representative | `string` | `Blindnet Inc. hello@blindnet.io Vuk Janosevic`|
+| Identity and contact of a Data Protection Officer - if you are using blindnet devkit Privacy Request Builder, include the URL where you are hosting the interface | `string` | `Vuk Janosevic, www.blindnet.io/privacy-request-builder`|
+| If you are processing data on behalf of someone else (a Controller), then names, contact details of all such Controllers their representatives and the data protection officers | `string` | see above |
+| A link to your Privacy Policy | `URL` | `https://blindnet.io/privacy` |
+| A general description of the technical and organisational security measures referred to in Article 32 of GDPR | `string` | `We use administrative, technical, and physical safeguards to protect your personal data, taking into account the nature of the personal data and the processing, and the threats posed.`|
+| Countries where data servers are located (included those of the processors who are processing data on your behalf) | `string` | `France` |
+
+
+
 
 
 ## Using your Privacy Computation Engine
