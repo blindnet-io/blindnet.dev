@@ -21,6 +21,9 @@ With every PRIV event, the Privacy Compiler calculated the change to be made to 
 
 The Eligible Privacy Scope becomes the [union](#union) of the previous Eligible Privacy Scope and of the Privacy Scope given in the `scope` property of the [Consent](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#consent).
 
+> **Note**
+> If the User previously made an `OBJECT` or `RESTRICT` request reducing the Eligible Privacy Scope, giving a new Consent is a way to re-include (previously excluded) triples in the Eligible Privacy Scope.
+
 ### Legal Base Event
 
 For events of `event-type` `SERVICE-START` or `RELATIONSHIP-START`:
@@ -42,33 +45,42 @@ For events of `event-type` `SERVICE-END` or `RELATIONSHIP-END`:
 ### `REVOKE-CONSENT` Privacy Requests
 
 The Privacy Compiler looks for the [Consent Restriction](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#consent-restriction) associated with the [Privacy Request](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-request).
-It retrieves `consent-ids` from it.
+It retrieves `consent-ids` from it, and sets the `revoked` property of those consents to `true`.
 Then, Privacy Compiler finds all the Triples associated to those consents, and removes those associations.
 Finally, it removes from the Eligible Privacy Scope all the Triples that are left with no active Legal Base as a consequence of consent removal.
 
 Alternatively, `REVOKE-CONSENT` Privacy Requests can be associated with a [Privacy Scope Restriction](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-scope).
-In this case, the Privacy Compiler alters all existing Consents.
-The `scope` of every consent is replaced by the [intersection](#intersection) of the previous scope and of the Privacy Scope of the Privacy Scope Restriction of the Request.
-As a result, new Consents are made and old ones removed.
-Finally, the Privacy Compiler removes all the Triples that are left with no active Legal Base ([intersection](#intersection) operation) as a consequence of consent change.
-See [Operations over Consents](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/expected-behavior.md#operations-over-consents) for more details.
+In this case, for every triple in the [intersection](#intersection) of the previous Eligible Privacy Scope and of the Privacy Scope of the Privacy Scope Restriction of the Request, the Privacy Compiler removes the association with `CONSENT` legal base.
+
+Finally, the Privacy Compiler removes all the Triples that are left with no active Legal Base as a consequence of consent change.
 
 ### `OBJECT` Privacy Requests
 The Privacy Compiler looks for a [Privacy Scope Restriction](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-scope) associated with the request.
-It removes from the from the Eligible Privacy Scope all the Triples found in the [intersection](#intersection) of the Eligible Privacy Scope and the scope of the given Privacy Scope Restriction.
-The removal does not apply to Triples associated with `NECESSARY` or `CONTRACT` Legal Bases.
+For every triple found in the [intersection](#intersection) of the Eligible Privacy Scope and the scope of the given Privacy Scope Restriction, the Privacy Compiler removes any association of such triples with `CONSENT`, `LEGITIMATE_INTEREST` Legal Bases.
+The `NECESSARY` or `CONTRACT` Legal Bases are kept.
 
-If there are any Consents, the Privacy Compiler proceeds with them the same way as with `REVOKE-CONSENT` Privacy Requests associated to a Privacy Scope Restriction.
-See [Operations over Consents](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/expected-behavior.md#operations-over-consents) for more details.
+> **Note**
+> If the User wants to remove Triples linked to `CONTRACT` they need to terminate the contract, generating a `SERVICE-END` [Legal Base Event](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base-event).
+> No Privacy Request coming from the Data Subject can alter the Triples included in the Privacy Eligible Scope by `NECESSARY` Legal Base.
+
+Finally, the Privacy Compiler removes all the Triples that are left with no active Legal Base as a consequence of consent change.
+
+The consequences of `OBJECT` requests are long-lasting, and affect the future of Eligible Privacy Scope.
+Triples concerned by the an `OBJECT` Privacy Request, after it has been made, can't re-enter Eligible Privacy Scope by `LEGITIMATE INTEREST` regardless of any future `LEGITIMATE INTEREST` Legal Base Event.
 
 ### `RESTRICT` Privacy Requests
 The Privacy Compiler looks for a [Privacy Scope Restriction](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-scope) associated with the request.
-The Eligible Privacy Scope becomes the [intersection](#intersection) of the Eligible Privacy Scope and the scope of the given Privacy Scope Restriction.
-The trimming of Eligible Privacy Scope does not apply to Triples associated with `NECESSARY` or `CONTRACT` Legal Bases.
+For every triple found in the Eligible Privacy Scope and not found in the scope of the given Privacy Scope Restriction, the Privacy Compiler removes any association of such triples with `CONSENT`, `LEGITIMATE_INTEREST` Legal Bases.
+The associations with `NECESSARY` or `CONTRACT` Legal Bases remain unaffected.
 
-If there are any Consents, the Privacy Compiler changes them to only leave the parts of their scopes found in the [intersection](#intersection) of the Eligible Privacy Scope and the scope of the given Privacy Scope Restriction.
-See [Operations over Consents](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/expected-behavior.md#operations-over-consents) for more details.
+> **Note**
+> If the User wants to remove Triples linked to `CONTRACT` they need to terminate the contract, generating a `SERVICE-END` [Legal Base Event](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base-event).
+> No Privacy Request coming from the Data Subject can alter the Triples included in the Privacy Eligible Scope by `NECESSARY` Legal Base.
 
+Finally, the Privacy Compiler removes all the Triples that are left with no active Legal Base as a consequence of consent change.
+
+The consequences of `RESTRICT` requests are long-lasting, and affect the future of Eligible Privacy Scope.
+Triples not included in the scope of a `RESTRICT` Privacy Request, after it has been made, can't re-enter Eligible Privacy Scope by `LEGITIMATE INTEREST` regardless of any future `LEGITIMATE INTEREST` Legal Base Event.
 
 ## Privacy Algebra
 
