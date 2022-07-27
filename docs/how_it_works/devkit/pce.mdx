@@ -1,0 +1,76 @@
+# How Privacy Computation Engine Works
+
+## Configuring your Privacy Computation Engine
+
+You must first configure the Privacy Computation Engine in order to make the most of it.
+It needs to know about:
+- General information about your Organization and its' data processing policies (Equivalent to a RoPA - Record of Processing Activities)
+- Mappings of your data structures to [PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md) Data Categories
+- Few choices you have to make about when to authenticate the user (before or after they make a Privacy Request), and when to deliver automatic responses and when to wait for validation
+
+To Configure your Privacy Computation Engine prepare the following information:
+| Information | Format | Example|
+| :----: | :-----: | :--------|
+| Name and contact details of your Organization and its representative | `string` | `Blindnet Inc. hello@blindnet.io Vuk Janosevic`|
+| Identity and contact of a Data Protection Officer - if you are using blindnet devkit Privacy Request Builder, include the URL where you are hosting the interface | `string` | `Vuk Janosevic, www.blindnet.io/privacy-request-builder`|
+| If you are processing data on behalf of someone else (a Controller), then names, contact details of all such Controllers their representatives and the data protection officers | `string` | see above |
+| A link to your Privacy Policy | `URL` | `https://blindnet.io/privacy` |
+| A general description of the technical and organisational security measures referred to in Article 32 of GDPR | `string` | `We use administrative, technical, and physical safeguards to protect your personal data, taking into account the nature of the personal data and the processing, and the threats posed.`|
+| Countries where data servers are located (included those of the processors who are processing data on your behalf) | `array<string>` | [`France`, `USA`] |
+| A list of Data Consumer categories| `string`| `Blindnet account managers, and Blindnet's DPO`|
+| A mapping of your data model fields and PRIV Data Category `selectors` | `array<TABLE.column:selector>` | [`USER.name`:`NAME.FIRST-NAME`, `USER.email`:`CONTACT.EMAIL`]|
+| A list of Retention Policies | [Retention Policies](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#retention-policy) | `data-categories`:`CONTACT`; `policy-type`:`NO-LONGER-THAN`, `duration`: `180 days`, `after`: `RELATIONSHIP-END` |
+| A list of Provenances | [Provenance](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#provenance) | `provenance-category`:`USER.DATA-SUBJECT`, `system`: `id of this system to which the user gives their e-mail address` |
+| A list of Legal Bases | [Legal Bases](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base) | `legal-base`: `CONTRACT` with no `scope` specified meaning it refers to all data, processing and purposes |
+| A table of data categories, purposes, legal bases, ... | `Processing Record` | see bellow |
+| A table of data transfers | `Transfer Record` | see bellow |
+
+Based on this information the Privacy Computation Engine creates a set of **Processing Records** that contain:
+- Identification of the data field in your database. Table/Object and field/property. E.g. `USER`, `e_mail_address`
+- A [Privacy Scope](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-scope) e.g. (`CONTACT.EMAIL` x {`COLLECTION`, `STORING`, `USING`} x {`SERVICES`,`COMPLIANCE`})
+- One or more [Legal Bases](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base) e.g. a legal base of type `CONTRACT`
+
+It is possible to end-up having serval records for one Data Category, e.g.
+
+| Data in database | Privacy Scope | Legal bases |
+| :----: | :-----: | :--------|
+| table:`USER` field:`name` | `NAME.FIRST-NAME` x {`COLLECTION`, `STORING`, `USING`} x {`SERVICES`,`COMPLIANCE`} | `CONTRACT` |
+| table:`USER` field:`e_mail_address` | `CONTACT.EMAIL` x {`COLLECTION`, `STORING`, `USING`} x {`SERVICES`,`COMPLIANCE`} | `CONTRACT` |
+| table:`USER` field:`e_mail_address` | `CONTACT.EMAIL` x `USING` x {`MARKETING`,`ADVERTISING`} | `LEGITIMATE-INTEREST`|
+| table:`USER` field:`e_mail_address` | `CONTACT.EMAIL` x `SHARING` x {`ADVERTISING`} | `CONSENT`|
+
+The records given in the example correspond to the situation of a System that is processing the user's e-mail address for purposes of providing services to the user and for compliance with regulation (KYC) under `CONTRACT` legal base.
+The same System is sending marketing and advertising e-mail to the user under `LEGITIMATE-INTEREST` assuming that as long as the user don't not object they might be interested in additional services.
+The System only shares the e-mail with partners under `CONSENT` legal base.
+
+A **Transfer Record** has:
+- One or more data categories being transferred outside of the system e.g. `CONTACT.EMAIL`
+- One or more Systems to which transfer is made (their IDs (URLs) and user-readable names)
+
+Multiple provenance objects can also be provided for the same data category. Consider the following examples:
+
+| Provenance object | `data-category` | `provenance-category` | `system` |
+| :----: | :-----: | :-----: | :--------|
+| provenance1 | `CONTACT.EMAIL` | `USER.DATA-SUBJECT` | `https://thissystem.com` |
+| provenance2 | `CONTACT.EMAIL` | `TRANSFERRED` | `https://linkedin.com` |
+| provenance2 | `BEHAVIOR.CONNECTION` | `DERIVED` | `https://thissystem.com` |
+| provenance3 | `PROFILING` | `TRANSFERRED` | `https://marketing-data-exchange.com` |
+
+The records given in the example correspond to the situation of a System that collect the e-mail directly from the user (proveance1),
+but also, since the System uses OpenID and allow login through Linkedin, it may gain knowledge of e-mail from Linkedin (provenance2).
+The system generates connection data, every time the user connects to it.
+It obtains profiling data about the user for a marketing data exchange platform, so that it can better target the user with marketing offers.
+
+## Using your Privacy Computation Engine
+
+The Privacy Computation Engine (PCE) processes a timeline of [PRIV Events](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#events).
+Feed anything that is a PRIV event (e.g. Consent, Legal Base Event, Privacy Request) to your PCE.
+The PCE will order them in a timeline.
+
+<img height="300" src="./img/PCEexplained.gif">
+
+Processing the timeline of PRIV events, the PCE will deliver recommendations of [Privacy Request Responses](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-request-response)
+
+The PCE decides on the responses to recommend by calculating, at each moment an Eligible Privacy Scope.
+The component responsible for translating PRIV events into operations over the Eligible Privacy Scope is called Privacy Compiler.
+See [How Privacy Compiler Works](./pc.mdx) to learn more.
