@@ -1,0 +1,192 @@
+---
+sidebar_position: 2
+title: Quick Start
+tags: [quickstart, tutorial]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Quick Start Guide
+
+Try out **blindnet devkit Encryption and Access Management Engine** quickly and easily.
+
+:::info
+While reading this quickstart guide you can download and follow the source code for a simple React front-end app with integrated blindnet client SDK from [here](https://github.com/blindnet-io/blindnet-client-js-example).
+:::
+
+In this quickstart guide, you will learn how to [encrypt](./guides/encrypt) and [decrypt](./guides/decrypt) a file using the [blindnet client SDK](./guides/introduction).  
+We assume two users exist - a user we know, **Alice**, and an anonymous user **Bob**. For the sake of simplicity we'll act as both Alice and Bob. We will register a known user Alice to blindnet, encrypt a file to her as an anonymous user Bob, and then decrypt the file as Alice.
+
+You will learn how to:
+
+- set-up the blindnet devkit
+- register Alice to blindnet
+- encrypt a file as Bob
+- decrypt a file as Alice
+
+### Before you start
+
+Obtain blindnet authentication data. To authenticate to blindnet, your application needs the [application id](./glossary#application-id) and [application key](./glossary#application-key).
+**Application key** is a cryptographic secret key which is used to sign the authentication tokens and must be kept secret (and accessible by your server).
+
+You can get the application id and application key using the blindnet [dashboard](https://dashboard.blindnet.io) after you create a new application.
+
+:::info
+For the sake of simplicity, you can skip creating a new application and just use the following application id and key
+
+id: `3544e7cd-64a9-41b7-88dc-397bfdaeeaf3`  
+key: `zB5IiU0xzkVdsH4NMXxrF90ZISL5kJnTHlt7h/Wbi/qVhch7Fw8J5AQ5j2PazaG5q114uApZRH4X1/kTKVx0Cw==`
+
+Be sure not to use those in production environments!
+:::
+
+## **STEP 1**: Set-up the SDK
+
+In this guide, only the [client SDK](./guides/introduction) is needed. To generate the authentication tokens, we will use a [dedicated client library](https://www.npmjs.com/package/@blindnet/token-generator). In your production environment, you will need both **client** and **server SDKs** and [generate](./guides/managing_users_access#creating-user-tokens) the tokens on the server side.
+
+### Installation
+
+To install the blindnet devkit and the token generator
+
+<Tabs groupId="lang">
+<TabItem value="js" label="JavaScript" default>
+
+```bash
+npm i -S @blindnet/sdk-javascript @blindnet/token-generator
+```
+
+</TabItem>
+</Tabs>
+
+### Import
+
+Import the library to your project with
+
+<Tabs groupId="lang">
+<TabItem value="js" label="JavaScript" default>
+
+```js
+import { Blindnet } from '@blindnet/sdk-javascript';
+import { createTempUserToken, createUserToken } from '@blindnet/token-generator';
+```
+
+</TabItem>
+</Tabs>
+
+### Generate a user token for **Alice**
+
+[Tokens](./glossary#authentication-token) are used to authenticate the users of your application to blindnet. They can be used multiple times and should be regenerated when they expire using the same method.
+
+:::caution
+We use the `token generation` library to generate the tokens. It should be only used for testing purposes and tokens should be [generated on the server](./guides/managing_users_access#creating-user-tokens) in production environment, after your user is authenticated.
+:::
+
+Use the [application id](./glossary#application-id) and key you obtained in [Before you start](#before-you-start) section.
+
+<Tabs groupId="lang">
+<TabItem value="js" label="JavaScript" default>
+
+```js
+const appId = 'your_application_id';
+const appKey = 'your_application_key';
+const aliceId = 'alice';
+const groupId = 'test-group';
+const token = await createUserToken(aliceId, groupId, appId, appKey);
+```
+
+</TabItem>
+</Tabs>
+
+Specify the [testing endpoint](./glossary#testing-endpoint) and [initialize](./guides/installation#initialization) the library for Alice
+
+<Tabs groupId="lang">
+<TabItem value="js" label="JavaScript" default>
+
+```js
+const endpoint = 'https://test.blindnet.io';
+const blindnet = Blindnet.init(token, endpoint);
+```
+
+</TabItem>
+</Tabs>
+
+### Connect Alice to blindnet
+
+Blindnet can encrypt files with a particular destination (list of users or a [user group](./glossary#user-groups)) in mind. So in order to start encrypting, you first need to have some users (Alice in this case) that you've connected to blindnet.
+
+To connect a user to blindnet, a [secret value](./glossary#secret-value) has to be provided. That value must only be known
+by the user (e.g. user's password). In that case, **it's important not to use the same value to log-into your system and connect to blindnet** for which we provide a method [deriveSecrets](./guides/managing_users_access#splitting-secrets).
+
+<Tabs groupId="lang">
+<TabItem value="js" label="JavaScript" default>
+
+```js
+const { appSecret, blindnetSecret } = await Blindnet.deriveSecrets(secret);
+await blindnet.connect(blindnetSecret);
+```
+
+</TabItem>
+</Tabs>
+
+:::info
+You can use `appSecret` as a password for the user to log-into your system.
+:::
+
+## **STEP 2**: Encrypt a file
+
+After Alice has connected to blindnet, data can be [encrypted](./guides/encrypt) for her.
+We will simulate an [anonymous](./glossary#anonymous-user) user Bob encrypting a file for Alice.
+
+### Initialize SDK for Bob
+
+You need to initialize the library with the [temporary token](./glossary#temp-user-token) in order to encrypt the data. Pass the id of the group Alice belongs to in order to give permission to encrypt data for her.
+
+<Tabs groupId="lang">
+<TabItem value="js" label="JavaScript" default>
+
+```js
+const token = await createTempUserToken(groupId, appId, appKey);
+const blindnet = Blindnet.init(token, endpoint);
+```
+
+</TabItem>
+</Tabs>
+
+
+### Encrypt a file
+
+Obtain a file from the `<input type="file" id="file-pick>` `HTML` element and pass it to the [encrypt](./guides/encrypt#encrypt) method. Add Alice as a recipient.
+
+<Tabs groupId="lang">
+<TabItem value="js" label="JavaScript" default>
+
+```js
+const file = document.getElementById('file-pick').files[0];
+const { encryptedData } = await blindnet.capture(data).forUser(aliceId).encrypt();
+```
+
+</TabItem>
+</Tabs>
+
+`encryptedData` should be stored by you.
+
+## **STEP 3**: Decrypt a file
+
+To [decrypt](./guides/decrypt#decrypt) a file, you only need `encryptedData`.
+
+<Tabs groupId="lang">
+<TabItem value="js" label="JavaScript" default>
+
+```js
+const { data, metadata } = await blindnet.decrypt(encryptedData);
+```
+
+There is a convenient library to save files [file-saver](https://github.com/eligrey/FileSaver.js).
+
+```js
+saveAs(data, metadata.name);
+```
+
+</TabItem>
+</Tabs>
