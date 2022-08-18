@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkblindnet_dev=self.webpackChunkblindnet_dev||[]).push([[8047],{1601:function(e){e.exports=JSON.parse('{"permalink":"/blog/tags/privacy","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

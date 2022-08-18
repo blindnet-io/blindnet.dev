@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://blindnet.dev/blog</id>
+    <title>blindnet.dev Blog</title>
+    <updated>2022-06-21T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://blindnet.dev/blog"/>
+    <subtitle>blindnet.dev Blog</subtitle>
+    <icon>https://blindnet.dev/img/favicon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[Time for a Summer of Privacy!]]></title>
+        <id>privacy-summer-time</id>
+        <link href="https://blindnet.dev/blog/privacy-summer-time"/>
+        <updated>2022-06-21T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Big announcements and opportunities to contribute.]]></summary>
+        <content type="html"><![CDATA[<p>It's Summer Time!
+The Summer Solstice!
+The first day of the season!
+The longest day of the year!</p><p>We have worked a lot throughout the spring to improve our community experience and working processes.
+So we have a lot of stuff to announce to you today.</p><p>Let's see what we'll do together during this new season, and all the new cool stuff we realized for that.</p><p><img loading="lazy" alt="Summer Time" src="/assets/images/summer-glasses-4d8679dd20b958de997703253877f82c.jpg" width="1920" height="1280" class="img_ev3q"></p><p>At blindnet, all teams recently synchronized their schedule to match summer dates, from June 21st to September 23rd.</p><p>This is what we call the <strong><em>Summer of Privacy</em></strong>.</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="openly-chilling">Openly Chilling<a class="hash-link" href="#openly-chilling" title="Direct link to heading">​</a></h2><p>As summer is a time for chilling and relaxing, we don't want this period to be stressful in any way.</p><p>After all, Summer has always been a time for opening up, and meeting new people.</p><p>And we stand for an Open approach to privacy, where we both give people better control over their data and more access to ours.</p><p>An approach we are backing up with our own <a href="https://github.com/blindnet-io/openness-framework" target="_blank" rel="noopener noreferrer">Openness Framework</a>, defining every aspect of our working process.</p><p>Now, every staff member at blindnet, including sales people and the CEO, are using GitHub to handle every aspect of team work.
+Doing so, we're making sure to share as many pieces of information as possible in the Open, by default.</p><p>So, as we have a lot of projects on our plate, we'll conduct all of them <strong>with you</strong>, giving you lots of opportunities to contribute.</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="building-a-new-devkit-together">Building a New DevKit Together<a class="hash-link" href="#building-a-new-devkit-together" title="Direct link to heading">​</a></h2><p>First, we are currently all working on building an <a href="https://github.com/blindnet-io/product-management/tree/main/refs/high-level-conceptualization" target="_blank" rel="noopener noreferrer">ambitious new set of features</a> for blindnet devkit.
+Leading us to a <a href="https://github.com/blindnet-io/product-management/tree/main/refs/high-level-architecture" target="_blank" rel="noopener noreferrer">completely redesigned architecture</a> and <a href="https://github.com/blindnet-io/product-management/pull/659" target="_blank" rel="noopener noreferrer">schematics</a>.</p><p>But we know that we don't know everything.
+And we especially want to avoid making wrong assumption about what <strong>you</strong>, the developers, need.</p><p>We especially want you to tell us what you'd expect from such ambitious privacy dev tools.</p><p>What problems are you facing when embracing Privacy-by-Design?\
+What are you worst pain points when enforcing privacy regulations (e.g. GDPR)?\
+What do you need from an app to be sure to sufficiently trust it?</p><p>Here, we already give you several opportunities to do that:</p><ol><li>our recently opened <a href="https://join.slack.com/t/blindnet/shared_invite/zt-1arqlhqt3-A8dPYXLbrnqz1ZKsz6ItOg" target="_blank" rel="noopener noreferrer">Slack Workspace</a>, to chat with the blindnet community and teams;</li><li>an open <a href="https://github.com/blindnet-io/product-management" target="_blank" rel="noopener noreferrer">DevRel Management</a> repository, when you can just <a href="https://github.com/blindnet-io/devrel-management/issues/new?assignees=noelmace&amp;labels=request%2Ctriage&amp;template=request.yml&amp;title=%5BRequest%5D%3A+" target="_blank" rel="noopener noreferrer">make simple informal requests</a>;</li><li>an open <a href="https://github.com/blindnet-io/product-management/" target="_blank" rel="noopener noreferrer">Product Management</a> repository, where you can track, read, and contribute to all parts of our product development process, from simple bug fixes to thorough architecture reference documents.</li></ol><p>If those still seem too complex or frightening to you, just email <a href="mailto:hello@blindnet.io" target="_blank" rel="noopener noreferrer">hello@blindnet.io</a>, and we'll make sure to give you an answer right away.</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="helping-everyone-better-understand-privacy">Helping Everyone Better Understand Privacy<a class="hash-link" href="#helping-everyone-better-understand-privacy" title="Direct link to heading">​</a></h2><p>While getting on with this huge project, we'll also make sure to keep you posted in any possible way.</p><p>So first, you should definitely follow us on <a href="https://twitter.com/blindnet_io" target="_blank" rel="noopener noreferrer">Twitter</a>, as this will be the first place where we'll post short and constant updates on all technical matters.</p><p>Our new engineering blog, on both <a href="https://blindnet.dev/blog" target="_blank" rel="noopener noreferrer">blindnet.dev</a> and <a href="https://dev.to/blindnet" target="_blank" rel="noopener noreferrer">dev.to</a>, will then be a good place to share more in-depth explainers and update about our devkit and privacy in general.
+Where are open to any suggestion of topic to address, and even guest blog posts.
+So make sure to contact us whenever privacy inspire you.</p><p>Finally, we'll soon open a new Twitch Channel and Youtube channel, with regular programs and improvised streaming.
+Keep posted, and reach back to us if you'd like to be one of our next guests.</p><h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="and-more">And more...<a class="hash-link" href="#and-more" title="Direct link to heading">​</a></h2><p>And we still have a lot more ideas to suggest, and things we'd like to do with you.</p><p>Like making the "limited edition" blindnet swag of your dream, with an open-hardware and DIY approach, just to give you an example.</p><p>We'll make sure everyone can make the best of this summer with privacy in mind, and we are open to any suggestion.</p><p>So, see you all very soon online 🌞</p>]]></content>
+        <author>
+            <name>Noël Macé</name>
+            <uri>https://github.com/noelmace</uri>
+        </author>
+        <category label="privacy" term="privacy"/>
+        <category label="campaign" term="campaign"/>
+        <category label="swag" term="swag"/>
+        <category label="docs" term="docs"/>
+        <category label="devrel" term="devrel"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello World!]]></title>
+        <id>hello-world-blindnetdev</id>
+        <link href="https://blindnet.dev/blog/hello-world-blindnetdev"/>
+        <updated>2022-06-16T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Very first blog post on blindnet.dev]]></summary>
+        <content type="html"><![CDATA[<p>Welcome to the blindnet.dev blog.</p><p>A blog about privacy and trust, by developers, for developers.</p><p><img loading="lazy" alt="Hello" src="/assets/images/hello-lemonvlad-9a70cb431fcb7f0f503e7b10786c0e75.jpg" width="1280" height="854" class="img_ev3q"></p><p><a href="https://twitter.com/blindnet_io" target="_blank" rel="noopener noreferrer">Stay tuned</a>, more content will follow soon.</p><p>In the meantime, check out <a href="https://medium.com/blindnet" target="_blank" rel="noopener noreferrer">our company's blog</a> to learn more about blindnet itself with generic content with no tech jargon.</p>]]></content>
+        <author>
+            <name>Noël Macé</name>
+            <uri>https://github.com/noelmace</uri>
+        </author>
+        <category label="hello" term="hello"/>
+    </entry>
+</feed>

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkblindnet_dev=self.webpackChunkblindnet_dev||[]).push([[4689],{9608:function(e){e.exports=JSON.parse('{"label":"swag","permalink":"/blog/tags/swag","allTagsPath":"/blog/tags","count":1}')}}]);
