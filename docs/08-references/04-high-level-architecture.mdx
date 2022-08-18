@@ -4,6 +4,8 @@ sidebar_position: 4
 tags: ['high-level']
 ---
 
+import Mermaid from '@theme/Mermaid';
+
 <!-- moved from https://github.com/blindnet-io/product-management/blob/ba5b02d/refs/high-level-architecture/readme.md -->
 
 | Status        | NORMATIVE DRAFT                                                                                                                      |
@@ -186,24 +188,18 @@ The design of [blindnet devkit](./lexicon#blindnet-devkit) MUST at least support
 
 In this scenario, one System receives a Privacy Request from the Data Subject, and transmits it to other Systems. Those Systems calculate their own responses to the Privacy Request, and they send their responses to the System from whom they have received the Privacy Request. This System then replies to the Data Subject.
 
-```mermaid
-sequenceDiagram
-    actor subject as Data Subject
-    participant systemA as System A
-    participant systemB as System B
-
-
-    subject->>systemA: Privacy Request
-
-    systemA->>systemB: Privacy Request
-
-    systemA->>systemA: calculates Privacy Request Response A
-    compilerB->>systemB: Privacy Request Response 1
-
-    systemB->>systemA: Privacy Request Response B
-    systemA->>subject: Privacy Request Response A, Privacy Request Response B
-
-```
+<Mermaid chart={`
+    sequenceDiagram;
+        actor subject as Data Subject;
+        participant systemA as System A;
+        participant systemB as System B;
+        subject->>systemA: Privacy Request;
+        systemA->>systemB: Privacy Request;
+        systemA->>systemA: calculates Privacy Request Response A;
+        compilerB->>systemB: Privacy Request Response 1;
+        systemB->>systemA: Privacy Request Response B;
+        systemA->>subject: Privacy Request Response A, Privacy Request Response B;
+`}/>
 
 This scenario is adapted to Privacy Request Requests that do not involve access to the data, especially when not all Systems have the Data Subject's contact information (and MAY want to remain blind for it). For this scenario to work, Systems must expose functions for receiving the responses from other Systems.
 
@@ -211,21 +207,16 @@ This scenario is adapted to Privacy Request Requests that do not involve access 
 
 In this scenario, one System receives a Privacy Request from the Data Subject, and transmits it to other Systems. Those Systems calculate their own responses to the Privacy Request, and they send their responses directly to the Data Subject.
 
-```mermaid
-sequenceDiagram
-    actor subject as Data Subject
-    participant systemA as System A
-    participant systemB as System B
-
-
-    subject->>systemA: Privacy Request
-
-    systemA->>systemB: Privacy Request
-
-    systemA->>subject: Privacy Request Response A
-    systemB->>subject: Privacy Request Response B
-
-```
+<Mermaid chart={`
+    sequenceDiagram;
+        actor subject as Data Subject;
+        participant systemA as System A;
+        participant systemB as System B;
+        subject->>systemA: Privacy Request;
+        systemA->>systemB: Privacy Request;
+        systemA->>subject: Privacy Request Response A;
+        systemB->>subject: Privacy Request Response B;
+`}/>
 
 This scenario is adapted to Privacy Requests where revealing of the response to other Systems (instead of sending it directly to the Data Subject) might further compromise the Data Subject's privacy OR when the system having collected the Privacy Request from the Data Subject is a server-less system (unable to receive responses from other systems). For this scenario to work, it might be necessary, if not already the case, to share Data Subject's contact data among the corresponding Systems.
 
