@@ -32,8 +32,8 @@ function HeaderHero() {
           <Link className="button button--primary" to="https://join.slack.com/t/blindnet/shared_invite/zt-1arqlhqt3-A8dPYXLbrnqz1ZKsz6ItOg">
             Join Slack
           </Link>
-          <Link className="button button--secondary" to="/docs/quickstart">
-            Start Encrypting!
+          <Link className="button button--secondary" to="/docs/tutorial">
+            Get Started!
           </Link>
           <span className={styles.indexCtasGitHubButtonWrapper}>
             <GitHubButton
@@ -61,18 +61,18 @@ function E2EEncryption() {
         <div className={styles.twoColumns__column}>
           <h2>E2E Encryption in a Snap</h2>
           <p>
-            Blindnet devkit allows to manage sensitive data using <Link to="docs/qna#what-is-end-to-end-encryption">end-to-end encryption</Link> with just a few lines of code, without requiring any complex set-up or expertise in
+            Blindnet devkit allows to manage sensitive data using <Link to="docs/encryption/qna#what-is-end-to-end-encryption">end-to-end encryption</Link> with just a few lines of code, without requiring any complex set-up or expertise in
             cryptography.
           </p>
           <p>
-            Follow our <a href="/docs/quickstart">Quick Start</a> guide to see how in just a few minutes, or explore the{' '}
-            <a href="/docs/introduction">documentation</a> to learn more.
+            Follow our <a href="/docs/encryption/quickstart">Quick Start</a> guide to see how in just a few minutes, or explore the{' '}
+            <a href="/docs/encryption">documentation</a> to learn more.
           </p>
           <div className={styles.indexCtas}>
-            <Link className="button button--primary" to="/docs/quickstart">
+            <Link className="button button--primary" to="/docs/encryption/quickstart">
               Get Started!
             </Link>
-            <Link className="button button--secondary" to="/docs/introduction">
+            <Link className="button button--secondary" to="/docs/">
               Explore the docs
             </Link>
           </div>
@@ -149,9 +149,9 @@ export default function Home(): JSX.Element {
     <Layout title="" description="">
       <Banner />
       <HeaderHero />
+      <Construction />
       <E2EEncryption />
       <OpenSource />
-      <Construction />
     </Layout>
   );
 }

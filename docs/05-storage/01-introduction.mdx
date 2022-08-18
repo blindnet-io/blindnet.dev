@@ -1,0 +1,16 @@
+---
+title: Introduction
+sidebar_position: 1
+tags: ["introduction"]
+---
+
+import WipWarning from '../_partials/_wip.mdx';
+
+<WipWarning repo="https://github.com/blindnet-io/data-access-component" />
+
+While handling Privacy Requests, the Pricacy Computation Engines can be connected with storage services to automatically interpret and execute data deletions and modifications.
+
+Two components of the devkit are here to help you integrate this easily, either as a new service or as part of your pre-existing architure:
+
+- a [Data Access Component](./data-access) transforming requests from a [Privacy Computation Engine](/docs/computation) to efficiently execute operations on data stored on an external storage service
+- [Storage Connector](./connection) libraries you can use to connect your existing storage service with a Data Access Component

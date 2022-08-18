@@ -79,14 +79,13 @@ const config = {
         },
         items: [
           {
-            to: 'docs/quickstart',
+            to: 'docs/tutorial',
             position: 'left',
             label: 'Get Started',
           },
           {
-            type: 'doc',
+            to: 'docs/',
             position: 'left',
-            docId: 'introduction',
             label: 'Docs',
           },
           { to: '/blog', label: 'Blog', position: 'left' },
@@ -107,20 +106,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Get Started',
-                to: '/docs/quickstart',
-              },
-              {
-                label: 'Introduction',
-                to: '/docs/introduction',
-              },
-              {
-                label: 'Guides',
-                to: '/docs/guides',
-              },
-              {
-                label: 'Q&A',
-                to: '/docs/qna',
+                label: 'Docs',
+                to: '/docs/',
               },
             ],
           },

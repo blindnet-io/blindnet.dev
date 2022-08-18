@@ -1,0 +1,148 @@
+---
+title: Compilation
+sidebar_position: 4
+tags: ['guide']
+---
+
+import WipWarning from '../_partials/_wip.mdx';
+
+<WipWarning repo="https://github.com/blindnet-io/data-access-component" />
+
+## Initial Set-up
+
+Based on the [configuration given to the Privacy Computation Engine](./configuration), the Privacy Compiler first calculates an initial Eligible Privacy Scope.
+
+In the Eligible Privacy Scope, each [Privacy Scope Triple](#triple) is associated with one or more active [Legal Bases](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base).
+Legal Bases can be acquired and lost.
+[Privacy Scope Triples](#triple) stay in the Eligible Privacy Scope as long as they have at least one active Legal Base associated to them.
+
+Initially, before the user gave any consent or signed any contract (subscribed to any service, opened any account) the Eligible Privacy Scope consists of Privacy Scope Triples associated with `LEGITIMATE-INTEREST`, or `NECESSARY` Legal Bases.
+
+Privacy Compiler also know of combinations of Privacy Scope Triples and Legal Bases that are prohibited under certain legislations (e.g. under GDPR certain data can only be processed with `CONSENT`).
+Such combinations can't enter the Eligible Privacy Scope.
+
+## Processing PRIV Events
+
+With every PRIV event, the Privacy Compiler calculated the change to be made to the Eligible Privacy Scope.
+
+### Consent
+
+The Eligible Privacy Scope becomes the [union](#union) of the previous Eligible Privacy Scope and of the Privacy Scope given in the `scope` property of the [Consent](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#consent).
+
+:::Note
+If the User previously made an `OBJECT` or `RESTRICT` request reducing the Eligible Privacy Scope, giving a new Consent is a way to re-include (previously excluded) triples in the Eligible Privacy Scope.
+:::
+
+### Legal Base Event
+
+For events of `event-type` `SERVICE-START` or `RELATIONSHIP-START`:
+
+- the `scope` of the [Legal Base](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base) is added to the Eligible Privacy Scope using the [union](#union) operation.
+- when a `data-reference` is specified in the [Legal Base Event](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base-event) the Privacy Compiler remembers it so that Triples associated to this reference can be found later
+
+For events of `event-type` `SERVICE-END` or `RELATIONSHIP-END`:
+
+- when a particular `data-reference` is given:
+  - The Privacy Compiler looks for Triples in the Eligible Privacy Scope that have that reference
+  - Removes the reference and to it associated Legal Base
+  - Removes from the Eligible Privacy Scope all the Triples that are left with no active Legal Base
+- when no `data-reference` is given:
+  - The Privacy Compiler looks for all Triples associated with the `legal-base` of the Legal Base Event
+  - Removes the Legal Base in question
+  - Removes from the Eligible Privacy Scope all the Triples that are left with no active Legal Base
+
+:::Note
+A Data reference can indicate a particular user account, contract, particular medical or legal file especially when the same Data Subject may have several ongoing files with the same Organization
+:::
+
+### `REVOKE-CONSENT` Privacy Requests
+
+The Privacy Compiler looks for the [Consent Restriction](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#consent-restriction) associated with the [Privacy Request](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-request).
+It retrieves `consent-ids` from it, and sets the `revoked` property of those consents to `true`.
+Then, Privacy Compiler finds all the Triples associated to those consents, and removes those associations.
+Finally, it removes from the Eligible Privacy Scope all the Triples that are left with no active Legal Base as a consequence of consent removal.
+
+Alternatively, `REVOKE-CONSENT` Privacy Requests can be associated with a [Privacy Scope Restriction](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-scope).
+In this case, for every triple in the [intersection](#intersection) of the previous Eligible Privacy Scope and of the Privacy Scope of the Privacy Scope Restriction of the Request, the Privacy Compiler removes the association with `CONSENT` legal base.
+
+Finally, the Privacy Compiler removes all the Triples that are left with no active Legal Base as a consequence of consent change.
+
+### `OBJECT` Privacy Requests
+
+The Privacy Compiler looks for a [Privacy Scope Restriction](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-scope) associated with the request.
+For every triple found in the [intersection](#intersection) of the Eligible Privacy Scope and the scope of the given Privacy Scope Restriction, the Privacy Compiler removes any association of such triples with `CONSENT`, `LEGITIMATE_INTEREST` Legal Bases.
+The `NECESSARY` or `CONTRACT` Legal Bases are kept.
+
+:::Note
+If the User wants to remove Triples linked to `CONTRACT` they need to terminate the contract, generating a `SERVICE-END` [Legal Base Event](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base-event).
+
+No Privacy Request coming from the Data Subject can alter the Triples included in the Privacy Eligible Scope by `NECESSARY` Legal Base.
+:::
+
+Finally, the Privacy Compiler removes all the Triples that are left with no active Legal Base as a consequence of consent change.
+
+The consequences of `OBJECT` requests are long-lasting, and affect the future of Eligible Privacy Scope.
+Triples concerned by the an `OBJECT` Privacy Request, after it has been made, can't re-enter Eligible Privacy Scope by `LEGITIMATE INTEREST` regardless of any future `LEGITIMATE INTEREST` Legal Base Event.
+
+### `RESTRICT` Privacy Requests
+
+The Privacy Compiler looks for a [Privacy Scope Restriction](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-scope) associated with the request.
+For every triple found in the Eligible Privacy Scope and not found in the scope of the given Privacy Scope Restriction, the Privacy Compiler removes any association of such triples with `CONSENT`, `LEGITIMATE_INTEREST` Legal Bases.
+The associations with `NECESSARY` or `CONTRACT` Legal Bases remain unaffected.
+
+:::Note
+If the User wants to remove Triples linked to `CONTRACT` they need to terminate the contract, generating a `SERVICE-END` [Legal Base Event](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base-event).
+
+No Privacy Request coming from the Data Subject can alter the Triples included in the Privacy Eligible Scope by `NECESSARY` Legal Base.
+:::
+
+Finally, the Privacy Compiler removes all the Triples that are left with no active Legal Base as a consequence of consent change.
+
+The consequences of `RESTRICT` requests are long-lasting, and affect the future of Eligible Privacy Scope.
+Triples not included in the scope of a `RESTRICT` Privacy Request, after it has been made, can't re-enter Eligible Privacy Scope by `LEGITIMATE INTEREST` regardless of any future `LEGITIMATE INTEREST` Legal Base Event.
+
+## Privacy Algebra
+
+### Privacy Scope Triples
+
+A **<a name="triple"></a>Privacy Scope Triple** is a unit of [Privacy Scope](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-scope)
+and it consists of (in that order):
+
+- one [Data Category Term](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/./https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-categories) or `*`
+- one [Processing Category Term](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#processing-categories) or `*`
+- one [Purpose Term](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#purpose) or `*`
+
+When `*` is indicated at one of the places of the triple, it is interpreted as all [Data Categores](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-categories), all [Processing Categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#processing-categories) or all [Purposes](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#purpose) depending on its place in the triple.
+
+### Operations Over Privacy Scopes
+
+#### Equivalence
+
+Each Privacy Scope Triple that has a `*` or a [Term](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#terms) of which subcategory terms are known (including [Data Capture Fragment](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-capture-fragments) `selectors` for [Data Category Terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-categories)) is equivalent to the set of Privacy Scope Triples including all combinations of such known subcategories (or all categories in case of `*`).
+
+E.g. `FINANCIAL` x `SHARING` x `SERVICES` is equivalent to the following set:
+
+`FINANCIAL` x `SHARING` x `SERVICES`
+`FINANCIAL` x `SHARING` x `SERVICES.ADDITIONAL-SERVICES`
+`FINANCIAL` x `SHARING` x `SERVICES.BASIC-SERVICE`
+`FINANCIAL.BANK-ACCOUNT` x `SHARING` x `SERVICES`
+`FINANCIAL.BANK-ACCOUNT` x `SHARING` x `SERVICES.ADDITIONAL-SERVICES`
+`FINANCIAL.BANK-ACCOUNT` x `SHARING` x `SERVICES.BASIC-SERVICE`
+
+If the System also knows of a `selector` `FINANCIAL.BANK-ACCOUNT.PRIMARY`, then the equivalent set also includes:
+
+`FINANCIAL.BANK-ACCOUNT.PRIMARY` x `SHARING` x `SERVICES`
+`FINANCIAL.BANK-ACCOUNT.PRIMARY` x `SHARING` x `SERVICES.ADDITIONAL-SERVICES`
+`FINANCIAL.BANK-ACCOUNT.PRIMARY` x `SHARING` x `SERVICES.BASIC-SERVICE`
+
+#### Inclusion
+
+Privacy Scope A is included in Privacy Scope B if all the Privacy Scope Triples from Privacy Scope B, and their equivalents, can be found among Privacy Scope Triples of the Privacy Scope A or their equivalents.
+
+#### Union
+
+The Union of Privacy Scopes A and B includes all Privacy Scope Triples (and their equivalents) from Privacy Scopes A and B.
+
+#### Intersection
+
+The Union of Privacy Scopes A and B includes all Privacy Scope Triples (and their equivalents) that can be found among Privacy Scope Triples (or their equivalents) of both Privacy Scopes A and B.
