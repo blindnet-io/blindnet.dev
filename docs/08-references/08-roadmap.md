@@ -23,7 +23,7 @@ The purpose of this document is to give blindnet's clients and partners the visi
 
 ## Product Vision
 
-[blindnet devkit](./lexicond#blindnet-devkit) is the _lingua franca_ for [privacy](./notions-of-privacy#definition) on the Web.
+[blindnet devkit](./lexicon#blindnet-devkit) is the _lingua franca_ for [privacy](./notions-of-privacy#definition) on the Web.
 
 ## Product Features
 
