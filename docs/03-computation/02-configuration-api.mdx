@@ -1,0 +1,58 @@
+---
+title: Configuring your Privacy Computation Engine
+sidebar_position: 2
+tags: ['guide']
+---
+
+import WipWarning from '../_partials/_wip.mdx';
+
+<WipWarning repo="https://github.com/blindnet-io/privacy-computation-engine" />
+
+To configure the instance devkit app, use the [configuration API](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration).
+
+# Privacy scope
+
+<WipWarning />
+
+# Configuration
+
+## Configuring general information
+
+Use [PUT /v0/configure/general-info](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureGeneral-info) endpoint to configure:
+1. Name and contact details of your Organization and its representative (`organization`)
+1. Identity and contact of a Data Protection Officer (`dpo`)
+1. A link to your Privacy Policy (`privacy_policy_link`)
+1. A general description of the technical and organisational security measures referred to in Article 32 of GDPR (`data_security_info`)
+1. Countries where data servers are located (`countries`)
+1. A list of Data Consumer categories `data_consumer_categories`
+1. Access policies (`access_policies`)
+
+## Configuring selectors
+
+Use [PUT /v0/configure/selectors endpoint](http://localhost:9000/swagger/#/Configuration/putV0ConfigureSelectors) to configure a list of selectors for the data stored in your application.
+See the [list of eligible data categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/data-categories/en.data-categories.json).
+
+Selector is later referenced as `{data_category}.{selector_name}`. Using just `{selector_name}` will lead to an error.
+
+## Configuring legal bases
+
+Use [PUT /v0/configure/legal-bases endpoint](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureLegal-bases) to configure consents, contracts, legitimate interests and necessary legal bases for handling users' data.
+To define the scope of a legal base, you can see the list of eligible [data categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/data-categories/en.data-categories.json) (can include selectors), [processing categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/processing-categories/en.processing-categories.json) and [purposes of processing](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/purposes/en.purposes.json).
+
+For more information, see [PRIV legal bases](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#lifecycle-of-legal-bases-for-data-processing).
+
+## Configuring retention policies
+
+Use [PUT /v0/configure/retention-policies endpoint](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureRetention-policies) to configure retention policies for data categories.
+
+For more information, see [PRIV retention policies](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#retention-policy).
+
+## Configuring provenances
+
+Use [PUT /v0/configure/provenances endpoint](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureProvenances) to configure provenances for data categories.
+
+Provenance object represents the origin of the data.
+
+## Configuring regulations
+
+<WipWarning />
