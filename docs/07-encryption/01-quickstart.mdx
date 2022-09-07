@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 While reading this quickstart guide you can download and follow the source code for a simple React front-end app with integrated blindnet client SDK from [here](https://github.com/blindnet-io/blindnet-client-js-example).
 :::
 
-In this quickstart guide, you will learn how to [encrypt](./guides/encrypt) and [decrypt](./guides/decrypt) a file using the [blindnet encryption client SDK](./guides/introduction).  
+In this quickstart guide, you will learn how to [encrypt](/docs/encryption/encrypt) and [decrypt](/docs/encryption/decrypt) a file using the [blindnet encryption client SDK](/docs/encryption/introduction).  
 We assume two users exist - a user we know, **Alice**, and an anonymous user **Bob**. For the sake of simplicity we'll act as both Alice and Bob. We will register a known user Alice to the blindnet encryption service, encrypt a file to her as an anonymous user Bob, and then decrypt the file as Alice.
 
 You will learn how to:
@@ -31,7 +31,7 @@ Refer to [Access Management - Application Set Up](/docs/access-management/set-up
 
 ## **STEP 1**: Set-up
 
-To generate the authentication tokens, we will use a [dedicated token generator](https://www.npmjs.com/package/@blindnet/token-generator). In your production environment, you will need both **client** and **server SDKs** and [generate](./guides/managing_users_access#creating-user-tokens) the tokens on the server side.
+To generate the authentication tokens, we will use a [dedicated token generator](https://www.npmjs.com/package/@blindnet/token-generator). In your production environment, you will need both **client** and **server SDKs** and [generate](/docs/encryption/managing_users_access#creating-user-tokens) the tokens on the server side.
 
 ### Installation
 
@@ -67,7 +67,7 @@ import { createTempUserToken, createUserToken } from '@blindnet/token-generator'
 [Tokens](/docs/references/glossary#authentication-token) are used to authenticate the users of your application to the blindnet encryption service. They can be used multiple times and should be regenerated when they expire using the same method.
 
 :::caution
-We use the `token generation` library to generate the tokens. It should be only used for testing purposes and tokens should be [generated on the server](./guides/managing_users_access#creating-user-tokens) in production environment, after your user is authenticated.
+We use the `token generation` library to generate the tokens. It should be only used for testing purposes and tokens should be [generated on the server](/docs/encryption/managing_users_access#creating-user-tokens) in production environment, after your user is authenticated.
 :::
 
 Use the [application id](/docs/references/glossary#application-id) and key you obtained in [Before you start](#before-you-start) section.
@@ -86,7 +86,7 @@ const token = await createUserToken(aliceId, groupId, appId, appKey);
 </TabItem>
 </Tabs>
 
-Specify the [testing endpoint](/docs/references/glossary#testing-endpoint) and [initialize](./guides/installation#initialization) the library for Alice
+Specify the [testing endpoint](/docs/references/glossary#testing-endpoint) and [initialize](/docs/encryption/installation#initialization) the library for Alice
 
 <Tabs groupId="lang">
 <TabItem value="js" label="JavaScript" default>
@@ -104,7 +104,7 @@ const blindnet = Blindnet.init(token, endpoint);
 The blindnet encryption service can encrypt files with a particular destination (list of users or a [user group](/docs/references/glossary#user-groups)) in mind. So in order to start encrypting, you first need to have some users (Alice in this case) that you've connected to the blindnet encryption service.
 
 To connect a user to the blindnet encryption service, a [secret value](/docs/references/glossary#secret-value) has to be provided. That value must only be known
-by the user (e.g. user's password). In that case, **it's important not to use the same value to log-into your system and connect to the blindnet encryption service** for which we provide a method [deriveSecrets](./guides/managing_users_access#splitting-secrets).
+by the user (e.g. user's password). In that case, **it's important not to use the same value to log-into your system and connect to the blindnet encryption service** for which we provide a method [deriveSecrets](/docs/encryption/managing_users_access#splitting-secrets).
 
 <Tabs groupId="lang">
 <TabItem value="js" label="JavaScript" default>
@@ -123,7 +123,7 @@ You can use `appSecret` as a password for the user to log-into your system.
 
 ## **STEP 2**: Encrypt a file
 
-After Alice has connected to the blindnet encryption service, data can be [encrypted](./guides/encrypt) for her.
+After Alice has connected to the blindnet encryption service, data can be [encrypted](/docs/encryption/encrypt) for her.
 We will simulate an [anonymous](/docs/references/glossary#anonymous-user) user Bob encrypting a file for Alice.
 
 ### Initialize SDK for Bob
@@ -144,7 +144,7 @@ const blindnet = Blindnet.init(token, endpoint);
 
 ### Encrypt a file
 
-Obtain a file from the `<input type="file" id="file-pick>` `HTML` element and pass it to the [encrypt](./guides/encrypt#encrypt) method. Add Alice as a recipient.
+Obtain a file from the `<input type="file" id="file-pick>` `HTML` element and pass it to the [encrypt](/docs/encryption/encrypt#encrypt) method. Add Alice as a recipient.
 
 <Tabs groupId="lang">
 <TabItem value="js" label="JavaScript" default>
@@ -161,7 +161,7 @@ const { encryptedData } = await blindnet.capture(data).forUser(aliceId).encrypt(
 
 ## **STEP 3**: Decrypt a file
 
-To [decrypt](./guides/decrypt#decrypt) a file, you only need `encryptedData`.
+To [decrypt](/docs/encryption/decrypt#decrypt) a file, you only need `encryptedData`.
 
 <Tabs groupId="lang">
 <TabItem value="js" label="JavaScript" default>

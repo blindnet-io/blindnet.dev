@@ -60,7 +60,7 @@ Two types of [tokens](/docs/references/glossary#authentication-token) are needed
 
 ### Create a token for a registered user
 
-These tokens are used by the [registered users](../../../guides/encrypt) to invoke SDK methods.
+These tokens are used by the [registered users](/docs/encryption/encrypt) to invoke SDK methods.
 
 ```typescript
 function createUserToken(userId: string, groupId?: string): Promise<string>
@@ -100,7 +100,7 @@ groupId | `string` | true | ID of the [group](/docs/references/glossary#user-gro
 ### Create a temporary token
 
 Creates a [token](/docs/references/glossary#short-term-token) for [non-registered users](/docs/references/glossary#anonymous-user) of your application, usually data senders.
-When this token is used for [encrypting data](../../../guides/encrypt), all specified users or users that belong to a specified [group](/docs/references/glossary#user-groups) will have access to the encrypted data.
+When this token is used for [encrypting data](/docs/encryption/encrypt), all specified users or users that belong to a specified [group](/docs/references/glossary#user-groups) will have access to the encrypted data.
 
 ```typescript
 function createTempUserToken(param: string | string[]): Promise<string>
@@ -155,7 +155,7 @@ The operation succeeded if an exception wasn't thrown.
 #### Errors
 type | description
 ---- | -----------
-AuthenticationError | [Client token](/docs/references/glossary#client-token) has expired or is invalid. A wrong [application key](/docs/references/glossary#application-key) or [application id](/docs/references/glossary#application-id) is provided. [Generate a new token](../../../guides/managing_users_access#creating-user-tokens) and call [refreshToken](#refreshing-the-session).
+AuthenticationError | [Client token](/docs/references/glossary#client-token) has expired or is invalid. A wrong [application key](/docs/references/glossary#application-key) or [application id](/docs/references/glossary#application-id) is provided. [Generate a new token](/docs/encryption/managing_users_access#creating-user-tokens) and call [refreshToken](#refreshing-the-session).
 BlindnetServiceError | Error on blindnet server.
 
 ## Revoking access to users
@@ -178,7 +178,7 @@ The operation succeeded if an exception wasn't thrown.
 #### Errors
 type | description
 ---- | -----------
-AuthenticationError | [Client token](/docs/references/glossary#client-token) has expired or is invalid. A wrong [application key](/docs/references/glossary#application-key) or [application id](/docs/references/glossary#application-id) is provided. [Generate a new token](../../../guides/managing_users_access#creating-user-tokens) and call [refreshToken](#refreshing-the-session).
+AuthenticationError | [Client token](/docs/references/glossary#client-token) has expired or is invalid. A wrong [application key](/docs/references/glossary#application-key) or [application id](/docs/references/glossary#application-id) is provided. [Generate a new token](/docs/encryption/managing_users_access#creating-user-tokens) and call [refreshToken](#refreshing-the-session).
 BlindnetServiceError | Error on blindnet server.
 
 ## Deleting users
@@ -201,7 +201,7 @@ The operation succeeded if an exception wasn't thrown.
 #### Errors
 type | description
 ---- | -----------
-AuthenticationError | [Client token](/docs/references/glossary#client-token) has expired or is invalid. A wrong [application key](/docs/references/glossary#application-key) or [application id](/docs/references/glossary#application-id) is provided. [Generate a new token](../../../guides/managing_users_access#creating-user-tokens) and call [refreshToken](#refreshing-the-session).
+AuthenticationError | [Client token](/docs/references/glossary#client-token) has expired or is invalid. A wrong [application key](/docs/references/glossary#application-key) or [application id](/docs/references/glossary#application-id) is provided. [Generate a new token](/docs/encryption/managing_users_access#creating-user-tokens) and call [refreshToken](#refreshing-the-session).
 BlindnetServiceError | Error on blindnet server.
 
 ## Deleting user groups
@@ -225,5 +225,5 @@ The operation succeeded if an exception wasn't thrown.
 #### Errors
 type | description
 ---- | -----------
-AuthenticationError | [Client token](/docs/references/glossary#client-token) has expired or is invalid. A wrong [application key](/docs/references/glossary#application-key) or [application id](/docs/references/glossary#application-id) is provided. [Generate a new token](../../../guides/managing_users_access#creating-user-tokens) and call [refreshToken](#refreshing-the-session).
+AuthenticationError | [Client token](/docs/references/glossary#client-token) has expired or is invalid. A wrong [application key](/docs/references/glossary#application-key) or [application id](/docs/references/glossary#application-id) is provided. [Generate a new token](/docs/encryption/managing_users_access#creating-user-tokens) and call [refreshToken](#refreshing-the-session).
 BlindnetServiceError | Error on blindnet server.
