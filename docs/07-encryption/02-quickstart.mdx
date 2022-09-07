@@ -9,45 +9,33 @@ import TabItem from '@theme/TabItem';
 
 # Quick Start Guide
 
-Try out **blindnet devkit Encryption and Access Management Engine** quickly and easily.
-
 :::info
 While reading this quickstart guide you can download and follow the source code for a simple React front-end app with integrated blindnet client SDK from [here](https://github.com/blindnet-io/blindnet-client-js-example).
 :::
 
-In this quickstart guide, you will learn how to [encrypt](./guides/encrypt) and [decrypt](./guides/decrypt) a file using the [blindnet client SDK](./guides/introduction).  
-We assume two users exist - a user we know, **Alice**, and an anonymous user **Bob**. For the sake of simplicity we'll act as both Alice and Bob. We will register a known user Alice to blindnet, encrypt a file to her as an anonymous user Bob, and then decrypt the file as Alice.
+In this quickstart guide, you will learn how to [encrypt](./guides/encrypt) and [decrypt](./guides/decrypt) a file using the [blindnet encryption client SDK](./guides/introduction).  
+We assume two users exist - a user we know, **Alice**, and an anonymous user **Bob**. For the sake of simplicity we'll act as both Alice and Bob. We will register a known user Alice to the blindnet encryption service, encrypt a file to her as an anonymous user Bob, and then decrypt the file as Alice.
 
 You will learn how to:
 
 - set-up the blindnet devkit
-- register Alice to blindnet
+- register Alice to the blindnet encryption service
 - encrypt a file as Bob
 - decrypt a file as Alice
 
 ### Before you start
 
-Obtain blindnet authentication data. To authenticate to blindnet, your application needs the [application id](./glossary#application-id) and [application key](./glossary#application-key).
-**Application key** is a cryptographic secret key which is used to sign the authentication tokens and must be kept secret (and accessible by your server).
+You first need to obtain authentication data (application id an key) from the blindnet [dashboard](https://dashboard.blindnet.io).
 
-You can get the application id and application key using the blindnet [dashboard](https://dashboard.blindnet.io) after you create a new application.
+Refer to [Access Management - Application Set Up](/docs/access-management/set-up) for instructions.
 
-:::info
-For the sake of simplicity, you can skip creating a new application and just use the following application id and key
+## **STEP 1**: Set-up
 
-id: `3544e7cd-64a9-41b7-88dc-397bfdaeeaf3`  
-key: `zB5IiU0xzkVdsH4NMXxrF90ZISL5kJnTHlt7h/Wbi/qVhch7Fw8J5AQ5j2PazaG5q114uApZRH4X1/kTKVx0Cw==`
-
-Be sure not to use those in production environments!
-:::
-
-## **STEP 1**: Set-up the SDK
-
-In this guide, only the [client SDK](./guides/introduction) is needed. To generate the authentication tokens, we will use a [dedicated client library](https://www.npmjs.com/package/@blindnet/token-generator). In your production environment, you will need both **client** and **server SDKs** and [generate](./guides/managing_users_access#creating-user-tokens) the tokens on the server side.
+To generate the authentication tokens, we will use a [dedicated token generator](https://www.npmjs.com/package/@blindnet/token-generator). In your production environment, you will need both **client** and **server SDKs** and [generate](./guides/managing_users_access#creating-user-tokens) the tokens on the server side.
 
 ### Installation
 
-To install the blindnet devkit and the token generator
+To install the blindnet encryption library and the token generator:
 
 <Tabs groupId="lang">
 <TabItem value="js" label="JavaScript" default>
@@ -61,7 +49,7 @@ npm i -S @blindnet/sdk-javascript @blindnet/token-generator
 
 ### Import
 
-Import the library to your project with
+Import the library to your project with:
 
 <Tabs groupId="lang">
 <TabItem value="js" label="JavaScript" default>
@@ -76,13 +64,13 @@ import { createTempUserToken, createUserToken } from '@blindnet/token-generator'
 
 ### Generate a user token for **Alice**
 
-[Tokens](./glossary#authentication-token) are used to authenticate the users of your application to blindnet. They can be used multiple times and should be regenerated when they expire using the same method.
+[Tokens](/docs/references/glossary#authentication-token) are used to authenticate the users of your application to the blindnet encryption service. They can be used multiple times and should be regenerated when they expire using the same method.
 
 :::caution
 We use the `token generation` library to generate the tokens. It should be only used for testing purposes and tokens should be [generated on the server](./guides/managing_users_access#creating-user-tokens) in production environment, after your user is authenticated.
 :::
 
-Use the [application id](./glossary#application-id) and key you obtained in [Before you start](#before-you-start) section.
+Use the [application id](/docs/references/glossary#application-id) and key you obtained in [Before you start](#before-you-start) section.
 
 <Tabs groupId="lang">
 <TabItem value="js" label="JavaScript" default>
@@ -98,7 +86,7 @@ const token = await createUserToken(aliceId, groupId, appId, appKey);
 </TabItem>
 </Tabs>
 
-Specify the [testing endpoint](./glossary#testing-endpoint) and [initialize](./guides/installation#initialization) the library for Alice
+Specify the [testing endpoint](/docs/references/glossary#testing-endpoint) and [initialize](./guides/installation#initialization) the library for Alice
 
 <Tabs groupId="lang">
 <TabItem value="js" label="JavaScript" default>
@@ -111,12 +99,12 @@ const blindnet = Blindnet.init(token, endpoint);
 </TabItem>
 </Tabs>
 
-### Connect Alice to blindnet
+### Connect Alice to the blindnet encryption service
 
-Blindnet can encrypt files with a particular destination (list of users or a [user group](./glossary#user-groups)) in mind. So in order to start encrypting, you first need to have some users (Alice in this case) that you've connected to blindnet.
+The blindnet encryption service can encrypt files with a particular destination (list of users or a [user group](/docs/references/glossary#user-groups)) in mind. So in order to start encrypting, you first need to have some users (Alice in this case) that you've connected to the blindnet encryption service.
 
-To connect a user to blindnet, a [secret value](./glossary#secret-value) has to be provided. That value must only be known
-by the user (e.g. user's password). In that case, **it's important not to use the same value to log-into your system and connect to blindnet** for which we provide a method [deriveSecrets](./guides/managing_users_access#splitting-secrets).
+To connect a user to the blindnet encryption service, a [secret value](/docs/references/glossary#secret-value) has to be provided. That value must only be known
+by the user (e.g. user's password). In that case, **it's important not to use the same value to log-into your system and connect to the blindnet encryption service** for which we provide a method [deriveSecrets](./guides/managing_users_access#splitting-secrets).
 
 <Tabs groupId="lang">
 <TabItem value="js" label="JavaScript" default>
@@ -135,12 +123,12 @@ You can use `appSecret` as a password for the user to log-into your system.
 
 ## **STEP 2**: Encrypt a file
 
-After Alice has connected to blindnet, data can be [encrypted](./guides/encrypt) for her.
-We will simulate an [anonymous](./glossary#anonymous-user) user Bob encrypting a file for Alice.
+After Alice has connected to the blindnet encryption service, data can be [encrypted](./guides/encrypt) for her.
+We will simulate an [anonymous](/docs/references/glossary#anonymous-user) user Bob encrypting a file for Alice.
 
 ### Initialize SDK for Bob
 
-You need to initialize the library with the [temporary token](./glossary#temp-user-token) in order to encrypt the data. Pass the id of the group Alice belongs to in order to give permission to encrypt data for her.
+You need to initialize the library with the [temporary token](/docs/references/glossary#temp-user-token) in order to encrypt the data. Pass the id of the group Alice belongs to in order to give permission to encrypt data for her.
 
 <Tabs groupId="lang">
 <TabItem value="js" label="JavaScript" default>

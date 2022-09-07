@@ -1,0 +1,64 @@
+---
+sidebar_position: 1
+tags: [how-it-works]
+---
+
+# Blindnet Encryption Engine in Web Applications
+
+## How It Works
+
+To protect user data in your web application, blindnet provides an SDK for data encryption and decryption, and for managing encryption keys. 
+
+![Blindnet Encryption Engine in web and mixed applications.](/img/how_it_works/web_enc_detail.svg)
+
+Let’s call our receiver Alice and our sender Bob. With blindnet, if Bob wants to send data (e.g., a text message or a file) to Alice, the process is as follows:
+
+- Bob inputs the data (e.g. a file) into the web application's interface
+- The web application will use blindnet devkit to encrypt the data
+- Encrypted data should then be transferred and stored on your app's server
+- When Alice requests the data (or immediately after the data was stored), your app delivers the encrypted data to her
+- The web application on Alice's device will use blindnet devkit to decrypt the data
+- Alice views the original data that Bob sent to her
+
+This workflow ensures that only Alice and Bob have access to the data. To be more precise, only Alice and Bob possess the encryption key used to encrypt the file.
+While stored and in transfer, the file is encrypted and neither blindnet nor the app’s server are able to access it.
+
+After the data is decrypted in Alice's web application, it can simply be saved on her device. The data stays encrypted on the app's server and Step 4 can be carried out multiple times.
+
+In step 2. (The web application will use blindnet api to encrypt the message), blindnet api performs the following steps:
+
+- Generates an ephemeral encryption key and encrypts the data
+- Obtains Alice's public key and verifies it belongs to her
+- Encrypts the ephemeral encryption key and saves it to the blinenet server
+- Returns the encrypted data
+
+In Step 4. (The web application on Alices's device will use blindnet's API to decrypt the data), the blindnet Encryption Engine performs the following steps:
+
+- Obtains the encrypted ephemeral key from blindnet’s server
+- Uses Alice's private key to decrypt they key
+- Uses the decrypted key to decrypt the encrypted data
+- Returns the original data
+
+The blindnet Encryption Engine supports use cases in which data senders can be both registered or unregistered users of your application. Data exhange between two registered users works in a way similar to the one described above, with a difference that teh symmetric key for encrypting the data from Bob to Alice is always the same, and it is securely stored on blindnet servers after it has been previously encrypted with Bob's and Alice's public keys.
+
+## Components
+
+![Blindnet Encryption Engine related Components](/img/how_it_works/components.svg)
+
+## Security
+
+### User private keys
+
+All user key pairs are always randomly generated. Before users' private keys are uploaded to blindnet servers, they are encrypted with a symmetric key derived from user passwords. This allows users to benefit from private data transfers using any browser or device, while protecting their private keys and ensuring the data transfer between any two users is end-to-end encrypted.
+
+### User passwords
+
+:::note
+
+To allow your users to use only one password for both your application and blindnet, you must first [split](../guides/managing_users_access#splitting-secrets) their passwords (i.e., you must use user password to derive two secrets, one for your application and one for blindnet).
+
+:::
+
+To provide seamless user experience in your application while preserving the highest level of data privacy for your users, your users can still input only one password for both authenticating on your application and securing blindnet private keys. However, it is important that under the hood you split this password into two secrets by using blindnet client SDK. This is needed because using the same secret in both your application and blindnet would give you access to user private keys. 
+
+See our [documentation](/docs/encryption/guides/managing_users_access#splitting-secrets) to see how to easily split user passwords with our SDKs.

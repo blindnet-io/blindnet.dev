@@ -1,0 +1,154 @@
+---
+title: PHP Server
+---
+
+# Encryption PHP Server Library v0.9.2
+
+## Installation
+
+```bash 
+composer require blindnet/blindnet-sdk-php
+```
+
+## Imports
+```php linenums="1"
+require 'vendor/autoload.php';
+use Blindnet\BlindnetSDKPHP\Blindnet;
+```
+
+## Init
+Initializes blindnet server SDK.
+
+```php
+static function init(
+  string $appKey,
+  string $appId,
+  string $apiEndpoint = 'https://api.blindnet.io'
+): Blindnet
+```
+
+#### Parameters
+name | type | required | description
+---- | ---- | -------- | -----------
+$appKey | `string` | true | [Application private key](/docs/references/glossary#application-key)
+$appId | `string` | true | [Application ID](/docs/references/glossary#application-id)
+$apiEndpoint | `string` | false | Endpoint of the blindnet server. Default value is `https://api.blindnet.io`. For testing, use `https://test.blindnet.io`.
+
+#### Return type
+`Blindnet`
+
+## createTempUserToken
+Creates a [token](/docs/references/glossary#authentication-token) for [non-registered users](/docs/references/glossary#anonymous-user) of your application, usually data senders.
+When this token is used for [encrypting data](../../../guides/encrypt), all users that belong to a specified [group](/docs/references/glossary#user-groups) will have access to the encrypted data.
+
+```php
+function createTempUserToken(string $groupId): string
+```
+
+#### Parameters
+name | type | required | description
+---- | ---- | -------- | -----------
+$groupId | `string` | true | ID of the [group](/docs/references/glossary#user-groups) for which the data is being encrypted.
+
+#### Return type
+`String`
+
+## createUserToken
+Creates a [token](/docs/references/glossary#authentication-token) for [registered users](/docs/references/glossary#registered-user) of your application, usually data receivers.
+
+```php
+function createUserToken(string $userId, string $groupId): string
+```
+
+name | type | required | description
+---- | ---- | -------- | -----------
+$userId | `string` | true | ID of a [registered user](/docs/references/glossary#registered-user).
+$groupId | `string` | true | ID of the [group](/docs/references/glossary#user-groups) to which a [registered user](/docs/references/glossary#registered-user) belongs.
+
+#### Return type
+`String`
+
+## forgetData
+Deletes the [encrypted data key](/docs/references/glossary#encrypted-data-key) from blindnet.
+
+```php
+function forgetData(string $dataId)
+```
+
+#### Parameters
+name | type | required | description
+---- | ---- | -------- | -----------
+$dataId | `string` | true | ID of a data to be deleted.
+
+#### Return type
+`bool`
+
+#### Errors
+type | description
+---- | -----------
+AuthenticationError | Implies invalid [token](/docs/references/glossary#authentication-token), which further implies invalid [application id](/docs/references/glossary#application-id) or [application key](/docs/references/glossary#application-key).
+BlindnetServiceError | Implies an error in the request to blindnet API.
+
+## revokeAccess
+Deletes all [encrypted data keys](/docs/references/glossary#encrypted-data-key) of a given user.
+
+```php
+function revokeAccess(string $userId): bool
+```
+
+#### Parameters
+name | type | required | description
+---- | ---- | -------- | -----------
+$userId | `string` | true | ID of a user to revoke access to the encrypted data.
+
+#### Return type
+`bool`
+
+#### Errors
+type | description
+---- | -----------
+AuthenticationError | Implies invalid [token](/docs/references/glossary#authentication-token), which further implies invalid [application id](/docs/references/glossary#application-id) or [application key](/docs/references/glossary#application-key).
+BlindnetServiceError | Implies an error in the request to blindnet API.
+
+## forgetUser
+Deletes a user from blindnet.
+
+```php
+function forgetUser(string $userId): bool
+```
+
+#### Parameters
+name | type | required | description
+---- | ---- | -------- | -----------
+$userId | `string` | true | ID of a user to delete.
+
+#### Return type
+`bool`
+
+#### Errors
+type | description
+---- | -----------
+AuthenticationError | Implies invalid [token](/docs/references/glossary#authentication-token), which further implies invalid [application id](/docs/references/glossary#application-id) or [application key](/docs/references/glossary#application-key).
+BlindnetServiceError | Implies an error in the request to blindnet API.
+
+## forgetGroup
+Deletes all [encrypted data keys](/docs/references/glossary#encrypted-data-key) of a given user.  
+Deletes all users that belong to the [group](/docs/references/glossary#user-groups) and all their [encrypted data keys](/docs/references/glossary#encrypted-data-key).
+
+```php
+function forgetGroup(string $groupId): bool
+```
+
+#### Parameters
+name | type | required | description
+---- | ---- | -------- | -----------
+$groupId | `string` | true | ID of a group to delete.
+
+#### Return type
+`bool`
+
+#### Errors
+type | description
+---- | -----------
+AuthenticationError | Implies invalid [token](/docs/references/glossary#authentication-token), which further implies invalid [application id](/docs/references/glossary#application-id) or [application key](/docs/references/glossary#application-key).
+BlindnetServiceError | Implies an error in the request to blindnet API.
