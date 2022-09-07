@@ -26,7 +26,9 @@ function HeaderHero() {
   return (
     <header className={clsx('hero', styles.heroBanner)} data-theme="dark">
       <div className={clsx('container', styles.heroBanner__container)}>
-        <h1 className={clsx('hero__title', styles.heroBanner__title)}>blindnet&#8203;<b>.dev</b></h1>
+        <h1 className={clsx('hero__title', styles.heroBanner__title)}>
+          blindnet&#8203;<b>.dev</b>
+        </h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.indexCtas}>
           <Link className="button button--primary" to="https://join.slack.com/t/blindnet/shared_invite/zt-1arqlhqt3-A8dPYXLbrnqz1ZKsz6ItOg">
@@ -52,7 +54,7 @@ function HeaderHero() {
   );
 }
 
-function E2EEncryption() {
+function DevKit() {
   return (
     <section className={styles.explainerSection}>
       <div className={styles.twoColumns}>
@@ -60,17 +62,17 @@ function E2EEncryption() {
           <FilesSentSVG className={styles.twoColumns__illustration} />
         </div>
         <div className={styles.twoColumns__column}>
-          <h2>E2E Encryption in a Snap</h2>
+          <h2>Easy to Use and Modular</h2>
           <p>
-            Blindnet devkit allows to manage sensitive data using <Link to="docs/encryption/qna#what-is-end-to-end-encryption">end-to-end encryption</Link> with just a few lines of code, without requiring any complex set-up or expertise in
-            cryptography.
+            blindnet devkit offer several independant, yet cohesive modules and tools to manage all aspects of privacy, from GDPR request
+            management to automation and privacy-by-design data collection.
           </p>
           <p>
-            Follow our <a href="/docs/encryption/quickstart">Quick Start</a> guide to see how in just a few minutes, or explore the{' '}
-            <a href="/docs/encryption">documentation</a> to learn more.
+            Follow our <a href="/docs/encryption/quickstart">Quick Start</a> guide to understand how the components plays together, or
+            explore the <a href="/docs/">documentation</a> to learn more.
           </p>
           <div className={styles.indexCtas}>
-            <Link className="button button--primary" to="/docs/encryption/quickstart">
+            <Link className="button button--primary" to="/docs/tutorial">
               Get Started!
             </Link>
             <Link className="button button--secondary" to="/docs/">
@@ -102,10 +104,30 @@ function OpenSource() {
             we defined and constantly update.
           </p>
           <p>
-            Obviously, this means all the core components of blindnet devkit are Open Source, following an Open Core model. But we go further than that: except when absolutely needed, all the contents we build and work with are and will always stay available to anyone and open to contribution. This includes every important <a href="https://github.com/blindnet-io/openness-framework/tree/main/DecisionFramework" target="_blank" rel="noopener noreferrer">decision</a> we take and every <a href="https://github.com/blindnet-io/product-management">specification and guiding document</a> we work with.
+            Obviously, this means all the core components of blindnet devkit are Open Source, following an Open Core model. But we go
+            further than that: except when absolutely needed, all the contents we build and work with are and will always stay available to
+            anyone and open to contribution. This includes every important{' '}
+            <a
+              href="https://github.com/blindnet-io/openness-framework/tree/main/DecisionFramework"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              decision
+            </a>{' '}
+            we take and every <a href="https://github.com/blindnet-io/product-management">specification and guiding document</a> we work
+            with.
           </p>
           <p>
-            Making all matters easily accessible and intelligible to everyone is a top priority at blindnet. If you feel any information is missing or is incomplete, please <a href="https://github.com/blindnet-io/devrel-management/issues/new?assignees=noelmace&labels=request%2Ctriage&template=request.yml&title=%5BRequest%5D%3A+" target="_blank" rel="noopener noreferrer">let us know</a>!
+            Making all matters easily accessible and intelligible to everyone is a top priority at blindnet. If you feel any information is
+            missing or is incomplete, please{' '}
+            <a
+              href="https://github.com/blindnet-io/devrel-management/issues/new?assignees=noelmace&labels=request%2Ctriage&template=request.yml&title=%5BRequest%5D%3A+"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              let us know
+            </a>
+            !
           </p>
         </div>
         <div className={styles.twoColumns__column}>
@@ -126,16 +148,21 @@ function Construction() {
         <div className={styles.twoColumns__column}>
           <h2>Constantly Innovating</h2>
           <p>
-            Our team of developers, PhDs, security engineers and DevX experts is constantly working on new ways to improve and extend the blindnet devkit.
+            Our team of developers, PhDs, security engineers and DevX experts is constantly working on new ways to improve and extend the
+            blindnet devkit.
           </p>
           <p>
-            We are always open to new ideas and suggestions, especially from <strong>You the developers</strong>, to help us build exactly what <strong>You</strong> need in order to make privacy ubiquitous.
+            We are always open to new ideas and suggestions, especially from <strong>You the developers</strong>, to help us build exactly
+            what <strong>You</strong> need in order to make privacy ubiquitous.
           </p>
           <div className={styles.indexCtas}>
             <Link className="button button--primary" to="https://github.com/blindnet-io">
               Watch and Contribute
             </Link>
-            <Link className="button button--secondary" to="https://github.com/blindnet-io/devrel-management/issues/new?assignees=noelmace&labels=request%2Ctriage&template=request.yml&title=%5BRequest%5D%3A+">
+            <Link
+              className="button button--secondary"
+              to="https://github.com/blindnet-io/devrel-management/issues/new?assignees=noelmace&labels=request%2Ctriage&template=request.yml&title=%5BRequest%5D%3A+"
+            >
               Make a Wish
             </Link>
           </div>
@@ -150,9 +177,9 @@ export default function Home(): JSX.Element {
     <Layout title="" description="">
       <Banner />
       <HeaderHero />
-      <Construction />
-      <E2EEncryption />
+      <DevKit />
       <OpenSource />
+      <Construction />
     </Layout>
   );
 }
