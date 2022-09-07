@@ -6,30 +6,31 @@ tags: [quickstart]
 
 :::info
 
-This tutorial doesn’t assume any existing knowledge of the blindnet devkit or even any privacy related technologies.
+This tutorial doesn’t assume any existing knowledge of the blindnet devkit or even any privacy-related technologies.
 
 :::
 
-The purpose of the following tutorial is to serve as a entry point for the blindnet devkit, by simply walking you through its different components to give you a better understanding of the overall structure and logic.
+The purpose of the following tutorial is to serve as an entry point for the blindnet devkit, by simply walking you through its different components to give you a better understanding of the overall structure and logic.
 
 Doing so, we'll answer the following questions:
 
-- What is the purpose of the Privacy Computation Engine?
-- How to automatically update stored data when managing Pricacy Requests?
-- How to add Pricacy Requests and Data Consumer interfaces to your Web applications?
+- What is the purpose of the Privacy Computation Engine;
+- How to add Privacy Requests features to your Web page or applications in a snap;
+- How to easily add privacy requests management features to your "back-office" web page or applications;
+- How to automatically update stored data when managing Privacy Requests.
 
 :::tip Further Readings
 
-We strongly recommend to read the linked sections of the documentation for more details.
+We strongly recommend reading the linked sections of the documentation for more details.
 
 :::
 
-## 1. Configure the Privacy Computation Engine
+## 1. Initial Configuration
 
 The [Privacy Computation Engine](./computation) is the core of blindnet devkit.
 It is a simple service you can interact with via a Rest API to create and track your users' [Privacy Requests](/docs/references/lexicon#privacy-request).
 
-Using the Privacy Computation Engine goes in three steps:
+Using the Privacy Computation Engine goes into three steps:
 
 1. **[App Management](./computation/apps-management)**: register and obtain an application id;
 2. **[Configuration](./computation/configuration)**: configure the service using its configuration API;
@@ -39,7 +40,7 @@ Step _(1) App Management_ and _(2) Configuration_ don't need to be addressed for
 
 :::tip Pre-configured Instance
 
-To make things eathier for this tutorial, we already pre-configured a dedicated custom instance for you to play with:
+To make things easier for this tutorial, we have already pre-configured a dedicated custom instance for you to play with:
 
 <div class="text--center">
 
@@ -56,11 +57,69 @@ However, the true strength of the blindnet devkit comes when combining its vario
 <!-- ## 2. Capture Data -->
 <!-- TODO: add information on how to capture data without the Capture Componet, i.e. call the demo storage service API to save a data from a simple HTML form -->
 
-## 2. Install the Privacy Request Capture Interface
+## 2. Add Privacy-Rights Management Capabilities to Your Website
 
-User interfaces for the blindnet devkit are delivered as Web Components.
+User interfaces for the blindnet devkit (aka _[Privacy Components for the Web](https://github.com/blindnet-io/privacy-components-web)_) are delivered as standard Web Components available on both npm and a CDN.
 
-See [Using Web Components](/docs/interfaces/using-web-components) for more information on how to integrate Web Components in your project.
+As a consequence, installing the blindnet devkit web interfaces doesn't involve any specificity, as you can install and use them as you would with any other standard Web Component.
+
+:::info
+
+See [Using Web Components](/docs/interfaces/using-web-components) for more information on how to integrate Web Components in your existing project.
+
+:::
+
+In the interest of simplicity and clarity, let's see how to integrate these components into a simple static HTML page, starting with the Privacy Request Capture Interface (PRCI).
+
+PRCI is a simple interface allowing your users to assert their privacy rights (therefore covering GDPR and other privacy-related legislation) by sending you a simple yet standardized [Privacy Request](/docs/reference/lexicon#privacy-request).
+
+In order to integrate this interface into your web page, you'll first need to load the associated bundle (included in the `@blindnet/prci` npm package) from the unpkg CDN by adding a `<script>` tag to your HTML document:
+
+```html
+<script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module" ></script>
+```
+
+:::info
+
+Here, we use the "core" module build of this package to avoid loading external dependencies like [Lit](https://lit.dev) several times when we'll add other components to this same web page in the following steps.
+
+To better fit any specific context, each Privacy Component for the Web include different builds and bundle, as detailed in the [User Interfaces - Install](/docs/interfaces/install) section.
+
+:::
+
+Then, you only need to add the associated entry-point custom element `<bln-priv-request>` to your HTML document:
+
+```html
+<h2 id="priv-request">Make a privacy request</h2>
+
+<bldn-priv-request></bldn-priv-request>
+```
+
+Leading us to the following HTML file:
+
+```html
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>Privacy Components for the Web - Tutorial</title>
+  </head>
+  <body>
+    <h1>Privacy Components for the Web - Tutorial</h1>
+
+    <h2 id="prci">PRCI</h2>
+    <bldn-priv-request></bldn-priv-request>
+
+    <h2 id="dci">DCI</h2>
+    <div id="demo__dci">
+      <bldn-data-consum></bldn-data-consum>
+    </div>
+
+    <script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module" ></script>
+</html>
+````
+
+<!-- TODO: add link to API doc and more details -->
 
 :::tip Minimalist Demo Project
 
@@ -109,52 +168,22 @@ The next steps have been already developed in this demo project. You can therefo
 
 :::
 
-### npm / yarn project
-
-When using an npm / yarn project with your own build system, you can install the Privacy Request Capture Interface via the `@blindnet/prci` npm package.
-
-```bash
-yarn add @blindnet/prci
-# OR
-npm install --save @blindnet/prci
-```
-
-Then, import this package in the javascript or typescript file where you want to use this web component in order to register it:
-
-```javascript
-import '@blindnet/prci'
-```
-
-### Static HTML Page
-
-If you want to use this Web Component without any build system, just add the associated script in your document:
-
-```html
-<script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module" ></script>
-```
-
-<!-- TODO: add more details or link to the associated documentation -->
-
-### Using the Custom Element
-
-You can then use the associated custom element in your JSX / HTML template / static page:
-
-```html
-<bldn-priv-request></bldn-priv-request>
-```
-
-<!-- TODO: add link to API doc and more details -->
-
 
 ## 3. Make a Privacy Request
 
-Open your web app / page, and follow the instructions given in the Privacy Request Capture Interface Web Component.
+Now, open your web app / HTML page in your browser to see this component in action:
+
+![first screen of the PRCI component](/img/captures/prci-entry.png)
+
+Here, you can see your users can directly choose from a wide range of privacy request types.
+
+This includes the classical consultation (access), deletion and modification of their data, of course, but also more advanced ones, like requesting the portability of their data to another system
 
 <!-- TODO: add link to User doc -->
 
 ## 4. Install the Data Consumer Interface
 
-Tp add the Data Consumer Interface Web Component to your project, simply follow the same steps as for the Privacy Request Capture Interface one, but with the `@blindnet/dci` npm package, and `<bldn-data-consum>` HTML custom element.
+To add the Data Consumer Interface Web Component to your project, simply follow the same steps as for the Privacy Request Capture Interface one, but with the `@blindnet/dci` npm package, and `<bldn-data-consum>` HTML custom element.
 
 <!-- TODO: add link to API doc and more details -->
 

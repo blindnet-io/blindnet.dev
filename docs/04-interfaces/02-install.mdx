@@ -7,3 +7,37 @@ tags: ["guide"]
 import WipWarning from '../_partials/_wip.mdx';
 
 <WipWarning repo="https://github.com/blindnet-io/privacy-components-web" />
+
+### npm / yarn project
+
+When using an npm / yarn project with your own build system, you can install the Privacy Request Capture Interface via the `@blindnet/prci` npm package.
+
+```bash
+yarn add @blindnet/prci
+# OR
+npm install --save @blindnet/prci
+```
+
+Then, import this package in the javascript or typescript file where you want to use this web component in order to register it:
+
+```javascript
+import '@blindnet/prci'
+```
+
+### Static HTML Page
+
+If you want to use this Web Component without any build system, just add the associated script in your document:
+
+```html
+<script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module" ></script>
+```
+
+<!-- TODO: add more details or link to the associated documentation -->
+
+### Using the Custom Element
+
+You can then use the associated custom element in your JSX / HTML template / static page:
+
+```html
+<bldn-priv-request></bldn-priv-request>
+```
