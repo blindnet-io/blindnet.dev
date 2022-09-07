@@ -4,88 +4,65 @@ title: Tutorial
 tags: [quickstart]
 ---
 
-import WipWarning from './_partials/_wip.mdx';
+:::info
 
 This tutorial doesn’t assume any existing knowledge of the blindnet devkit or even any privacy related technologies.
 
-We will simply walk you through the different components of the devkit to give you a better understanding of the overall structure and logic.
+:::
 
-<WipWarning />
+The purpose of the following tutorial is to serve as a entry point for the blindnet devkit, by simply walking you through its different components to give you a better understanding of the overall structure and logic.
+
+Doing so, we'll answer the following questions:
+
+- What is the purpose of the Privacy Computation Engine?
+- How to automatically update stored data when managing Pricacy Requests?
+- How to add Pricacy Requests and Data Consumer interfaces to your Web applications?
+
+:::tip Further Readings
+
+We strongly recommend to read the linked sections of the documentation for more details.
+
+:::
 
 ## 1. Configure the Privacy Computation Engine
 
 The [Privacy Computation Engine](./computation) is the core of blindnet devkit.
 It is a simple service you can interact with via a Rest API to create and track your users' [Privacy Requests](/docs/references/lexicon#privacy-request).
 
-You don't need to configure or install a Privacy Computation Engine for this tutorial.
-We simply pre-configured a dedicated custom instance for you on `https://devkit-pce-staging.azurewebsites.net/v0/` to makes things eathier.
+Using the Privacy Computation Engine goes in three steps:
 
-You can call the Rest API yourself for specific usages.
-However, you won't need to in this tutorial (and even in most real-life use cases), as other components of the devkit will transparently handle it themselves.
+1. **[App Management](./computation/apps-management)**: register and obtain an application id;
+2. **[Configuration](./computation/configuration)**: configure the service using its configuration API;
+3. **Development**: call the Privacy Computation Engine from your registered application to handle Privacy Requests
 
-:::info
+Step _(1) App Management_ and _(2) Configuration_ don't need to be addressed for this tutorial.
 
-For more information, checkout the associated [Swagger](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration), and the [Computation](./computation/) section of this documentation.
+:::tip Pre-configured Instance
 
-:::
+To make things eathier for this tutorial, we already pre-configured a dedicated custom instance for you to play with:
 
-:::note
+<div class="text--center">
 
-In a real-life use case, you'll first need to register and obtain an application id, then confige to followings:
+**`https://devkit-pce-staging.azurewebsites.net/v0/`**
 
-- General information of the organization
-- Legal bases for storing and processing users' data
-- Selectors for the data stored by the application
-- Retention policies for data categories stored by the application
-- Provenances
-- Regulations applied to the data stored by the application
+</div>
 
 :::
 
-## 2. Set-up Storage
+Step _(3) Development_ can be achieved directly by calling the standalone Privacy Computation Engine [REST API](https://devkit-pce-staging.azurewebsites.net/swagger/).
 
-> :construction_worker: redaction in progress
+However, the true strength of the blindnet devkit comes when combining its various components, thus drastically improving your developer experience and productivity while giving you access to additional features.
 
-A [Data Access Component](./storage/data-access) is here to transform requests from the [Privacy Computation Engine](/docs/computation) to efficiently execute automated operations on your data storage.
+<!-- ## 2. Capture Data -->
+<!-- TODO: add information on how to capture data without the Capture Componet, i.e. call the demo storage service API to save a data from a simple HTML form -->
 
-You can choose to use the [Capture Component](./data-capture) and directly store the captured data in blindnet's preconfigured storage, or your own storage service.
+## 2. Install the Privacy Request Capture Interface
 
-You can also directly connect the Data Access Component to your own storage service without using the Capture Component. For see sake of simplicity, we'll choose this option for this tutorial.
+User interfaces for the blindnet devkit are delivered as Web Components.
 
-For that, we'll set up a dedicated demo storage service in Java, and connect it to the Capture Component using the [Java Storage Connector library](https://github.com/blindnet-io/storage-connector-java).
+See [Using Web Components](/docs/interfaces/using-web-components) for more information on how to integrate Web Components in your project.
 
-<!-- FIXME: set up a dedicated project and detail development and release steps -->
-Code for this demo stage service can be found in the `example` directory in the librarie's repository: [github.com/blindnet-io/storage-connector-java > `example`](https://github.com/blindnet-io/storage-connector-java/tree/develop/example).
-
-## 3. Initiate a Web App
-
-> :construction_worker: redaction in progress
-
-Web User Interfaces in the devkit are provided as Web Components, and can therefore be used in any Web page or project, with any framework or library.
-
-Here, you can therefore create any new project or use an existing one to complete the next steps, following the related documentation from the framework or library you use:
-
-- [React - Web Components](https://reactjs.org/docs/web-components.html)
-- [Vue and Web Components](https://vuejs.org/guide/extras/web-components.html#building-custom-elements-with-vue)
-
-:::info
-Angular only requires you to set-up the [`CUSTOM_ELEMENTS_SCHEMA`](https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA) schema in order to use any Web Components without warnings or errors.
-
-```typescript
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { YourComponent } from './your.component';
-
-@NgModule({
-  declarations: [YourComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
-})
-export class YourModule {}
-```
-:::
-
-For this tutorial, we recommend using the [Open WC generator](https://open-wc.org/guides/developing-components/getting-started/) to initiate a simple Web App with [lit](https://lit.dev/), and even to simply use a basic HTML page for even more simplicity.
-
-### Minimalist Demo Project
+:::tip Minimalist Demo Project
 
 You can also refer to the simple demo project we created in the `demos/devkit-simple-tutorial` directory of the `privacy-components-web` monorepository.
 
@@ -128,20 +105,9 @@ npm start
 
 and open the application in your browser using the given URL.
 
-:::info
 The next steps have been already developed in this demo project. You can therefore refer to it whenever in doubt.
+
 :::
-
-
-## 4. Capture Data
-
-> :construction_worker: redaction in progress
-
-<!-- TODO: add information on how to capture data without the Capture Componet, i.e. call the demo storage service API to save a data from a simple HTML form -->
-
-## 5. Install the Privacy Request Capture Interface
-
-> :construction_worker: redaction in progress
 
 ### npm / yarn project
 
@@ -180,22 +146,33 @@ You can then use the associated custom element in your JSX / HTML template / sta
 <!-- TODO: add link to API doc and more details -->
 
 
-## 6. Make a Privacy Request
-
-> :construction_worker: redaction in progress
+## 3. Make a Privacy Request
 
 Open your web app / page, and follow the instructions given in the Privacy Request Capture Interface Web Component.
 
-## 7. Install the Data Consumer Interface
+<!-- TODO: add link to User doc -->
 
-> :construction_worker: redaction in progress
+## 4. Install the Data Consumer Interface
 
 Tp add the Data Consumer Interface Web Component to your project, simply follow the same steps as for the Privacy Request Capture Interface one, but with the `@blindnet/dci` npm package, and `<bldn-data-consum>` HTML custom element.
 
 <!-- TODO: add link to API doc and more details -->
 
-## 8. Accept a Privacy Request
+## 5. Accept a Privacy Request
 
 > :construction_worker: redaction in progress
 
 Open your web app / page, and follow the instructions given in the Privacy Data Consumer Interface Web Component.
+
+## 6. Set-up Storage
+
+A [Data Access Component](./storage/data-access) is here to transform requests from the [Privacy Computation Engine](/docs/computation) to efficiently execute automated operations on your data storage.
+
+You can choose to use the [Capture Component](./data-capture) and directly store the captured data in blindnet's preconfigured storage, or your own storage service.
+
+You can also directly connect the Data Access Component to your own storage service without using the Capture Component. For see sake of simplicity, we'll choose this option for this tutorial.
+
+For that, we'll set up a dedicated demo storage service in Java, and connect it to the Capture Component using the [Java Storage Connector library](https://github.com/blindnet-io/storage-connector-java).
+
+<!-- FIXME: set up a dedicated project and detail development and release steps -->
+Code for this demo stage service can be found in the `example` directory in the librarie's repository: [github.com/blindnet-io/storage-connector-java > `example`](https://github.com/blindnet-io/storage-connector-java/tree/develop/example).
