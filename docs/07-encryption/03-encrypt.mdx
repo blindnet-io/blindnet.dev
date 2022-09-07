@@ -6,7 +6,7 @@ sidebar_position: 3
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Encryption is a core feature of the blindnet devkit. Depending on the language, multiple data formats can be encrypted - `strings`, `files` or simply just `byte arrays`. 
+Depending on the language, multiple data formats can be encrypted - `strings`, `files` or simply just `byte arrays`.
 
 We provide two methods to encrypt the data: [encrypt](#encrypt) and [encryptValues](#encryptvalues).
 
@@ -18,14 +18,14 @@ The following workflow is applied when encrypting data:
 1. For each public key, the `symmetric key` is encrypted
 1. A list of `encrypted symmetric keys` is sent to blindnet
 
-Encryption is completed by a user of your application ([registered](/docs/references/glossary#registered-user) or [unregistered](/docs/references/glossary#anonymous-user)) to another registered user. A user does not need to be logged into blindnet in order to encrypt the data.
+Encryption is completed by a user of your application ([registered](/docs/references/glossary#registered-user) or [unregistered](/docs/references/glossary#anonymous-user)) to another registered user. A user does not need to be logged in to blindnet to encrypt the data.
 Data can be encrypted for a single user, a list of users or a [user group](/docs/references/glossary#user-groups).
 
 In the current api, the [encryption destination](./managing_users_access#creating-temporary-tokens) is specified in the **Server SDK**.
 
 To encrypt the data, the client SDK needs to be initialized with the [temporary token](./managing_users_access#creating-temporary-tokens) which contains information to whom the data is encrypted (user group or a list of users). To encrypt to a different destination, a new token needs to be generated.
 
-To encrypt the data for a specific users, obtain a [temporary token](/docs/references/glossary#temp-user-token) using the following **Server SDK** method:
+To encrypt the data for a specific user, obtain a [temporary token](/docs/references/glossary#temp-user-token) using the following **Server SDK** method:
 
 <Tabs groupId="lang-server">
 <TabItem value="php" label="PHP" default>
@@ -54,7 +54,7 @@ $tempUserJwt = $blindnet->createTempUserToken($groupId);
 ## encrypt
 
 This method encrypts the entire data passed as a parameter.
-Depending on a language, multiple formats are supported.  
+Depending on the language, multiple formats are supported.  
 Besides the _data_, a [metadata](/docs/references/glossary#metadata) can be passed as a second argument. It can be any `JSON serializable object`.
 
 <Tabs groupId="lang-client">
@@ -65,11 +65,12 @@ Other formats should be encoded to `Uint8Array` or `ArrayBuffer`. You can put th
 
 ```javascript
 // pass a temp user token generated in the server SDK
-const blindnet = Blindnet.init(tempUserJwt)
+const blindnet = Blindnet.init(tempUserJwt);
 // e.g. data is a file
 // const data = document.getElementById('file-picker').files[0]
-const { dataId, encryptedData } = await blindnet.encrypt(data, metadata)    
+const { dataId, encryptedData } = await blindnet.encrypt(data, metadata);
 ```
+
 `encryptedData` has a type `ArrayBuffer`.
 
 </TabItem>
@@ -83,10 +84,10 @@ To be easily transferred, `encryptedData` can be encoded to `base64` or `hexadec
 <TabItem value="js" label="JavaScript" default>
 
 ```javascript
-import { util } from '@blindnet/sdk-javascript'
+import { util } from '@blindnet/sdk-javascript';
 
-const base64Encoded = util.toBase64(encryptedData)
-const hexEncoded = util.toHex(encryptedData)
+const base64Encoded = util.toBase64(encryptedData);
+const hexEncoded = util.toHex(encryptedData);
 ```
 
 </TabItem>

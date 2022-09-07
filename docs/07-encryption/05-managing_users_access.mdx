@@ -6,7 +6,7 @@ sidebar_position: 5
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can manage your users' interaction with blindnet and their access to data through blindnet devkit methods that you invoke in your application. These methods allow you to
+You can manage your users' interaction with blindnet and their access to data through blindnet encryption engine methods that you invoke in your application. These methods allow you to
 
 - connect your users to blindnet
 - cluster users in groups
@@ -15,7 +15,8 @@ You can manage your users' interaction with blindnet and their access to data th
 - etc.
 
 ## Creating user tokens
-Each request to blindnet needs to be authenticated, which is done through user tokens. You `generate` user tokens on your server by using **blindnet Server SDK**, and then `pass` the generated token in the [initialization of **blindnet Client SDK**](./installation#client-sdk-2). 
+
+Each request to blindnet needs to be authenticated, which is done through user tokens. You `generate` user tokens on your server by using **blindnet Server SDK**, and then `pass` the generated token in the [initialization of **blindnet Client SDK**](./installation#client-sdk-2).
 
 To generate a user token, after [initializing blindnet Server SDK](./installation#server-sdk-2) call the following blindnet **Server SDK** method:
 
@@ -34,7 +35,7 @@ $userToken = $blindnet->createUserToken($userId, $groupId);
 ```js
 userId = 'your_user_id';
 groupId = 'your_user_group_id';
-const userToken = await blindnet.createUserToken(userId, groupId)
+const userToken = await blindnet.createUserToken(userId, groupId);
 ```
 
 </TabItem>
@@ -43,6 +44,7 @@ const userToken = await blindnet.createUserToken(userId, groupId)
 User tokens expire 12 hours after they have been created.
 
 ### Creating temporary tokens
+
 Temporary tokens are used to authenticate when [encrypting](./encrypt) the data. They contain the information to whom the data is being encrypted.
 
 <Tabs groupId="lang-server">
@@ -57,11 +59,11 @@ $userToken = $blindnet->createTempUserToken($groupId);
 <TabItem value="node" label="Node.js" default>
 
 ```js
-groupId = 'your_user_group_id'
-const userToken = await blindnet.createTempUserToken(groupId)
+groupId = 'your_user_group_id';
+const userToken = await blindnet.createTempUserToken(groupId);
 // or
-userIds = ['user_0', 'user_1']
-const userToken = await blindnet.createTempUserToken(userIds)
+userIds = ['user_0', 'user_1'];
+const userToken = await blindnet.createTempUserToken(userIds);
 ```
 
 </TabItem>
@@ -70,6 +72,7 @@ const userToken = await blindnet.createTempUserToken(userIds)
 Temporary tokens expire 30 minutes after they have been created.
 
 ## Assigning a user to a group
+
 Each of your users can belong to one user group or no group at all.  
 For example, if your platform users are employees of a hotel or bank, you can group your users (employees) with respect to the hotel or bank they work with (group).  
 You associate a user to a group by specifying the `group ID` in a `user token` when connecting a user to blindnet for the first time.
@@ -77,14 +80,16 @@ You associate a user to a group by specifying the `group ID` in a `user token` w
 Currently, you can't assign already created user to a different group. [Delete](#deleting-users) the user and create it again with a different `group id`.
 
 ## Connecting users with blindnet
+
 The core of security of blindnet are user's [private keys](../how_it_works/security#user-private-keys). They are randomly generated on the user's local device and encrypted using a secret code (e.g. user's password) and then securely stored in blindnet.  
 Blindnet allows you to reuse existing user passwords so that your users still use [one password](/docs/references/glossary#secret-value) in your application. To do so safely, you need to use blindnet Client SDK to split user passwords before you connect a user to blindnet (check our [Security page](../how_it_works/security#user-passwords) to see why this is inportant).
 
 ### Splitting secrets
+
 :::tip "Splitting user's password"
 In the case that you send plaintext passwords to your server for user authentication, we advise that you update the authentication workflow in the following way.
 
-When a user is logging into your application and enters a password, you should use blindnet Client SDK to split the password into two parts: you use the `second part` (*appSecret*) to authenticate the user on your app, while you use the `first part` (*blindnetSecret*) for registering and logging users to blindnet. It is advisable not to use the same password for both actions since a party that can read the user's password (i.e., you) would be able to decrypt the user's private keys.
+When a user is logging into your application and enters a password, you should use blindnet Client SDK to split the password into two parts: you use the `second part` (_appSecret_) to authenticate the user on your app, while you use the `first part` (_blindnetSecret_) for registering and logging users to blindnet. It is advisable not to use the same password for both actions since a party that can read the user's password (i.e., you) would be able to decrypt the user's private keys.
 :::
 
 To split the password use the following **Client SDK** method:
@@ -93,38 +98,40 @@ To split the password use the following **Client SDK** method:
 <TabItem value="js" label="JavaScript" default>
 
 ```js
-const password = 'user_password' 
-const { blindnetSecret, appSecret } = await Blindnet.deriveSecrets(password)
+const password = 'user_password';
+const { blindnetSecret, appSecret } = await Blindnet.deriveSecrets(password);
 ```
 
 </TabItem>
 </Tabs>
 
 ### Registering and logging users in blindnet
-When a user logs into your system, you also need to login that user to blindnet. To do so, you first obtain blindnet secret by [splitting user password](#splitting-secrets), and then use the following **Client SDK** method:
+
+When a user logs into your system, you also need to log in that user to blindnet. To do so, you first obtain blindnet secret by [splitting user password](#splitting-secrets), and then use the following **Client SDK** method:
 
 <Tabs groupId="lang-client">
 <TabItem value="js" label="JavaScript" default>
 
 ```js
-await blindnet.connect(blindnetSecret)
+await blindnet.connect(blindnetSecret);
 ```
 
 </TabItem>
 </Tabs>
 
-blindnet devkit does not expose separate methods for user registration and logging in. You always use the `connect` method while its internals handle user registration and logging in. If it is the first time that a user is being connected to blindnet, the SDK will register that user by using the information you provide in a [token](#creating-user-tokens).
+The blindnet encryption engine does not expose separate methods for user registration and logging in. You always use the `connect` method while its internals handle user registration and logging in. If it is the first time that a user is being connected to blindnet, the SDK will register that user by using the information you provide in a [token](#creating-user-tokens).
 
 When you use the `connect` method, it locally initiates user's [private keys](../how_it_works/security#user-private-keys) so that later users can decrypt their data.
 
 ### Logging out users
+
 When a user logs out of your application, you also need to log out that user from blindnet by using the following **Client SDK** method:
 
 <Tabs groupId="lang-client">
 <TabItem value="js" label="JavaScript" default>
 
 ```js
-await blindnet.disconnect()
+await blindnet.disconnect();
 ```
 
 </TabItem>
@@ -133,7 +140,8 @@ await blindnet.disconnect()
 This will remove the user's private keys from the user's local device.
 
 ## Changing secrets
-Since user's keys are encrypted with the [user's secret](/docs/references/glossary#secret-value), changing the secret means the keys must be re-encrypted with the new secret value.  
+
+Since the user's keys are encrypted with the [user's secret](/docs/references/glossary#secret-value), changing the secret means the keys must be re-encrypted with the new secret value.
 
 Your users can change their passwords in your applications at any time without losing access to previously encrypted data. To ensure that access is not lost, when your user changes password, [split](#splitting-secrets) the new password and use the corresponding **Client SDK** method:
 
@@ -141,9 +149,9 @@ Your users can change their passwords in your applications at any time without l
 <TabItem value="js" label="JavaScript" default>
 
 ```js
-const newPassword = 'user_new_password'
-const { blindnetSecret, appSecret } = await Blindnet.deriveSecrets(newPassword)
-await blindnet.changeSecret(blindnetSecret)
+const newPassword = 'user_new_password';
+const { blindnetSecret, appSecret } = await Blindnet.deriveSecrets(newPassword);
+await blindnet.changeSecret(blindnetSecret);
 ```
 
 </TabItem>
@@ -152,10 +160,11 @@ await blindnet.changeSecret(blindnetSecret)
 This will re-encrypt the user's private keys with the new secret and post them to blindnet.
 
 ## Giving access to other users
+
 A user (Alice) can give access to [encrypted data](./encrypt) to another user (Bob).  
 It means Alice will download her [encrypted data keys](/docs/references/glossary#encrypted-data-key) and re-encrypt them with Bob's [public key](/docs/references/glossary#public-key). This way Bob can download and decrypt the keys with his [private key](/docs/references/glossary#private-key).
 
-Possible use-case for this is when a new user registers to blindnet and needs an access to e.g. customers' data. Think of a new hotel employee accessing guest's encrypted passport during check-in.
+A possible use case for this is when a new user registers to blindnet and needs access to e.g. customers' data. Think of a new hotel employee accessing guest's encrypted passport during check-in.
 
 Currently, Alice give access **all the data** for which she has the keys.
 
@@ -165,28 +174,30 @@ To give access to other user, use the following **Client SDK** method:
 <TabItem value="js" label="JavaScript" default>
 
 ```js
-const userId = 'id_of_user_to_give_access_to'
-blindnet.giveAccess(userId)
+const userId = 'id_of_user_to_give_access_to';
+blindnet.giveAccess(userId);
 ```
 
 </TabItem>
 </Tabs>
 
 ## Lost secret
-When a user loses the secret (forgets the login password), the user loses access to the encrypted data since they are unable to decrypt the keys used to encrypt the data.    
 
-You need to put in place the following workflow  
+When a user loses the secret (forgets the login password), the user loses access to the encrypted data since they are unable to decrypt the keys used to encrypt the data.
+
+You need to put in place the following workflow
 
 1. [Delete](#deleting-users) the user from blindnet.
 1. [Log-in](#registering-and-logging-users-in-blindnet) the user to blindnet with a new secret.
-1. After the user has logged-in, another user must [give them access](#giving-access-to-other-users) to the encrypted data.
+1. After the user has logged in, another user must [give them access](#giving-access-to-other-users) to the encrypted data.
 
 :::caution
 If no other user has an access to a particular data when the secret is lost, **no one** will be able to decrypt the data.
 :::
 
 ## Revoking user access
-Revoking an access to a user means the user will lose all the keys necessary to decrypt the data and consequently, lose access to data. Your server should inform blindnet about a user for which the access is being revoked, by using the following blindnet **Server SDK** method:
+
+Revoking access to a user means the user will lose all the keys necessary to decrypt the data and consequently, lose access to data. Your server should inform blindnet about a user for which the access is being revoked, by using the following blindnet **Server SDK** method:
 
 <Tabs groupId="lang-server">
 <TabItem value="php" label="PHP" default>
@@ -200,8 +211,8 @@ $blindnet->revokeAccess($userId);
 <TabItem value="node" label="Node.js" default>
 
 ```js
-userId = 'id_of_user_to_revoke_access'
-await blindnet.revokeAccess(userId)
+userId = 'id_of_user_to_revoke_access';
+await blindnet.revokeAccess(userId);
 ```
 
 </TabItem>
@@ -210,6 +221,7 @@ await blindnet.revokeAccess(userId)
 In the situation where all users in a [user group](/docs/references/glossary#user-groups) always have access to all the data, this action is not meaningful and [deletion](#deleting-users) of users should be performed instead.
 
 ## Deleting encrypted data keys
+
 When data is deleted from your server, it's encrypted keys should be deleted from blindnet. User the following **Server SDK** method to delete the keys:
 
 <Tabs groupId="lang-server">
@@ -224,14 +236,15 @@ $blindnet->forgetData($dataId);
 <TabItem value="node" label="Node.js" default>
 
 ```js
-dataId = 'id_of_deleted_data'
-await blindnet.forgetData(dataId)
+dataId = 'id_of_deleted_data';
+await blindnet.forgetData(dataId);
 ```
 
 </TabItem>
 </Tabs>
 
 ## Deleting users
+
 When a user is deleted from your application, you must inform blindnet about the event. This is done from your server by using the following blindnet **Server SDK** method:
 
 <Tabs groupId="lang-server">
@@ -246,8 +259,8 @@ $blindnet->forgetUser($userId);
 <TabItem value="node" label="Node.js" default>
 
 ```js
-userId = 'id_of_user_to_delete'
-await blindnet.forgetUser(userId)
+userId = 'id_of_user_to_delete';
+await blindnet.forgetUser(userId);
 ```
 
 </TabItem>
@@ -258,6 +271,7 @@ Deleting a user from blindnet implies that the deleted user will no longer be ab
 When deleting users, you must be careful not to delete the last user of a [group](/docs/references/glossary#user-groups) because in that case all existing data will become undecryptable. Deleting the last user has the same effect as [deleting a user group](#deleting-user-groups).
 
 ## Deleting user groups
+
 To delete a [user group](/docs/references/glossary#user-groups), use the following blindnet **Server SDK** method:
 
 <Tabs groupId="lang-server">
@@ -272,8 +286,8 @@ $blindnet->forgetGroup($groupId);
 <TabItem value="node" label="Node.js" default>
 
 ```js
-groupId = 'id_of_group_to_delete'
-await blindnet.forgetGroup(groupId)
+groupId = 'id_of_group_to_delete';
+await blindnet.forgetGroup(groupId);
 ```
 
 </TabItem>

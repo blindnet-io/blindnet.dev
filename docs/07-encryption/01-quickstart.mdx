@@ -14,18 +14,18 @@ While reading this quickstart guide you can download and follow the source code 
 :::
 
 In this quickstart guide, you will learn how to [encrypt](/docs/encryption/encrypt) and [decrypt](/docs/encryption/decrypt) a file using the [blindnet encryption client SDK](/docs/encryption/introduction).  
-We assume two users exist - a user we know, **Alice**, and an anonymous user **Bob**. For the sake of simplicity we'll act as both Alice and Bob. We will register a known user Alice to the blindnet encryption service, encrypt a file to her as an anonymous user Bob, and then decrypt the file as Alice.
+We assume two users exist - a user we know, **Alice**, and an anonymous user **Bob**. For the sake of simplicity, we'll act as both Alice and Bob. We will register a known user Alice to the blindnet encryption service, encrypt a file to her as an anonymous user Bob, and then decrypt the file as Alice.
 
 You will learn how to:
 
-- set-up the blindnet devkit
+- set-up the blindnet encryption engine
 - register Alice to the blindnet encryption service
 - encrypt a file as Bob
 - decrypt a file as Alice
 
 ### Before you start
 
-You first need to obtain authentication data (application id an key) from the blindnet [dashboard](https://dashboard.blindnet.io).
+You first need to obtain authentication data (application id and key) from the blindnet [dashboard](https://dashboard.blindnet.io).
 
 Refer to [Access Management - Application Set Up](/docs/access-management/set-up) for instructions.
 
@@ -67,7 +67,7 @@ import { createTempUserToken, createUserToken } from '@blindnet/token-generator'
 [Tokens](/docs/references/glossary#authentication-token) are used to authenticate the users of your application to the blindnet encryption service. They can be used multiple times and should be regenerated when they expire using the same method.
 
 :::caution
-We use the `token generation` library to generate the tokens. It should be only used for testing purposes and tokens should be [generated on the server](/docs/encryption/managing_users_access#creating-user-tokens) in production environment, after your user is authenticated.
+We use the `token generation` library to generate the tokens. It should be only used for testing purposes and tokens should be [generated on the server](/docs/encryption/managing_users_access#creating-user-tokens) in the production environment, after your user is authenticated.
 :::
 
 Use the [application id](/docs/references/glossary#application-id) and key you obtained in [Before you start](#before-you-start) section.
@@ -118,7 +118,7 @@ await blindnet.connect(blindnetSecret);
 </Tabs>
 
 :::info
-You can use `appSecret` as a password for the user to log-into your system.
+You can use `appSecret` as a password for the user to log into your system.
 :::
 
 ## **STEP 2**: Encrypt a file
@@ -140,7 +140,6 @@ const blindnet = Blindnet.init(token, endpoint);
 
 </TabItem>
 </Tabs>
-
 
 ### Encrypt a file
 

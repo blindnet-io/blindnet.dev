@@ -24,12 +24,13 @@ Server SDK:
 <Tabs groupId="lang-client">
 <TabItem value="js" label="JavaScript" default>
 
-Pick one of the following methods to install the blindnet devkit.
+Pick one of the following methods to install the blindnet encryption engine.
 
 <Tabs>
 <TabItem value="npm" label="npm" default>
 
 Run the following command in your terminal.
+
 ```bash
 npm i -S @blindnet/sdk-javascript
 ```
@@ -38,6 +39,7 @@ npm i -S @blindnet/sdk-javascript
 <TabItem value="yarn" label="yarn" default>
 
 Run the following command in your terminal.
+
 ```bash
 yarn add @blindnet/sdk-javascript
 ```
@@ -47,6 +49,7 @@ yarn add @blindnet/sdk-javascript
 
 Download the [umd](https://irian.to/blogs/what-are-cjs-amd-umd-and-esm-in-javascript/) file and include it in your `HTML` file.  
 File can be downloaded [here](https://raw.githubusercontent.com/blindnet-io/blindnet-sdk-js/develop/lib/index.umd.js).
+
 ```html
 <script src="blindnet.umd.js"></script>
 ```
@@ -64,7 +67,7 @@ For more info, check the [api reference](../api_reference/client/javascript/late
 <Tabs groupId="lang-server">
 <TabItem value="php" label="PHP" default>
 
-```bash 
+```bash
 composer require blindnet/blindnet-sdk-php
 ```
 
@@ -73,12 +76,13 @@ For more info, check the [api reference](../api_reference/server/php/latest#inst
 </TabItem>
 <TabItem value="node" label="Node.js" default>
 
-Pick one of the following methods to install the blindnet devkit.
+Pick one of the following methods to install the blindnet encryption engine.
 
 <Tabs>
 <TabItem value="npm" label="npm" default>
 
 Run the following command in your terminal.
+
 ```bash
 npm i -S @blindnet/sdk-node
 ```
@@ -87,6 +91,7 @@ npm i -S @blindnet/sdk-node
 <TabItem value="yarn" label="yarn" default>
 
 Run the following command in your terminal.
+
 ```bash
 yarn add @blindnet/sdk-node
 ```
@@ -102,7 +107,8 @@ For more info, check the [api reference](../api_reference/server/node.js/latest#
 ## Imports
 
 ### Client SDK
-The blindnet devkit api is enclosed in the `Blindnet` module. It should be imported together with the `error types` and optionally, `utilities` (e.g. to encode and decode the encrypted data).
+
+The blindnet encryption API is enclosed in the `Blindnet` module. It should be imported together with the `error types` and optionally, `utilities` (e.g. to encode and decode the encrypted data).
 
 <Tabs groupId="lang-client">
 <TabItem value="js" label="JavaScript" default>
@@ -110,12 +116,13 @@ The blindnet devkit api is enclosed in the `Blindnet` module. It should be impor
 If the SDK was installed as an `npm` package, it is imported as
 
 ```js
-import { Blindnet, util, error } from '@blindnet/sdk-javascript'
+import { Blindnet, util, error } from '@blindnet/sdk-javascript';
 ```
 
 If it was imported as an `umd` package, use
+
 ```js
-const { Blindnet, util, error } = blindnet
+const { Blindnet, util, error } = blindnet;
 ```
 
 For more info, check the [api reference](../api_reference/client/javascript/latest#imports).
@@ -139,7 +146,7 @@ For more info, check the [api reference](../api_reference/server/php/latest#impo
 <TabItem value="node" label="Node.js" default>
 
 ```js
-const Blindnet = require('@blindnet/sdk-node')
+const Blindnet = require('@blindnet/sdk-node');
 ```
 
 For more info, check the [api reference](../api_reference/server/node.js/latest#imports).
@@ -149,8 +156,9 @@ For more info, check the [api reference](../api_reference/server/node.js/latest#
 
 ## Initialization
 
-### Client SDK 
-blindnet devkit must be initialized before you can use it (with the exception for some static methods, e.g. [secret derivation](./managing_users_access#splitting-secrets)).
+### Client SDK
+
+The blindnet encryption engine must be initialized before you can use it (with the exception for some static methods, e.g. [secret derivation](./managing_users_access#splitting-secrets)).
 
 To initialize the library, you need to provide the [authentication token generated](./managing_users_access#creating-user-tokens) using the **server SDK**.
 
@@ -163,15 +171,16 @@ Initialization is done with the `init` method.
 <TabItem value="js" label="JavaScript" default>
 
 ```js linenums="1"
-const blindnet = Blindnet.init(token)
+const blindnet = Blindnet.init(token);
 // for testing
-const blindnet = Blindnet.init(token, 'https://test.blindnet.io')
+const blindnet = Blindnet.init(token, 'https://test.blindnet.io');
 ```
 
 </TabItem>
 </Tabs>
 
 ### Server SDK
+
 To initialize the server SDK, you need to obtain [application id](/docs/references/glossary#application-id) and [application key](/docs/references/glossary#application-key). You can obtain them from the [dashboard](https://dashboard.blindnet.io), or generate them on your own (see next section).
 
 As for the client SDK, you can provide an endpoint. For testing, use `https://test.blindnet.io`.
@@ -189,9 +198,9 @@ $blindnet=Blindnet.init($appKey, $appId, 'https://test.blindnet.io')
 <TabItem value="node" label="Node.js" default>
 
 ```js linenums="1"
-const blindnet = await Blindnet.init(appKey, appId)
+const blindnet = await Blindnet.init(appKey, appId);
 // for testing
-const blindnet = await Blindnet.init(appKey, appId, 'https://test.blindnet.io')
+const blindnet = await Blindnet.init(appKey, appId, 'https://test.blindnet.io');
 ```
 
 </TabItem>
@@ -199,7 +208,7 @@ const blindnet = await Blindnet.init(appKey, appId, 'https://test.blindnet.io')
 
 ## Generating application keys
 
-[Application key](/docs/references/glossary#application-key) is actually an [Ed25519](https://en.wikipedia.org/wiki/EdDSA#Ed25519) private key used to sign the tokens that allow your users to access blindnet. You can generate it either in the blindnet [dashboard](https://dashboard.blindnet.io) or on your own. If you decide to generate the application key on your own, you need to generate an Ed25519 key pair, take the private key as your blindnet application key, and register the public key in your application on the dashboard. 
+[Application key](/docs/references/glossary#application-key) is actually an [Ed25519](https://en.wikipedia.org/wiki/EdDSA#Ed25519) private key used to sign the tokens that allow your users to access blindnet. You can generate it either in the blindnet [dashboard](https://dashboard.blindnet.io) or on your own. If you decide to generate the application key on your own, you need to generate an Ed25519 key pair, take the private key as your blindnet application key, and register the public key in your application on the dashboard.
 
 Examples of how to generate the Ed25519 key pair:
 
@@ -210,8 +219,8 @@ Examples of how to generate the Ed25519 key pair:
 import * as ed from 'noble-ed25519';
 const privateKey = ed.utils.randomPrivateKey(32);
 const publicKey = await ed.getPublicKey(privateKey);
-console.log("application key: " + btoa(String.fromCharCode(...privateKey, ...publicKey)));
-console.log("public key: " + btoa(String.fromCharCode(...publicKey)));
+console.log('application key: ' + btoa(String.fromCharCode(...privateKey, ...publicKey)));
+console.log('public key: ' + btoa(String.fromCharCode(...publicKey)));
 ```
 
 </TabItem>
@@ -219,7 +228,7 @@ console.log("public key: " + btoa(String.fromCharCode(...publicKey)));
 
 ```php linenums="1"
 $keypair = sodium_crypto_sign_keypair();
-$publicKey = base64_encode(sodium_crypto_sign_publickey($keypair)); 
+$publicKey = base64_encode(sodium_crypto_sign_publickey($keypair));
 $privateKey = base64_encode(sodium_crypto_sign_secretkey($keypair));
 echo ('application key: ' . $privateKey . "\n");
 echo ('public key: ' . $publicKey . "\n");
@@ -231,6 +240,6 @@ echo ('public key: ' . $publicKey . "\n");
 Examples of Ed25519 keys:
 
 :::note Ed25519 keys
-**public key**: *QqglmSldC4PerNo+zQJIkV5+CkCHL2Tlq5aO1NXiY7Y=*  
-**private key**: *GWuUnD5bn0Xuk8GdbLGoX+0UBanFmY3/Qq8JY8Fff2pCqCWZKV0Lg96s2j7NAkiRXn4KQIcvZOWrlo7U1eJjtg==*
+**public key**: _QqglmSldC4PerNo+zQJIkV5+CkCHL2Tlq5aO1NXiY7Y=_  
+**private key**: _GWuUnD5bn0Xuk8GdbLGoX+0UBanFmY3/Qq8JY8Fff2pCqCWZKV0Lg96s2j7NAkiRXn4KQIcvZOWrlo7U1eJjtg==_
 :::
