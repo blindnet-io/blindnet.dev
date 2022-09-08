@@ -4,92 +4,143 @@ title: Tutorial
 tags: [quickstart]
 ---
 
-import WipWarning from './_partials/_wip.mdx';
+:::info
 
-This tutorial doesn’t assume any existing knowledge of the blindnet devkit or even any privacy related technologies.
+This tutorial doesn’t assume any existing knowledge of the blindnet devkit or even any privacy-related technologies.
 
-We will simply walk you through the different components of the devkit to give you a better understanding of the overall structure and logic.
+:::
 
-<WipWarning />
+The purpose of the following tutorial is to serve as an entry point for the blindnet devkit, by simply walking you through its different components to give you a better understanding of the overall structure and logic.
 
-## 1. Configure the Privacy Computation Engine
+Doing so, we'll answer the following questions:
+
+- What is the purpose of the Privacy Computation Engine;
+- How to add Privacy Requests features to your Web page or applications in a snap;
+- How to easily add privacy requests management features to your "back-office" web page or applications;
+- How to automatically update stored data when managing Privacy Requests.
+
+:::tip Further Readings
+
+We strongly recommend reading the linked sections of the documentation for more details.
+
+:::
+
+## 1. Initial Configuration
 
 The [Privacy Computation Engine](./computation) is the core of blindnet devkit.
 It is a simple service you can interact with via a Rest API to create and track your users' [Privacy Requests](/docs/references/lexicon#privacy-request).
 
-You don't need to configure or install a Privacy Computation Engine for this tutorial.
-We simply pre-configured a dedicated custom instance for you on `https://devkit-pce-staging.azurewebsites.net/v0/` to makes things eathier.
+Using the Privacy Computation Engine goes into three steps:
 
-You can call the Rest API yourself for specific usages.
-However, you won't need to in this tutorial (and even in most real-life use cases), as other components of the devkit will transparently handle it themselves.
+1. **[App Management](/docs/access-management/set-up)**: register and obtain an application id;
+2. **[Configuration](./computation/configuration)**: configure the service using its configuration API;
+3. **Development**: call the Privacy Computation Engine from your registered application to handle Privacy Requests
 
-:::info
+Step _(1) App Management_ and _(2) Configuration_ don't need to be addressed for this tutorial.
 
-For more information, checkout the associated [Swagger](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration), and the [Computation](./computation/) section of this documentation.
+:::tip Pre-configured Instance
 
-:::
+To make things easier for this tutorial, we have already pre-configured a dedicated custom instance for you to play with:
 
-:::note
+<div class="text--center">
 
-In a real-life use case, you'll first need to register and obtain an application id, then confige to followings:
+**`https://devkit-pce-staging.azurewebsites.net/v0/`**
 
-- General information of the organization
-- Legal bases for storing and processing users' data
-- Selectors for the data stored by the application
-- Retention policies for data categories stored by the application
-- Provenances
-- Regulations applied to the data stored by the application
+</div>
 
 :::
 
-## 2. Set-up Storage
+Step _(3) Development_ can be achieved directly by calling the standalone Privacy Computation Engine [REST API](https://devkit-pce-staging.azurewebsites.net/swagger/).
 
-> :construction_worker: redaction in progress
+However, the true strength of the blindnet devkit comes when combining its various components, thus drastically improving your developer experience and productivity while giving you access to additional features.
 
-A [Data Access Component](./storage/data-access) is here to transform requests from the [Privacy Computation Engine](/docs/computation) to efficiently execute automated operations on your data storage.
+Starting with our premade user interfaces.
 
-You can choose to use the [Capture Component](./data-capture) and directly store the captured data in blindnet's preconfigured storage, or your own storage service.
+<!-- ## 2. Capture Data -->
+<!-- TODO: add information on how to capture data without the Capture Componet, i.e. call the demo storage service API to save a data from a simple HTML form -->
 
-You can also directly connect the Data Access Component to your own storage service without using the Capture Component. For see sake of simplicity, we'll choose this option for this tutorial.
+## 2. Add Privacy-Rights Management Capabilities to Your Application
 
-For that, we'll set up a dedicated demo storage service in Java, and connect it to the Capture Component using the [Java Storage Connector library](https://github.com/blindnet-io/storage-connector-java).
+User interfaces for the blindnet devkit (aka _[Privacy Components for the Web](https://github.com/blindnet-io/privacy-components-web)_) are delivered as standard Web Components available on both npm and a CDN.
 
-<!-- FIXME: set up a dedicated project and detail development and release steps -->
-Code for this demo stage service can be found in the `example` directory in the librarie's repository: [github.com/blindnet-io/storage-connector-java > `example`](https://github.com/blindnet-io/storage-connector-java/tree/develop/example).
-
-## 3. Initiate a Web App
-
-> :construction_worker: redaction in progress
-
-Web User Interfaces in the devkit are provided as Web Components, and can therefore be used in any Web page or project, with any framework or library.
-
-Here, you can therefore create any new project or use an existing one to complete the next steps, following the related documentation from the framework or library you use:
-
-- [React - Web Components](https://reactjs.org/docs/web-components.html)
-- [Vue and Web Components](https://vuejs.org/guide/extras/web-components.html#building-custom-elements-with-vue)
+As a consequence, installing the blindnet devkit web interfaces doesn't involve any specificity, as you can install and use them as you would with any other standard Web Component.
 
 :::info
-Angular only requires you to set-up the [`CUSTOM_ELEMENTS_SCHEMA`](https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA) schema in order to use any Web Components without warnings or errors.
 
-```typescript
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { YourComponent } from './your.component';
+See [Using Web Components](/docs/interfaces/using-web-components) for more information on how to integrate Web Components in your existing project.
 
-@NgModule({
-  declarations: [YourComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
-})
-export class YourModule {}
+:::
+
+In the interest of simplicity and clarity, let's see how to integrate these components into a simple static HTML page, starting with the Privacy Request Capture Interface (PRCI).
+
+PRCI is a simple interface allowing your users to assert their privacy rights by sending you a simple yet standardized [Privacy Request](/docs/references/lexicon#privacy-request). It is an entry point for your user to privacy, not only allowing you to cover GDPR and other privacy-related legislations but also and more importantly, to build trust by showing your users their privacy rights are tangibly handled, enforced and respected.
+
+To integrate this interface into your web page, you'll first need to load the associated bundle (included in the `@blindnet/prci` npm package) from the unpkg CDN by adding a `<script>` tag to your HTML document:
+
+```html
+<script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module"></script>
 ```
+
+:::info
+
+Here, we use the `core` module build for performance improvement.
+
+As this build only integrates the _core_ parts of the library, external dependencies like [Lit](https://lit.dev) will only be loaded once, even after we add other privacy components to this same web page.
+
+Your specific context might be different. This is why each Privacy Component for the Web includes different builds and bundles covering any specific needs, as detailed in the [User Interfaces - Install](/docs/interfaces/install) section.
+
 :::
 
-For this tutorial, we recommend using the [Open WC generator](https://open-wc.org/guides/developing-components/getting-started/) to initiate a simple Web App with [lit](https://lit.dev/), and even to simply use a basic HTML page for even more simplicity.
+Then, you only need to add the associated entry-point custom element `<bln-priv-request>` to your HTML document:
 
-### Minimalist Demo Project
+```html
+<h2 id="priv-request">Make a privacy request</h2>
 
-You can also refer to the simple demo project we created in the `demos/devkit-simple-tutorial` directory of the `privacy-components-web` monorepository.
+<bldn-priv-request></bldn-priv-request>
+```
 
-For simplicity, this project is minimalist. It only use [lit](https://lit.dev/), with [Carbon Web Components](https://web-components.carbondesignsystem.com/) and the [Vaadin Router](https://hilla.dev/docs/routing/router). Build system has been set up using the [Open WC generator](https://open-wc.org/guides/developing-components/getting-started/) (refer to the README for more information).
+Leading us to the following HTML file:
+
+```html
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>Privacy Components for the Web - Minimal Static Demo</title>
+  </head>
+  <body>
+    <h1>Privacy Components for the Web - Minimal Static Demo</h1>
+
+    <h2>Assert Your Privacy Rights</h2>
+
+    <bldn-priv-request></bldn-priv-request>
+
+    <script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module" ></script>
+  </body>
+</html>
+```
+
+:::info Demo
+
+This simple static demo can be tested live on [blindnet-io.github.io](https://blindnet-io.github.io/privacy-components-web/demos/devkit-simple-tutorial/demos/static/).
+
+Code can be found in the [privacy-components-web repository](ttps://github.com/blindnet-io/privacy-components-web/tree/main/demos/static).
+
+:::
+
+<!-- TODO: add link to API doc and more details -->
+
+### Check Out our Demo Web App
+
+Need to see a more advanced use case? We got you covered.
+
+:::tip Check it out
+
+See our Demo Web App in action on [blindnet-io.github.io](https://blindnet-io.github.io/privacy-components-web/demos/devkit-simple-tutorial/) and read its code in the [privacy-components-web repository](https://github.com/blindnet-io/privacy-components-web/tree/main/demos/devkit-simple-tutorial).
+
+:::
+
+We keep this project as minimalist as possible for the sake of simplicity. It only use [lit](https://lit.dev/), with [Carbon Web Components](https://web-components.carbondesignsystem.com/) and the [Vaadin Router](https://hilla.dev/docs/routing/router). The build system has been set up using the [Open WC generator](https://open-wc.org/guides/developing-components/getting-started/) (refer to the README for more information).
 
 You can either directly clone the whole monorepo locally:
 
@@ -129,73 +180,102 @@ npm start
 and open the application in your browser using the given URL.
 
 :::info
+
 The next steps have been already developed in this demo project. You can therefore refer to it whenever in doubt.
+
 :::
 
+## 3. Assert Your Privacy Rights
 
-## 4. Capture Data
+Now, open the demo web app or static page in your browser to see this component in action:
 
-> :construction_worker: redaction in progress
+![first screen of the PRCI component](/img/captures/prci-entry.png)
 
-<!-- TODO: add information on how to capture data without the Capture Componet, i.e. call the demo storage service API to save a data from a simple HTML form -->
+Here, you can see your users can directly choose from a wide range of privacy request types.
 
-## 5. Install the Privacy Request Capture Interface
+This includes the classical consultation (access), deletion and modification of their data, of course, but also more advanced operations, including but not limited to:
 
-> :construction_worker: redaction in progress
+- requesting the portability of their data to a compatible system
+- advanced management of their consents (by objecting to and restricting proceeding of their data, or revoking previously given consents)
+- and retrieving more generic privacy-related information regarding your organization (via the "transparency" request type).
 
-### npm / yarn project
+:::note
 
-When using an npm / yarn project with your own build system, you can install the Privacy Request Capture Interface via the `@blindnet/prci` npm package.
+In accordance with GDPR and other legislations, these are only requests. **You** determine how those are handled and answered, manually or automatically.
 
-```bash
-yarn add @blindnet/prci
-# OR
-npm install --save @blindnet/prci
-```
+:::
 
-Then, import this package in the javascript or typescript file where you want to use this web component in order to register it:
+If, for example, your users want to make an `Access` request, and click on the `Access` button, they will be able to ask you to give them access to all the data you have on them, or to only select a subset of it.
 
-```javascript
-import '@blindnet/prci'
-```
+![First screen for an Access Request in the PRCI component](/img/captures/prci-access-01.png)
+![Second screen for an Access Request in the PRCI component](/img/captures/prci-access-02.png)
 
-### Static HTML Page
+Depending on your configuration, two scenarios can then happen.
 
-If you want to use this Web Component without any build system, just add the associated script in your document:
+If like in this example, you set up everything to automatically treat the request, then your users will directly see their request granted (or rejected, depending on the parameters you defined).
+
+![Status of a Delete Request as shown in the PRCI component: under review](/img/captures/prci-access-request-status-granted.png)
+
+Other scenarios might however require to be manually handled.
+In this case, your users will see their request is "pending" (i.e. waiting to be handled by your organization).
+
+In this demo, you can see this happen when sending a `delete` request:
+
+![Status of a Delete Request as shown in the PRCI component: under review](/img/captures/prci-delete-request-status-under-review.png)
+
+<!-- TODO: add link to User doc -->
+
+## 4. Add an Admin Interface
+
+An additional Privacy Component for the Web, called the "Data Consumer Interface", is here to help you handle these requests.
+It offers a simple interface to allow relevant members of your organization (e.g. system administrators or DPOs) to manage all privacy requests related matters.
+
+To add the Data Consumer Interface Web Component to your project, simply follow the same steps as for the Privacy Request Capture Interface one, but with the `@blindnet/dci` npm package, and `<bldn-data-consum>` HTML custom element.
 
 ```html
-<script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module" ></script>
-```
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>Privacy Components for the Web - Minimal Static Demo</title>
+  </head>
+  <body>
+    <h1>Privacy Components for the Web - Minimal Static Demo</h1>
 
-<!-- TODO: add more details or link to the associated documentation -->
+    <h2>Assert Your Privacy Rights</h2>
 
-### Using the Custom Element
+    <bldn-priv-request></bldn-priv-request>
 
-You can then use the associated custom element in your JSX / HTML template / static page:
+    <h2>Manage Your Users' Requests</h2>
 
-```html
-<bldn-priv-request></bldn-priv-request>
+    <bldn-data-consum></bldn-data-consum>
+
+    <script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module" ></script>
+    <script src="https://unpkg.com/@blindnet/dci/dist/index.core.min.js?module" type="module" ></script>
+  </body>
+</html>
 ```
 
 <!-- TODO: add link to API doc and more details -->
 
-
-## 6. Make a Privacy Request
-
-> :construction_worker: redaction in progress
-
-Open your web app / page, and follow the instructions given in the Privacy Request Capture Interface Web Component.
-
-## 7. Install the Data Consumer Interface
+## 5. Answer Your Users' Requests
 
 > :construction_worker: redaction in progress
 
-Tp add the Data Consumer Interface Web Component to your project, simply follow the same steps as for the Privacy Request Capture Interface one, but with the `@blindnet/dci` npm package, and `<bldn-data-consum>` HTML custom element.
+Open your web app / page, and follow the instructions given in the Data Consumer Interface Web Component.
 
-<!-- TODO: add link to API doc and more details -->
-
-## 8. Accept a Privacy Request
+## 6. Set-up Storage
 
 > :construction_worker: redaction in progress
 
-Open your web app / page, and follow the instructions given in the Privacy Data Consumer Interface Web Component.
+A [Data Access Component](./storage/data-access) is here to transform requests from the [Privacy Computation Engine](/docs/computation) to efficiently execute automated operations on your data storage.
+
+You can choose to use the [Capture Component](./data-capture) and directly store the captured data in blindnet's preconfigured storage, or your own storage service.
+
+You can also directly connect the Data Access Component to your own storage service without using the Capture Component. For see sake of simplicity, we'll choose this option for this tutorial.
+
+For that, we'll set up a dedicated demo storage service in Java, and connect it to the Capture Component using the [Java Storage Connector library](https://github.com/blindnet-io/storage-connector-java).
+
+<!-- FIXME: set up a dedicated project and detail development and release steps -->
+
+Code for this demo stage service can be found in the `example` directory in the librarie's repository: [github.com/blindnet-io/storage-connector-java > `example`](https://github.com/blindnet-io/storage-connector-java/tree/develop/example).

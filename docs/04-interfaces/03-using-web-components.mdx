@@ -1,0 +1,52 @@
+---
+title: Using Web Components
+sidebar_position: 3
+tags: [guide]
+---
+
+Web User Interfaces in the devkit are provided as Web Components, and can therefore be used in any Web page or project, with any framework or library.
+
+## HTML (Generic Case)
+
+Using a Web Component is as simple as importing it, and using the new tags in an HTML document.
+
+For example, to use the blindnet Privacy Request Capture Interface Web Component:
+
+```html
+<script type="module"   src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module"></script>
+...
+<bldn-priv-request></bldn-priv-request>
+```
+
+For more information on Web Components, see [WebComponents.org](https://www.webcomponents.org/introductio) and [MDN](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
+
+## React
+
+See [React - Web Components](https://reactjs.org/docs/web-components.html).
+
+## Vue
+
+See [Vue and Web Components](https://vuejs.org/guide/extras/web-components.html#building-custom-elements-with-vue)
+
+## Angular
+
+Angular only requires you to set-up the [`CUSTOM_ELEMENTS_SCHEMA`](https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA) schema in order to use any Web Components without warnings or errors.
+
+```typescript
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { YourComponent } from './your.component';
+
+@NgModule({
+  declarations: [YourComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
+export class YourModule {}
+```
+
+## Lit
+
+[lit](https://lit.dev/) is built with standard Web Components in mind. It therefore doesn't require to follow any specific steps in order to use external Web Components.
+
+As a matter of fact, it is the library we use to build all Web Components in the devkit. As a consequence, using blindnet Web Components in a Lit context has the additional benefit of removing any need to load this additional library (saving you around [5.9kB](https://bundlephobia.com/package/lit) at runtime).
+
+We recommend using the [Open WC generator](https://open-wc.org/guides/developing-components/getting-started/) along with [Modern Web](https://modern-web.dev/) tools to build Modern Web Apps with the Privacy Components for the Web.
