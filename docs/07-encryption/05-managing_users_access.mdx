@@ -81,8 +81,8 @@ Currently, you can't assign already created user to a different group. [Delete](
 
 ## Connecting users with blindnet
 
-The core of security of blindnet are user's [private keys](../how_it_works/security#user-private-keys). They are randomly generated on the user's local device and encrypted using a secret code (e.g. user's password) and then securely stored in blindnet.  
-Blindnet allows you to reuse existing user passwords so that your users still use [one password](/docs/references/glossary#secret-value) in your application. To do so safely, you need to use blindnet Client SDK to split user passwords before you connect a user to blindnet (check our [Security page](../how_it_works/security#user-passwords) to see why this is inportant).
+The core of security of blindnet are user's [private keys](/docs/references/archive/encryption-engine#user-private-keys). They are randomly generated on the user's local device and encrypted using a secret code (e.g. user's password) and then securely stored in blindnet.  
+Blindnet allows you to reuse existing user passwords so that your users still use [one password](/docs/references/glossary#secret-value) in your application. To do so safely, you need to use blindnet Client SDK to split user passwords before you connect a user to blindnet (check our [Security page](/docs/references/archive/encryption-engine#user-passwords#user-passwords) to see why this is inportant).
 
 ### Splitting secrets
 
@@ -121,7 +121,7 @@ await blindnet.connect(blindnetSecret);
 
 The blindnet encryption engine does not expose separate methods for user registration and logging in. You always use the `connect` method while its internals handle user registration and logging in. If it is the first time that a user is being connected to blindnet, the SDK will register that user by using the information you provide in a [token](#creating-user-tokens).
 
-When you use the `connect` method, it locally initiates user's [private keys](../how_it_works/security#user-private-keys) so that later users can decrypt their data.
+When you use the `connect` method, it locally initiates user's [private keys](/docs/references/archive/encryption-engine#user-private-keys) so that later users can decrypt their data.
 
 ### Logging out users
 

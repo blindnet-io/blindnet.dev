@@ -32,7 +32,7 @@ It is a simple service you can interact with via a Rest API to create and track 
 
 Using the Privacy Computation Engine goes into three steps:
 
-1. **[App Management](./computation/apps-management)**: register and obtain an application id;
+1. **[App Management](/docs/access-management/set-up)**: register and obtain an application id;
 2. **[Configuration](./computation/configuration)**: configure the service using its configuration API;
 3. **Development**: call the Privacy Computation Engine from your registered application to handle Privacy Requests
 
@@ -73,7 +73,7 @@ See [Using Web Components](/docs/interfaces/using-web-components) for more infor
 
 In the interest of simplicity and clarity, let's see how to integrate these components into a simple static HTML page, starting with the Privacy Request Capture Interface (PRCI).
 
-PRCI is a simple interface allowing your users to assert their privacy rights by sending you a simple yet standardized [Privacy Request](/docs/reference/lexicon#privacy-request). It is an entry point for your user to privacy, not only allowing you to cover GDPR and other privacy-related legislations but also and more importantly, to build trust by showing your users their privacy rights are tangibly handled, enforced and respected.
+PRCI is a simple interface allowing your users to assert their privacy rights by sending you a simple yet standardized [Privacy Request](/docs/references/lexicon#privacy-request). It is an entry point for your user to privacy, not only allowing you to cover GDPR and other privacy-related legislations but also and more importantly, to build trust by showing your users their privacy rights are tangibly handled, enforced and respected.
 
 To integrate this interface into your web page, you'll first need to load the associated bundle (included in the `@blindnet/prci` npm package) from the unpkg CDN by adding a `<script>` tag to your HTML document:
 
@@ -122,7 +122,7 @@ Leading us to the following HTML file:
 
 :::info Demo
 
-This simple static demo can be tested live on [blindnet-io.github.io](blindnet-io.github.io/privacy-components-web/demos/devkit-simple-tutorial/demos/static/).
+This simple static demo can be tested live on [blindnet-io.github.io](https://blindnet-io.github.io/privacy-components-web/demos/devkit-simple-tutorial/demos/static/).
 
 Code can be found in the [privacy-components-web repository](ttps://github.com/blindnet-io/privacy-components-web/tree/main/demos/static).
 
