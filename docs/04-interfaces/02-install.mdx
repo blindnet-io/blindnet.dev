@@ -1,16 +1,31 @@
 ---
 title: Installation
 sidebar_position: 2
-tags: ["guide"]
+tags: ['guide']
 ---
 
-import WipWarning from '../_partials/_wip.mdx';
+User interfaces for the blindnet devkit (aka _[Privacy Components for the Web](https://github.com/blindnet-io/privacy-components-web)_) are delivered as standard Web Components available on both npm and a CDN.
 
-<WipWarning repo="https://github.com/blindnet-io/privacy-components-web" />
+As a consequence, installing the blindnet devkit web interfaces doesn't involve any specificity, as you can install and use them as you would with any other standard Web Component.
 
-### npm / yarn project
+:::info
 
-When using an npm / yarn project with your own build system, you can install the Privacy Request Capture Interface via the `@blindnet/prci` npm package.
+See [Using Web Components](/docs/interfaces/using-web-components) for more information on how to integrate Web Components in your existing project.
+
+:::
+
+## Components
+
+| name                                     | npm package      | html element          |
+| ---------------------------------------- | ---------------- | --------------------- |
+| Privacy Request Capture Interface (PRCI) | `@blindnet/prci` | `<bldn-priv-request>` |
+| Data Consumer Interface (DCI)            | `@blindnet/dci`  | `<bldn-data-consum>`  |
+
+## npm / yarn project
+
+When using an npm / yarn project with your own build system, you can install any Privacy Component for the Web via a dedicated npm package under the `@blindnet` scope.
+
+For example, run the following command to install the PRCI component:
 
 ```bash
 yarn add @blindnet/prci
@@ -18,23 +33,23 @@ yarn add @blindnet/prci
 npm install --save @blindnet/prci
 ```
 
-Then, import this package in the javascript or typescript file where you want to use this web component in order to register it:
+Then, import this package in the javascript or typescript file where you want to use this web component in order to register its associated custom element:
 
 ```javascript
-import '@blindnet/prci'
+import '@blindnet/prci';
 ```
 
-### Static HTML Page
+## Static HTML Page
 
 If you want to use this Web Component without any build system, just add the associated script in your document:
 
 ```html
-<script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module" ></script>
+<script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module"></script>
 ```
 
 <!-- TODO: add more details or link to the associated documentation -->
 
-### Using the Custom Element
+## Using the Custom Element
 
 You can then use the associated custom element in your JSX / HTML template / static page:
 

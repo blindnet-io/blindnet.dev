@@ -6,12 +6,24 @@ tags: ["introduction"]
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
-While handling Privacy Requests, the Pricacy Computation Engines can be connected with storage services to automatically interpret and execute data deletions and modifications.
+The blindnet devkit includes several services and libraries to ease storage management.
 
-Two components of the devkit are here to help you integrate this easily, either as a new service or as part of your pre-existing architure:
+Such services and libraries are here to help you easily integrate storage capacities to your privacy stack, without needing any extensive specific development or even knowledge of other blindnet devkit components to interact with.
+
+As such, they will help you to:
+
+- securely store captured data
+- (_optionally_) automatically interpret and execute data deletions and modifications according to the output of the [Privacy Computation Engine](/docs/computation)
+
+blindnet delivers Privacy Computation and Data Capture solutions with pre-integrated secured and optimized storage capacities so you don't have to worry about this part by default.
+
+Yet, all features of the blindnet devkit can be integrated into any new or pre-existing stack, including storage services, to avoid any need for data migration and/or give you the possibility to finely control how sensitive data are stored, adapt the storage service capabilities to your specific needs, and ease interaction with other systems.
+
+Two components of the devkit are here to help you do this easily:
 
 - a [Data Access Component](./data-access) transforming requests from a [Privacy Computation Engine](/docs/computation) to efficiently execute operations on data stored on an external storage service
-- [Storage Connector](./connection) libraries you can use to connect your existing storage service with a Data Access Component
+- [Storage Connector](./connection) helper libraries, to connect your existing storage service with a Data Access Component
+
 
 ---
 

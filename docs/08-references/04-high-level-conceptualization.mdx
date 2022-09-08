@@ -8,11 +8,11 @@ tags: ['high-level']
 
 ## INTRODUCTION
 
-> **The promise: blindnet devkit is the simplest solution for implementing [privacy-enabled connectedness](./notions-of-privacy#privacy-enabled-connectedness). It enables confidentiality, control and compliance with regulation**
+> **The promise: blindnet devkit is the simplest solution for implementing [privacy-enabled connectedness](./notions-of-privacy#privacy-enabled-connectedness). It enables confidentiality, control and compliance with regulations**
 >
-> It is foundation stone of a new software paradigm - it allows to build new kind of software, with privacy embedded in its design and architecture.
+> It is the foundation stone of a new software paradigm - it allows to build a new kind of software, with privacy embedded in its design and architecture.
 
-_This high-level concept model describes the conceptualization behind blidnet’s software, in terms of the information it deals with and the reality it enables.
+_This high-level concept model describes the conceptualization behind blindnet’s software, in terms of the information it deals with and the reality it enables.
 This conceptualization does not directly translate to any database structure, workflow, or code. It aims to inform software designers’ thinking, guide design choices, and reduce confusion._
 
 ## TERMINOLOGY
@@ -27,7 +27,7 @@ This conceptualization does not directly translate to any database structure, wo
 
 A [Data Capture](./lexicon#data-capture) is the most central concept of interest in [blindnet devkit](./lexicon#blindnet-devkit).
 
-It corresponds to a particular data exchange need, and can be composed of files and other data fields of different types.
+It corresponds to a particular data exchange need and can be composed of files and other data fields of different types.
 A Data Capture can be captured at once or over the course of multiple interactions. One or more [Submitters](./lexicon#submitter) can complete a Data Capture.
 
 Examples of a need include: medical history of a new patient (doctor); candidate CV (company hiring); a set of legal proofs in a lawsuit provided by a client (lawyer); identity documents of founders in the investment KYC process (VC fund).
@@ -53,7 +53,7 @@ Examples of Fragments include: a file and a comment explaining it; a set of fiel
 
 <img width="350" alt="Capture fragments" src="/img/high-level-concepts/capture-fragments.png" />
 
-The data structure of Data Capture Fragments allows to have interface elements such as granular progress bars, or checklists to present to the user the state of complement of the submission.
+The data structure of Data Capture Fragments allows having interface elements such as granular progress bars, or checklists to present to the user the state of complement of the submission.
 
 Data Capture Fragments have names, that exist in a multitude of languages and allow for easy reference by [Data Submitters](./lexicon#submitter) and Data Consumers.
 
@@ -65,13 +65,13 @@ It also favors incremental data submission (submit part of the form today, and a
 
 Capture Fragments can be subject to validations:
 
-- **a priori** using automatic validators (like checking the format of an e-mail adress, or extension of a file)
+- **a priori** using automatic validators (like checking the format of an e-mail address, or extension of a file)
 - **a posteriori** using human input to validate the conformity of submitted data with what is expected
 
 ### DATA CAPTURE – LEGAL BASE
 
 Depending on the relationship between the [Submitter](./lexicon#submitter) and the [Organization](./lexicon#organziation), as well as the context of data capture and use, a [Data Capture](./lexicon#data-capture) can be associated with different Legal Bases for collecting, keeping and treating data.
-Legal Bases impact the following properties of a particular Data Capture that our systems allows to compute:
+Legal Bases impact the following properties of a particular Data Capture that our systems allow to compute:
 
 - Data **CAN** be kept at a given time
 - Data **MUST** be kept at a given time
@@ -81,13 +81,13 @@ More than one legal base can exist for the same data at the same time.
 E.g.:
 
 - A user can give explicit Consent, and at the same time keeping the data might be mandatory; When the user revokes Consent, the data must still continue to be kept.
-- A service contract can exist between the user and the organization making the organization legitimate to keep the data, and at the same time the user might give Consent. After contract has ended, the data can be kept until the user revokes Consent and withing the maximal conservation time allowed by law.
+- A service contract can exist between the user and the organization making the organization legitimate to keep the data, and at the same time the user might give Consent. After contract has ended, the data can be kept until the user revokes Consent and within the maximal conservation time allowed by law.
 
 The CAN/MUST-be-kept of the data at a given time is also constrained by [maximal conservation times defined by law](https://www.cnil.fr/fr/les-durees-de-conservation-des-donnees) or by minimal legally mandatory conservation time in certain domains (finance).
 
 Such times are often relative to some event (e.g. data collection date, or a date when the submitter-organization relationship or contract has ended).
 
-> _Managing Legal bases SHOULD be a value-added service allowing to trigger automatic Data Capture deletion, or its protection from user-initiated deletion_
+> _Managing Legal bases SHOULD be a value-added service allowing to trigger automatic Data Capture deletion or its protection from user-initiated deletion_
 
 <img width="450" alt="Legal base" src="/img/high-level-concepts/legal-ground.png" />
 
@@ -97,7 +97,7 @@ Consent is a particular form of Legal Base for data collection and keeping. When
 
 Consents have states (e.g., valid, expired, revoked).
 
-One Consent corresponds to [one and only one purpose](https://www.cnil.fr/fr/les-bases-legales/consentement) (e.g., facilitate future purchases, ongoing contract, promotions, 3rd party communication). Thus, a Data Capture can be associated to more then one Consent, that can be given and revoked separately.
+One Consent corresponds to [one and only one purpose](https://www.cnil.fr/fr/les-bases-legales/consentement) (e.g., facilitate future purchases, ongoing contract, promotions, 3rd party communication). Thus, a Data Capture can be associated with more than one Consent, that can be given and revoked separately.
 
 <img width="225" alt="Consent" src="/img/high-level-concepts/consent.png" />
 
@@ -106,10 +106,9 @@ One Consent corresponds to [one and only one purpose](https://www.cnil.fr/fr/les
 A [Data Subject](./lexicon#data-subject) has the right to demand different things related to their privacy, their data and their rights. We call those, [Privacy Requests](./lexicon#privacy-request). They refer to:
 
 - **General information** about policies, storage locations, practices, and purposes of data processing (unrelated to any particular Data Capture)
-- **Particular information** about Data Capture date, origin of data, etc.
+- **Particular information** about Data Capture date, the origin of data, etc.
 - Data access and manipulation rights **related to a particular Data Capture or Data Capture Fragment**.
-- Opposition to processing (can be denied if unreasonable i.e. if other legal base
-  exists)
+- Opposition to processing (can be denied if unreasonable i.e. if another legal base exists)
 
 The [System](./lexicon#system) SHOULD allow to capture such requests, keep track of them, and on what is done to act upon them, and provide proof that the action upon the requests was compliant (rights given/denied according to law and in time).
 
@@ -166,21 +165,21 @@ Blindnet serves as a _lingua franca_ for both confidentiality (encryption) and c
 
 ### SUBMITTER / DATA CONSUMER / DPO
 
-**[Submitters](./lexicon#submitter)** provide the data. In many situations, it is safe to assume that the [Data Subjects](./lexicon#data-subject) is the Submitter (that the Submitter is providing data about himself). However those two are fundamentally different concepts. Thus, in order to be compliant, the [System](./lexicon#system) MUST also allow to capture [Privacy Requests](./lexicon#privacy-request) from a Data Subject regardless of the fact whether they are the Submitter or not. Submitter can be anonymous, Data Subject can’t.
+**[Submitters](./lexicon#submitter)** provide the data. In many situations, it is safe to assume that the [Data Subjects](./lexicon#data-subject) is the Submitter (that the Submitter is providing data about himself). However, those two are fundamentally different concepts. Thus, in order to be compliant, the [System](./lexicon#system) MUST also allow to capture [Privacy Requests](./lexicon#privacy-request) from a Data Subject regardless of the fact whether they are the Submitter or not. Submitter can be anonymous, Data Subject can’t.
 
 **[Data Consumers](./lexicon#data-consumer)** can decrypt and view (and, if appropriate, modify and delete) the data.
 
-**[DPOs](./lexicon#dpo)** are a special type of Users that use the System to respond to Privacy Requests. They MAY have limited access to the data itself (and in some case MUST NOT be able to see the data) but leverage the System as a proof of having acted legally and respected data subjects’ rights.
+**[DPOs](./lexicon#dpo)** are a special type of Users that uses the System to respond to Privacy Requests. They MAY have limited access to the data itself (and in some case MUST NOT be able to see the data) but leverage the System as proof of having acted legally and respected data subjects’ rights.
 
 ### CONFIDENTIALITY – CONTROL BRIDGE
 
 <img width="1200" alt="confidentiality" src="/img/high-level-concepts/confidentiality.png" />
 
-[Privacy](./notions-of-privacy#definition), in a psychological sense, equals the freedom of an individual to engage/disengage from certain relationships (and identities such relationships project upon them). This freedom to engage/disengage in the context of internet interactions, relies on two main pillars:
+[Privacy](./notions-of-privacy#definition), in a psychological sense, equals the freedom of an individual to engage/disengage from certain relationships (and identities such relationships project upon them). This freedom to engage/disengage, in the context of internet interactions relies, on two main pillars:
 
 - **confidentiality** (the information being kept confidential from unintended data consumers or purposes)
 - **control** (gain transparency and impose actions over data to the data consumers by the data subject)
 
-However, there must be a separation between the two allowing a developer to use [blindnet devkit](./lexicon#blindnet-devkit) only for one of these two purposes, and use an alternative solution for the other. E.g., a developer can use a non-encrypted web form to capture data, manage his own access to it, and still use blindnet devkit for managing Consent, and [Privacy Requests](./lexicon#privacy-request).
-Composition of the components of blindnet devkit is inspired by the bridge design pattern.
+However, there must be a separation between the two allowing a developer to use [blindnet devkit](./lexicon#blindnet-devkit) only for one of these two purposes and use an alternative solution for the other. E.g., a developer can use a non-encrypted web form to capture data, manage his access to it, and still use blindnet devkit for managing Consent, and [Privacy Requests](./lexicon#privacy-request).
+The composition of the components of blindnet devkit is inspired by the bridge design pattern.
 See [Bridge Pattern, Gang of Four](https://refactoring.guru/design-patterns/bridge).
