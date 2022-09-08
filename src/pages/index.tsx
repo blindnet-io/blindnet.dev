@@ -62,13 +62,25 @@ function DevKit() {
           <FilesSentSVG className={styles.twoColumns__illustration} />
         </div>
         <div className={styles.twoColumns__column}>
-          <h2>Easy to Use and Modular</h2>
+          <h2>Develop Trustworthy Systems with Ease!</h2>
           <p>
-            blindnet devkit offer several independant, yet cohesive modules and tools to manage all aspects of privacy, from GDPR request
-            management to automation and privacy-by-design data collection.
+            The blindnet devkit enables secured collection and automated management of sensitive data while helping to develop trustworthy
+            applications via premade privacy-management user interfaces.
           </p>
           <p>
-            Follow our <a href="/docs/encryption/quickstart">Quick Start</a> guide to understand how the components plays together, or
+            It is made of several independent, yet cohesive Open Source libraries, services and tools together enabling confidentiality,
+            control and compliance with regulation, by supporting:
+          </p>
+          <ul>
+            <li><strong>capture</strong> of sensitive data with their associated user consent</li>
+            <li><strong>users' privacy rights management</strong></li>
+            <li>secured data <strong>storage</strong> and <strong>automated</strong> management</li>
+            <li>end-to-end <strong>encryption</strong></li>
+            <li><strong>access management</strong></li>
+            <li>secured <strong>transfer</strong> of sensitive data and associated user consent to compatible systems</li>
+          </ul>
+          <p>
+            Follow our <a href="/docs/encryption/quickstart">Quick Start</a> guide to understand how the components plays together, and
             explore the <a href="/docs/">documentation</a> to learn more.
           </p>
           <div className={styles.indexCtas}>
