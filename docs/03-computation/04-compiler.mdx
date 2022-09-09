@@ -29,8 +29,10 @@ With every PRIV event, the Privacy Compiler calculated the change to be made to 
 
 The Eligible Privacy Scope becomes the [union](#union) of the previous Eligible Privacy Scope and of the Privacy Scope given in the `scope` property of the [Consent](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#consent).
 
-:::Note
-If the User previously made an `OBJECT` or `RESTRICT` request reducing the Eligible Privacy Scope, giving a new Consent is a way to re-include (previously excluded) triples in the Eligible Privacy Scope.
+:::note
+
+If the User previously made an OBJECT or RESTRICT request reducing the Eligible Privacy Scope, giving a new Consent is a way to re-include (previously excluded) triples in the Eligible Privacy Scope.
+
 :::
 
 ### Legal Base Event
@@ -51,8 +53,10 @@ For events of `event-type` `SERVICE-END` or `RELATIONSHIP-END`:
   - Removes the Legal Base in question
   - Removes from the Eligible Privacy Scope all the Triples that are left with no active Legal Base
 
-:::Note
+:::note
+
 A Data reference can indicate a particular user account, contract, particular medical or legal file especially when the same Data Subject may have several ongoing files with the same Organization
+
 :::
 
 ### `REVOKE-CONSENT` Privacy Requests
@@ -73,10 +77,12 @@ The Privacy Compiler looks for a [Privacy Scope Restriction](https://github.com/
 For every triple found in the [intersection](#intersection) of the Eligible Privacy Scope and the scope of the given Privacy Scope Restriction, the Privacy Compiler removes any association of such triples with `CONSENT`, `LEGITIMATE_INTEREST` Legal Bases.
 The `NECESSARY` or `CONTRACT` Legal Bases are kept.
 
-:::Note
+:::note
+
 If the User wants to remove Triples linked to `CONTRACT` they need to terminate the contract, generating a `SERVICE-END` [Legal Base Event](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base-event).
 
 No Privacy Request coming from the Data Subject can alter the Triples included in the Privacy Eligible Scope by `NECESSARY` Legal Base.
+
 :::
 
 Finally, the Privacy Compiler removes all the Triples that are left with no active Legal Base as a consequence of consent change.
