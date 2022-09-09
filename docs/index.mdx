@@ -2,6 +2,7 @@
 title: Introduction
 sidebar_position: 1
 ---
+import Mermaid from '@theme/Mermaid';
 
 Welcome to blindnet devkit's documentation :wave:
 
@@ -19,6 +20,39 @@ With this purpose in mind, it is mostly defined (and yet not limited to) two ver
 2. Privacy Request: a request from a person who shared sensitive data with you, to assert their right to privacy[^2]
 
 Several independent components are here to cover these two workflows and more.
+
+<Mermaid chart={`
+  flowchart TD
+    subgraph UserApp [User Web App]
+      PRCI([Privacy Request Capture Interface])
+      DCh([Data Capture Helpers])
+    end
+    subgraph AdminApp [Admin Web App]
+      DCI(Data Consumer Interface)
+    end
+    subgraph PCE [Privacy Computation Engine]
+      PCECusto[Customization API]
+      PC[Privacy Compiler]
+    end
+    subgraph Dashboard
+      AMI[Access Management Interface]
+      AppMI[Application Management Interface]
+    end
+    AMI <--> PCE
+    AppMI <--> PCE
+    DAC[Data Access Component]
+    subgraph StrSrv [Storage Service]
+      SC([Storage Connector])
+    end
+    PRCI <-- privacy requests --> PC
+    DCI <-- privacy requests management --> PCE
+    DCS[Data Capture Service]
+    DCh -- data capture ----> DCS
+    DCS ----> StrSrv
+    PC <-- translation --> DAC
+    DAC <-- automation --> SC
+`} />
+
 You can use these components separately. Yet, they work wonders together, supporting:
 
 - **capture** of sensitive data with their associated user consent
