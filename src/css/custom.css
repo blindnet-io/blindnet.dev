@@ -64,3 +64,8 @@ div[class^='announcementBar_'] {
 .announcementBar__link:hover {
   color: var(--ifm-color-info-darkest) !important;
 }
+
+.mermaid {
+  background-color: #FFF;
+  padding: 1rem;
+}
