@@ -6,13 +6,61 @@ tags: ["introduction"]
 import DocCardList from '@theme/DocCardList';
 import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
-The blindnet devkit **Privacy Computation Engine** is a service that interpret your rights to hold and treat a particular Data Capture at a particular point of time and calculate a response to [Data Subjects'](/docs/references/lexicon#data-subject) [Privacy Requests](/docs/references/lexicon#privacy-request).
+The blindnet devkit **Privacy Computation Engine** (PCE) is the core of your "privacy stack".
 
-It associates:
+It is a service delivering Restful APIs to manage the two core features of the DevKit by:
 
-- a [Privacy Compiler](/docs/references/high-level-architecture#privacy-compiler)
-- and [Customization API](/docs/references/high-level-architecture#customization-api), for you to set up your organization-specific information and parameters
+1. interpreting your rights to hold and treat a particular **[Data Capture](/docs/references/lexicon#data-capture)** at a particular point in time
+2. calculating a response to [Data Subjects'](/docs/references/lexicon#data-subject) **[Privacy Requests](/docs/references/lexicon#privacy-request)**.
 
----
+Both these features are provided by a main internal component we call the [Privacy Compiler](/docs/references/high-level-architecture#privacy-compiler), based on the specific information and parameters of your organization you define using the [Customization API](/docs/references/high-level-architecture#customization-api).
+
+## How It Works
+
+The Privacy Compiler inside the Privacy Computation Engine is here to deliver recommended actions based on a timeline of _Events_[^1] it proceeds.
+
+:::info key point
+
+The Privacy Compiler ***compiles*** a timeline of ***events*** into recommended actions.
+
+:::
+
+### Events
+
+Events are defined by:
+
+- their association with one related [Data Subject](/docs/references/lexicon#data-subject)
+- information needed to determine consequent actions
+- the specific date and time at which the event occurred
+
+As such, events can represent:
+
+- the capture of some sensitive data ([_Data Captures Fragments_](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-capture-fragments))
+- an assertion of privacy rights from people about whom you hold sensitive information ([_Privacy Request_](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-request))
+- a response from your organization to such privacy requests ([_Privacy Request Response_](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-request-response))
+- any privacy legislation-related action ([_Legal Base Event_](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base-event)), like, for example, the expression of consent to the processing of personal data[^2] ([_Consent_](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#consent))
+
+Events can be created manually or automatically from any component of your privacy stack. Automating and simplifying the creation of such events is one of the main purposes of other DevKit's components.
+
+### Computation
+
+The PCE orders all the events it receives by date and time, to create a timeline.
+
+This way, it can link all the different pieces of information together, and with your organization's configuration.
+This allows its Privacy Compiler to determine consequent actions to recommend.
+
+<img height="300" src="/img/how_it_works/PCEexplained.gif" />
+
+Any of your applications and services can therefore use the PCE to determine what to do as a consequence of any privacy-related event occurring.
+As a consequence, using the PCE in your system allows you to efficiently enforce compliance with privacy-related legislations while guaranteeing strong coherence in all privacy-related matters for your whole organization.
+Other components of the devkit are here to help you do so with minimal effort.
+
+## Further Readings
 
 <DocCardList items={useCurrentSidebarCategory().items}/>
+
+<hr />
+
+[^1] Refer to the [associated section of the PRIV specifications](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#events) for more information about how Events are precisely defined.
+
+[^2] As defined, for example, in the [Article 4](https://gdpr-info.eu/art-4-gdpr/) Section 11 of the GDPR.
