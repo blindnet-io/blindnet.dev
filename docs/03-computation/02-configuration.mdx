@@ -4,39 +4,122 @@ sidebar_position: 2
 tags: ['guide']
 ---
 
-import WipWarning from '../_partials/_wip.mdx';
+import Legislation from '../_partials/_legislation.mdx'
 
 # Configuring your Privacy Computation Engine
 
-<WipWarning repo="https://github.com/blindnet-io/privacy-computation-engine">
-  <p>The Customization API for the Privacy Computation Engine is in active development.</p>
-  <p>At this stage, this document is therefore mostly conceptual. Concrete API instructions will be added soon.</p>
-  <p>In the meantime, we encourage you to refer to the <a href="https://devkit-pce-staging.azurewebsites.net/swagger/">API Swagger Documentation</a></p>
-</WipWarning>
+For the PCE to give you recommended actions adapted to your specific architecture and needs, you first need to configure it via its [**configuration API**](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration).
 
-You must first configure the Privacy Computation Engine in order to make the most of it.
+This API allows you to define:
 
-It needs to know about:
-
-- General information about your Organization and its' data processing policies (Equivalent to a RoPA - Record of Processing Activities)
+- [General information](#configuring-general-information) about your Organization and its' data processing policies (Equivalent to a [RoPA - Record of Processing Activities](https://www.cnil.fr/en/record-processing-activities))
 - Mappings of your data structures to [PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md) Data Categories
 - Few choices you have to make about when to authenticate the user (before or after they make a Privacy Request), and when to deliver automatic responses and when to wait for validation
 
-To Configure your Privacy Computation Engine prepare the following information:
+## General Information
+
+:::tip API
+
+Required general information configuration can be set in the PCE using [PUT /configure/general-info](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureGeneral-info), retrieved using [GET /configure/general-info](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/getV0ConfigureGeneral-info), and is detailed in the related `GeneralInformation` schema.
+
+:::
+
+Your audience needs access to the full picture of your organization's data processing policies easily and at all times. Not only because it is a legal requirement, but also and more importantly because people need such information to trust your organization enough so they can give you access to their sensitive data.
+
+<Legislation>
+
+[Article 30 of the GDPR](https://gdpr-info.eu/art-30-gdpr/) requires controllers and their representatives to maintain a precise information set called [Record of Processing Activities (ROPA)](https://www.cnil.fr/en/record-processing-activities).
+
+Configuring the general information in the Privacy Computation Engine helps your organization to meet this requirement by using other components of the DevKit (e.g. [interfaces](/docs/interfaces)).
+
+</Legislation>
+
+While such information is mostly composed of a set of static text, it can rapidly get difficult to maintain. Moreover, transforming such data into intelligible and unambiguous content for your audience isn't straightforward.
+
+Here, using the blindnet devkit can greatly help you to solve both problems:
+
+1. the PCE infers as many pieces of information as possible to minimize the volume of data to configure and maintain
+2. other components of the devkit are here to provide such data to the user in an intelligible form without extensive implementation effort
+
+## Selectors
+
+:::tip API
+
+Selectors can be set in the PCE using [PUT /configure/selectors](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureSelectors), retrieved using [GET /configure/selectors](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/getV0ConfigureSelectors), and is detailed in the related `CreateSelectorPayload` schema.
+
+:::
+
+Sensitive data you capture on a regular base can often be complex to categorize.
+
+The blindnet devkit gives you a clear [set of data categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/data-categories/en.data-categories.json) you can use to qualify collected sensitive data for efficient privacy management.
+
+A selector can be defined as a subcategory of any of these data categories, using [dot notation](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#term-dot-notation), to qualify [any captured data](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-capture-fragments).
+
+For example, you can define a `FINANCIAL.BANK-ACCOUNT.IBAN`, as a subcategory of the predefined `FINANCIAL.BANK-ACCOUNT` category, to identify and retrieve an IBAN number collected for regular payment.
+
+<!-- TODO: link to the data capture section instead once it's done -->
+Refer to the definition of [Data Capture Fragments in PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-capture-fragments) for more details.
+
+:::warning
+
+Each selector is defined by it's full dot notation (`{data_category}.{subcategory}`).
+
+Using just `{subcategory}` will lead to an error.
+
+`{subcategory}` can however be optional, as any data category can be used as a selector.
+
+:::
+
+## Legal Bases
+
+:::tip API
+
+Legal Bases configuration can be set is the PCE using [PUT /configure/legal-bases](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureLegal-bases), retrieved using [GET /configure/legal-bases](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/getV0ConfigureLegal-bases), and is detailed in the related `CreateLegalBasePayload` schema.
+
+:::
 
 <!-- prettier-ignore -->
-| Information | Format | Example|
-| :----: | :-----: | :--------|
-| Name and contact details of your Organization and its representative | `string` | `Blindnet Inc. hello@blindnet.io Vuk Janosevic`|
-| Identity and contact of a Data Protection Officer - if you are using blindnet devkit Privacy Request Builder, include the URL where you are hosting the interface | `string` | `Vuk Janosevic, www.blindnet.io/privacy-request-builder`|
-| If you are processing data on behalf of someone else (a Controller), then names, contact details of all such Controllers their representatives and the data protection officers | `string` | see above |
-| A link to your Privacy Policy | `URL` | `https://blindnet.io/privacy` |
-| A general description of the technical and organisational security measures referred to in Article 32 of GDPR | `string` | `We use administrative, technical, and physical safeguards to protect your personal data, taking into account the nature of the personal data and the processing, and the threats posed.`|
-| Countries where data servers are located (included those of the processors who are processing data on your behalf) | `array<string>` | [`France`, `USA`] |
-| A list of Data Consumer categories| `string`| `Blindnet account managers, and Blindnet's DPO`|
-| A mapping of your data model fields and PRIV Data Category `selectors` | `array<TABLE.column:selector>` | [`USER.name`:`NAME.FIRST-NAME`, `USER.email`:`CONTACT.EMAIL`]|
-| A list of Retention Policies | [Retention Policies](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#retention-policy) | `data-categories`:`CONTACT`; `policy-type`:`NO-LONGER-THAN`, `duration`: `180 days`, `after`: `RELATIONSHIP-END` |
-| A list of Provenances | [Provenance](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#provenance) | `provenance-category`:`USER.DATA-SUBJECT`, `system`: `id of this system to which the user gives their e-mail address` |
-| A list of Legal Bases | [Legal Bases](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base) | `legal-base`: `CONTRACT` with no `scope` specified meaning it refers to all data, processing and purposes |
-| A table of data categories, purposes, legal bases, ... | `Processing Record` | see bellow |
-| A table of data transfers | `Transfer Record` | see bellow |
+| Format | Example |
+| :----: | :------ |
+| [Legal Bases](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base) | `legal-base`: `CONTRACT` with no `scope` specified meaning it refers to all data, processing and purposes |
+
+<!-- Configure consents, contracts, legitimate interests and necessary legal bases for handling users' data. -->
+
+To define the scope of a legal base, you can see the list of eligible [data categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/data-categories/en.data-categories.json) (can include selectors), [processing categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/processing-categories/en.processing-categories.json) and [purposes of processing](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/purposes/en.purposes.json).
+
+Refer to [legal bases](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#lifecycle-of-legal-bases-for-data-processing) in PRIV for more details.
+
+## Retention Policies
+
+:::tip API
+
+Legal Bases configuration can be set is the PCE using [PUT /configure/retention-policies](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureRetention-policies), and is detailed in the related `CreateRetentionPolicy` schema.
+
+:::
+
+<!-- prettier-ignore -->
+| Format | Example |
+| :----: | :------ |
+| [Retention Policies](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#retention-policy) | `data-categories`:`CONTACT`; `policy-type`:`NO-LONGER-THAN`, `duration`: `180 days`, `after`: `RELATIONSHIP-END` |
+
+<!-- configure retention policies for data categories. -->
+
+Refer to [retention policies](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#retention-policy) in PRIV for more details.
+
+## Provenances
+
+:::tip API
+
+Legal Bases configuration can be set is the PCE using [PUT /configure/provenances](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureProvenances), and is detailed in the related `CreateProvenancePayload` schema.
+
+:::
+
+<!-- prettier-ignore -->
+| Format | Example |
+| :----: | :------ |
+| [Provenance](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#provenance) | `provenance-category`:`USER.DATA-SUBJECT`, `system`: `id of this system to which the user gives their e-mail address` |
+
+Use [PUT /configure/provenances](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureProvenances) to configure provenances for data categories.
+
+Provenance object represents the origin of the data.
+
