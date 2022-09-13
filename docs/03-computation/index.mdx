@@ -17,20 +17,32 @@ Both these features are provided by a main internal component we call the [Priva
 
 ## How It Works
 
-The Privacy Compiler inside the Privacy Computation Engine is here to deliver recommended actions based on a timeline of _Events_[^1] it proceeds.
+The Privacy Compiler inside the Privacy Computation Engine is here to deliver recommended operations based on a timeline of _Events_[^1] it proceeds.
 
 :::info key point
 
-The Privacy Compiler ***compiles*** a timeline of ***events*** into recommended actions.
+The Privacy Compiler ***compiles*** a timeline of ***events*** into ***recommended operations***.
 
 :::
+
+<!-- TODO: "translate" https://github.com/blindnet-io/blindnet.dev/pull/43#discussion_r969901897
+
+Possible operations recommended by the Privacy Compiler include (but aren't limited to):
+
+- creating an archive when a user asks to access their data
+- deleting or moving data when a user asks to delete it
+- responses to Demands by compiling data subject's event timeline
+- creating data archive for ACCESS and deleting data for DELETE requests and
+- in case of timeline change, deleting data having data categories outside the timeline's privacy scope
+
+-->
 
 ### Events
 
 Events are defined by:
 
 - their association with one related [Data Subject](/docs/references/lexicon#data-subject)
-- information needed to determine consequent actions
+- information needed to determine consequent operations
 - the specific date and time at which the event occurred
 
 As such, events can represent:
@@ -47,7 +59,7 @@ Events can be created manually or automatically from any component of your priva
 The PCE orders all the events it receives by date and time, to create a timeline.
 
 This way, it can link all the different pieces of information together, and with your organization's configuration.
-This allows its Privacy Compiler to determine consequent actions to recommend.
+This allows its Privacy Compiler to determine consequent operations to recommend.
 
 <img height="300" src="/img/how_it_works/PCEexplained.gif" />
 
