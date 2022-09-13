@@ -1,0 +1,80 @@
+---
+title: Setup & Deployment
+sidebar_position: 4
+tags: ['guide']
+---
+
+:::tip
+
+Refer to [Usage section](https://github.com/blindnet-io/privacy-computation-engine/#usage) of the Privacy Computation Engine README on GitHub for more information about its setup, especially if your goal is to contribute or just test the service locally.
+
+:::
+
+## Environment
+
+### Java Runtime
+
+The PCE is built using Scala. It is therefore delivered as a jar file you can run on any Java Runtime Environment.
+
+:::note Recommended JRE
+
+We recommend using [Eclipse Adoptium Temurin](https://adoptium.net/installation) 8, 11, or 17.
+
+If you encounter any issue when using the PCE with another JRE, please open an issue in [the associated repository](https://github.com/blindnet-io/privacy-computation-engine/issues/new).
+
+:::
+
+### Database
+
+The PCE requires read-write access to a dedicated [PostgreSQL](https://www.postgresql.org/) database.
+
+The connection to this database has to be configured via the following environment variables:
+
+| Name             | Description              | Example                              | Default |
+| ---------------- | ------------------------ | ------------------------------------ | :------ |
+| DB_URI           | jdbc connection string   | jdbc:postgresql://localhost:5432/pce |         |
+| DB_USER          | database user            | postgres                             |         |
+| DB_PASS          | database user's password | mysecretpassword                     |         |
+
+### API Configuration
+
+The following variables can be used to configure the PCE API:
+
+| Name             | Description              | Example                              | Default |
+| ---------------- | ------------------------ | ------------------------------------ | :------ |
+| API_HOST         | HTTP host                | localhost                            | 0.0.0.0 |
+| API_PORT         | HTTP port                | 80                                   | 9000    |
+| APP_CALLBACK_URI | callback api prefix      | localhost:9000/v0                    |         |
+
+## Run
+
+The PCE service is delivered as a jar file you can directly execute on any JRE with  `java -jar <PCE build>`.
+
+:::note
+
+As the PCE is currently under active development, a jar build can only be obtained by compiling its source code.
+Refer to the [associated section](#compiling-from-source) for instructions.
+
+:::
+
+You'll also find a ready-to-use [minimal Dockerfile](https://github.com/blindnet-io/privacy-computation-engine/blob/develop/Dockerfile) in the associated GitHub repository.
+
+## Compiling from source
+
+To compile the PCE, you first need to install:
+
+- [sbt](https://www.scala-sbt.org/1.x/docs/Setup.html)
+- a JDK (see [Java Runtime](#java-runtime))
+
+To build a new image of the PCE service from its source, clone the associated repository:
+
+```bash
+clone git@github.com:blindnet-io/privacy-computation-engine.git
+cd privacy-computation-engine
+```
+
+Then run the following `sbt` command to build a new `modules/core/target/scala-<scala version>/devkit_pce.jar` file:
+
+```bash
+sbt assembly
+```
