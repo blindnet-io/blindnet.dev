@@ -1,22 +1,35 @@
 ---
 title: User Interfaces
 sidebar_position: 1
-tags: ["introduction"]
+tags: ['introduction']
 ---
+
 import DocCardList from '@theme/DocCardList';
-import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 
-The blindnet devkit includes several user interfaces allowing users of all types to interact through Privacy Requests and developers to execute privacy-by-design and privacy UX. 
+:::tip API and Detailed Documentation
 
-Those interfaces are delivered as a collection of Web Components and JS libraries called [Privacy Components for the Web](https://github.com/blindnet-io/privacy-components-web).
+<p align="center">
+<img alt="Storybook logo" src="/img/storybook-min.png" width="200" />
+</p>
+
+The PC4W project uses [Storybook](https://storybook.js.org/) for UI development, testing, and documentation.
+
+Go to our automatically deployed [Storybook instance](https://pc4w.blindnet.dev) for more details about each component, and to test them yourself live.
+
+:::
+
+The blindnet devkit includes several user interfaces allowing users of all types to interact through Privacy Requests and developers to execute privacy-by-design and privacy UX.
+
+Those interfaces are delivered as a collection of Web Components and JS libraries called [Privacy Components for the Web (PC4W)](https://github.com/blindnet-io/privacy-components-web).
 
 This allows you to embed any of these user interfaces independently in any web page or application.
 
 In its current state, the Privacy Components for the Web project provides:
 
-- a Privacy Request Capture Interface (PRCI), allowing your users to assert their privacy rights by sending you [Privacy Requests](/docs/references/lexicon#privacy-request)
-- a Data Consumer Interface (DCI), allowing relevant members of your organization (e.g. system administrators or DPOs) to manage all Privacy Request related matters
+- a [Privacy Request Capture Interface (PRCI)](https://pc4w.blindnet.dev/?path=/docs/prci), allowing your users to assert their privacy rights by sending you [Privacy Requests](/docs/references/lexicon#privacy-request)
+- a [Data Consumer Interface (DCI)](https://pc4w.blindnet.dev/?path=/docs/dci), allowing relevant members of your organization (e.g. system administrators or DPOs) to manage all Privacy Request related matters
 
----
+## Further Readings
 
-<DocCardList items={useCurrentSidebarCategory().items}/>
+<DocCardList items={useCurrentSidebarCategory().items} />
