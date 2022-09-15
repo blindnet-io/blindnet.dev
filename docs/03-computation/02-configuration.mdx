@@ -4,7 +4,7 @@ sidebar_position: 2
 tags: ['guide']
 ---
 
-import Legislation from '../_partials/_legislation.mdx'
+import Legislation from '../_partials/_legislation.mdx';
 
 # Configuring your Privacy Computation Engine
 
@@ -20,7 +20,7 @@ This API allows you to define:
 
 :::tip API
 
-Required general information configuration can be set in the PCE using [PUT /configure/general-info](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureGeneral-info), retrieved using [GET /configure/general-info](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/getV0ConfigureGeneral-info), and is detailed in the related `GeneralInformation` schema.
+General information can be set in the PCE using [PUT /configure/general-info](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureGeneral-info), retrieved using [GET /configure/general-info](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/getV0ConfigureGeneral-info), as detailed in the related `GeneralInformation` schema.
 
 :::
 
@@ -40,6 +40,16 @@ Here, using the blindnet devkit can greatly help you to solve both problems:
 
 1. the PCE infers as many pieces of information as possible to minimize the volume of data to configure and maintain
 2. other components of the devkit are here to provide such data to the user in an intelligible form without extensive implementation effort
+
+:::caution
+
+This general information describes the entities legislatively responsible for sensitive data and privacy-rights protection. Therefore, it shouldn't necessarily represent only your organization if you are processing sensitive data on behalf of others.
+
+For example, the `organization` field holds information about the organization processing the data and its representative, be it your organization **or** your organization and the organization(s) on behalf of which you are processing data.
+
+The same logic applies to the `dpo` field, which holds information about your DPO **or** the DPO(s) of the organization(s) on behalf of which you are processing data.
+
+:::
 
 ## Selectors
 
