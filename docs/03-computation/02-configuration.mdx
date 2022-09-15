@@ -55,7 +55,7 @@ The same logic applies to the `dpo` field, which holds information about your DP
 
 :::tip API
 
-Selectors can be set in the PCE using [PUT /configure/selectors](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureSelectors), retrieved using [GET /configure/selectors](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/getV0ConfigureSelectors), and is detailed in the related `CreateSelectorPayload` schema.
+Selectors can be set in the PCE using [PUT /configure/selectors](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureSelectors) as detailed in the related `CreateSelectorPayload` schema.
 
 :::
 
@@ -68,11 +68,12 @@ A selector can be defined as a subcategory of any of these data categories, usin
 For example, you can define a `FINANCIAL.BANK-ACCOUNT.IBAN`, as a subcategory of the predefined `FINANCIAL.BANK-ACCOUNT` category, to identify and retrieve an IBAN number collected for regular payment.
 
 <!-- TODO: link to the data capture section instead once it's done -->
-Refer to the definition of [Data Capture Fragments in PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-capture-fragments) for more details.
 
-:::warning
+_Refer to the definition of [Data Capture Fragments in PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-capture-fragments) for more details._
 
-Each selector is defined by it's full dot notation (`{data_category}.{subcategory}`).
+:::caution
+
+Each selector is defined by its full dot notation (`{data_category}.{subcategory}`).
 
 Using just `{subcategory}` will lead to an error.
 
@@ -84,26 +85,60 @@ Using just `{subcategory}` will lead to an error.
 
 :::tip API
 
-Legal Bases configuration can be set is the PCE using [PUT /configure/legal-bases](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureLegal-bases), retrieved using [GET /configure/legal-bases](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/getV0ConfigureLegal-bases), and is detailed in the related `CreateLegalBasePayload` schema.
+Legal Bases can be set in the PCE using [PUT /configure/legal-bases](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureLegal-bases), retrieved using [GET /configure/legal-bases](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/getV0ConfigureLegal-bases), as detailed in the related `CreateLegalBasePayload` schema.
 
 :::
 
-<!-- prettier-ignore -->
-| Format | Example |
-| :----: | :------ |
-| [Legal Bases](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base) | `legal-base`: `CONTRACT` with no `scope` specified meaning it refers to all data, processing and purposes |
+Both law and your users require any capture of sensitive data and any manipulation of such data to be clearly justified.
+In other words, you need to define and expose a legitimate (i.e. **_legal_**) foundation (i.e. **_base_**) before conducting any operation on sensitive data.
+You need, at all times, to record and explain why you need to conduct such operations.
 
-<!-- Configure consents, contracts, legitimate interests and necessary legal bases for handling users' data. -->
+The blindnet devkit helps you to easily define such _Legal Bases_ for your whole system.
 
-To define the scope of a legal base, you can see the list of eligible [data categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/data-categories/en.data-categories.json) (can include selectors), [processing categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/processing-categories/en.processing-categories.json) and [purposes of processing](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/purposes/en.purposes.json).
+Thanks to this configuration, all contracts, legitimate interests and necessary legal bases are clearly defined and easily maintained for your whole system in a single place.
+This not only allows you to avoid any ambiguity or omission but also to be ready for change at any time.
+Legislations, organizations' rules, product features, and any other aspects of data privacy, can indeed change often and quickly.
+Such changes can lead to extensive and tedious data manipulations and communications to people from which you collected data.
+Thanks to your legal bases configuration, the PCE will greatly ease this process, by recommending and even allowing you to automate related operations.
 
-Refer to [legal bases](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#lifecycle-of-legal-bases-for-data-processing) in PRIV for more details.
+_Refer to the legal bases [lifecycle](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#lifecycle-of-legal-bases-for-data-processing) and [format](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base) definition in PRIV for more details._
+
+### Types of Legal bases
+
+As with [selectors](#selectors), _Legal Bases' Types_ can be defined via a dedicated set of [terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/legal-bases/en.legal-bases.json) you can extend and refine using [dot notation](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#term-dot-notation).
+
+### Privacy Scope of a Legal base
+
+By default, a legal base is defined without any scope. This means it refers to all data, processing and purposes.
+
+However, most legal bases are only bound to specific contexts.
+Such contexts can be defined by three aspects:
+
+- _Categories of Processing_: what you intend to do with the data, e.g. `COLLECTING`
+- _Data Categories_: what type of data is used during the operation, e.g. `CONTACT`
+- _Purpose of Processing_: what type of data is concerned, e.g. `PERSONALIZATION`
+
+:::tip
+
+You can phrase a privacy scope in a sentence of the form:
+
+<p align="center">
+  « We <strong>need</strong> <em><code>Processings</code></em> <strong>of/on</strong> <em><code>Data Categories</code></em> <strong>for</strong> <em><code>Purposes</code></em>. »
+</p>
+
+:::
+
+Here again, these three parameters can be set using specific sets of terms with dot notation:
+
+- [data categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/data-categories/en.data-categories.json) (can be extended to include selectors)
+- [processing categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/processing-categories/en.processing-categories.json)
+- [purposes of processing](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/purposes/en.purposes.json)
 
 ## Retention Policies
 
 :::tip API
 
-Legal Bases configuration can be set is the PCE using [PUT /configure/retention-policies](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureRetention-policies), and is detailed in the related `CreateRetentionPolicy` schema.
+Legal Bases can be set in the PCE using [PUT /configure/retention-policies](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureRetention-policies) as detailed in the related `CreateRetentionPolicy` schema.
 
 :::
 
@@ -132,4 +167,3 @@ Legal Bases configuration can be set is the PCE using [PUT /configure/provenance
 Use [PUT /configure/provenances](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureProvenances) to configure provenances for data categories.
 
 Provenance object represents the origin of the data.
-
