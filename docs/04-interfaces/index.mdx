@@ -1,0 +1,22 @@
+---
+title: User Interfaces
+sidebar_position: 1
+tags: ["introduction"]
+---
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+The blindnet devkit includes several user interfaces allowing users of all types to interact through Privacy Requests and developers to execute privacy-by-design and privacy UX. 
+
+Those interfaces are delivered as a collection of Web Components and JS libraries called [Privacy Components for the Web](https://github.com/blindnet-io/privacy-components-web).
+
+This allows you to embed any of these user interfaces independently in any web page or application.
+
+In its current state, the Privacy Components for the Web project provides:
+
+- a Privacy Request Capture Interface (PRCI), allowing your users to assert their privacy rights by sending you [Privacy Requests](/docs/references/lexicon#privacy-request)
+- a Data Consumer Interface (DCI), allowing relevant members of your organization (e.g. system administrators or DPOs) to manage all Privacy Request related matters
+
+---
+
+<DocCardList items={useCurrentSidebarCategory().items}/>

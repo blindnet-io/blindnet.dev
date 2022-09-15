@@ -4,6 +4,43 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 
+const defaultGitBranch = "main";
+
+/**
+ * get the name of the current branch in Github Action CI
+ * 
+ * @see https://docs.github.com/en/actions/learn-github-actions/environment-variables
+ * @see https://github.com/github/docs/issues/15319 
+ */
+function getGithubBranchRef() {
+  // only proceed if in a Github Worklow associated with a branch, not a tag
+  if (!process.env.CI || process.env.GITHUB_REF_TYPE !== "branch") {
+    return defaultGitBranch;
+  }
+
+  // only defined if the workflow was triggered by a pull request
+  if (process.env.GITHUB_HEAD_REF) {
+    return process.env.GITHUB_HEAD_REF;
+  }
+
+  const refName = process.env.GITHUB_REF_NAME;
+  if (refName) {
+    if (!refName.includes('/')) {
+      return refName;
+    }
+
+    // this shouldn't happen as we previously checked that we are not in a PR with GITHUB_HEAD_REF
+    // but just in case, let's make absolutly sure we avoid refs like "39/develop"
+    return refName.split('/').pop();
+  }
+
+  return defaultGitBranch;
+}
+
+
+const gitBranch = getGithubBranchRef();
+console.log(`GIT BRANCH for edition: ${gitBranch}`);
+
 const TwitterSvg =
   '<svg style="fill: var(--ifm-color-primary-lighter); position: relative; top: 0.2em; margin: 0 5px;" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>';
 
@@ -39,7 +76,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           breadcrumbs: true,
-          editUrl: 'https://github.com/blindnet-io/blindnet.dev/edit/main/',
+          editUrl: `https://github.com/blindnet-io/blindnet.dev/edit/${gitBranch}/`,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')
@@ -79,14 +116,13 @@ const config = {
         },
         items: [
           {
-            to: 'docs/quickstart',
+            to: 'docs/tutorial',
             position: 'left',
             label: 'Get Started',
           },
           {
-            type: 'doc',
+            to: 'docs/',
             position: 'left',
-            docId: 'introduction',
             label: 'Docs',
           },
           { to: '/blog', label: 'Blog', position: 'left' },
@@ -107,20 +143,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Get Started',
-                to: '/docs/quickstart',
-              },
-              {
-                label: 'Introduction',
-                to: '/docs/introduction',
-              },
-              {
-                label: 'Guides',
-                to: '/docs/guides',
-              },
-              {
-                label: 'Q&A',
-                to: '/docs/qna',
+                label: 'Docs',
+                to: '/docs/',
               },
             ],
           },
