@@ -4,13 +4,13 @@ sidebar_position: 2
 tags: ['explainer']
 ---
 
-Based on the configuration you provided, the Privacy Computation Engine creates a set of **Processing Records** that contain:
+Based on the configuration you provided, the Privacy Computation Engine infers a set of **Processing Records** that contain:
 
 - Identification of the data field in your database. Table/Object and field/property. E.g. `USER`, `e_mail_address`
 - A [Privacy Scope](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-scope) e.g. (`CONTACT.EMAIL` x {`COLLECTION`, `STORING`, `USING`} x {`SERVICES`,`COMPLIANCE`})
 - One or more [Legal Bases](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base) e.g. a legal base of type `CONTRACT`
 
-It is possible to end-up having serval records for one Data Category, e.g.
+It is possible to end-up having several records for one Data Category, e.g.
 
 <!-- prettier-ignore -->
 | Data in database | Privacy Scope | Legal bases |
@@ -21,8 +21,11 @@ It is possible to end-up having serval records for one Data Category, e.g.
 | table:`USER` field:`e_mail_address` | `CONTACT.EMAIL` x `SHARING` x {`ADVERTISING`} | `CONSENT`|
 
 The records given in the example correspond to the situation of a System that is processing the user's e-mail address for purposes of providing services to the user and for compliance with regulation (KYC) under `CONTRACT` legal base.
-The same System is sending marketing and advertising e-mail to the user under `LEGITIMATE-INTEREST` assuming that as long as the user don't not object they might be interested in additional services.
+The same System is sending marketing and advertising e-mail to the user under `LEGITIMATE-INTEREST` assuming that as long as the user does not object they might be interested in additional services.
 The System only shares the e-mail with partners under `CONSENT` legal base.
+
+<!--
+TODO: reuse and update this when we support transfers (see https://github.com/blindnet-io/blindnet.dev/pull/50#discussion_r972880517)
 
 A **Transfer Record** has:
 
@@ -30,8 +33,10 @@ A **Transfer Record** has:
 - One or more Systems to which transfer is made (their IDs (URLs) and user-readable names)
 
 Multiple provenance objects can also be provided for the same data category. Consider the following examples:
+-->
 
 <!-- prettier-ignore -->
+<!-- 
 | Provenance object | `data-category` | `provenance-category` | `system` |
 | :----: | :-----: | :-----: | :--------|
 | provenance1 | `CONTACT.EMAIL` | `USER.DATA-SUBJECT` | `https://thissystem.com` |
@@ -42,3 +47,4 @@ Multiple provenance objects can also be provided for the same data category. Con
 The records given in the example correspond to the situation of a System that collect the e-mail directly from the user (proveance1), but also, since the System uses OpenID and allow login through Linkedin, it may gain knowledge of e-mail from Linkedin (provenance2).
 The system generates connection data, every time the user connects to it.
 It obtains profiling data about the user for a marketing data exchange platform, so that it can better target the user with marketing offers.
+-->
