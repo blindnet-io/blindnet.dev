@@ -123,7 +123,19 @@ Such contexts can be defined by three aspects:
 You can phrase a privacy scope in a sentence of the form:
 
 <p align="center">
-  « We <strong>need</strong> <em><code>Processings</code></em> <strong>of/on</strong> <em><code>Data Categories</code></em> <strong>for</strong> <em><code>Purposes</code></em>. »
+  « We <strong>need</strong>{' '}
+  <em>
+    <code>Processings</code>
+  </em>{' '}
+  <strong>of/on</strong>{' '}
+  <em>
+    <code>Data Categories</code>
+  </em>{' '}
+  <strong>for</strong>{' '}
+  <em>
+    <code>Purposes</code>
+  </em>
+  . »
 </p>
 
 :::
@@ -151,7 +163,22 @@ They define how long you can keep each data after a specific event occurs.
 You can phrase a retention policy in a sentence of the form:
 
 <p align="center">
-  « <strong>Keep</strong> <em><code>Data Category</code></em> <strong>for</strong> <em><code>no longer / less than</code></em> <em><code>duration</code></em> <strong>after</strong> <em><code>Event Type</code></em>. »
+  « <strong>Keep</strong>{' '}
+  <em>
+    <code>Data Category</code>
+  </em>{' '}
+  <strong>for</strong>{' '}
+  <em>
+    <code>no longer / less than</code>
+  </em>{' '}
+  <em>
+    <code>duration</code>
+  </em>{' '}
+  <strong>after</strong>{' '}
+  <em>
+    <code>Event Type</code>
+  </em>
+  . »
 </p>
 
 :::
@@ -161,8 +188,8 @@ You can define a retention policy in the PCE by associating:
 - a type of event (`after`), using the associated predefined [set of terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/events) you can extend using [dot notation](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#term-dot-notation)
 - with a certain category of data (`data_category`), using a pre-configured [selector](#selectors)
 - for a specific point in time, defined by:
-    - a before/after operator (`policy`) called "retention term" (`NO-LONGER-THAN`, `NO-LESS-THAN`, or any of their subcategories defined according to dot notation as defined [in PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/retentions/en.retentions.json))
-    - and a `duration` (using the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601#Durations))
+  - a before/after operator (`policy`) called "retention term" (`NO-LONGER-THAN`, `NO-LESS-THAN`, or any of their subcategories defined according to dot notation as defined [in PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/retentions/en.retentions.json))
+  - and a `duration` (using the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601#Durations))
 
 For example, the following defines contact data shouldn't be kept more than 30 days after the associated service ended:
 
@@ -185,11 +212,45 @@ Provenances configuration can be set in the PCE using [PUT /configure/provenance
 
 :::
 
-<!-- prettier-ignore -->
-| Format | Example |
-| :----: | :------ |
-| [Provenance](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#provenance) | `provenance-category`:`USER.DATA-SUBJECT`, `system`: `id of this system to which the user gives their e-mail address` |
+Provenances represent the possible origins of each data.
 
-Use [PUT /configure/provenances](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureProvenances) to configure provenances for data categories.
+For the blindnet devkit, we define a provenance by combining:
 
-Provenance object represents the origin of the data.
+- a specific category of data (`data_category`), using a pre-configured [selector](#selectors)
+- a provenance term, with an associated predefined [set of terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/provenance/en.provenance.json) uou can extend using [dot notation](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#term-dot-notation)
+- a URL, used as a unique ID to identify the privacy system which has either:
+    1. collected the data (if it has been collected from a user or derived)
+    2. OR initiated its transfer
+
+:::tip
+
+You can phrase a provenance in a sentence of the form:
+
+<p align="center">
+  « <em>
+    <code>Data Category</code>
+  </em>{' '}
+  <strong>comes from / has been</strong>{' '}
+  <em>
+    <code>provenance</code> (<code>USER</code>, <code>TRANSFERED</code>, ...)
+  </em>{' '}
+  <strong>via</strong>{' '}
+  <em>
+    <code>system</code>
+  </em>
+  . »
+</p>
+
+:::
+
+For example, the following indicates contact phone numbers are provided by users of the `https://blindnet.io` system:
+
+```json
+{
+  "data_category": "CONTACT.PHONE",
+  "provenance": "USER",
+  "system": "https://blindnet.io"
+}
+```
+
+_Refer to [Provenance](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#provenance) in PRIV for more details._
