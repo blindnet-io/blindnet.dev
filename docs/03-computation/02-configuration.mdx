@@ -105,7 +105,7 @@ _Refer to the legal bases [lifecycle](https://github.com/blindnet-io/product-man
 
 ### Types of Legal bases
 
-As with [selectors](#selectors), _Legal Bases' Types_ can be defined via a dedicated set of [terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/legal-bases/en.legal-bases.json) you can extend and refine using [dot notation](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#term-dot-notation).
+As with [selectors](#selectors), _Legal Bases' Types_ can be defined via a dedicated set of [terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/legal-bases/en.legal-bases.json).
 
 ### Privacy Scope of a Legal base
 
@@ -156,7 +156,7 @@ Retention policies can be set in the PCE using [PUT /configure/retention-policie
 
 Retention policies are here to help you track and automate all required operations on sensitive data you hold.
 
-They define how long you can keep each data after a specific event occurs.
+They define how long you can or must keep each data after a specific event occurs.
 
 :::tip
 
@@ -185,7 +185,7 @@ You can phrase a retention policy in a sentence of the form:
 
 You can define a retention policy in the PCE by associating:
 
-- a type of event (`after`), using the associated predefined [set of terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/events) you can extend using [dot notation](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#term-dot-notation)
+- a type of event (`after`), using the associated predefined [set of terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/events)
 - with a certain category of data (`data_category`), using a pre-configured [selector](#selectors)
 - for a specific point in time, defined by:
   - a before/after operator (`policy`) called "retention term" (`NO-LONGER-THAN`, `NO-LESS-THAN`, or any of their subcategories defined according to dot notation as defined [in PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/retentions/en.retentions.json))
@@ -202,6 +202,11 @@ For example, the following defines contact data shouldn't be kept more than 30 d
 }
 ```
 
+Based on your Retention Policies configuration, the PCE will:
+
+- **recommend deletion** of data belonging to a category associated with a `NO-LONGER-THAN` retention policy when this policy expires;
+- **deny deletions** following a _DELETE_ privacy request if the targetted data belongs to a category with a still active `NO-LESS-THAN` policy.
+
 _Refer to [retention policies](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#retention-policy) in PRIV for more details._
 
 ## Provenances
@@ -217,7 +222,7 @@ Provenances represent the possible origins of each data.
 For the blindnet devkit, we define a provenance by combining:
 
 - a specific category of data (`data_category`), using a pre-configured [selector](#selectors)
-- a provenance term, with an associated predefined [set of terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/provenance/en.provenance.json) uou can extend using [dot notation](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#term-dot-notation)
+- a provenance term, with an associated predefined [set of terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/provenance/en.provenance.json)
 - a URL, used as a unique ID to identify the privacy system which has either:
     1. collected the data (if it has been collected from a user or derived)
     2. OR initiated its transfer
