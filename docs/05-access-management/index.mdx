@@ -4,12 +4,48 @@ import WipWarning from '../_partials/_wip.mdx';
 
 # Access Management
 
-<WipWarning>
-  <p>The current version of the access management dashboard is only provided to support our standalone <a href="/docs/encryption/">encryption libraries</a>.</p>
-  <p>A new dashboard allowing you to manage all aspects of blindnet devkit applications and users, including encryption, will be soon available.</p>
-  <p>In the mean time, we provide a <a href="https://devkit-pce-staging.azurewebsites.net/swagger/">pre-configured Privacy Computation Engine</a> to be used directly or via other components of the DevKit without any need for an application id. Check out our <a href="../tutorial">Quick Start Tutorial</a> for more details.</p>
+## Set Up your Privacy System
+
+<WipWarning callToAction="false">
+  <p>The instruction in this section are only here to give you a glips on how the system identification works with the Privacy Computation Engine.</p>
+  <p>At this moment, one blindnet devkit install using a single instance of the Privacy Computation Engine <em>is</em> considered as a coherent single system automatically, using an internally generated ID.</p>
+  <p>Check out out <a href="/docs/tutorial">introductory tutorial</a> for a concrete and up-to-date overview.</p>
 </WipWarning>
 
----
+In blindnet devkit, all components are identified to be part of a coherent "system" using a "System ID".
+
+System IDs are simple version 4 UUIDs you can create using any compatible generator, like, for example, [uuidgenerator.net](https://www.uuidgenerator.net/).
+
+You then just need to add this UUID to the PCE database with the following:
+
+```sql
+insert into apps values ('7427a303-f776-4df4-aaea-41bc64f48f93');
+insert into dac values ('7427a303-f776-4df4-aaea-41bc64f48f93', false);
+insert into automatic_responses_config values ('7427a303-f776-4df4-aaea-41bc64f48f93', true, true, true, true);
+```
+
+## Dashboard
+
+:::warning
+
+The current access management dashboard available on [dashboard.blindnet.io](https://dashboard.blindnet.io) is only provided to support our standalone [encryption libraries](/docs/encryption/).
+
+A new dashboard allowing you to manage all aspects of blindnet devkit applications and users, including encryption, is under development and on restricted access.
+
+[Contact us](https://www.blindnet.io/contact) directly to book a demo and discuss how our new dashboard can fit your specific needs.
+
+:::
+
+The blindnet dashboard is a service and interface engineered to help you accomplish management operations intuitively from a central place.
+
+Futures include (but aren't limited to):
+
+- managing all users and applications via an intuitive interface
+- easily generate and manage system IDs
+- finely manage access to each component of your system
+
+Following our [Open Core](https://github.com/blindnet-io/openness-framework/blob/main/docs/refs/business-models.md#open-core) model, the blindnet dashboard is delivered as a proprietary paid service.
+
+### Further Readings
 
 <DocCardList items={useCurrentSidebarCategory().items}/>
