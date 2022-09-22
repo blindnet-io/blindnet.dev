@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-beta.4](https://github.com/blindnet-io/blindnet-docs/compare/v2.0.0-beta.3...v2.0.0-beta.4) (2022-09-22)
+
+
+### Features
+
+* hide callToAction in the WipWarning partial ([68e9ef1](https://github.com/blindnet-io/blindnet-docs/commit/68e9ef15f3c02a37d6af03a241775ed661f54951))
+
+
+### Misc
+
+* **computation:** rephrase privacy scope ([0444aa1](https://github.com/blindnet-io/blindnet-docs/commit/0444aa189807f29b3ee24ff65de5fcb9d70f933c))
+* **computation:** review / rephrase ([c62d136](https://github.com/blindnet-io/blindnet-docs/commit/c62d136f6d5485d3e72f919a1095909c1a745964)), closes [#52](https://github.com/blindnet-io/blindnet-docs/issues/52) [/github.com/blindnet-io/blindnet.dev/pull/50#discussion_r974335880](https://github.com/blindnet-io//github.com/blindnet-io/blindnet.dev/pull/50/issues/discussion_r974335880) [/github.com/blindnet-io/blindnet.dev/pull/50#discussion_r974333780](https://github.com/blindnet-io//github.com/blindnet-io/blindnet.dev/pull/50/issues/discussion_r974333780)
+
+
+### Contents
+
+* **access-management:** more complete overview ([7fd02f1](https://github.com/blindnet-io/blindnet-docs/commit/7fd02f17097062446f9eac137ae4cb676cf18044))
+* add structure to the feature list ([d537a6e](https://github.com/blindnet-io/blindnet-docs/commit/d537a6e0ac1fbc8b85c6d86bd7cf1c07ce4dbac5))
+* **computation:** configuration API draft ([2c86471](https://github.com/blindnet-io/blindnet-docs/commit/2c86471d9ab4f2a0db29d2db040c4daf21bbd154))
+* **computation:** configuring provenances ([b0d4cf6](https://github.com/blindnet-io/blindnet-docs/commit/b0d4cf682aba5c905695da5d948da8895ba895d8))
+* **computation:** configuring provenances ([9331f57](https://github.com/blindnet-io/blindnet-docs/commit/9331f57e90727677cffac3ae9dba31be97087689))
+* **computation:** general information ([1be3191](https://github.com/blindnet-io/blindnet-docs/commit/1be31911705b3c0cbe53cadfdc1efba9bc679efe))
+* **computation:** legal base ([c9b9f07](https://github.com/blindnet-io/blindnet-docs/commit/c9b9f075320c0d6eb728e0830a35b5cfb1e59cf0))
+* **computation:** link to API docs ([635b06b](https://github.com/blindnet-io/blindnet-docs/commit/635b06b83186cf69d798c28ae568fa0d3186bdc9))
+* **computation:** move config explainer to dedicated doc ([ff7af88](https://github.com/blindnet-io/blindnet-docs/commit/ff7af88e9dd252d0fb8bd17ec22eecefb1db6d84))
+* **computation:** retention policy ([48b98b6](https://github.com/blindnet-io/blindnet-docs/commit/48b98b6d714f4cedefb9287a950b37561ca37a57))
+* **computation:** review configuration ([a985c09](https://github.com/blindnet-io/blindnet-docs/commit/a985c09d1445aedeb2e4400e4c84cbb37b4450af))
+* minor wording change ([a0965a3](https://github.com/blindnet-io/blindnet-docs/commit/a0965a34674113017152c63fea58808bcfbfac1e))
+* rephrase devkit features ([abb98e9](https://github.com/blindnet-io/blindnet-docs/commit/abb98e966fe155fc372df3a3d95aeea4af77532c))
+* review before release ([fd757b4](https://github.com/blindnet-io/blindnet-docs/commit/fd757b4a32589fd38d2efa2f7621582970823668)), closes [/github.com/blindnet-io/blindnet.dev/pull/57#pullrequestreview-1114995554](https://github.com/blindnet-io//github.com/blindnet-io/blindnet.dev/pull/57/issues/pullrequestreview-1114995554)
+
+
+### Tooling
+
+* add Azure Static Web Apps workflow file ([c4756af](https://github.com/blindnet-io/blindnet-docs/commit/c4756afec6b33675f02a1cb3d30f99882e01b5d5))
+* fix token variable name ([0901ce9](https://github.com/blindnet-io/blindnet-docs/commit/0901ce9ef8ad0c455f342931d15fdcca4a07a170))
+* generate changelog ([c35d756](https://github.com/blindnet-io/blindnet-docs/commit/c35d75608291c88da11bc3f9f644ea846c4e9b46))
+* redirect old quickstart page to tutorial ([8c34223](https://github.com/blindnet-io/blindnet-docs/commit/8c342232e6e4e91226733f90232ff0666eec27bf))
+* update devlop ci workflows ([c2f3775](https://github.com/blindnet-io/blindnet-docs/commit/c2f3775debcc4f2b436db0169f1472448ef8d26a))
+
 ## [2.0.0-beta.3](https://github.com/blindnet-io/blindnet-docs/compare/v2.0.0-beta.2...v2.0.0-beta.3) (2022-09-22)
 
 ### Features
