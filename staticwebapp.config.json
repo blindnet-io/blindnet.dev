@@ -1,5 +1,12 @@
 {
   "navigationFallback": {
     "rewrite": "/404.html"
-  }
+  },
+  "routes": [
+    {
+      "route": "/docs/quickstart",
+      "redirect": "/docs/tutorial",
+      "statusCode": 301
+    }
+  ]
 }
