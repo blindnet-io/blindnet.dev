@@ -8,7 +8,7 @@ import Legislation from '../_partials/_legislation.mdx';
 
 # Configuring your Privacy Computation Engine
 
-For the PCE to give you recommended actions adapted to your specific architecture and needs, you first need to configure it via its [**configuration API**](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration).
+For the PCE to give you recommended actions adapted to your specific architecture and needs, you first need to configure it via its [**configuration API**](https://stage.computing.blindnet.io/swagger/#/Configuration).
 
 This API allows you to define:
 
@@ -20,7 +20,7 @@ This API allows you to define:
 
 :::tip API
 
-General information can be set in the PCE using [PUT /configure/general-info](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureGeneral-info), retrieved using [GET /configure/general-info](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/getV0ConfigureGeneral-info), as detailed in the related `GeneralInformation` schema.
+General information can be set in the PCE using [PUT /configure/general-info](https://stage.computing.blindnet.io/swagger/#/Configuration/putV0ConfigureGeneral-info), retrieved using [GET /configure/general-info](https://stage.computing.blindnet.io/swagger/#/Configuration/getV0ConfigureGeneral-info), as detailed in the related `GeneralInformation` schema.
 
 :::
 
@@ -55,7 +55,7 @@ The same logic applies to the `dpo` field, which holds information about your DP
 
 :::tip API
 
-Selectors can be set in the PCE using [PUT /configure/selectors](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureSelectors) as detailed in the related `CreateSelectorPayload` schema.
+Selectors can be set in the PCE using [PUT /configure/selectors](https://stage.computing.blindnet.io/swagger/#/Configuration/putV0ConfigureSelectors) as detailed in the related `CreateSelectorPayload` schema.
 
 :::
 
@@ -85,7 +85,7 @@ Using just `{subcategory}` will lead to an error.
 
 :::tip API
 
-Legal Bases can be set in the PCE using [PUT /configure/legal-bases](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureLegal-bases), retrieved using [GET /configure/legal-bases](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/getV0ConfigureLegal-bases), as detailed in the related `CreateLegalBasePayload` schema.
+Legal Bases can be set in the PCE using [PUT /configure/legal-bases](https://stage.computing.blindnet.io/swagger/#/Configuration/putV0ConfigureLegal-bases), retrieved using [GET /configure/legal-bases](https://stage.computing.blindnet.io/swagger/#/Configuration/getV0ConfigureLegal-bases), as detailed in the related `CreateLegalBasePayload` schema.
 
 :::
 
@@ -150,7 +150,7 @@ Here again, these three parameters can be set using specific sets of terms with 
 
 :::tip API
 
-Retention policies can be set in the PCE using [PUT /configure/retention-policies](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureRetention-policies) as detailed in the related `CreateRetentionPolicy` schema.
+Retention policies can be set in the PCE using [PUT /configure/retention-policies](https://stage.computing.blindnet.io/swagger/#/Configuration/putV0ConfigureRetention-policies) as detailed in the related `CreateRetentionPolicy` schema.
 
 :::
 
@@ -213,7 +213,7 @@ _Refer to [retention policies](https://github.com/blindnet-io/product-management
 
 :::tip API
 
-Provenances configuration can be set in the PCE using [PUT /configure/provenances](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureProvenances), and is detailed in the related `CreateProvenancePayload` schema.
+Provenances configuration can be set in the PCE using [PUT /configure/provenances](https://stage.computing.blindnet.io/swagger/#/Configuration/putV0ConfigureProvenances), and is detailed in the related `CreateProvenancePayload` schema.
 
 :::
 
