@@ -8,11 +8,19 @@ import WipWarning from '../_partials/_wip.mdx';
 
 <WipWarning callToAction="false">
   <p>The instruction in this section are only here to give you a glips on how the system identification works with the Privacy Computation Engine.</p>
-  <p>At this moment, one blindnet devkit install using a single instance of the Privacy Computation Engine <em>is</em> considered as a coherent single system automatically, using an internally generated ID.</p>
-  <p>Check out out <a href="/docs/tutorial">introductory tutorial</a> for a concrete and up-to-date overview.</p>
+  <p>At this moment, the Privacy Computation Engine uses an internally generated ID.</p>
+  <p>Meaning, <em>One</em> instance of the Privacy Computation Engine = <em>One</em> (automatically generated) System ID = <em>One</em> coherent DevKit system.</p>
+  <p>As a consequence, <strong>you don't need to configure a System ID yourself.</strong></p>
+  <p>Check out our <a href="/docs/tutorial">introductory tutorial</a> for a concrete and up-to-date overview.</p>
 </WipWarning>
 
-In blindnet devkit, all components are identified to be part of a coherent "system" using a "System ID".
+In blindnet devkit, all components are identified to be part of a coherent "System" using a "System ID".
+
+Components of different Systems can only communicate through a restricted set of "interoperable" ways (e.g. data transfers and privacy requests with a specified target).
+Components belonging to a single coherent System (identified by its unique ID) can communicate way more easily.
+As a consequence, it is preferable to define one devkit System ID for one logical system which encapsulates and manages the same set of sensitive data.
+
+## Managing System IDs
 
 System IDs are simple version 4 UUIDs you can create using any compatible generator, like, for example, [uuidgenerator.net](https://www.uuidgenerator.net/).
 
