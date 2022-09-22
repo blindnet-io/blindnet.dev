@@ -4,77 +4,258 @@ sidebar_position: 2
 tags: ['guide']
 ---
 
-import WipWarning from '../_partials/_wip.mdx';
+import Legislation from '../_partials/_legislation.mdx';
 
 # Configuring your Privacy Computation Engine
 
-<WipWarning repo="https://github.com/blindnet-io/privacy-computation-engine">
-  <p>The Customization API for the Privacy Computation Engine is in active development.</p>
-  <p>At this stage, this document is therefore mostly conceptual. Concrete API instructions will be added soon.</p>
-</WipWarning>
+For the PCE to give you recommended actions adapted to your specific architecture and needs, you first need to configure it via its [**configuration API**](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration).
 
-You must first configure the Privacy Computation Engine in order to make the most of it.
+This API allows you to define:
 
-It needs to know about:
-
-- General information about your Organization and its' data processing policies (Equivalent to a RoPA - Record of Processing Activities)
+- [General information](#configuring-general-information) about your Organization and its' data processing policies (Equivalent to a [RoPA - Record of Processing Activities](https://www.cnil.fr/en/record-processing-activities))
 - Mappings of your data structures to [PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md) Data Categories
 - Few choices you have to make about when to authenticate the user (before or after they make a Privacy Request), and when to deliver automatic responses and when to wait for validation
 
-To Configure your Privacy Computation Engine prepare the following information:
+## General Information
 
-<!-- prettier-ignore -->
-| Information | Format | Example|
-| :----: | :-----: | :--------|
-| Name and contact details of your Organization and its representative | `string` | `Blindnet Inc. hello@blindnet.io Vuk Janosevic`|
-| Identity and contact of a Data Protection Officer - if you are using blindnet devkit Privacy Request Builder, include the URL where you are hosting the interface | `string` | `Vuk Janosevic, www.blindnet.io/privacy-request-builder`|
-| If you are processing data on behalf of someone else (a Controller), then names, contact details of all such Controllers their representatives and the data protection officers | `string` | see above |
-| A link to your Privacy Policy | `URL` | `https://blindnet.io/privacy` |
-| A general description of the technical and organisational security measures referred to in Article 32 of GDPR | `string` | `We use administrative, technical, and physical safeguards to protect your personal data, taking into account the nature of the personal data and the processing, and the threats posed.`|
-| Countries where data servers are located (included those of the processors who are processing data on your behalf) | `array<string>` | [`France`, `USA`] |
-| A list of Data Consumer categories| `string`| `Blindnet account managers, and Blindnet's DPO`|
-| A mapping of your data model fields and PRIV Data Category `selectors` | `array<TABLE.column:selector>` | [`USER.name`:`NAME.FIRST-NAME`, `USER.email`:`CONTACT.EMAIL`]|
-| A list of Retention Policies | [Retention Policies](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#retention-policy) | `data-categories`:`CONTACT`; `policy-type`:`NO-LONGER-THAN`, `duration`: `180 days`, `after`: `RELATIONSHIP-END` |
-| A list of Provenances | [Provenance](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#provenance) | `provenance-category`:`USER.DATA-SUBJECT`, `system`: `id of this system to which the user gives their e-mail address` |
-| A list of Legal Bases | [Legal Bases](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base) | `legal-base`: `CONTRACT` with no `scope` specified meaning it refers to all data, processing and purposes |
-| A table of data categories, purposes, legal bases, ... | `Processing Record` | see bellow |
-| A table of data transfers | `Transfer Record` | see bellow |
+:::tip API
 
-Based on this information the Privacy Computation Engine creates a set of **Processing Records** that contain:
+General information can be set in the PCE using [PUT /configure/general-info](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureGeneral-info), retrieved using [GET /configure/general-info](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/getV0ConfigureGeneral-info), as detailed in the related `GeneralInformation` schema.
 
-- Identification of the data field in your database. Table/Object and field/property. E.g. `USER`, `e_mail_address`
-- A [Privacy Scope](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#privacy-scope) e.g. (`CONTACT.EMAIL` x {`COLLECTION`, `STORING`, `USING`} x {`SERVICES`,`COMPLIANCE`})
-- One or more [Legal Bases](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base) e.g. a legal base of type `CONTRACT`
+:::
 
-It is possible to end-up having serval records for one Data Category, e.g.
+Your audience needs access to the full picture of your organization's data processing policies easily and at all times. Not only because it is a legal requirement, but also and more importantly because people need such information to trust your organization enough so they can give you access to their sensitive data.
 
-<!-- prettier-ignore -->
-| Data in database | Privacy Scope | Legal bases |
-| :----: | :-----: | :--------|
-| table:`USER` field:`name` | `NAME.FIRST-NAME` x {`COLLECTION`, `STORING`, `USING`} x {`SERVICES`,`COMPLIANCE`} | `CONTRACT` |
-| table:`USER` field:`e_mail_address` | `CONTACT.EMAIL` x {`COLLECTION`, `STORING`, `USING`} x {`SERVICES`,`COMPLIANCE`} | `CONTRACT` |
-| table:`USER` field:`e_mail_address` | `CONTACT.EMAIL` x `USING` x {`MARKETING`,`ADVERTISING`} | `LEGITIMATE-INTEREST`|
-| table:`USER` field:`e_mail_address` | `CONTACT.EMAIL` x `SHARING` x {`ADVERTISING`} | `CONSENT`|
+<Legislation>
 
-The records given in the example correspond to the situation of a System that is processing the user's e-mail address for purposes of providing services to the user and for compliance with regulation (KYC) under `CONTRACT` legal base.
-The same System is sending marketing and advertising e-mail to the user under `LEGITIMATE-INTEREST` assuming that as long as the user don't not object they might be interested in additional services.
-The System only shares the e-mail with partners under `CONSENT` legal base.
+[Article 30 of the GDPR](https://gdpr-info.eu/art-30-gdpr/) requires controllers and their representatives to maintain a precise information set called [Record of Processing Activities (ROPA)](https://www.cnil.fr/en/record-processing-activities).
 
-A **Transfer Record** has:
+Configuring the general information in the Privacy Computation Engine helps your organization to meet this requirement by using other components of the DevKit (e.g. [interfaces](/docs/interfaces)).
 
-- One or more data categories being transferred outside of the system e.g. `CONTACT.EMAIL`
-- One or more Systems to which transfer is made (their IDs (URLs) and user-readable names)
+</Legislation>
 
-Multiple provenance objects can also be provided for the same data category. Consider the following examples:
+While such information is mostly composed of a set of static text, it can rapidly get difficult to maintain. Moreover, transforming such data into intelligible and unambiguous content for your audience isn't straightforward.
 
-<!-- prettier-ignore -->
-| Provenance object | `data-category` | `provenance-category` | `system` |
-| :----: | :-----: | :-----: | :--------|
-| provenance1 | `CONTACT.EMAIL` | `USER.DATA-SUBJECT` | `https://thissystem.com` |
-| provenance2 | `CONTACT.EMAIL` | `TRANSFERRED` | `https://linkedin.com` |
-| provenance2 | `BEHAVIOR.CONNECTION` | `DERIVED` | `https://thissystem.com` |
-| provenance3 | `PROFILING` | `TRANSFERRED` | `https://marketing-data-exchange.com` |
+Here, using the blindnet devkit can greatly help you to solve both problems:
 
-The records given in the example correspond to the situation of a System that collect the e-mail directly from the user (proveance1), but also, since the System uses OpenID and allow login through Linkedin, it may gain knowledge of e-mail from Linkedin (provenance2).
-The system generates connection data, every time the user connects to it.
-It obtains profiling data about the user for a marketing data exchange platform, so that it can better target the user with marketing offers.
+1. the PCE infers as many pieces of information as possible to minimize the volume of data to configure and maintain
+2. other components of the devkit are here to provide such data to the user in an intelligible form without extensive implementation effort
+
+:::caution
+
+This general information describes the entities legislatively responsible for sensitive data and privacy-rights protection. Therefore, it shouldn't necessarily represent only your organization if you are processing sensitive data on behalf of others.
+
+For example, the `organization` field holds information about the organization processing the data and its representative, be it your organization **or** your organization and the organization(s) on behalf of which you are processing data.
+
+The same logic applies to the `dpo` field, which holds information about your DPO **or** the DPO(s) of the organization(s) on behalf of which you are processing data.
+
+:::
+
+## Selectors
+
+:::tip API
+
+Selectors can be set in the PCE using [PUT /configure/selectors](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureSelectors) as detailed in the related `CreateSelectorPayload` schema.
+
+:::
+
+Sensitive data you capture on a regular base can often be complex to categorize.
+
+The blindnet devkit gives you a clear [set of data categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/data-categories/en.data-categories.json) you can use to qualify collected sensitive data for efficient privacy management.
+
+A selector can be defined as a subcategory of any of these data categories, using [dot notation](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#term-dot-notation), to qualify [any captured data](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-capture-fragments).
+
+For example, you can define a `FINANCIAL.BANK-ACCOUNT.IBAN`, as a subcategory of the predefined `FINANCIAL.BANK-ACCOUNT` category, to identify and retrieve an IBAN number collected for regular payment.
+
+<!-- TODO: link to the data capture section instead once it's done -->
+
+_Refer to the definition of [Data Capture Fragments in PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-capture-fragments) for more details._
+
+:::caution
+
+Each selector is defined by its full dot notation (`{data_category}.{subcategory}`).
+
+Using just `{subcategory}` will lead to an error.
+
+`{subcategory}` can however be optional, as any data category can be used as a selector.
+
+:::
+
+## Legal Bases
+
+:::tip API
+
+Legal Bases can be set in the PCE using [PUT /configure/legal-bases](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureLegal-bases), retrieved using [GET /configure/legal-bases](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/getV0ConfigureLegal-bases), as detailed in the related `CreateLegalBasePayload` schema.
+
+:::
+
+Both law and your users require any capture of sensitive data and any manipulation of such data to be clearly justified.
+In other words, you need to define and expose a legitimate (i.e. **_legal_**) foundation (i.e. **_base_**) before conducting any operation on sensitive data.
+You need, at all times, to record and explain why you need to conduct such operations.
+
+The blindnet devkit helps you to easily define such _Legal Bases_ for your whole system.
+
+Thanks to this configuration, all contracts, legitimate interests and necessary legal bases are clearly defined and easily maintained for your whole system in a single place.
+This not only allows you to avoid any ambiguity or omission but also to be ready for change at any time.
+Legislations, organizations' rules, product features, and any other aspects of data privacy, can indeed change often and quickly.
+Such changes can lead to extensive and tedious data manipulations and communications to people from which you collected data.
+Thanks to your legal bases configuration, the PCE will greatly ease this process, by recommending and even allowing you to automate related operations.
+
+_Refer to the legal bases [lifecycle](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#lifecycle-of-legal-bases-for-data-processing) and [format](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base) definition in PRIV for more details._
+
+### Types of Legal bases
+
+As with [selectors](#selectors), _Legal Bases' Types_ can be defined via a dedicated set of [terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/legal-bases/en.legal-bases.json).
+
+### Privacy Scope of a Legal base
+
+By default, a legal base is defined without a specific scope. This means it refers to all data, processing and purposes.
+
+However, most legal bases are only bound to specific contexts.
+Such contexts can be defined by three aspects:
+
+- _Categories of Processing_: what you intend to do with the data, e.g. `COLLECTING`
+- _Data Categories_: what type of data is used during the operation, e.g. `CONTACT`
+- _Purpose of Processing_: what type of data is concerned, e.g. `PERSONALIZATION`
+
+:::tip
+
+You can phrase a privacy scope in a sentence of the form:
+
+<p align="center">
+  « We <strong>need</strong>{' '}
+  <em>
+    <code>Processings</code>
+  </em>{' '}
+  <strong>of/on</strong>{' '}
+  <em>
+    <code>Data Categories</code>
+  </em>{' '}
+  <strong>for</strong>{' '}
+  <em>
+    <code>Purposes</code>
+  </em>
+  . »
+</p>
+
+:::
+
+Here again, these three parameters can be set using specific sets of terms with dot notation:
+
+- [data categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/data-categories/en.data-categories.json) (can be extended to include selectors)
+- [processing categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/processing-categories/en.processing-categories.json)
+- [purposes of processing](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/purposes/en.purposes.json)
+
+## Retention Policies
+
+:::tip API
+
+Retention policies can be set in the PCE using [PUT /configure/retention-policies](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureRetention-policies) as detailed in the related `CreateRetentionPolicy` schema.
+
+:::
+
+Retention policies are here to help you track and automate all required operations on sensitive data you hold.
+
+They define how long you can or must keep each data after a specific event occurs.
+
+:::tip
+
+You can phrase a retention policy in a sentence of the form:
+
+<p align="center">
+  « <strong>Keep</strong>{' '}
+  <em>
+    <code>Data Category</code>
+  </em>{' '}
+  <strong>for</strong>{' '}
+  <em>
+    <code>no longer / less than</code>
+  </em>{' '}
+  <em>
+    <code>duration</code>
+  </em>{' '}
+  <strong>after</strong>{' '}
+  <em>
+    <code>Event Type</code>
+  </em>
+  . »
+</p>
+
+:::
+
+You can define a retention policy in the PCE by associating:
+
+- a type of event (`after`), using the associated predefined [set of terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/events)
+- with a certain category of data (`data_category`), using a pre-configured [selector](#selectors)
+- for a specific point in time, defined by:
+  - a before/after operator (`policy`) called "retention term" (`NO-LONGER-THAN`, `NO-LESS-THAN`, or any of their subcategories defined according to dot notation as defined [in PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/retentions/en.retentions.json))
+  - and a `duration` (using the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601#Durations))
+
+For example, the following defines contact data shouldn't be kept more than 30 days after the associated service ended:
+
+```json
+{
+  "data_categoy": "CONTACT",
+  "policy": "NO-LONGER-THAN",
+  "duration": "P30D",
+  "after": "SERVICE-END"
+}
+```
+
+Based on your Retention Policies configuration, the PCE will:
+
+- **recommend deletion** of data belonging to a category associated with a `NO-LONGER-THAN` retention policy when this policy expires;
+- **deny deletions** following a _DELETE_ privacy request if the targetted data belongs to a category with a still active `NO-LESS-THAN` policy.
+
+_Refer to [retention policies](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#retention-policy) in PRIV for more details._
+
+## Provenances
+
+:::tip API
+
+Provenances configuration can be set in the PCE using [PUT /configure/provenances](https://devkit-pce-staging.azurewebsites.net/swagger/#/Configuration/putV0ConfigureProvenances), and is detailed in the related `CreateProvenancePayload` schema.
+
+:::
+
+Provenances represent the possible origins of each data.
+
+For the blindnet devkit, we define a provenance by combining:
+
+- a specific category of data (`data_category`), using a pre-configured [selector](#selectors)
+- a provenance term, with an associated predefined [set of terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/provenance/en.provenance.json)
+- a URL, used as a unique ID to identify the privacy system which has either:
+    1. collected the data (if it has been collected from a user or derived)
+    2. OR initiated its transfer
+
+:::tip
+
+You can phrase a provenance in a sentence of the form:
+
+<p align="center">
+  « <em>
+    <code>Data Category</code>
+  </em>{' '}
+  <strong>is provided by / has been</strong>{' '}
+  <em>
+    <code>provenance</code> (<code>USER</code>, <code>TRANSFERED</code>, ...)
+  </em>{' '}
+  <strong>via</strong>{' '}
+  <em>
+    <code>system</code>
+  </em>
+  . »
+</p>
+
+:::
+
+For example, the following indicates contact phone numbers are provided by users of the `https://blindnet.io` system:
+
+```json
+{
+  "data_category": "CONTACT.PHONE",
+  "provenance": "USER",
+  "system": "https://blindnet.io"
+}
+```
+
+_Refer to [Provenance](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#provenance) in PRIV for more details._

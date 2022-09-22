@@ -8,6 +8,8 @@ import GitHubButton from 'react-github-btn';
 import OpenSourceSVG from './illustrations/open-source.svg';
 import FilesSentSVG from './illustrations/files-sent.svg';
 import ScienceSVG from './illustrations/alien-science.svg';
+// @ts-ignore
+import DevkitFeaturesList from '@site/docs/_partials/_features-list.mdx';
 
 function Banner() {
   return (
@@ -71,14 +73,7 @@ function DevKit() {
             It is made of several independent, yet cohesive Open Source libraries, services and tools together enabling confidentiality,
             control and compliance with regulation, by supporting:
           </p>
-          <ul>
-            <li><strong>capture</strong> of sensitive data with their associated user consent</li>
-            <li><strong>users' privacy rights management</strong></li>
-            <li>secured data <strong>storage</strong> and <strong>automated</strong> management</li>
-            <li>end-to-end <strong>encryption</strong></li>
-            <li><strong>access management</strong></li>
-            <li>secured <strong>transfer</strong> of sensitive data and associated user consent to compatible systems</li>
-          </ul>
+          <DevkitFeaturesList />
           <p>
             Follow our <a href="/docs/encryption/quickstart">Quick Start</a> guide to understand how the components plays together, and
             explore the <a href="/docs/">documentation</a> to learn more.
