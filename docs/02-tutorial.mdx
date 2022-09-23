@@ -221,6 +221,15 @@ Then, you only need to add the associated entry-point custom element `<bln-priv-
 <bldn-priv-request></bldn-priv-request>
 ```
 
+The `bldn-priv-request` custom element support several attributes and properties to interact with it and configure its behavior.
+
+Here, we only need to use the `computation-base-url` attribute to tell it to use our local PCE instance instead of the central one.
+
+```html
+<bldn-priv-request computation-base-url="http://localhost:9000/v0"></bldn-priv-request>
+
+```
+
 Leading us to the following HTML file:
 
 ```html
@@ -235,7 +244,7 @@ Leading us to the following HTML file:
 
     <h2>Assert Your Privacy Rights</h2>
 
-    <bldn-priv-request></bldn-priv-request>
+    <bldn-priv-request computation-base-url="http://localhost:9000/v0"></bldn-priv-request>
 
     <script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module" ></script>
   </body>
