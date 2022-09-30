@@ -375,6 +375,39 @@ To add the Data Consumer Interface Web Component to your project, simply follow 
 
     <h2>Assert Your Privacy Rights</h2>
 
+    <bldn-priv-request computation-base-url="http://localhost:9000/v0"></bldn-priv-request>
+
+    <h2>Manage Your Users' Requests</h2>
+
+    <bldn-data-consum computation-base-url="http://localhost:9000/v0"></bldn-data-consum>
+
+    <script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module" ></script>
+    <script src="https://unpkg.com/@blindnet/dci/dist/index.core.min.js?module" type="module" ></script>
+  </body>
+</html>
+```
+
+:::warning
+
+The `computation-base-url` parameter is part of the global privacy components for the web configuration via the `@blindnet/core` package.
+As a consequence, setting the computation base URL for a component impact all the other components attached to the same document.
+
+Here, as we have two components on the same page, the value for the `computation-base-url` has to be the same for both.
+
+Instead, we recommend setting the global configuration via the `BlindnetCore.configure()` method as follow:
+
+```html
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>Privacy Components for the Web - Minimal Static Demo</title>
+  </head>
+  <body>
+    <h1>Privacy Components for the Web - Minimal Static Demo</h1>
+
+    <h2>Assert Your Privacy Rights</h2>
+
     <bldn-priv-request></bldn-priv-request>
 
     <h2>Manage Your Users' Requests</h2>
@@ -383,9 +416,17 @@ To add the Data Consumer Interface Web Component to your project, simply follow 
 
     <script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module" ></script>
     <script src="https://unpkg.com/@blindnet/dci/dist/index.core.min.js?module" type="module" ></script>
+
+    <script type="module">
+      globalThis.BlindnetCore.configure({
+        computationBaseURL: "http://localhost:9000/v0"
+      })
+    </script>
   </body>
 </html>
 ```
+
+:::
 
 <!-- TODO: add link to API doc and more details -->
 
