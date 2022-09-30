@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-beta.5](https://github.com/blindnet-io/blindnet-docs/compare/v2.0.0-beta.4...v2.0.0-beta.5) (2022-09-30)
+
+
+### Tooling
+
+* migrate to github actions ([1912f4b](https://github.com/blindnet-io/blindnet-docs/commit/1912f4b84c8b527a72f7282eb4a0b503bedfe5ad))
+
+
+### Contents
+
+* **computation:** change pce uri ([f31195d](https://github.com/blindnet-io/blindnet-docs/commit/f31195d6c4769f3bafb3276d49365273c3bf1f73))
+* **references:** update roadmap ([33cd839](https://github.com/blindnet-io/blindnet-docs/commit/33cd839d362f71900f7d6b13e7965aed86a6a381))
+* **tutorial:** add DCI configuration ([d87ac90](https://github.com/blindnet-io/blindnet-docs/commit/d87ac9045483729d731d90aadaf922ad8204655e))
+* **tutorial:** add PCE setup ([c62ae4a](https://github.com/blindnet-io/blindnet-docs/commit/c62ae4ad719cf5aaa4c310e5256f537548e17842))
+* **tutorial:** add PRCI computation-base-url param ([21d6130](https://github.com/blindnet-io/blindnet-docs/commit/21d61300466e40168f54f031e54324b07fa8c4e5))
+* **tutorial:** fix typo ([5e64930](https://github.com/blindnet-io/blindnet-docs/commit/5e64930ff27028a7aea24f8614eca9c084b02ed8))
+* **tutorial:** update PCE staging url ([67d301f](https://github.com/blindnet-io/blindnet-docs/commit/67d301f021ab71cb9cbd76f3bb7d11f04e4a7160))
+
 ## [2.0.0-beta.4](https://github.com/blindnet-io/blindnet-docs/compare/v2.0.0-beta.3...v2.0.0-beta.4) (2022-09-22)
 
 
