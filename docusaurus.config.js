@@ -116,7 +116,7 @@ const config = {
         },
         items: [
           {
-            to: 'docs/tutorial',
+            to: 'docs/tutorials/intro',
             position: 'left',
             label: 'Get Started',
           },
