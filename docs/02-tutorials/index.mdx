@@ -1,0 +1,12 @@
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+# Tutorials
+
+:::danger
+
+Get started in a few minutes with our practical [introductory tutorial](./01-intro/index.mdx).
+
+:::
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
