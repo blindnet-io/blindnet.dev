@@ -4,8 +4,6 @@ title: 6. Set-up Storage
 tags: [tutorial]
 ---
 
-> :construction_worker: writing in progress
-
 A [Data Access Component](/docs/storage/data-access) is here to transform requests from the [Privacy Computation Engine](/docs/computation) to efficiently execute automated operations on your data storage.
 
 You can choose to use the [Capture Component](/docs/data-capture) and directly store the captured data in blindnet's preconfigured storage, or your own storage service.
@@ -14,6 +12,27 @@ You can also directly connect the Data Access Component to your own storage serv
 
 For that, we'll set up a dedicated demo storage service in Java, and connect it to the Capture Component using the [Java Storage Connector library](https://github.com/blindnet-io/storage-connector-java).
 
-<!-- FIXME: set up a dedicated project and detail development and release steps -->
+:::tip
 
 Code for this demo stage service can be found in the `example` directory in the librarie's repository: [github.com/blindnet-io/storage-connector-java > `example`](https://github.com/blindnet-io/storage-connector-java/tree/develop/example).
+
+:::
+
+## Running the Data Access Component Locally
+
+```bash
+git clone git@github.com:blindnet-io/data-access-component.git
+sbt assembly
+docker build -t blindnet/dac .
+docker run -it blindnet/dac
+```
+
+## Storage Connector demo
+
+```bash
+mvn package
+cd example/
+docker build -t blindnet/connector-demo
+docker run -e BN_CONNECTOR_ENDPOINT=http://localhost:8028 -it blindnet/connector-demo
+````
+
