@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-beta.6](https://github.com/blindnet-io/blindnet-docs/compare/v2.0.0-beta.5...v2.0.0-beta.6) (2022-10-10)
+
+
+### Bug Fixes
+
+* **docs:** images src in Q3 Roadmap ([a1486b7](https://github.com/blindnet-io/blindnet-docs/commit/a1486b74ae7ab09e0cc537ebba66fab6bb91cb82))
+
+
+### Contents
+
+* add contributors ([108404e](https://github.com/blindnet-io/blindnet-docs/commit/108404ef2a9e2cef928cb7db85e029fafb04bda2))
+* **decision-records:** initial DR draft for monorepo tooling ([4fb5605](https://github.com/blindnet-io/blindnet-docs/commit/4fb5605344c5606b6042e9c425dd471ee7395395))
+* **referencess:** add Decision Records ([5630e04](https://github.com/blindnet-io/blindnet-docs/commit/5630e049ce86f7e6036f2e0d4d790573612ac2e9))
+* **tutorials:** complete DCI usage ([963db43](https://github.com/blindnet-io/blindnet-docs/commit/963db430d27c5e4cb9000031d57fdfad5aa52c78))
+* **tutorials:** split intro tutorial steps ([616ae47](https://github.com/blindnet-io/blindnet-docs/commit/616ae478059c81cc49afd06fcdb112f514cd4ea8))
+
 ## [2.0.0-beta.5](https://github.com/blindnet-io/blindnet-docs/compare/v2.0.0-beta.4...v2.0.0-beta.5) (2022-09-30)
 
 
