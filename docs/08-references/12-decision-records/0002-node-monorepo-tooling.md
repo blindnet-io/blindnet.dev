@@ -14,7 +14,7 @@ What tooling should we use to manage several JS/TS packages in the same reposito
 
 1. Must support languages and technologies which we plan to use in this monorepo: Javascript, Typescript, Web Components
 2. Must be as simple to use and configure as possible.
-3. Should support publishing to npm 
+3. Should support publishing to npm
 4. Should support testing on an integration and single package level
 5. Should be actively supported by an active and large community.
 
@@ -55,7 +55,7 @@ The main con of using Lerna is the burden on developers to install an additional
 #### Fulfillment of criteria
 
 **1. Must support languages which we plan to use in this monorepo: Typescript, Javascript, Web Components** - Fulfilled
-    
+
 Technically Typescript support is not built in however it is simple to configure the build script to compile typescript.
 
 Lerna can also be used for developing web components ([example](https://javascript.plainenglish.io/building-a-npm-library-with-web-components-using-lerna-rollup-and-jest-9f76f59348ba)).
@@ -115,8 +115,8 @@ Same as previous two, can be configured to compile typescript.
 
 ### [Turborepo](https://turborepo.org/)
 
-A monorepo tool mainly for js/ts projects. It is geared equally towards web  development/components as it is package publishing.
-Can also be used in tandem with  Lerna, so we could use lerna to manage the js/ts package portion and then move to Turborepo once we start doing more web component work, if needed.
+A monorepo tool mainly for js/ts projects. It is geared equally towards web development/components as it is package publishing.
+Can also be used in tandem with Lerna, so we could use lerna to manage the js/ts package portion and then move to Turborepo once we start doing more web component work, if needed.
 
 The documentation and examples available are not as good as Lerna or Nx, likely because it is a newer tool.
 It being new could also lead to more bugs, so it may be best to give this tool a few years to mature before considering it.
