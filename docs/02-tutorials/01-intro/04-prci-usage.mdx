@@ -1,0 +1,43 @@
+---
+sidebar_position: 4
+title: 3. Assert Your Privacy Rights
+tags: [tutorial]
+---
+
+Now, open the demo web app or static page in your browser to see this component in action:
+
+![first screen of the PRCI component](/img/captures/prci-entry.png)
+
+Here, your users can directly choose from a wide range of privacy request types.
+
+This includes the classical consultation (access), deletion and modification of their data, of course, but also more advanced operations, including but not limited to:
+
+- requesting the portability of their data to a compatible system
+- advanced management of their consents (by objecting to and restricting proceeding of their data, or revoking previously given consents)
+- and retrieving more generic privacy-related information regarding your organization (via the "transparency" request type).
+
+:::note
+
+These are just requests. **You** determine how those are handled and answered, manually or automatically.
+
+:::
+
+If, for example, your users want to make an `Access` request, and click on the `Access` button, they will be able to ask you to give them access to all the data you have on them, or to only select a subset of it.
+
+![First screen for an Access Request in the PRCI component](/img/captures/prci-access-01.png)
+![Second screen for an Access Request in the PRCI component](/img/captures/prci-access-02.png)
+
+Depending on your configuration, two scenarios can then happen.
+
+If like in this example, you set up everything to automatically treat the request, then your users will directly see their request granted (or rejected, depending on the parameters you defined).
+
+![Status of a Delete Request as shown in the PRCI component: under review](/img/captures/prci-access-request-status-granted.png)
+
+Other scenarios might however require to be manually handled.
+In this case, your users will see their request is "pending" (i.e. waiting to be handled by your organization).
+
+In this demo, you can see this happen when sending a `delete` request:
+
+![Status of a Delete Request as shown in the PRCI component: under review](/img/captures/prci-delete-request-status-under-review.png)
+
+<!-- TODO: add link to User doc -->

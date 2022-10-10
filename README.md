@@ -58,6 +58,12 @@ Stay up to date with new releases and projects, learn more about how to protect 
 - Follow us on [Twitter][twitter] to stay up to date with the latest news
 - Check out our [Openness Framework][openness] and [Product Management][product] on Github to see how we operate and give us feedback.
 
+### Contributors
+
+<a href="https://www.github.com/blindnet-io/blindnet.dev/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=blindnet-io/blindnet.dev"/>
+</a>
+
 ## License
 
 © Copyright 2020-2022 [blindnet](mailto:hello@blindnet.io)

@@ -36,7 +36,7 @@ function HeaderHero() {
           <Link className="button button--primary" to="https://join.slack.com/t/blindnet/shared_invite/zt-1arqlhqt3-A8dPYXLbrnqz1ZKsz6ItOg">
             Join Slack
           </Link>
-          <Link className="button button--secondary" to="/docs/tutorial">
+          <Link className="button button--secondary" to="/docs/tutorials/intro">
             Get Started!
           </Link>
           <span className={styles.indexCtasGitHubButtonWrapper}>
@@ -79,7 +79,7 @@ function DevKit() {
             explore the <a href="/docs/">documentation</a> to learn more.
           </p>
           <div className={styles.indexCtas}>
-            <Link className="button button--primary" to="/docs/tutorial">
+            <Link className="button button--primary" to="/docs/tutorials/intro">
               Get Started!
             </Link>
             <Link className="button button--secondary" to="/docs/">
