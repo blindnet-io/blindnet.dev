@@ -98,7 +98,7 @@ docker run -e BN_CONNECTOR_ENDPOINT=http://localhost:8028 --network host -it bli
 
 ### How It Works
 
-This demo directly uses the Java Storage Connector library to define mappings between [selectors](http://localhost:3000/docs/computation/configuration#selectors) defined in the PCE and the actual storage, leading to the following code in the `example/src/main/java/io/blindnet/storageconnector/example/Main.java` file:
+This demo directly uses the Java Storage Connector library to define mappings between [selectors](/docs/computation/configuration#selectors) defined in the PCE and the actual storage, leading to the following code in the `example/src/main/java/io/blindnet/storageconnector/example/Main.java` file:
 
 ```java
 StorageConnector.create()
@@ -111,11 +111,7 @@ StorageConnector.create()
   .start();
 ```
 
-TODO: step by step explaination
-
-TODO: link with ORM
-
-`example/src/main/java/io/blindnet/storageconnector/example/User.java`
+Code which relies on the following ORM definition (`example/src/main/java/io/blindnet/storageconnector/example/User.java`):
 
 ```java
 public record User(String firstName, String lastName, String email, byte[] proof) {
@@ -147,3 +143,31 @@ public record User(String firstName, String lastName, String email, byte[] proof
     }
 }
 ```
+
+Let's explore together how it works so you can reproduce it in your project.
+
+#### Setting up a StorageConnector
+
+The `StorageConnector` class is the center of the Java Storage Connector library, instanciated via the `create()` method.
+
+```java
+import io.blindnet.storageconnector.StorageConnector;
+
+StorageConnector sc = StorageConnector.create();
+```
+
+This class allows you to establish a transparent connection with the PCE to answer in the most efficient way to every request the PCE send.
+This connection is only active after calling the `start()` method.
+
+```java
+import io.blindnet.storageconnector.StorageConnector;
+
+StorageConnector.create().start();
+```
+
+Yet, the default implementation of `StorageConnector` doesn't make any assumption about your selectors or storage.
+Meaning the `StorageConnector` in the above example will only
+
+
+
+
