@@ -4,35 +4,146 @@ title: 6. Set-up Storage
 tags: [tutorial]
 ---
 
-A [Data Access Component](/docs/storage/data-access) is here to transform requests from the [Privacy Computation Engine](/docs/computation) to efficiently execute automated operations on your data storage.
+The blindnet devkit storage can be handled via two components:
 
-You can choose to use the [Capture Component](/docs/data-capture) and directly store the captured data in blindnet's preconfigured storage, or your own storage service.
+1. a [Data Access Component](/docs/storage/data-access) (DAC)
+2. a storage service, with optionnal help from a devkit storage connector library (currently, only Java is supported, via the  [Java Storage Connector library](https://github.com/blindnet-io/storage-connector-java))
 
-You can also directly connect the Data Access Component to your own storage service without using the Capture Component. For see sake of simplicity, we'll choose this option for this tutorial.
+You can choose to use the [Capture Component](/docs/data-capture) and directly store the captured data in blindnet's preconfigured storage, or your own storage service. You can also directly connect the Data Access Component to your own storage service without using the Capture Component. For see sake of simplicity, we'll choose this option for this tutorial.
 
-For that, we'll set up a dedicated demo storage service in Java, and connect it to the Capture Component using the [Java Storage Connector library](https://github.com/blindnet-io/storage-connector-java).
+For that, we'll set up a dedicated demo storage service in Java, and connect it to the Capture Component using the.
 
-:::tip
+## Pre-requisites
 
-Code for this demo stage service can be found in the `example` directory in the librarie's repository: [github.com/blindnet-io/storage-connector-java > `example`](https://github.com/blindnet-io/storage-connector-java/tree/develop/example).
+The following steps require **git**, a **Java Development Kit**, **sbt**, and **docker** to be installed on your machine.
 
-:::
+Refer to the [associated section](http://localhost:3000/docs/tutorials/intro/PCE-set-up#pre-requisites) of the first step of this tutorial for more information.
+
+Additionnally, [Maven](https://maven.apache.org/install.html) is also required in order to build the associated demo.
+
 
 ## Running the Data Access Component Locally
 
+The [Data Access Component](/docs/storage/data-access) act as a proxy between the  [Privacy Computation Engine](/docs/computation) and your storage servicde, transforming requests from the PCE to efficiently execute automated operations on your data storage.
+
+To run it locally, you first need to clone the associated repository:
+
 ```bash
 git clone git@github.com:blindnet-io/data-access-component.git
-sbt assembly
-docker build -t blindnet/dac .
-docker run -it blindnet/dac
 ```
 
-## Storage Connector demo
+Then, build the project using sbt:
 
 ```bash
-mvn package
-cd example/
-docker build -t blindnet/connector-demo
-docker run -e BN_CONNECTOR_ENDPOINT=http://localhost:8028 -it blindnet/connector-demo
-````
+cd data-access-component
+sbt assembly
+```
 
+And finally, run the docker image:
+
+```bash
+docker build -t blindnet/dac .
+docker run --network host -it blindnet/dac
+```
+
+The following message should be displayed, showing the DAC has been correctly started:
+
+```text
+[io-compute-1] INFO org.http4s.blaze.channel.nio1.NIO1SocketServerGroup - Service bound to address /127.0.0.1:8028
+[io-compute-1] INFO org.http4s.blaze.server.BlazeServerBuilder - 
+  _   _   _        _ _
+ | |_| |_| |_ _ __| | | ___
+ | ' \  _|  _| '_ \_  _(_-<
+ |_||_\__|\__| .__/ |_|/__/
+             |_|
+[io-compute-1] INFO org.http4s.blaze.server.BlazeServerBuilder - http4s v0.23.14 on blaze v0.23.12 started at http://127.0.0.1:8028/
+```
+
+Your DAC instance is now ready to receive request from a PCE.
+
+:::danger Work In Progress
+
+Currently, the PCE doesn't allow to customize the URL of the DAC to use. As a consequence, your local PCE will still send requests to the DAC instance we provide by default in a staging environement, and use the associated demo storage service.
+
+:::
+
+## Storage Connector Demo
+
+### Set Up
+
+For the purpose of this tutorial, we provide a demo implementation of a storage service.
+
+Code for this demo can be fund in the `example` directory in the librarie's repository: [github.com/blindnet-io/storage-connector-java > `example`](https://github.com/blindnet-io/storage-connector-java/tree/develop/example).
+
+Clone this resporitoy:
+
+```bash
+git clone
+```
+
+Then, build the library and the demo project using Maven:
+
+```bash
+cd data-access-component
+mvn package
+```
+
+Finally, go to this example directory to run the associated docker image:
+
+```bash
+cd example/
+docker build -t blindnet/connector-demo .
+docker run -e BN_CONNECTOR_ENDPOINT=http://localhost:8028 --network host -it blindnet/connector-demo
+```
+
+### How It Works
+
+This demo directly uses the Java Storage Connector library to define mappings between [selectors](http://localhost:3000/docs/computation/configuration#selectors) defined in the PCE and the actual storage, leading to the following code in the `example/src/main/java/io/blindnet/storageconnector/example/Main.java` file:
+
+```java
+StorageConnector.create()
+  .setDataRequestHandler(new MappingRequestHandler.Builder<User>()
+          .setSubjectMapper(Database.users::findByEmail)
+          .addSelectorType("CONTACT.EMAIL", User::email)
+          .addSelectorType("NAME", User::fullName)
+          .addSelectorTypeBinary("OTHER-DATA.PROOF", u -> BinaryData.fromArray(u.proof()))
+          .build())
+  .start();
+```
+
+TODO: step by step explaination
+
+TODO: link with ORM
+
+`example/src/main/java/io/blindnet/storageconnector/example/User.java`
+
+```java
+public record User(String firstName, String lastName, String email, byte[] proof) {
+    public String fullName() {
+        return firstName() + " " + lastName();
+    }
+
+    public interface Dao {
+        @SqlUpdate("CREATE TABLE users (first_name varchar, last_name varchar, email varchar, proof varbinary)")
+        void createTable();
+
+        @SqlUpdate("INSERT INTO users (first_name, last_name, email, proof) VALUES (?, ?, ?, ?)")
+        void insert(String firstName, String lastName, String email, byte[] proof);
+
+        @SqlQuery("SELECT * FROM users WHERE email=?")
+        User findByEmail(String email);
+    }
+
+    public static class Mapper implements RowMapper<User> {
+        @Override
+        public User map(ResultSet rs, StatementContext ctx) throws SQLException {
+            return new User(
+                    rs.getString("first_name"),
+                    rs.getString("last_name"),
+                    rs.getString("email"),
+                    rs.getBytes("proof")
+            );
+        }
+    }
+}
+```
