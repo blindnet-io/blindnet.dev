@@ -202,6 +202,35 @@ MappingRequestHandler userRequestHandler = userMappingBuilder.build();
 storageConnector.setDataRequestHandler(userRequestHandler).start();
 ```
 
-#### Mapping
+#### Mapping Simple Entries
+
+First, we start by associating our mapper with a specific stored data.
+For that, we use the `Builder.setSubjectMapper()` method, which only need a function returning the desired object based on a given selector (here, the user's email).
+Here, we can directly use a method from our ORM definition.
+
+```java
+userMappingBuilder.setSubjectMapper(Database.users::findByEmail)
+```
+
+Then, we need to define the associations between PCE selectors and stored data.
+As we already refered to the user's email here, we'll start with the associated selector, `CONTACT.EMAIL`, and map it to the equivalent attribute, `User.email`.
+
+
+```java
+userMappingBuilder.addSelectorType("CONTACT.EMAIL", User::email)
+```
+
+And we'll proceed in the same exact way for the user's name:
+
+```java
+userMappingBuilder.addSelectorType("NAME", User::fullName)
+```
+
+##### Mapping Binary Data
 
 ...
+
+```java
+userMappingBuilder.addSelectorTypeBinary("OTHER-DATA.PROOF", u -> BinaryData.fromArray(u.proof()))
+```
+
