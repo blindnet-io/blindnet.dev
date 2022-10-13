@@ -228,9 +228,15 @@ userMappingBuilder.addSelectorType("NAME", User::fullName)
 
 ##### Mapping Binary Data
 
-...
+The Java Storage Connector library also provides all the methods you need to map binary data in order to handle them in the more efficient way.
+
+Here, the demonstration app also capture a proof of identity document (pdf, image, etc.) for every user, associating it with the custom `OTHER-DATA.PROOF` selector.
+The `BinaryData` class will help you to represent such data easily in order to map it to a selector using the `addSelectorTypeBinary()` method.
+
+In this example, as the `proof` entry is stored as a `byte[]`, we use the `fromArray` method:
 
 ```java
 userMappingBuilder.addSelectorTypeBinary("OTHER-DATA.PROOF", u -> BinaryData.fromArray(u.proof()))
 ```
+
 
