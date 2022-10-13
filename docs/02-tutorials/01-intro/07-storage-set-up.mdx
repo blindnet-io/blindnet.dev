@@ -111,7 +111,37 @@ StorageConnector.create()
   .start();
 ```
 
-Code which relies on the following ORM definition (`example/src/main/java/io/blindnet/storageconnector/example/User.java`):
+Let's explore together how it works so you can reproduce it in your project.
+
+#### Setting up a StorageConnector
+
+The `StorageConnector` class is the center of the Java Storage Connector library, instanciated via the `create()` method.
+
+```java
+import io.blindnet.storageconnector.StorageConnector;
+
+StorageConnector sc = StorageConnector.create();
+```
+
+This class allows you to establish a transparent connection with the PCE to answer in the most efficient way to every request the PCE send.
+This connection is only active after calling the `start()` method.
+
+```java
+StorageConnector.create().start();
+```
+
+Yet, the default implementation of `StorageConnector` doesn't make any assumption about your selectors or storage.
+Meaning the `StorageConnector` in the above example will only have a `DefaultDataRequestHandler`, which deny all incoming requests.
+
+We therefore need to define a custom `DataRequestHandler` to define how the storage connector should answer such requests.
+
+#### Defining a Data Request Handler
+
+For this, we use the `setDataRequestHandler()` method to replace the default data request handler with the provided implementation of the `DataRequestHandler` interface.
+
+In this example (and in most cases), we only need to define the mapping between the selectors defined in the PCE configuration and our ORM classes, using the `MappingRequestHandler`'s `Builder`.
+
+In the example project, we start from an ORM defined for the `User` beforehand in `example/src/main/java/io/blindnet/storageconnector/example/User.java`:
 
 ```java
 public record User(String firstName, String lastName, String email, byte[] proof) {
@@ -144,30 +174,34 @@ public record User(String firstName, String lastName, String email, byte[] proof
 }
 ```
 
-Let's explore together how it works so you can reproduce it in your project.
+:::info
 
-#### Setting up a StorageConnector
+This example use `jsdbi`, but the Storage Connector library is compatible with any ORM solution, even project-specific ones.
 
-The `StorageConnector` class is the center of the Java Storage Connector library, instanciated via the `create()` method.
+:::
 
-```java
-import io.blindnet.storageconnector.StorageConnector;
-
-StorageConnector sc = StorageConnector.create();
-```
-
-This class allows you to establish a transparent connection with the PCE to answer in the most efficient way to every request the PCE send.
-This connection is only active after calling the `start()` method.
+Leading to the following builder:
 
 ```java
-import io.blindnet.storageconnector.StorageConnector;
+import io.blindnet.storageconnector.handlers.mapping.MappingRequestHandler;
 
-StorageConnector.create().start();
+Builder<User> userMappingBuilder = new MappingRequestHandler.Builder<User>();
 ```
 
-Yet, the default implementation of `StorageConnector` doesn't make any assumption about your selectors or storage.
-Meaning the `StorageConnector` in the above example will only
+In the end (after configuring the mapping as shown in the following step), we'll only neeed to call the `Builder.build()` method to generate the instance of `MappingRequestHandler`.
 
+```java
+StorageConnector storageConnector = StorageConnector.create();
 
+Builder<User> userMappingBuilder = new MappingRequestHandler.Builder<User>();
 
+// configuration
 
+MappingRequestHandler userRequestHandler = userMappingBuilder.build();
+
+storageConnector.setDataRequestHandler(userRequestHandler).start();
+```
+
+#### Mapping
+
+...
