@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0-beta.7](https://github.com/blindnet-io/blindnet-docs/compare/v2.0.0-beta.6...v2.0.0-beta.7) (2022-10-14)
+
+
+### Contents
+
+* **references:** add RFC-SPED ([d5026ee](https://github.com/blindnet-io/blindnet-docs/commit/d5026eeb23d7e4ea1b63556cb167f11536826e91))
+
 ## [2.0.0-beta.6](https://github.com/blindnet-io/blindnet-docs/compare/v2.0.0-beta.5...v2.0.0-beta.6) (2022-10-10)
 
 
