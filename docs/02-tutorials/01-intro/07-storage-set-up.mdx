@@ -7,24 +7,24 @@ tags: [tutorial]
 The blindnet devkit storage can be handled via two components:
 
 1. a [Data Access Component](/docs/storage/data-access) (DAC)
-2. a storage service, with optionnal help from a devkit storage connector library (currently, only Java is supported, via the  [Java Storage Connector library](https://github.com/blindnet-io/storage-connector-java))
+2. a storage service, with optional help from a devkit storage connector library (currently, only Java is supported, via the  [Java Storage Connector library](https://github.com/blindnet-io/storage-connector-java))
 
-You can choose to use the [Capture Component](/docs/data-capture) and directly store the captured data in blindnet's preconfigured storage, or your own storage service. You can also directly connect the Data Access Component to your own storage service without using the Capture Component. For see sake of simplicity, we'll choose this option for this tutorial.
+You can choose to use the [Capture Component](/docs/data-capture) and directly store the captured data in blindnet's preconfigured storage, or your own storage service. You can also directly connect the Data Access Component to your own storage service without using the Capture Component. For the sake of simplicity, we'll choose this option for this tutorial.
 
-For that, we'll set up a dedicated demo storage service in Java, and connect it to the Capture Component using the.
+For that, we'll set up a dedicated demo storage service in Java, and connect it to the Data Access Component using the [Java Storage Connector library](https://github.com/blindnet-io/storage-connector-java).
 
 ## Pre-requisites
 
 The following steps require **git**, a **Java Development Kit**, **sbt**, and **docker** to be installed on your machine.
 
-Refer to the [associated section](http://localhost:3000/docs/tutorials/intro/PCE-set-up#pre-requisites) of the first step of this tutorial for more information.
+Refer to the [associated section](https://blindnet.dev/docs/tutorials/intro/PCE-set-up#pre-requisites) of the first step of this tutorial for more information.
 
 Additionnally, [Maven](https://maven.apache.org/install.html) is also required in order to build the associated demo.
 
 
 ## Running the Data Access Component Locally
 
-The [Data Access Component](/docs/storage/data-access) act as a proxy between the  [Privacy Computation Engine](/docs/computation) and your storage servicde, transforming requests from the PCE to efficiently execute automated operations on your data storage.
+The [Data Access Component](/docs/storage/data-access) acts as a proxy between the  [Privacy Computation Engine](/docs/computation) and your storage service, transforming requests from the PCE to efficiently execute automated operations on your data storage.
 
 To run it locally, you first need to clone the associated repository:
 
@@ -59,7 +59,7 @@ The following message should be displayed, showing the DAC has been correctly st
 [io-compute-1] INFO org.http4s.blaze.server.BlazeServerBuilder - http4s v0.23.14 on blaze v0.23.12 started at http://127.0.0.1:8028/
 ```
 
-Your DAC instance is now ready to receive request from a PCE.
+Your DAC instance is now ready to receive requests from a PCE.
 
 :::danger Work In Progress
 
@@ -123,7 +123,7 @@ import io.blindnet.storageconnector.StorageConnector;
 StorageConnector sc = StorageConnector.create();
 ```
 
-This class allows you to establish a transparent connection with the PCE to answer in the most efficient way to every request the PCE send.
+This class allows you to establish a transparent connection with the PCE to answer in the most efficient way every request the PCE sends.
 This connection is only active after calling the `start()` method.
 
 ```java
@@ -131,7 +131,7 @@ StorageConnector.create().start();
 ```
 
 Yet, the default implementation of `StorageConnector` doesn't make any assumption about your selectors or storage.
-Meaning the `StorageConnector` in the above example will only have a `DefaultDataRequestHandler`, which deny all incoming requests.
+Meaning the `StorageConnector` in the above example will only have a `DefaultDataRequestHandler`, which denies all incoming requests.
 
 We therefore need to define a custom `DataRequestHandler` to define how the storage connector should answer such requests.
 
@@ -176,7 +176,7 @@ public record User(String firstName, String lastName, String email, byte[] proof
 
 :::info
 
-This example use `jsdbi`, but the Storage Connector library is compatible with any ORM solution, even project-specific ones.
+This example uses `jdbi`, but the Storage Connector library is compatible with any ORM or ORM-less storage solution, even project-specific ones.
 
 :::
 
@@ -205,7 +205,7 @@ storageConnector.setDataRequestHandler(userRequestHandler).start();
 #### Mapping Simple Entries
 
 First, we start by associating our mapper with a specific stored data.
-For that, we use the `Builder.setSubjectMapper()` method, which only need a function returning the desired object based on a given selector (here, the user's email).
+For that, we use the `Builder.setSubjectMapper()` method, which only needs a function returning the desired object based on a given selector (here, the user's email).
 Here, we can directly use a method from our ORM definition.
 
 ```java
@@ -230,7 +230,7 @@ userMappingBuilder.addSelectorType("NAME", User::fullName)
 
 The Java Storage Connector library also provides all the methods you need to map binary data in order to handle them in the more efficient way.
 
-Here, the demonstration app also capture a proof of identity document (pdf, image, etc.) for every user, associating it with the custom `OTHER-DATA.PROOF` selector.
+Here, the demonstration app also captures a proof of identity document (pdf, image, etc.) for every user, associating it with the custom `OTHER-DATA.PROOF` selector.
 The `BinaryData` class will help you to represent such data easily in order to map it to a selector using the `addSelectorTypeBinary()` method.
 
 In this example, as the `proof` entry is stored as a `byte[]`, we use the `fromArray` method:
