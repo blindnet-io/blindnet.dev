@@ -8,38 +8,53 @@ import Legislation from '../_partials/_legislation.mdx';
 
 # Configuring your Privacy Computation Engine
 
-For the PCE to give you recommended actions adapted to your specific architecture and needs, you first need to configure it via its [**configuration API**](https://stage.computing.blindnet.io/swagger/#/Configuration).
+For the PCE to work in your specific situation, you first need to configure it via its [**configuration API**](https://stage.computing.blindnet.io/swagger/#/Configuration).
 
-This API allows you to define:
+This API allows you to define what is usually called [RoPA - Record of Processing Activities](https://www.cnil.fr/en/record-processing-activities), a way to comply with the requirements of [Article 30 of the GDPR](https://gdpr-info.eu/art-30-gdpr/).
 
-- [General information](#configuring-general-information) about your Organization and its' data processing policies (Equivalent to a [RoPA - Record of Processing Activities](https://www.cnil.fr/en/record-processing-activities))
-- Mappings of your data structures to [PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md) Data Categories
-- Few choices you have to make about when to authenticate the user (before or after they make a Privacy Request), and when to deliver automatic responses and when to wait for validation
-
-## General Information
+This means configuring the following:
+- [General information](#configuring-general-information) about your Organization, its representatives, its server's locations and policies
+- [Selectors](#selectors) tell the PCE which fields in your database schema correspond to which [PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md) Data Categories
+- [Legal Bases](#legal-bases) for processing of particular Data Categories for Particular Purposes
+- [Retention Policies](#retention-policies) specifying minimal and maximal retention times for particular Data Categories
+- [Provenances](#provenances) defining where your system gets the data from
+- When (for what kind of Privacy Requests) to deliver automatic responses and when to wait for human validation
 
 :::tip API
 
-General information can be set in the PCE using [PUT /configure/general-info](https://stage.computing.blindnet.io/swagger/#/Configuration/putV0ConfigureGeneral-info), retrieved using [GET /configure/general-info](https://stage.computing.blindnet.io/swagger/#/Configuration/getV0ConfigureGeneral-info), as detailed in the related `GeneralInformation` schema.
+In order to follow through this section of the tutorial, you might want to either [set-up your own instance of PCE](/docs/tutorials/intro/PCE-set-up) or use the PCE isntance provided by blindnet for testing at https://devkit-pce-staging.azurewebsites.net/v0/. In the followign examples we'll use this instance.
+
+If you are using the instance provided by blindnet you will need to reach out to us to get your app_id and app_key. Once you have got those, you can use our [Token Generator](https://blindnet-io.github.io/demo-token-generator/) to generate the credentials that you will need in order to authenticate your calls to our APIs.
+
+In the following examples replace the blindnet's testing instance URL with your URL, where you are hosting your PCE instance, and replace the the auth-token with your token generated using the Token Generator.
 
 :::
-
-Your audience needs access to the full picture of your organization's data processing policies easily and at all times. Not only because it is a legal requirement, but also and more importantly because people need such information to trust your organization enough so they can give you access to their sensitive data.
 
 <Legislation>
 
 [Article 30 of the GDPR](https://gdpr-info.eu/art-30-gdpr/) requires controllers and their representatives to maintain a precise information set called [Record of Processing Activities (ROPA)](https://www.cnil.fr/en/record-processing-activities).
 
-Configuring the general information in the Privacy Computation Engine helps your organization to meet this requirement by using other components of the DevKit (e.g. [interfaces](/docs/interfaces)).
+By configuring the PCE you will feed the PCE all the information necessary to comply wiht this legal requirement. The same information will be used across the other components of the DevKit (e.g. [interfaces](/docs/interfaces)) to deliver compliance in action.
+
+Make sure to provide the PCE with all
 
 </Legislation>
 
-While such information is mostly composed of a set of static text, it can rapidly get difficult to maintain. Moreover, transforming such data into intelligible and unambiguous content for your audience isn't straightforward.
 
-Here, using the blindnet devkit can greatly help you to solve both problems:
+## General Information
 
-1. the PCE infers as many pieces of information as possible to minimize the volume of data to configure and maintain
-2. other components of the devkit are here to provide such data to the user in an intelligible form without extensive implementation effort
+General information can be set in the PCE using [PUT /configure/general-info](https://stage.computing.blindnet.io/swagger/#/Configuration/putV0ConfigureGeneral-info), retrieved using [GET /configure/general-info](https://stage.computing.blindnet.io/swagger/#/Configuration/getV0ConfigureGeneral-info), as detailed in the related `GeneralInformation` schema.
+
+You will need the following information.
+
+| [General Info schema](https://stage.computing.blindnet.io/swagger/#/Configuration/getV0ConfigureGeneral-info) field | Information | Related Legislation Articles | Usage by blindnet DevKit |
+| :--------------------: | :----------- | :------:| :---------------:|
+| `organization` | The name of your organization and its representative representative... | GDPR Art. 30.1.a, GDPR Art. 30.2.a | To reply to any `TRANSPARENCY.ORGANIZATION` Privacy Request |
+| `dpo` | The name and contact of your data protection officer | GDPR Art. 30.1.a, GDPR Art. 30.2.a | Reply to any `TRANSPARENCY.DPO` Privacy Requests |
+| `data_consumer_categories` | The categories of recipients to whom the personal data have been or will be disclosed including recipients in third countries or international organisations | GDPR Art. 30.1.a, GDPR Art. 30.2.a, CCPA 1798.115.1.2, CCPA 1798.110.1.4 | Reply to any `TRANSPARENCY.WHO` Privacy Request |
+| `data_security_info` | a general description of the technical and organisational security measures | GDPR Art. 30.1.d, GDPR Art. 30.2.d | |
+| `countries` | Countries where user data is being stored | GDPR Art. 30.1.e, GDPR Art. 30.2.c | Reply to any `TRANSPARENCY.WHERE` Privacy Requests |
+| `privacy_policy_link` | URL to your Privacy Policy | GDPR Art. 13, GDPR Art. 14, GDPR Art. 15 | Reply to any `TRANSPARENCY.POLICY` Privacy Requests. Make sure your Privacy Policy includes the [information listed in relevant GDPR articles](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#storing-general-information) |
 
 :::caution
 
