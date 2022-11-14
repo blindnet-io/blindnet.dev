@@ -10,6 +10,7 @@ import Legislation from '../_partials/_legislation.mdx';
 
 For the PCE to work in your specific situation, you first need to configure it via its [**configuration API**](https://stage.computing.blindnet.io/swagger/#/Configuration).
 
+<Legislation>
 This API allows you to define what is usually called [RoPA - Record of Processing Activities](https://www.cnil.fr/en/record-processing-activities), a way to comply with the requirements of [Article 30 of the GDPR](https://gdpr-info.eu/art-30-gdpr/).
 
 This means configuring the following:
@@ -19,26 +20,18 @@ This means configuring the following:
 - [Retention Policies](#retention-policies) specifying minimal and maximal retention times for particular Data Categories
 - [Provenances](#provenances) defining where your system gets the data from
 - When (for what kind of Privacy Requests) to deliver automatic responses and when to wait for human validation
+</Legislation>
+
 
 :::tip API
 
 In order to follow through this section of the tutorial, you might want to either [set-up your own instance of PCE](/docs/tutorials/intro/PCE-set-up) or use the PCE isntance provided by blindnet for testing at https://devkit-pce-staging.azurewebsites.net/v0/. In the followign examples we'll use this instance.
 
-If you are using the instance provided by blindnet you will need to reach out to us to get your app_id and app_key. Once you have got those, you can use our [Token Generator](https://blindnet-io.github.io/demo-token-generator/) to generate the credentials that you will need in order to authenticate your calls to our APIs.
+If you are using the instance provided by blindnet you will need to reach out to us to get your `app_id` and `app_key`. Once you have got those, you can use our [Token Generator](https://blindnet-io.github.io/demo-token-generator/) to generate the credentials that you will need in order to authenticate your calls to our APIs.
 
 In the following examples replace the blindnet's testing instance URL with your URL, where you are hosting your PCE instance, and replace the the auth-token with your token generated using the Token Generator.
 
 :::
-
-<Legislation>
-
-[Article 30 of the GDPR](https://gdpr-info.eu/art-30-gdpr/) requires controllers and their representatives to maintain a precise information set called [Record of Processing Activities (ROPA)](https://www.cnil.fr/en/record-processing-activities).
-
-By configuring the PCE you will feed the PCE all the information necessary to comply wiht this legal requirement. The same information will be used across the other components of the DevKit (e.g. [interfaces](/docs/interfaces)) to deliver compliance in action.
-
-Make sure to provide the PCE with all
-
-</Legislation>
 
 
 ## General Information
@@ -74,11 +67,15 @@ Selectors can be set in the PCE using [PUT /configure/selectors](https://stage.c
 
 :::
 
-Sensitive data you capture on a regular base can often be complex to categorize.
+<Legislation>
+Seeting the selectors is important in order to reply to any `TRANSPARENCY.TRANSPARENCY.DATA-CATEGORIES` Privacy Request, and comply with several regulations (GDPR Art. 30.1.c, GDPR Art. 15.1.b, CCPA 1798.100.1, CCPA 1798.110.1.1, CCPA 1798.115.1.1, 1798.115.1.2, CCPA 1798.115.1.3). They are also used to indetify particular user data relevant for a particular request and execute operations over the data storage.
+</Legislation>
+
+Sensitive data you capture can often be complex to categorize.
 
 The blindnet devkit gives you a clear [set of data categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/data-categories/en.data-categories.json) you can use to qualify collected sensitive data for efficient privacy management.
 
-A selector can be defined as a subcategory of any of these data categories, using [dot notation](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#term-dot-notation), to qualify [any captured data](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-capture-fragments).
+A selector, corresponding to a particular field in your databse, can be defined as a subcategory of any of these data categories. This is done using [dot notation](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#term-dot-notation).
 
 For example, you can define a `FINANCIAL.BANK-ACCOUNT.IBAN`, as a subcategory of the predefined `FINANCIAL.BANK-ACCOUNT` category, to identify and retrieve an IBAN number collected for regular payment.
 
@@ -92,7 +89,7 @@ Each selector is defined by its full dot notation (`{data_category}.{subcategory
 
 Using just `{subcategory}` will lead to an error.
 
-`{subcategory}` can however be optional, as any data category can be used as a selector.
+`{subcategory}` is however optional, as any data category can be used as a selector.
 
 :::
 
