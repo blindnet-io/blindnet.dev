@@ -6,31 +6,31 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #0c6a02;
-  --ifm-color-primary-dark: #0b5f02;
-  --ifm-color-primary-darker: #0a5a02;
-  --ifm-color-primary-darkest: #084a01;
-  --ifm-color-primary-light: #0d7502;
-  --ifm-color-primary-lighter: #0e7d02;
-  --ifm-color-primary-lightest: #108a03;
+  --ifm-color-primary: #a000c8;
+  --ifm-color-primary-dark: #8a00c2;
+  --ifm-color-primary-darker: #7600bc;
+  --ifm-color-primary-darkest: #4c00b0;
+  --ifm-color-primary-light: #b100cd;
+  --ifm-color-primary-lighter: #be2ed6;
+  --ifm-color-primary-lightest: #ca5cdd;
   --ifm-textcolor-primary: #FFF;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #88dc4c;
-  --ifm-color-primary-dark: #78d733;
-  --ifm-color-primary-darker: #70d229;
-  --ifm-color-primary-darkest: #5cad22;
-  --ifm-color-primary-light: #98e165;
-  --ifm-color-primary-lighter: #a1e371;
-  --ifm-color-primary-lightest: #b9eb96;
+  --ifm-color-primary: #b100cd;
+  --ifm-color-primary-dark: #a000c8;
+  --ifm-color-primary-darker: #8a00c2;
+  --ifm-color-primary-darkest: #7600bc;
+  --ifm-color-primary-light: #be2ed6;
+  --ifm-color-primary-lighter: #ca5cdd;
+  --ifm-color-primary-lightest: #da8ee7;
   --ifm-textcolor-primary: #FFF;
 }
 
 /* dark theme not applied in the footer when using the light mode */
 .footer--dark a:not(.footer__link-item) {
-  color: #88dc4c;
+  color: #e8bcf0;
 }
 
 .docusaurus-highlight-code-line {
@@ -45,7 +45,7 @@
 }
 
 div[class^='announcementBar_'] {
-  background-color: #720000;
+  background-color: #68478D;
   color: #FFF;
   font-weight: bold;
 }
