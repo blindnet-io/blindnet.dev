@@ -14,7 +14,7 @@ See [Using Web Components](/docs/interfaces/install/using-web-components) for mo
 
 The first component we'll use is the Privacy Request Capture Interface (PRCI), an entry point for submitting and viewing [Privacy Requests](/docs/references/lexicon#privacy-request).
 
-For this section of the tutorial, we will start with the simple static frontend available [here](QUICKSTART REPO LINK) and modify the `<body>` content.
+For this section of the tutorial, we will start with the simple static frontend available [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/intro-start.html) and modify the `<body>` content.
 
 ## Load the Bundle
 
@@ -52,12 +52,12 @@ Now, let's expose the `<bldn-priv-request>` custom element:
 ```
 
 :::tip Checkpoint
-You should now see a PRCI component which can be used to build requests. Once completed, the component will fire an [event](https://developer.mozilla.org/en-US/docs/Web/Events) containing the JSON representation of the request.
+The HTML file with our changes thus far can be found [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/expose-request-interface.html). You should now see a PRCI component which can be used to build requests. Once completed, the component will fire an [event](https://developer.mozilla.org/en-US/docs/Web/Events) containing the JSON representation of the request.
 
 See [**PRCI Events**](/docs/Interfaces/PRCI/Events) for more details on capturing this event.
 :::
 
-The HTML file with our changes thus fair is available [here](QUICKSTART REPO LINK)
+Next, let's set up the [Privacy Computation Engine](./pce-set-up).
 
 <!--
 The `bldn-priv-request` custom element supports several attributes and properties to interact with it and configure its behavior.
