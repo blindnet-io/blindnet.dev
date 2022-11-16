@@ -8,38 +8,49 @@ import Legislation from '../_partials/_legislation.mdx';
 
 # Configuring your Privacy Computation Engine
 
-For the PCE to give you recommended actions adapted to your specific architecture and needs, you first need to configure it via its [**configuration API**](https://stage.computing.blindnet.io/swagger/#/Configuration).
+For the PCE to work in your specific situation, you first need to configure it via its [**configuration API**](https://stage.computing.blindnet.io/swagger/#/Configuration).
 
-This API allows you to define:
+<Legislation>
+This API allows you to define what is usually called <a href="https://www.cnil.fr/en/record-processing-activities" target="_blank">RoPA - Record of Processing Activities</a>, a way to comply with the requirements of Article 30 of GDPR but also with various CCPA requirements.
+</Legislation>
 
-- [General information](#configuring-general-information) about your Organization and its' data processing policies (Equivalent to a [RoPA - Record of Processing Activities](https://www.cnil.fr/en/record-processing-activities))
-- Mappings of your data structures to [PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md) Data Categories
-- Few choices you have to make about when to authenticate the user (before or after they make a Privacy Request), and when to deliver automatic responses and when to wait for validation
+In blindnet DevKit defining a RoPA means configuring the following:
+- [General information](#general-information) about your Organization, its representatives, its server's locations and policies
+- [Selectors](#selectors) - additional [PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md) Data Categories, subcategories of the existing ones, to describe the data you are processing.
+- [Legal Bases](#legal-bases) for processing of particular Data Categories for Particular Purposes
+- [Retention Policies](#retention-policies) specifying minimal and maximal retention times for particular Data Categories
+- [Provenances](#provenances) defining where your system gets the data from
 
-## General Information
+In addition, you can configure how you want the PCE to behave:
+- [Demand Resolution Strategy](#demand-resolution-strategy) : when (for what kind of Privacy Requests) to deliver automatic responses and when to wait for human validation
+- [Regulations](#regulations): add additional rule sets specific to certain regulations
+
 
 :::tip API
 
-General information can be set in the PCE using [PUT /configure/general-info](https://stage.computing.blindnet.io/swagger/#/Configuration/putV0ConfigureGeneral-info), retrieved using [GET /configure/general-info](https://stage.computing.blindnet.io/swagger/#/Configuration/getV0ConfigureGeneral-info), as detailed in the related `GeneralInformation` schema.
+In order to follow through this section of the tutorial, you might want to either [set-up your own instance of PCE](/docs/tutorials/intro/PCE-set-up) or use the PCE isntance provided by blindnet for testing at https://devkit-pce-staging.azurewebsites.net/v0/. In the followign examples we'll use this instance.
+
+If you are using the instance provided by blindnet you will need to reach out to us to get your `app_id` and `app_key`. Once you have got those, you can use our [Token Generator](https://blindnet-io.github.io/demo-token-generator/) to generate the credentials that you will need in order to authenticate your calls to our APIs.
+
+In the following examples replace the blindnet's testing instance URL with your URL, where you are hosting your PCE instance, and replace the the auth-token with your token generated using the Token Generator.
 
 :::
 
-Your audience needs access to the full picture of your organization's data processing policies easily and at all times. Not only because it is a legal requirement, but also and more importantly because people need such information to trust your organization enough so they can give you access to their sensitive data.
 
-<Legislation>
+## General Information
 
-[Article 30 of the GDPR](https://gdpr-info.eu/art-30-gdpr/) requires controllers and their representatives to maintain a precise information set called [Record of Processing Activities (ROPA)](https://www.cnil.fr/en/record-processing-activities).
+General information can be set in the PCE using [PUT /configure/general-info](https://stage.computing.blindnet.io/swagger/#/Configuration/putV0ConfigureGeneral-info), retrieved using [GET /configure/general-info](https://stage.computing.blindnet.io/swagger/#/Configuration/getV0ConfigureGeneral-info), as detailed in the related `GeneralInformation` schema.
 
-Configuring the general information in the Privacy Computation Engine helps your organization to meet this requirement by using other components of the DevKit (e.g. [interfaces](/docs/interfaces)).
+You will need the following information.
 
-</Legislation>
-
-While such information is mostly composed of a set of static text, it can rapidly get difficult to maintain. Moreover, transforming such data into intelligible and unambiguous content for your audience isn't straightforward.
-
-Here, using the blindnet devkit can greatly help you to solve both problems:
-
-1. the PCE infers as many pieces of information as possible to minimize the volume of data to configure and maintain
-2. other components of the devkit are here to provide such data to the user in an intelligible form without extensive implementation effort
+| [General Info schema](https://stage.computing.blindnet.io/swagger/#/Configuration/getV0ConfigureGeneral-info) field | Information | Related Legislation Articles | Usage by blindnet DevKit |
+| :--------------------: | :----------- | :------:| :---------------:|
+| `organization` | The name of your organization and its representative representative... | GDPR Art. 30.1.a, GDPR Art. 30.2.a | To reply to any `TRANSPARENCY.ORGANIZATION` Privacy Request |
+| `dpo` | The name and contact of your data protection officer | GDPR Art. 30.1.a, GDPR Art. 30.2.a | Reply to any `TRANSPARENCY.DPO` Privacy Requests |
+| `data_consumer_categories` | The categories of recipients to whom the personal data have been or will be disclosed including recipients in third countries or international organisations | GDPR Art. 30.1.a, GDPR Art. 30.2.a, CCPA 1798.115.1.2, CCPA 1798.110.1.4 | Reply to any `TRANSPARENCY.WHO` Privacy Request |
+| `data_security_info` | a general description of the technical and organisational security measures | GDPR Art. 30.1.d, GDPR Art. 30.2.d | |
+| `countries` | Countries where user data is being stored | GDPR Art. 30.1.e, GDPR Art. 30.2.c | Reply to any `TRANSPARENCY.WHERE` Privacy Requests |
+| `privacy_policy_link` | URL to your Privacy Policy | GDPR Art. 13, GDPR Art. 14, GDPR Art. 15 | Reply to any `TRANSPARENCY.POLICY` Privacy Requests. Make sure your Privacy Policy includes the [information listed in relevant GDPR articles](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#storing-general-information) |
 
 :::caution
 
@@ -59,11 +70,15 @@ Selectors can be set in the PCE using [PUT /configure/selectors](https://stage.c
 
 :::
 
-Sensitive data you capture on a regular base can often be complex to categorize.
+<Legislation>
+Setting the selectors is important in order to reply to any `TRANSPARENCY.DATA-CATEGORIES` Privacy Request, and comply with several regulations (GDPR Art. 30.1.c, GDPR Art. 15.1.b, CCPA 1798.100.1, CCPA 1798.110.1.1, CCPA 1798.115.1.1, 1798.115.1.2, CCPA 1798.115.1.3). They are also used to idnetify particular user data relevant for a particular request and execute operations over the data storage.
+</Legislation>
+
+Sensitive data you capture can often be complex to categorize.
 
 The blindnet devkit gives you a clear [set of data categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/data-categories/en.data-categories.json) you can use to qualify collected sensitive data for efficient privacy management.
 
-A selector can be defined as a subcategory of any of these data categories, using [dot notation](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#term-dot-notation), to qualify [any captured data](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-capture-fragments).
+A selector, corresponding to a particular field in your database, can be defined as a subcategory of any of these data categories. This is done using [dot notation](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#term-dot-notation).
 
 For example, you can define a `FINANCIAL.BANK-ACCOUNT.IBAN`, as a subcategory of the predefined `FINANCIAL.BANK-ACCOUNT` category, to identify and retrieve an IBAN number collected for regular payment.
 
@@ -71,13 +86,14 @@ For example, you can define a `FINANCIAL.BANK-ACCOUNT.IBAN`, as a subcategory of
 
 _Refer to the definition of [Data Capture Fragments in PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-capture-fragments) for more details._
 
+If you are using an automatic data cataloging tool, you may want to consider our [mappings to vocabularies used by major software vendors](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/compatibility.md).
+
 :::caution
 
 Each selector is defined by its full dot notation (`{data_category}.{subcategory}`).
 
 Using just `{subcategory}` will lead to an error.
 
-`{subcategory}` can however be optional, as any data category can be used as a selector.
 
 :::
 
@@ -89,23 +105,24 @@ Legal Bases can be set in the PCE using [PUT /configure/legal-bases](https://sta
 
 :::
 
-Both law and your users require any capture of sensitive data and any manipulation of such data to be clearly justified.
-In other words, you need to define and expose a legitimate (i.e. **_legal_**) foundation (i.e. **_base_**) before conducting any operation on sensitive data.
-You need, at all times, to record and explain why you need to conduct such operations.
+To configure Legal Bases means to inform the PCE about which kinds of data (Data Categories) are being processed in which way (Processing Categories) for which Purpose and under which Legal Base for that processing.
 
-The blindnet devkit helps you to easily define such _Legal Bases_ for your whole system.
+This describes, in a nutshell, every operation over user data that your system performs. PCE uses this information to both inform the data subjects (in the context of requests of type `TRANSPARENCY.LEGAL-BASES`, `TRANSPARENCY.DATA-CATEGORIES`, `TRANSPARENCY.PROCESSING-CATEGORIES`, `TRANSPARENCY.PURPOSE`), and determine possible reponses to `OBJECT`, `RESTRICT`, and `DELETE` Privacy Requests.
 
-Thanks to this configuration, all contracts, legitimate interests and necessary legal bases are clearly defined and easily maintained for your whole system in a single place.
-This not only allows you to avoid any ambiguity or omission but also to be ready for change at any time.
-Legislations, organizations' rules, product features, and any other aspects of data privacy, can indeed change often and quickly.
-Such changes can lead to extensive and tedious data manipulations and communications to people from which you collected data.
-Thanks to your legal bases configuration, the PCE will greatly ease this process, by recommending and even allowing you to automate related operations.
+E.g. If you operate a promotional mailing list to which users subscribed and gave consent, you are likely to be processing (Processing Categories: `COLLECTING`, `STORING`, and `USING`) users' data (Data Categories: `CONTACT.EMAIL`, `NAME`) for marketing purposes (Purpose: `MARKETING`) with users consent (Legal Base Type : `CONSENT`). If a user signed a contract with you / subscribed to a service you provide, then it might be legitimate to process their data, regardless of consent, for the purposes of delivering the service to them (Legal Base Type : `CONTRACT`). In some cases you might be in a situation to simply have to collect user's data for compliance with financial regulations (Legal Base Type : `NECESSARY.LEGAL-OBLIGATION`), etc. You may have more than one legal base for the same data.
+
+<Legislation>
+Provding information about Legal Bases and Purposes of processing is made mandatory by GDPR (Art. 12, Art. 13, Art. 15, Art. 30.1.b, and Art 30.2.b), CCPA (1798.100.1, 1798.110.1.1, 1798.110.1.3, 1798.115.1.1, 1798.115.1.2, 1798.115.1.3) and other relevant regulations.
+</Legislation>
+
+Our metadata language, [PRIV](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md), is designed for exhaustive coverage of a variety of situations while at the same time making configuration easy in most common situations. It contains pre-defined terms inspired from texts of major privacy regulations. While you can extend the PRIV vocabulary to fit your needs, we recommend using pre-defined categories whenever possible in order to maximize interoperability and leverage built-in PCE rules.
 
 _Refer to the legal bases [lifecycle](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#lifecycle-of-legal-bases-for-data-processing) and [format](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#legal-base) definition in PRIV for more details._
 
+
 ### Types of Legal bases
 
-As with [selectors](#selectors), _Legal Bases' Types_ can be defined via a dedicated set of [terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/legal-bases/en.legal-bases.json).
+_Legal Bases' Types_ can be defined via a dedicated set of [terms](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/legal-bases/en.legal-bases.json).
 
 ### Privacy Scope of a Legal base
 
@@ -154,9 +171,11 @@ Retention policies can be set in the PCE using [PUT /configure/retention-policie
 
 :::
 
-Retention policies are here to help you track and automate all required operations on sensitive data you hold.
+Retention policies define how long you can or must keep each data after a specific event occurs. The PCE uses this information to inform the data subjects when responding to `TRANSPARENCY.RETENTION` requests and to prevent `DELETE` requests from being accepted as long as the data must be kept.
 
-They define how long you can or must keep each data after a specific event occurs.
+<Legislation>
+Provding information about your Retention Policies is made mandatory by GDPR (Art. 13.2.a, Art. 14.2.a, Art. 15.1.d, Art. 30.1.f) and other relevant regulations.
+</Legislation>
 
 :::tip
 
@@ -219,6 +238,10 @@ Provenances configuration can be set in the PCE using [PUT /configure/provenance
 
 Provenances represent the possible origins of each data.
 
+<Legislation>
+Provding provenance information is made mandatory by GDPR (Art. 14.2.f, Art. 15.1.g), CCPA (1798.110.1.2) and other relevant regulations.
+</Legislation>
+
 For the blindnet devkit, we define a provenance by combining:
 
 - a specific category of data (`data_category`), using a pre-configured [selector](#selectors)
@@ -259,3 +282,28 @@ For example, the following indicates contact phone numbers are provided by users
 ```
 
 _Refer to [Provenance](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#provenance) in PRIV for more details._
+
+## Demand Resolution Strategy
+
+:::tip API
+
+Demand Resolution Strategy can be set in the PCE using [PUT /configure/demand-resolution-strategy](https://stage.computing.blindnet.io/swagger/#/Configuration/putV0ConfigureDemand-resolution-strategy) as detailed in the related `DemandResolutionStrategy` schema.
+
+:::
+
+Demand Resolution Strategy allows you to set to "auto" the processing of certain of types of Privacy Request Demands.
+
+## Regulations
+
+:::tip API
+
+Regulations can be set in the PCE using [PUT /configure/regulations](https://stage.computing.blindnet.io/swagger/#/Configuration/putV0ConfigureRegulations) as detailed in the related `Regulations` schema.
+
+:::
+
+Regulations allow to load additional, regulation-sepcific rules that you want your PCE to apply.
+
+For instance, under GDPR, processing certain categories of data (e.g. biometric...) is prohibited even with data subjects' consent.
+PCE can enforce those rules.
+
+For convenience, we provide a pre-defined set of [GDPR rules](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/prohibited-scope-gdpr.md) that we advise you to load if you want to comply with this regulation.

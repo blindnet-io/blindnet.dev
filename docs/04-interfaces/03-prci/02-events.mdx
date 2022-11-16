@@ -1,0 +1,19 @@
+---
+title: Events
+sidebar_position: 2
+tags: [PRCI, web-components]
+---
+
+The following custom events are emitted by the PRCI
+
+#### `bldn-priv-request:request-created`
+
+Emitted after the user clicks submit request. Contains a [`CreatePrivacyRequestPayload`](https://devkit-pce-staging.azurewebsites.net/swagger/#/).
+
+Details: `{request: ...}`
+
+#### `bldn-priv-request:request-sent`
+
+Emitted after a request is submitted and the PCE responds with a request ID. The [`computation-base-url`](./parameters#computation-base-url) and [`api-token`](./parameters#api-token) attributes must be set for a request to be sent to the PCE and this event to fire.
+
+Details: `{request-id: ...}`
