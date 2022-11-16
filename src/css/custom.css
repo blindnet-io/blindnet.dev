@@ -6,26 +6,19 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #a000c8;
-  --ifm-color-primary-dark: #8a00c2;
-  --ifm-color-primary-darker: #7600bc;
-  --ifm-color-primary-darkest: #4c00b0;
-  --ifm-color-primary-light: #b100cd;
-  --ifm-color-primary-lighter: #be2ed6;
-  --ifm-color-primary-lightest: #ca5cdd;
-  --ifm-textcolor-primary: #FFF;
+  --ifm-color-primary: #25c2a0;
+  --ifm-code-font-size: 95%;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #b100cd;
-  --ifm-color-primary-dark: #a000c8;
-  --ifm-color-primary-darker: #8a00c2;
-  --ifm-color-primary-darkest: #7600bc;
-  --ifm-color-primary-light: #be2ed6;
-  --ifm-color-primary-lighter: #ca5cdd;
-  --ifm-color-primary-lightest: #da8ee7;
-  --ifm-textcolor-primary: #FFF;
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
 }
 
 /* dark theme not applied in the footer when using the light mode */
