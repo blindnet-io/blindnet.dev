@@ -1,8 +1,37 @@
 ---
 sidebar_position: 4
-title: 4. Assert Your Privacy Rights
+title: 4. Make a Request
+description: Test out your Privacy Stack!
 tags: [tutorial]
 ---
+
+Now, let's test it out! Open the [static page](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/add-authentication.html) we just created and ensure the PCE we set up is still running.
+
+## Identify Yourself
+
+Enter your email and hit submit to get a blindnet token and enable the interface.
+
+:::note
+
+In this tutorial we disable the PRCI until a token is passed to illustrate the use of the [PRCI](/docs/interfaces/prci) in combination with the PCE. It is also possible to use the PRCI by itself, as we do in [part one](./prci-set-up). 
+
+:::
+
+## Make a Request
+
+### Select an Action
+
+First, select an [action](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#actions) which describes the purpose of our request. See [here](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/actions/en.actions.json) for a description of all possible actions.
+
+Select **Transparency** to build a request about data processing information and practices.
+
+Next, uncheck **All** select **If the organization has data on me**, and **For how long the data concerning me is kept**. 
+
+### Review and Submit Your Request
+
+### View the Response
+
+<!--
 
 Now, open the demo web app or static page in your browser to see this component in action:
 
@@ -40,4 +69,4 @@ In this demo, you can see this happen when sending a `delete` request:
 
 ![Status of a Delete Request as shown in the PRCI component: under review](/img/captures/prci-delete-request-status-under-review.png)
 
-<!-- TODO: add link to User doc -->
+-->
