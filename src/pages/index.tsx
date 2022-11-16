@@ -43,7 +43,7 @@ function HeaderHero() {
             <GitHubButton
               // @ts-ignore
               className={styles.indexCtasGitHubButton}
-              href="https://github.com/blindnet-io"
+              href="https://github.com/blindnet-io/blindnet.dev"
               data-size="large"
               aria-label="Star blindnet-io/blindnet.dev on GitHub"
             >
