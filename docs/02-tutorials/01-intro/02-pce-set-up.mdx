@@ -10,14 +10,20 @@ It is a simple service you can interact with via a Rest API to create and track 
 
 Using the Privacy Computation Engine goes into three steps:
 
-1. **[Set Up a UID](/docs/access-management/set-up)**: register and obtain a unique ID for your system;
+1. **Set up an application**: register and obtain a unique ID and key for your application;
 2. **[Configuration](/docs/computation/configuration)**: configure the service using its configuration API;
 3. **Development**: call the Privacy Computation Engine from your registered applications to handle Privacy Requests
 
-:::caution System ID
+:::caution Application registration
 
-In its current stage of development, the PCE is provided with a preconfigured system ID.
-As a consequence, step _(1) Set Up a UID_ doesn't need to be addressed for this tutorial.
+If you're self-hosting all the devkit components, it's easier to use the preconfigured app ID provided with the
+PCE, which is what we are doing in this tutorial.
+
+When using the blindnet-hosted devkit, use the application ID and key you were provided with. If you don't have an ID
+yet, please contact us.
+
+This page focuses on setting up a self-hosted instance of the PCE. If you are using a blindnet-hosted instance,
+you only need to configure it: head over to the [Configuration](/docs/computation/configuration) documentation.
 
 :::
 
