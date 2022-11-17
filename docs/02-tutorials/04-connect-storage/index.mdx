@@ -1,0 +1,28 @@
+---
+sidebar_position: 0
+title: Working with events
+tags: [tutorial]
+---
+
+import DocCardList from '@theme/DocCardList';
+import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
+
+# DevKit - Connect storage
+
+To take full advantage of the automation functionalities offered by blindnet devkit, you might consider connecting it with your storage.
+If you do, user's data will be automatically obtained from your storage and delivered to the user in case of the `ACCESS` request, or automatically deleted should a `DELETE` request get accepted.
+Configuring a connector might save you a lot of time when there is a request to be processed.
+
+> :construction_worker: writing in progress
+
+A [Data Access Component](/docs/storage/data-access) is here to transform requests from the [Privacy Computation Engine](/docs/computation) to efficiently execute automated operations on your data storage.
+
+You can choose to use the [Capture Component](/docs/data-capture) and directly store the captured data in blindnet's preconfigured storage, or your own storage service.
+
+You can also directly connect the Data Access Component to your own storage service without using the Capture Component. For see sake of simplicity, we'll choose this option for this tutorial.
+
+For that, we'll set up a dedicated demo storage service in Java, and connect it to the Capture Component using the [Java Storage Connector library](https://github.com/blindnet-io/storage-connector-java).
+
+<!-- FIXME: set up a dedicated project and detail development and release steps -->
+
+Code for this demo stage service can be found in the `example` directory in the librarie's repository: [github.com/blindnet-io/storage-connector-java > `example`](https://github.com/blindnet-io/storage-connector-java/tree/develop/example).
