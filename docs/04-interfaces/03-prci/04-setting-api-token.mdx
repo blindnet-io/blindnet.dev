@@ -1,0 +1,48 @@
+---
+title: Setting API Token
+sidebar_position: 3
+tags: [PRCI, web-components]
+description: Authenticate for use with PCE
+---
+
+The API token used by the PRCI can be set in multiple ways depending on your use-case.
+
+For all of these methods, let's assume we have a PRCI element exposed as follows:
+
+```html
+<body>
+  <bldn-priv-request id='prci'></bldn-priv-request>
+  <script src="https://cdn.jsdelivr.net/npm/@blindnet/prci@0.12.3/dist/index.all.min.js" type="module"></script>
+</body>
+```
+
+## Via Attribute
+
+### In HTML Template
+
+When using [Lit templates](https://lit.dev/docs/templates/overview/) or a templating language such as [JSX](https://reactjs.org/docs/introducing-jsx.html).
+
+#### Lit
+
+```html
+<bldn-priv-request id='prci' api-token=${token}></bldn-priv-request>
+```
+
+#### React
+
+```jsx
+<bldn-priv-request id='prci' api-token={token}></bldn-priv-request>
+```
+
+### In Javascript
+
+See the [authentication step](/docs/tutorials/intro/authentication) of the [intro tutorial](/docs/tutorials/intro) for a full example of this method.
+
+```js
+function submit() {
+  fetch(`http://some-domain/token-endpoint`)
+    .then(token => {
+      document.getElementById('prci').setAttribute('api-token', `${token}`)
+    })
+}
+```

@@ -1,43 +1,48 @@
 ---
 sidebar_position: 4
-title: 3. Assert Your Privacy Rights
+title: 4. Make a Request
+description: Test out your Privacy Stack!
 tags: [tutorial]
 ---
 
-Now, open the demo web app or static page in your browser to see this component in action:
+import ReactPlayer from 'react-player'
 
-![first screen of the PRCI component](/img/captures/prci-entry.png)
+Now, let's test it out! Open the [static page](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/add-authentication.html) we just created and ensure the PCE we set up is still running.
 
-Here, your users can directly choose from a wide range of privacy request types.
+## Identify Yourself
 
-This includes the classical consultation (access), deletion and modification of their data, of course, but also more advanced operations, including but not limited to:
+Enter your email and hit submit to get a blindnet token and enable the interface.
 
-- requesting the portability of their data to a compatible system
-- advanced management of their consents (by objecting to and restricting proceeding of their data, or revoking previously given consents)
-- and retrieving more generic privacy-related information regarding your organization (via the "transparency" request type).
+<ReactPlayer playing loop muted url='/video/identify-yourself.mkv'/>
 
 :::note
 
-These are just requests. **You** determine how those are handled and answered, manually or automatically.
+In this tutorial we disable the PRCI until a token is passed to illustrate the use of the [PRCI](/docs/interfaces/prci) in combination with the PCE. It is also possible to use the PRCI by itself, as we do in [part one](./prci-set-up). 
 
 :::
 
-If, for example, your users want to make an `Access` request, and click on the `Access` button, they will be able to ask you to give them access to all the data you have on them, or to only select a subset of it.
+## Build the Request
 
-![First screen for an Access Request in the PRCI component](/img/captures/prci-access-01.png)
-![Second screen for an Access Request in the PRCI component](/img/captures/prci-access-02.png)
+First, select an [action](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#actions) which describes the purpose of our request. See [here](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/actions/en.actions.json) for a description of all possible actions.
 
-Depending on your configuration, two scenarios can then happen.
+Select **Transparency** to build a request about data processing information and practices.
 
-If like in this example, you set up everything to automatically treat the request, then your users will directly see their request granted (or rejected, depending on the parameters you defined).
+<ReactPlayer playing loop muted url='/video/make-request.mkv'/>
 
-![Status of a Delete Request as shown in the PRCI component: under review](/img/captures/prci-access-request-status-granted.png)
+## View the Response
 
-Other scenarios might however require to be manually handled.
-In this case, your users will see their request is "pending" (i.e. waiting to be handled by your organization).
+After submitting the request, view the response containing the requested information.
 
-In this demo, you can see this happen when sending a `delete` request:
+<ReactPlayer playing loop muted url='/video/view-response.mkv'/>
 
-![Status of a Delete Request as shown in the PRCI component: under review](/img/captures/prci-delete-request-status-under-review.png)
+:::info **PCE Configuration**
 
-<!-- TODO: add link to User doc -->
+In this example, two elements of PCE configuration came into play:
+
+1. [**Automatic vs. Manual Processing**](/docs/computation/configuration#demand-resolution-strategy): You can configure the PCE to respond automatically (or not) for each request type.
+
+2. [**General Information**](/docs/computation/configuration#general-information): Certain requests, such as the one we just made for information on the Data Protection Office (DPO), will return the same data no matter who makes the request. You can configure this information.
+
+:::
+
+Next, we will see the interface for processing requests from your users.

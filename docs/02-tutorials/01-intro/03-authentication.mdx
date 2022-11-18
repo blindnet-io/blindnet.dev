@@ -1,0 +1,135 @@
+---
+sidebar_position: 3
+title: 3. Add Authentication
+description: Unlock more request types by enabling users to identify themselves
+tags: [tutorial]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Now that we have exposed a [Privacy Request Capture Interface](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/expose-request-interface.html)
+and set up the Privacy Computation Engine, we need to authenticate users so that these two components can communicate.
+
+## Create a server that generates tokens
+
+We need a server that generates tokens for the Privacy Request Capture Interface to use in its requests to the Privacy
+Computation Engine.
+
+We provide two bare-bones implementations, one in [Java](https://github.com/blindnet-io/devkit-quickstart/tree/main/server/java)
+and one in [Node.js](https://github.com/blindnet-io/devkit-quickstart/tree/main/server/node).
+
+<Tabs groupId="lang-server">
+<TabItem value="node" label="Node.js" default>
+
+Clone the [devkit-quickstart](https://github.com/blindnet-io/devkit-quickstart) repository using Git and copy
+(or `cd` into) the `server/node` directory. Then, use Yarn to install and start the server.
+
+```bash
+git clone https://github.com/blindnet-io/devkit-quickstart
+cd devkit-quickstart/server/node
+yarn install
+yarn start
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+Clone the [devkit-quickstart](https://github.com/blindnet-io/devkit-quickstart) repository using Git and copy
+(or `cd` into) the `server/java` directory. Then, use Maven to compile and run the server.
+
+```bash
+git clone https://github.com/blindnet-io/devkit-quickstart
+cd devkit-quickstart/server/java
+mvn compile exec:java
+```
+
+</TabItem>
+</Tabs>
+
+If needed (see *Application registration* in [2. Set Up a Privacy Computation Engine](./pce-set-up)), edit
+the `appId` and `key` variables in the provided implementation of your choice to match your settings.
+
+<Tabs groupId="lang-server">
+<TabItem value="node" label="Node.js" default>
+
+```js
+const appId = '78f5fc15-5645-4f4f-8e1d-0792b7d89acd'
+const key = 'EgPThokIzi0oGkOGPOuC3zA63/b39ZAefcbxpegoHog='
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```java
+String appId = "78f5fc15-5645-4f4f-8e1d-0792b7d89acd";
+String key = "EgPThokIzi0oGkOGPOuC3zA63/b39ZAefcbxpegoHog=";
+```
+
+</TabItem>
+</Tabs>
+
+:::caution In the real world
+
+The bare-bones implementations provided are for demonstration and testing purposes only as they trust the users on who
+they claim to be.
+
+In the real world, you would need to verify the users' identity, and to only allow admin access to authorized users.
+The [storage-connector-java](https://github.com/blindnet-io/storage-connector-java) repository contains an example
+of such verification by the means of a magic link sent by email.
+
+:::
+
+## Request a token on the frontend
+
+Now that our server can handle token requests, let's fetchx one on the frontend.
+
+### Add an Email Input
+
+First we'll add a simple email input and submit button from [bootstrap](https://getbootstrap.com/docs/5.2/forms/input-group/).
+
+```html
+<div class="container text-center">
+  <h1>Privacy Request Portal</h1>
+  <div class="col input-group mb-3" style="padding: 3vh 25%;">
+    <input id="email-field" type="text" class="form-control" placeholder="Email Address" aria-label="Email Address" aria-describedby="button-addon2">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="submit()">Submit</button>
+  </div>
+
+  <div id="devkit_request_wrapper" class="disabled">
+    <bldn-priv-request id="devkit"></bldn-priv-request>
+  </div>
+
+</div>
+```
+
+### Add a Submit Script
+
+Next, add a `submit()` function which is called when the user clicks the button we added above.
+
+```html
+<script>
+  function submit() {
+    const email = document.getElementById("email-field").value
+
+    fetch(`http://localhost:3000/token/user/${email}`)
+      .then(resp => resp.text())
+      .then(token => {
+        document.getElementById('devkit').setAttribute('api-token', `${token}`)
+        document.getElementById('devkit_request_wrapper').classList.remove("disabled")
+      })
+  }
+</script>
+```
+
+This function gets a [user token](/docs/authentication/tokens) for the email entered, then sets the `api-token` attribute of the PRCI.
+
+## Point PRCI to PCE
+
+To have our privacy request interface from [part one](./prci-set-up) direct requests to the privacy computation engine from [part two](./pce-set-up), simply add an attribute indicating the URL of the machine hosting the PCE.
+
+```html
+<bldn-priv-request computation-base-url="http://localhost:9000/v0"></bldn-priv-request>
+```
+
+The completed HTML file can be found [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/add-authentication.html).

@@ -1,0 +1,20 @@
+---
+sidebar_position: 0
+title: Working with events
+tags: [tutorial]
+---
+
+import DocCardList from '@theme/DocCardList';
+import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
+
+# DevKit - Working with events
+
+In order to evaluate complex situations, the Privacy Computation Engine (PCE) must know about key events concerning a user.
+When the user gives consent, or subscribes to a service, or cancels subscription the PCE add information to a user-specific timeline.
+Thanks to this timeline, the PCE knows what to do when the user makes a request to `REVOKE-CONSENT`, `OBJECT` to processing of their data, or `RESTRICT` the processing.
+
+In this section you will see how to let blindnet devkit know about those key events.
+
+## Steps
+
+<DocCardList items={useCurrentSidebarCategory().items} />
