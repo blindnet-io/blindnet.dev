@@ -8,7 +8,7 @@ tags: [tutorial]
 At the core of the blindnet devkit is the [Privacy Computation Engine](/docs/computation).
 It is a simple service you can interact with via a Rest API to create and track your users' [Privacy Requests](/docs/references/lexicon#privacy-request).
 
-Using the Privacy Computation Engine goes into three steps:
+We'll set up the Privacy Computation Engine in three steps:
 
 1. **Set up an application**: register and obtain a unique ID and key for your application;
 2. **[Configuration](/docs/computation/configuration)**: configure the service using its configuration API;
@@ -29,7 +29,7 @@ you only need to configure it: head over to the [Configuration](/docs/computatio
 
 ## Pre-requisites
 
-For this tutorial, we'll simply use the privacy-computation-engine code source repository, as it is provided with several tools to help you get started.
+For this tutorial, we'll use the privacy-computation-engine repository, which includes several tools to get started.
 
 To use these tools, you'll first need to install and setup a **Java Development Kit**, **sbt**, and **docker-compose** on your machine.
 
@@ -38,7 +38,7 @@ To use these tools, you'll first need to install and setup a **Java Development 
 Mac OS and Linux users can directly install sbt with the recommended JDK using [SDKMAN](https://sdkman.io/), with the following commands:
 
 ```bash
-# IF you need to install SDKMAN quickly
+# install SDKMAN
 curl -s "https://get.sdkman.io" | bash
 
 # install the recommended JDK
@@ -48,16 +48,16 @@ sdk install java $(sdk list java | grep -o "\b8\.[0-9]*\.[0-9]*\-tem" | head -1)
 sdk install sbt
 ```
 
-As indicated in the sbt documentation, using SDKMAN has two advantages.
+As indicated in the sbt documentation, using SDKMAN has two advantages:
 
-1. it will install the official packaging by Eclipse Adoptium, as opposed to the “mystery meat OpenJDK builds“.
-2. it will install tgz packaging of sbt that contains all JAR files. (DEB and RPM packages do not to save bandwidth)
+1. Uses the official packaging by Eclipse Adoptium, instead of “mystery meat OpenJDK builds“
+2. Uses the tgz packaging of sbt containing all JAR files, unlike the DEB and RPM packages
 
 :::
 
 ### Java Development Kit
 
-For the JDK, we recommend Eclipse Adoptium Temurin JDK 8, 11, or 17, following sbt own recommendation, but any JDK should do (if you encounter an issue with any other JDK, please don't hesitate to open an issue).
+We recommend following sbt's recommendation of Eclipse Adoptium Temurin JDK 8, 11, or 17, but any JDK should do. If you encounter an issue with any JDK, please don't hesitate to open an issue.
 
 The Eclipse Adoptium Temurin JDK is available for Windows (via [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/)), Mac OS (via [homebrew](https://docs.brew.sh/Manpage)) and many Linux distributions (via RPM and DEB packages).
 Refer to [the installation documentation](https://adoptium.net/installation) for all details.
@@ -65,27 +65,26 @@ Arch-based Linux distributions can also install the Eclipse Temurin JDK via the 
 
 ### sbt
 
-The PCE is developed with Scala.
-As this tutorial will require you to build the PCE from source, we'll use sbt, the de-facto build tool in the Scala community.
+The PCE is developed with Scala. As this tutorial will require you to build the PCE from source, we'll use sbt, the de facto standard build tool in the Scala community.
 
 The sbt [download](https://www.scala-sbt.org/download.html) page will give you instructions to install it:
 
-- on any system via [`cs setup`](https://www.scala-lang.org/download/), the Scala installer powered by Coursier
-- on Mac OS via SDKMAN or homebrew
-- on Windows via a msi file, Chocolatey or Scoop
-- on Linux via a deb or rpm package, or a universal package
+- On any system via [`cs setup`](https://www.scala-lang.org/download/), the Scala installer powered by Coursier
+- On Mac OS via SDKMAN or homebrew
+- On Windows via a msi file, Chocolatey or Scoop
+- On Linux via a deb or rpm package, or a universal package
 
-Refer to the more extensive [sbt "installing sbt" documentation](https://www.scala-sbt.org/1.x/docs/Setup.html) for more information.
+Refer to [installing sbt](https://www.scala-sbt.org/1.x/docs/Setup.html) for more information.
 
 ### docker-compose
 
 In the following steps, we'll also use a docker-compose configuration to run the PCE with its required dependencies (including a PostgreSQL instance).
 
-You'll therefore either need [Docker Desktop](https://docs.docker.com/desktop/) (which provides a full Docker installation, including Compose) or the [Compose standalone](https://docs.docker.com/compose/install/other/) installation.
+Therefore, you'll need either [Docker Desktop](https://docs.docker.com/desktop/) (which provides a full Docker installation, including Compose) or the [Compose standalone](https://docs.docker.com/compose/install/other/) installation.
 
 :::caution Remember the Start the Docker Daemon
 
-Make sure the Docker daemon is running and accessible to your current user before anything.
+Make sure the Docker daemon is running and accessible to the current user.
 
 When using Systemd, you can run `sudo systemctl status docker` to check the status of the Docker daemon, and `sudo systemctl start docker` to start it.
 
@@ -93,20 +92,26 @@ When using Systemd, you can run `sudo systemctl status docker` to check the stat
 
 ## Setup and Run the PCE
 
-Now, to clone the [privacy-computation-engine](https://github.com/blindnet-io/privacy-computation-engine/) repository, run:
+Now, we'll clone the [privacy-computation-engine](https://github.com/blindnet-io/privacy-computation-engine/):
 
 ```bash
 git clone git@github.com:blindnet-io/privacy-computation-engine.git
 cd privacy-computation-engine
 ```
 
-Here, you only need to run one script for everything: building the project, creating a dedicated Docker image, starting a Postgres instance, execute database migrations and run the Privacy Computation Engine:
+Next we'll run one script for everything:
+
+- Building the project
+- Creating a dedicated Docker image
+- Starting a Postgres instance
+- Execute database migrations
+- Start the Privacy Computation Engine:
 
 ```bash
 ./scripts/start.sh
 ```
 
-After this script has been executed successfully, a new PCE instance should be available on your machine, with its API exposed on port `9000`.
+Once this script has executed successfully, a new PCE instance should be available on your machine, with its API exposed on port `9000`.
 
 You can verify the service is running and available by calling the `health` endpoint:
 
@@ -126,7 +131,7 @@ After completing this tutorial, make sure to stop and clean up all associated do
 
 ## Configuration
 
-Now, your PCE instance needs some configuration.
+Now, we'll configure our new PCE instance.
 
 Here again, you only need one script: [`./scripts/init-config.sh`](https://github.com/blindnet-io/privacy-computation-engine/blob/develop/scripts/init-config.sh).
 
@@ -138,7 +143,7 @@ Just execute this script, and your PCE instance is good to go.
 ./scripts/init-config.sh
 ```
 
-You can make a [`GET /configure/general-info`](https://stage.computing.blindnet.io/swagger/#/Configuration/getV0ConfigureGeneral-info) request to check the preconfigured general information configuration:
+You can make a [`GET /configure/general-info`](https://stage.computing.blindnet.io/swagger/#/Configuration/getV0ConfigureGeneral-info) request to see the default general information configuration:
 
 ```bash
 curl -v localhost:9000/v0/configure/general-info
@@ -146,14 +151,14 @@ curl -v localhost:9000/v0/configure/general-info
 
 :::note Real-World Scenario
 
-In a real-world scenario, you can use the exact same script to configure your PCE instance in one go, after replacing the example values with the ones which fit your real context.
+In a real-world scenario, you can use the exact same script to configure your PCE instance in one go. Just replace the example values with ones which fit your situation.
 
-Refer to the [associated documentation](/docs/computation/configuration) for all details.
+Refer to the [computation configuration](/docs/computation/configuration) page for more details.
 
 :::
 
 ## Using the Privacy Computation Engine
 
-You can now directly call the standalone Privacy Computation Engine [REST API](https://stage.computing.blindnet.io/swagger/) from your applications and services.
+You can call the Privacy Computation Engine [REST API](https://stage.computing.blindnet.io/swagger/) from your applications and services.
 
 You can also use your Privacy Computation Engine via the request interface from [step one](./prci-set-up), let's see how to do that in the next step.

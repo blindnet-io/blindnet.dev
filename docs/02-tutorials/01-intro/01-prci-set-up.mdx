@@ -13,7 +13,7 @@ See [Using Web Components](/docs/interfaces/install/using-web-components) for mo
 
 :::
 
-The first component we'll use is the Privacy Request Capture Interface (PRCI), an entry point for submitting and viewing [Privacy Requests](/docs/references/lexicon#privacy-request).
+The first component we'll use is the [Privacy Request Capture Interface (PRCI)](/docs/interfaces/prci ), an entry point for submitting and viewing [Privacy Requests](/docs/references/lexicon#privacy-request).
 
 For this section of the tutorial, we will start with the simple static frontend available [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/intro-start.html) and modify the `<body>` content.
 
@@ -24,7 +24,7 @@ First we'll load the PRCI bundle (included in the [`@blindnet/prci`](https://www
 ```html
 <body>
   <h1>Privacy Request Portal</h1>
-  <script src="https://cdn.jsdelivr.net/npm/@blindnet/prci@0.12.3/dist/index.all.min.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@blindnet/prci/dist/index.all.min.js" type="module"></script>
 </body>
 ```
 
@@ -48,7 +48,7 @@ Now, let's expose the `<bldn-priv-request>` custom element:
 <body>
   <h1>Privacy Request Portal</h1>
   <bldn-priv-request></bldn-priv-request>
-  <script src="https://cdn.jsdelivr.net/npm/@blindnet/prci@0.12.3/dist/index.all.min.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@blindnet/prci/dist/index.all.min.js" type="module"></script>
 </body>
 ```
 
