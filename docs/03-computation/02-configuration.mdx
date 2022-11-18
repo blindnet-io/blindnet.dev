@@ -51,6 +51,33 @@ The same logic applies to the `dpo` field, which holds information about your DP
 
 :::
 
+## Resolution strategy
+
+:::tip API
+
+Resolution strategy for each of the demand actions can be set using [PUT /configure/demand-resolution-strategy](https://stage.computing.blindnet.io/swagger/#/Configuration/putV0ConfigureDemand-resolution-strategy). Two strategies are supported - `automatic` and `manual`.
+
+:::
+
+If `automatic` is set for a demand action, demands of that action will be processed automatically, producing the result based on the recommendation created by the Privacy Computation Engine. Results can't be manually altered.
+
+If `manual` is set, a demand needs to be validated by a human, and is available in [GET /consumer-interface/pending-requests](https://stage.computing.blindnet.io/swagger/#/Data%20consumer%20interface/getV0Consumer-interfacePending-requests)
+
+Example request body for setting the resolution strategy:
+
+```json
+{
+  "transparency": "manual", // Manual resolution of TRANSPARENCY demands
+  "access": "auto", // Automatic resolution of ACCESS demands
+  "delete": "manual", // Manual resolution of DELETE demands
+  "revoke_consent": "auto", // Automatic resolution of REVOKE_CONSENT demands
+  "object": "manual", // Manual resolution of OBJECT demands
+  "restrict": "auto" // Automatic resolution of RESTRICT demands
+}
+```
+
+Resolution strategies set for your application can be obtained with [GET /configure/demand-resolution-strategy](https://stage.computing.blindnet.io/swagger/#/Configuration/getV0ConfigureDemand-resolution-strategy).
+
 ## Selectors
 
 :::tip API
