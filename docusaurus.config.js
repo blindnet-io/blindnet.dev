@@ -135,9 +135,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-        logo: {
-          src: 'img/blindnet.png'
-        },
+
         links: [
           {
             title: 'Docs',
@@ -184,6 +182,14 @@ const config = {
                 label: 'Medium',
                 href: 'https://medium.com/blindnet',
               },
+              {
+                label: 'Jobs',
+                href: 'https://dogfood.blindnet.io',
+              },
+              {
+                label: 'Contact',
+                href: 'https://www.blindnet.io/contact',
+              },
             ],
           },
           {
@@ -191,22 +197,24 @@ const config = {
             items: [
               {
                 label: 'Privacy Policy',
-                href: 'https://blindnet.io/privacy',
+                href: 'https://www.blindnet.io/legal/privacy-policy',
               },
               {
                 label: 'Legal Mentions',
-                href: 'https://blindnet.io/legal',
+                href: 'https://www.blindnet.io/legal/legal-mentions',
               },
               {
                 label: 'Terms and Conditions',
-                href: 'https://blindnet.io/terms',
+                href: 'https://www.blindnet.io/legal/terms-and-conditions',
               }
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} <a href="https://blindnet.io" target="_blank" rel="noopener noreferrer">blindnet</a>.<br />Built with <a href="https://docusaurus.io/" target="_blank" rel="noopener noreferrer">Docusaurus</a>.<br />Illustrations by <a href="https://undraw.co" target="_blank" rel="noopener noreferrer">Katerina Limpitsouni</a>.<br /><br />
-        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />
-        Except as otherwise noted, the content of this project is  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a><br />
+        copyright: `At blindnet we work under <a href="https://github.com/blindnet-io/openness-framework/blob/main/principles.md" target="_blank" rel="noopener noreferrer">Openness Principles</a> and welcome feedback and contributions that follow our <a href="https://github.com/blindnet-io/openness-framework" target="_blank" rel="noopener noreferrer">Openness Framework</a>. If you spot any missing or incomplete information about our products, please <a
+          href="https://github.com/blindnet-io/devrel-management/issues/new?assignees=noelmace&labels=request%2Ctriage&template=request.yml&title=%5BRequest%5D%3A+"target="_blank" rel="noopener noreferrer">let us know</a>!
+        <BR/>
+        <BR/>Copyright © 2021-${new Date().getFullYear()} <a href="https://blindnet.io" target="_blank" rel="noopener noreferrer"><img style ="height: 2em;" src="img/blindnet.png"/></a> Built with <a href="https://docusaurus.io/" target="_blank" rel="noopener noreferrer">Docusaurus</a>.
+        <BR/>Except when otherwise noted, the content of this project is  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a><br />
         Code samples and the website programming source code are licensed under the <a href="https://github.com/blindnet-io/blindnet.dev/blob/main/LICENSE">MIT</a> License.`
       },
       prism: {

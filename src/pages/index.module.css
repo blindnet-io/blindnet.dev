@@ -130,7 +130,7 @@
 .twoColumns__illustration {
   max-width: 100%;
   padding: 1.25rem;
-  max-height: 300px;
+  max-height: 500px;
 }
 
 @media screen and (max-width: 996px) {
