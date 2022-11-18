@@ -5,9 +5,80 @@ description: Unlock more request types by enabling users to identify themselves
 tags: [tutorial]
 ---
 
-Now we have exposed a [Privacy Request Capture Interface](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/expose-request-interface.html) and set up the Privacy Computation Engine. Let's see how to use them together.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-## Handle token requests on our server
+Now that we have exposed a [Privacy Request Capture Interface](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/expose-request-interface.html)
+and set up the Privacy Computation Engine, we need to authenticate users so that these two components can communicate.
+
+## Create a server that generates tokens
+
+We need a server that generates tokens for the Privacy Request Capture Interface to use in its requests to the Privacy
+Computation Engine.
+
+We provide two bare-bones implementations, one in [Java](https://github.com/blindnet-io/devkit-quickstart/tree/main/server/java)
+and one in [Node.js](https://github.com/blindnet-io/devkit-quickstart/tree/main/server/node).
+
+<Tabs groupId="lang-server">
+<TabItem value="node" label="Node.js" default>
+
+Clone the [devkit-quickstart](https://github.com/blindnet-io/devkit-quickstart) repository using Git and copy
+(or `cd` into) the `server/node` directory. Then, use Yarn to install and start the server.
+
+```bash
+git clone https://github.com/blindnet-io/devkit-quickstart
+cd devkit-quickstart/server/node
+yarn install
+yarn start
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+Clone the [devkit-quickstart](https://github.com/blindnet-io/devkit-quickstart) repository using Git and copy
+(or `cd` into) the `server/java` directory. Then, use Maven to compile and run the server.
+
+```bash
+git clone https://github.com/blindnet-io/devkit-quickstart
+cd devkit-quickstart/server/java
+mvn compile exec:java
+```
+
+</TabItem>
+</Tabs>
+
+If needed (see *Application registration* in [2. Set Up a Privacy Computation Engine](./pce-set-up)), edit
+the `appId` and `key` variables in the provided implementation of your choice to match your settings.
+
+<Tabs groupId="lang-server">
+<TabItem value="node" label="Node.js" default>
+
+```js
+const appId = '78f5fc15-5645-4f4f-8e1d-0792b7d89acd'
+const key = 'EgPThokIzi0oGkOGPOuC3zA63/b39ZAefcbxpegoHog='
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```java
+String appId = "78f5fc15-5645-4f4f-8e1d-0792b7d89acd";
+String key = "EgPThokIzi0oGkOGPOuC3zA63/b39ZAefcbxpegoHog=";
+```
+
+</TabItem>
+</Tabs>
+
+:::caution In the real world
+
+The bare-bones implementations provided are for demonstration and testing purposes only as they trust the users on who
+they claim to be.
+
+In the real world, you would need to verify the users' identity, and to only allow admin access to authorized users.
+The [storage-connector-java](https://github.com/blindnet-io/storage-connector-java) repository contains an example
+of such verification by the means of a magic link sent by email.
+
+:::
 
 ## Request a token on the frontend
 
