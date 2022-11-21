@@ -1,0 +1,47 @@
+---
+sidebar_position: 4
+title: 4. Handle consents
+description: Give consent for processing of user's personal data
+tags: [tutorial]
+---
+
+In this step, a user will give consent to your application for using their email address for advertising.
+
+Following request from the [events API](#) registers a consent for a user.
+
+```bash
+curl --request POST 'https://stage.computing.blindnet.io/v0/user-events/consent' \
+  --header 'Authorization: Bearer user_token' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "consent_id": "id_of_the_consent_legal_base"
+  }'
+```
+
+Invoke the endpoint after you have authenticated a user. Use the consent id, obtained during [legal base configuration step](/docs/tutorials/intro/pce-set-up#configure-a-retention-policy).
+
+```html
+<script>
+  function submit() {
+    const email = document.getElementById("email-field").value
+
+    fetch(`http://localhost:3000/token/user/${email}`)
+      .then(resp => resp.text())
+      .then(token => {
+        document.getElementById('devkit').setAttribute('api-token', `${token}`)
+        document.getElementById('devkit_request_wrapper').classList.remove("disabled")
+
+        return fetch('https://stage.computing.blindnet.io/v0/user-events/consent', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({ consent_id: "id_of_the_consent_legal_base" })
+        })
+
+      })
+  }
+</script>
+```
+
+The given consent is now stored in the PCE. A user will see it in the Privacy Request Interface and it will be visible in the Compliance Timeline when rewieving a privacy request.
