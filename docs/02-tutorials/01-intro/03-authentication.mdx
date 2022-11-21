@@ -124,16 +124,6 @@ Next, add a `submit()` function which is called when the user clicks the button 
 
 This function gets a [user token](/docs/authentication/tokens) for the email entered, then sets the `api-token` attribute of the PRCI.
 
-## Point PRCI to PCE
-
-In [part one](./prci-set-up), we captured the created request through an event emitted by the PRCI. Now, let's direct requests to the privacy computation engine from [part two](./pce-set-up) instead.
-
-To do this, add an attribute indicating the URL of the machine hosting the PCE:
-
-```html
-<bldn-priv-request computation-base-url="http://localhost:9000/v0"></bldn-priv-request>
-```
-
 :::tip Checkpoint
 
 Now we can build a privacy request in the PRCI and send it to the PCE for processing. Great!
@@ -141,5 +131,3 @@ Now we can build a privacy request in the PRCI and send it to the PCE for proces
 The HTML file with our work so far can be found [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/add-authentication.html).
 
 :::
-
-Next, let's see an example of placing a request.
