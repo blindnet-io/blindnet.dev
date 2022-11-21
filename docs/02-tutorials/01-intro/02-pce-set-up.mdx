@@ -73,7 +73,10 @@ curl --request PUT 'https://stage.computing.blindnet.io/v0/configure/general-inf
 
 ### Configure a legal base
 
-Legal bases are one of the key concepts of the blindnet devkit. We will configure a consent legal base for using a user's email address for advertising purposes. Later in the tutorial, a user will "give" this consent.
+Legal bases are one of the key concepts of the blindnet devkit. 
+They are explained in more details in [the documentation](../../computation/configuration#legal-bases). 
+For the purposes of this "quick start" introduction, we will define only one legal base - a consent. 
+We will configure a consent legal base that covers using a user's email address for advertising purposes. Later in the tutorial, a user will "give" their consent.
 
 ```bash
 curl --request PUT 'https://stage.computing.blindnet.io/v0/configure/legal-bases' \
