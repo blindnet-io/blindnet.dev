@@ -15,17 +15,18 @@ See [Using Web Components](/docs/interfaces/install/using-web-components) for mo
 
 The first component we'll use is the [Privacy Request Capture Interface (PRCI)](/docs/interfaces/prci ), an entry point for submitting and viewing [Privacy Requests](/docs/references/lexicon#privacy-request).
 
-For this section of the tutorial, we will start with the simple static frontend available [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/intro-start.html) and modify the `<body>` content.
+For this section of the tutorial, we will start with the simple static frontend available [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/intro-start.html).
 
 ## Load the Bundle
 
 First we'll load the PRCI bundle (included in the [`@blindnet/prci`](https://www.npmjs.com/package/@blindnet/prci) npm package) from the [jsdelivr](https://www.jsdelivr.com/) CDN:
 
 ```html
-<body>
-  <h1>Privacy Request Portal</h1>
-  <script src="https://cdn.jsdelivr.net/npm/@blindnet/prci/dist/index.all.min.js" type="module"></script>
-</body>
+<head>
+  ...
+  <script src="https://cdn.jsdelivr.net/npm/@blindnet/prci@latest/dist/index.all.min.js" type="module"></script>
+  ...
+</head>
 ```
 
 <!--
@@ -47,88 +48,51 @@ Now, let's expose the `<bldn-priv-request>` custom element:
 ```html
 <body>
   <h1>Privacy Request Portal</h1>
-  <bldn-priv-request></bldn-priv-request>
-  <script src="https://cdn.jsdelivr.net/npm/@blindnet/prci/dist/index.all.min.js" type="module"></script>
+  <bldn-priv-request id="devkit"></bldn-priv-request>
+</body>
+```
+
+At this point you should see the request interface, which you can use to build your first Privacy Request.
+
+## Listen for Requests
+
+After we build our request and click submit, the PRCI will fire an [event](/docs/interfaces/prci/events) containing the JSON representation of the request.
+
+You can listen for and use this event in your application by adding an [event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener):
+
+```html
+<body>
+  <h1>Privacy Request Portal</h1>
+  <bldn-priv-request id="devkit"></bldn-priv-request>
+  <script>
+    /**
+      * Log the request within the event emitted by the PRCI
+      * @param e {CustomEvent}
+      */
+    function catchRequest(e) {
+      
+      // Stop the request from bubbling further
+      e.stopPropagation()
+
+      // Extract the request object
+      const { request } = e.detail
+
+      // Log the request
+      console.log(request)
+    }
+
+    // Add listener to the PRCI element
+    const email = document.getElementById("devkit").addEventListener("bldn-request-builder:request-created", catchRequest)
+  </script>
 </body>
 ```
 
 :::tip Checkpoint
-The HTML file with our changes thus far can be found [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/expose-request-interface.html). You should now see a PRCI component which can be used to build requests. Once completed, the component will fire an [event](https://developer.mozilla.org/en-US/docs/Web/Events) containing the JSON representation of the request.
 
-See [**PRCI Events**](/docs/Interfaces/PRCI/Events) for more details on capturing this event.
+We can now build a privacy request and capture the emitted request object.
+
+The HTML file with our work so far can be found [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/expose-request-interface-event-listener.html).
+
 :::
 
 Next, let's set up the [Privacy Computation Engine](./pce-set-up).
-
-<!--
-The `bldn-priv-request` custom element supports several attributes and properties to interact with it and configure its behavior.
-
-Here, we only need to use the `computation-base-url` attribute to tell it to use our local PCE instance instead of the central one.
-
-```html
-<bldn-priv-request computation-base-url="http://localhost:9000/v0"></bldn-priv-request>
-```
-
-:::info Demo
-
-This simple static demo can be tested live on [blindnet-io.github.io](https://blindnet-io.github.io/privacy-components-web/demos/static/).
-
-Code can be found in the [privacy-components-web repository](https://github.com/blindnet-io/privacy-components-web/tree/main/demos/static).
-
-:::
-
-## Check Out our Demo Web App
-
-Need to see a more advanced use case? We got you covered.
-
-:::tip Check it out
-
-See our Demo Web App in action on [blindnet-io.github.io](https://blindnet-io.github.io/privacy-components-web/demos/devkit-simple-tutorial/) and read its code in the [privacy-components-web repository](https://github.com/blindnet-io/privacy-components-web/tree/main/demos/devkit-simple-tutorial).
-
-:::
-
-We keep this project as minimalist as possible for the sake of simplicity. It only uses [lit](https://lit.dev/), with [Carbon Web Components](https://web-components.carbondesignsystem.com/) and the [Vaadin Router](https://hilla.dev/docs/routing/router). The build system has been set up using the [Open WC generator](https://open-wc.org/guides/developing-components/getting-started/) (refer to the README for more information).
-
-You can either directly clone the whole monorepo locally:
-
-```bash
-git clone git@github.com:blindnet-io/privacy-components-web.git
-cd privacy-components-web/demos/devkit-simple-tutorial/
-```
-
-or use [git sparse-checkout](https://git-scm.com/docs/git-sparse-checkout) to only download the project itself:
-
-```bash
-mkdir devkit-web-demo
-cd devkit-web-demo
-git init
-git remote add -f origin git@github.com:blindnet-io/privacy-components-web.git
-git config core.sparsecheckout true
-echo "demos/devkit-simple-tutorial" >> .git/info/sparse-checkout
-git pull origin main
-```
-
-Then, you'll need to install the project's dependencies using classic yarn (v1) or npm:
-
-```bash
-yarn install
-# OR
-npm install
-```
-
-Then, start the development server:
-
-```bash
-yarn start
-# OR
-npm start
-```
-
-and open the application in your browser using the given URL.
-
-:::info
-
-The next steps have been already developed in this demo project. You can therefore refer to it whenever in doubt.
-
-:::
--->

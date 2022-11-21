@@ -11,18 +11,6 @@ import ScienceSVG from './illustrations/alien-science.svg';
 // @ts-ignore
 import DevkitFeaturesList from '@site/docs/_partials/_features-list.mdx';
 
-function Banner() {
-  return (
-    <div>
-      <div className={styles.banner}>
-        Want to learn more about the blindnet company?
-        <br />
-        Go check <a href="https://blindnet.io">blindnet.io</a>&#8202;.
-      </div>
-    </div>
-  );
-}
-
 function HeaderHero() {
   const { siteConfig } = useDocusaurusContext();
   return (
@@ -39,51 +27,29 @@ function HeaderHero() {
           <Link className="button button--secondary" to="/docs/tutorials/intro">
             Get Started!
           </Link>
-          <span className={styles.indexCtasGitHubButtonWrapper}>
-            <GitHubButton
-              // @ts-ignore
-              className={styles.indexCtasGitHubButton}
-              href="https://github.com/blindnet-io/blindnet.dev"
-              data-size="large"
-              aria-label="Star blindnet-io/blindnet.dev on GitHub"
-            >
-              Star
-            </GitHubButton>
-          </span>
         </div>
       </div>
     </header>
   );
 }
 
-function DevKit() {
+function PrivacyPortal() {
   return (
-    <section className={styles.explainerSection}>
+    <section className={[styles.explainerSection, styles.tint].join(' ')}>
       <div className={styles.twoColumns}>
         <div className={styles.twoColumns__column}>
-          <FilesSentSVG className={styles.twoColumns__illustration} />
+          <img className={styles.twoColumns__illustration} src="img/product/privacy_portal.png" />
         </div>
         <div className={styles.twoColumns__column}>
-          <h2>Develop Trustworthy Systems with Ease!</h2>
-          <p>
-            The blindnet devkit enables secured collection and automated management of sensitive data while helping to develop trustworthy
-            applications via premade privacy-management user interfaces.
-          </p>
-          <p>
-            It is made of several independent, yet cohesive Open Source libraries, services and tools together enabling confidentiality,
-            control and compliance with regulation, by supporting:
-          </p>
-          <DevkitFeaturesList />
-          <p>
-            Follow our <a href="/docs/encryption/quickstart">Quick Start</a> guide to understand how the components plays together, and
-            explore the <a href="/docs/">documentation</a> to learn more.
-          </p>
+          <h2>Set-up a modern Privacy Portal in minutes</h2>
+          <p>Stop using e-mail for processing Privacy Requests (not compliant with GDPR security mandates). Privacy Requests are structured at entry for easier processing.</p>
+          <p>Built as a configurable Web Component, our tool integrates easily in your web page.</p>
           <div className={styles.indexCtas}>
             <Link className="button button--primary" to="/docs/tutorials/intro">
               Get Started!
             </Link>
-            <Link className="button button--secondary" to="/docs/">
-              Explore the docs
+            <Link className="button button--secondary" to="https://dogfood.blindnet.io/privacy_portal/index.html">
+              See it in action
             </Link>
           </div>
         </div>
@@ -92,87 +58,113 @@ function DevKit() {
   );
 }
 
-function OpenSource() {
-  return (
-    <section className={clsx(styles.explainerSection, styles.tint)}>
-      <div className={styles.twoColumns}>
-        <div className={styles.twoColumns__column}>
-          <h2>Always Open</h2>
-          <p>At blindnet, we strongly think Openness and Privacy are two sides of the same coin.</p>
-          <p>
-            We meticulously follow the{' '}
-            <a href="https://github.com/blindnet-io/openness-framework/blob/main/principles.md" target="_blank" rel="noopener noreferrer">
-              Openness Principles
-            </a>{' '}
-            in all matters, guided by the{' '}
-            <a href="https://github.com/blindnet-io/openness-framework" target="_blank" rel="noopener noreferrer">
-              Openness Framework
-            </a>{' '}
-            we defined and constantly update.
-          </p>
-          <p>
-            Obviously, this means all the core components of blindnet devkit are Open Source, following an Open Core model. But we go
-            further than that: except when absolutely needed, all the contents we build and work with are and will always stay available to
-            anyone and open to contribution. This includes every important{' '}
-            <a
-              href="https://github.com/blindnet-io/openness-framework/tree/main/DecisionFramework"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              decision
-            </a>{' '}
-            we take and every <a href="https://github.com/blindnet-io/product-management">specification and guiding document</a> we work
-            with.
-          </p>
-          <p>
-            Making all matters easily accessible and intelligible to everyone is a top priority at blindnet. If you feel any information is
-            missing or is incomplete, please{' '}
-            <a
-              href="https://github.com/blindnet-io/devrel-management/issues/new?assignees=noelmace&labels=request%2Ctriage&template=request.yml&title=%5BRequest%5D%3A+"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              let us know
-            </a>
-            !
-          </p>
-        </div>
-        <div className={styles.twoColumns__column}>
-          <OpenSourceSVG className={styles.twoColumns__illustration} />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Construction() {
+function ManageRequests() {
   return (
     <section className={styles.explainerSection}>
       <div className={styles.twoColumns}>
         <div className={styles.twoColumns__column}>
-          <ScienceSVG className={styles.twoColumns__illustration} />
-        </div>
-        <div className={styles.twoColumns__column}>
-          <h2>Constantly Innovating</h2>
-          <p>
-            Our team of developers, PhDs, security engineers and DevX experts is constantly working on new ways to improve and extend the
-            blindnet devkit.
-          </p>
-          <p>
-            We are always open to new ideas and suggestions, especially from <strong>You the developers</strong>, to help us build exactly
-            what <strong>You</strong> need in order to make privacy ubiquitous.
-          </p>
+          <h2>Manage Requests</h2>
+          <p>Review and Manage Privacy Requests / Data Subject Requests (DSR) all in one place.</p>
+          <p>View past requests and responses. Integrate the component in your own customer management tool.</p>
           <div className={styles.indexCtas}>
-            <Link className="button button--primary" to="https://github.com/blindnet-io">
-              Watch and Contribute
-            </Link>
-            <Link
-              className="button button--secondary"
-              to="https://github.com/blindnet-io/devrel-management/issues/new?assignees=noelmace&labels=request%2Ctriage&template=request.yml&title=%5BRequest%5D%3A+"
-            >
-              Make a Wish
+            <Link className="button button--primary" to="/docs/interfaces/dci">
+              Learn how it works
             </Link>
           </div>
+        </div>
+        <div className={styles.twoColumns__column}>
+          <img className={styles.twoColumns__illustration} src="img/product/request_management.png" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RegisterConsents() {
+  return (
+    <section className={[styles.explainerSection, styles.tint].join(' ')}>
+      <div className={styles.twoColumns}>
+        <div className={styles.twoColumns__column}>
+          <img className={styles.twoColumns__illustration} src="img/product/consent.png" />
+        </div>
+        <div className={styles.twoColumns__column}>
+          <h2>Keep Track fo Consents</h2>
+          <p>Rich consent metadata, and our metadata language <a href="https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md" target="_blank">PRIV</a> enable a whole new world of automation.</p>
+          <p>Define Retention Policies using the same metadata language as Consents and other privacy-related Events. They apply them automatically.</p>
+          <div className={styles.indexCtas}>
+            <Link className="button button--primary" to="/docs/tutorials/intro">
+              Get Started!
+            </Link>
+            <Link className="button button--secondary" to="https://dogfood.blindnet.io/talent_portal/apply.html">
+              See it in action
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ComplianceTimeline() {
+  return (
+    <section className={styles.explainerSection}>
+      <div className={styles.twoColumns}>
+        <div className={styles.twoColumns__column}>
+          <h2>Compliance Timeline</h2>
+          <p>Quickly review a timeline of privacy-related events before approving a Privacy Request.</p>
+          <p>All in one place to demonstrate compliance in case of control</p>
+          <div className={styles.indexCtas}>
+            <Link className="button button--primary" to="/docs/interfaces/dci">
+              Learn more about it
+            </Link>
+          </div>
+        </div>
+        <div className={styles.twoColumns__column}>
+          <img className={styles.twoColumns__illustration} src="img/product/timeline.png" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AutomateResponses() {
+  return (
+    <section className={[styles.explainerSection, styles.tint].join(' ')}>
+      <div className={styles.twoColumns}>
+        <div className={styles.twoColumns__column}>
+          <img className={styles.twoColumns__illustration} src="img/product/auto_delete.png" />
+        </div>
+        <div className={styles.twoColumns__column}>
+          <h2>Automate Responses</h2>
+          <p>Thanks to the <a href="https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md" target="_blank">PRIV</a> metadata language, the <a target="_blank" href="/docs/computation" >Privacy Computation Engine (PCE)</a> can resolve requests automatically.</p>
+          <p>PCE operates with rules sourced from privacy regulations such as GDPR and CCPA, as well as with configuration (RoPA - Register of Processing Activities) and Retention Policies specific to your system.</p>
+          <div className={styles.indexCtas}>
+            <Link className="button button--primary" to="/docs/computation">
+              Learn about PCE
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ConnectStorage() {
+  return (
+    <section className={styles.explainerSection}>
+      <div className={styles.twoColumns}>
+        <div className={styles.twoColumns__column}>
+          <h2>Connect Storage</h2>
+          <p>With storage connectors, automatically fetch data (from several sources) when your users request access to it.</p>
+          <p>Enforce decisions to accept DELETE requests effortlessly.</p>
+          <div className={styles.indexCtas}>
+            <Link className="button button--primary" to="/docs/storage">
+              Learn about Storage Connectors
+            </Link>
+          </div>
+        </div>
+        <div className={styles.twoColumns__column}>
+          <img className={styles.twoColumns__illustration} src="img/product/auto_access.png" />
         </div>
       </div>
     </section>
@@ -182,11 +174,13 @@ function Construction() {
 export default function Home(): JSX.Element {
   return (
     <Layout title="" description="">
-      <Banner />
       <HeaderHero />
-      <DevKit />
-      <OpenSource />
-      <Construction />
+      <PrivacyPortal />
+      <ManageRequests />
+      <RegisterConsents />
+      <ComplianceTimeline />
+      <AutomateResponses />
+      <ConnectStorage />
     </Layout>
   );
 }
