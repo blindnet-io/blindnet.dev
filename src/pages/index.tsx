@@ -35,10 +35,10 @@ function HeaderHero() {
 
 function PrivacyPortal() {
   return (
-    <section className={styles.explainerSection, styles.tint}>
+    <section className={[styles.explainerSection, styles.tint].join(' ')}>
       <div className={styles.twoColumns}>
         <div className={styles.twoColumns__column}>
-          <img className={styles.twoColumns__illustration} src="img/product/privacy_portal.png"/>
+          <img className={styles.twoColumns__illustration} src="img/product/privacy_portal.png" />
         </div>
         <div className={styles.twoColumns__column}>
           <h2>Set-up a modern Privacy Portal in minutes</h2>
@@ -73,7 +73,7 @@ function ManageRequests() {
           </div>
         </div>
         <div className={styles.twoColumns__column}>
-          <img className={styles.twoColumns__illustration} src="img/product/request_management.png"/>
+          <img className={styles.twoColumns__illustration} src="img/product/request_management.png" />
         </div>
       </div>
     </section>
@@ -82,10 +82,10 @@ function ManageRequests() {
 
 function RegisterConsents() {
   return (
-    <section className={styles.explainerSection, styles.tint}>
+    <section className={[styles.explainerSection, styles.tint].join(' ')}>
       <div className={styles.twoColumns}>
         <div className={styles.twoColumns__column}>
-          <img className={styles.twoColumns__illustration} src="img/product/consent.png"/>
+          <img className={styles.twoColumns__illustration} src="img/product/consent.png" />
         </div>
         <div className={styles.twoColumns__column}>
           <h2>Keep Track fo Consents</h2>
@@ -120,7 +120,7 @@ function ComplianceTimeline() {
           </div>
         </div>
         <div className={styles.twoColumns__column}>
-          <img className={styles.twoColumns__illustration} src="img/product/timeline.png"/>
+          <img className={styles.twoColumns__illustration} src="img/product/timeline.png" />
         </div>
       </div>
     </section>
@@ -129,10 +129,10 @@ function ComplianceTimeline() {
 
 function AutomateResponses() {
   return (
-    <section className={styles.explainerSection, styles.tint}>
+    <section className={[styles.explainerSection, styles.tint].join(' ')}>
       <div className={styles.twoColumns}>
         <div className={styles.twoColumns__column}>
-          <img className={styles.twoColumns__illustration} src="img/product/auto_delete.png"/>
+          <img className={styles.twoColumns__illustration} src="img/product/auto_delete.png" />
         </div>
         <div className={styles.twoColumns__column}>
           <h2>Automate Responses</h2>
@@ -164,7 +164,7 @@ function ConnectStorage() {
           </div>
         </div>
         <div className={styles.twoColumns__column}>
-          <img className={styles.twoColumns__illustration} src="img/product/auto_access.png"/>
+          <img className={styles.twoColumns__illustration} src="img/product/auto_access.png" />
         </div>
       </div>
     </section>
