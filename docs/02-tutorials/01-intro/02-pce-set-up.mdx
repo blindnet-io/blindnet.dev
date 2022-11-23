@@ -86,7 +86,11 @@ curl --request PUT 'https://stage.computing.blindnet.io/v0/configure/legal-bases
     "name": "Sales promotion",
     "description": "Informing users about the current sale.",
     "scope": [
-        { "dc": "CONTACT.EMAIL", "pc": "USING", "pp": "ADVERTISING" }
+      {
+        "data_categories": ["CONTACT.EMAIL"],
+        "processing_categories": ["USING"],
+        "processing_purposes": ["ADVERTISING"]
+      }
     ]
 }'
 ```
