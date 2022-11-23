@@ -3,10 +3,12 @@ import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
 
 # Tutorials
 
-:::danger
+We have structured our tutorials in parts, each bringing you additional knowledge about a subset of blindnet devkit functionalities.
+We invite you to start with the [Introductory Tutorial](/docs/tutorials/intro) and then read the others as you may need them.
 
-Get started in a few minutes with our practical [introductory tutorial](./01-intro/index.mdx).
-
-:::
-
-<DocCardList items={useCurrentSidebarCategory().items}/>
+| Section | Functionalities covered |
+| :------ | :------------------------- |
+| [Introductory Tutorial](/docs/tutorials/intro) | Quick start: Expose an interface to capture Privacy Requests.<br/>Configure Privacy Computation Engine (PCE).<br/>Automate `TRANSPARENCY` Privacy Requests |
+| [Semi-automatic request processing](/docs/tutorials/semi-automatic-request-processing) | Using a user-interface to review and respond to Requests. Process `OTHER` demands that can't be automated. |
+| [Working with events](/docs/tutorials/working-with-events) | Register events such as consents, subscriptions, end of subscriptions. Enable automating responses to `REVOKE-CONSENT`, `OBJECT`, `RESTRICT` Privacy Requests. |
+| [Connect storage](/docs/tutorials/connect-storage) | Configure a storage connector. Automate `ACCESS` and `DELETE` Privacy Requests |

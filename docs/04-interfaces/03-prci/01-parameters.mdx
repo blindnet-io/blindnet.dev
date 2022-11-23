@@ -1,0 +1,62 @@
+---
+title: Parameters
+sidebar_position: 1
+tags: [PRCI, web-components]
+description: Attributes and CSS Variables
+---
+
+## Attributes
+
+#### `actions`
+
+A list of allowed [PRIV Actions](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#actions).
+
+#### `data-categories`
+
+A list of allowed [data categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-categories) for `ACCESS`, `DELETE`, `OBJECT`, and `RESTRICT` requests.
+
+#### `request-id`
+
+The ID of a submitted privacy request. The PRCI will fetch and display the status of this request when first rendered.
+
+#### `computation-base-url`
+
+The base URL of a [computation engine](/docs/computation) instance.
+
+See [usage without PCE](./usage-without-pce) for info on how the PRCI functions when this attribute isn't passed.
+
+#### `api-token`
+
+A token to be included in all `computation-api` requests made by the PRCI.
+
+## CSS Variables
+
+All global PC4W style variables are used by the PRCI and can be redefined by setting the following:
+
+`--bldn-priv-request-background`
+
+`--bldn-priv-request-font-size-small`
+
+`--bldn-priv-request-font-size-medium`
+
+`--bldn-priv-request-font-size-large`
+
+`--bldn-priv-request-font-family`
+
+`--bldn-priv-request-color-primary`
+
+`--bldn-priv-request-color-positive`
+
+`--bldn-priv-request-color-negative`
+
+`--bldn-priv-request-color-warning`
+
+`--bldn-priv-request-color-lightest`
+
+`--bldn-priv-request-color-light`
+
+`--bldn-priv-request-color-medium`
+
+`--bldn-priv-request-color-dark`
+
+`--bldn-priv-request-color-darkest`
