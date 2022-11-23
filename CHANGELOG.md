@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0] (2022-11-23)
+
+* Updated intro tutorial
+* Authentication documentation
+* Updated home page
+* Updated PRCI and PCE documentation
+
 ## [2.0.0-beta.7](https://github.com/blindnet-io/blindnet-docs/compare/v2.0.0-beta.6...v2.0.0-beta.7) (2022-10-14)
 
 
