@@ -1,0 +1,99 @@
+---
+sidebar_position: 0
+title: Add Request Steps
+tags: [tutorial]
+---
+
+The Privacy Portal supports adding additional steps to the privacy request building process, we call these **addons**.
+
+Addons define a UI step and submit function that occur before (**pre-form addon**) or after (**post-form addon**) the action form.
+
+## Creating an Addon
+
+Addons are created by slotting a `<bldn-request-addon>` into `<bldn-privacy-portal>`, just as you would slot `<li>` elements into a `<ul>`.
+
+We will start by adding an addon element to the Privacy Portal we exposed in [step one](/docs/tutorials/intro/prci-set-up) of our [intro tutorial](/docs/tutorials/intro).
+
+```html
+  <bldn-privacy-portal id="devkit">
+    <bldn-request-addon id="my-document-addon"></bldn-request-addon>
+  </bldn-privacy-portal>
+```
+
+### Set When It Occurs
+
+First, decide whether the addon will occur before our action form (`slot="preFormAddon"`), or after (`slot="postFormAddon"`).
+
+```html
+  <bldn-privacy-portal id="devkit">
+    <bldn-request-addon id="my-document-addon" slot="postFormAddon"></bldn-request-addon>
+  </bldn-privacy-portal>
+```
+
+### Define an HTML Display
+
+```html
+  <bldn-privacy-portal id="devkit">
+    <bldn-request-addon id="my-document-addon" slot="postFormAddon">
+      <div>
+
+      </div>
+    </bldn-request-addon>
+  </bldn-privacy-portal>
+```
+
+### Define a Submit Function
+
+```html
+<script>
+  /**
+   * Verify that a file was uploaded
+   */
+  function verifyFileInput() {
+    
+    // Get the input element
+    const fileInput = document.getElementById('')
+
+    // Check if a file was added
+    return (fileInput && fileInput.value !== "") ? true : "You must upload an ID document!"
+  }
+
+  // Add listener to the Privacy Portal element
+  document.getElementById("my-document-addon").onSubmit = verifyFileInput()
+</script>
+```
+
+### Test it Out
+
+The full code for this example is available [here].
+
+## More Addons
+
+In this example we added a single addon to the post-form phase, but you could add one (or more!) to either phase. 
+
+:::info
+
+When adding more than one addon to either phase, they will occur in the order which they are slotted.
+
+In the example below, `pre-addon-1` would occur first in the pre-form phase, followed by `pre-addon-2`.
+
+:::
+
+```html
+  <bldn-privacy-portal id="devkit">
+    <!-- 2 pre-form addons -->
+    <bldn-request-addon id="pre-addon-1" slot="preFormAddon">
+      ...
+    </bldn-request-addon>
+    <bldn-request-addon id="pre-addon-2" slot="preFormAddon">
+      ...
+    </bldn-request-addon>
+    
+    <!-- 1 post-form addon -->
+    <bldn-request-addon id="post-addon-1" slot="postFormAddon">
+      ...
+    </bldn-request-addon>
+  </bldn-privacy-portal>
+```
+
+See our [examples](./addons/examples) page for more addons you can use!

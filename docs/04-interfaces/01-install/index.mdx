@@ -16,16 +16,16 @@ See [Using Web Components](/docs/interfaces/install/using-web-components) for mo
 
 ## Components
 
-| name                                     | npm package      | html element          |
-| ---------------------------------------- | ---------------- | --------------------- |
-| Privacy Request Capture Interface (PRCI) | `@blindnet/prci` | `<bldn-priv-request>` |
-| Data Consumer Interface (DCI)            | `@blindnet/dci`  | `<bldn-data-consum>`  |
+| name           | npm package                | html element            |
+| -------------- | -------------------------- | ----------------------- |
+| Privacy Portal | `@blindnet/privacy-portal` | `<bldn-privacy-portal>` |
+| Bridge         | `@blindnet/bridge`         | `<bldn-bridge>`         |
 
 ## npm / yarn project
 
 When using an npm / yarn project with your own build system, you can install any Privacy Component for the Web via a dedicated npm package under the `@blindnet` scope.
 
-For example, run the following command to install the PRCI component:
+For example, run the following command to install the Privacy Portal component:
 
 ```bash
 yarn add @blindnet/prci
@@ -54,5 +54,5 @@ If you want to use this Web Component without any build system, just add the ass
 You can then use the associated custom element in your JSX / HTML template / static page:
 
 ```html
-<bldn-priv-request></bldn-priv-request>
+<bldn-privacy-portal></bldn-privacy-portal>
 ```

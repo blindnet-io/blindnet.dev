@@ -1,0 +1,22 @@
+---
+title: Parameters
+sidebar_position: 1
+tags: [Privacy Portal, addons, web-components]
+description: Attributes and Properties
+---
+
+## Attributes
+
+#### `slot`
+
+Dictates if the module occurs before or after the action form.
+
+Possible values: `"preFormAddon"` or `"postFormAddon"`
+
+## Properties
+
+#### `onSubmit`
+
+Function to execute after the Next button is pressed. This function should query the content of the module and decide if it is valid.
+
+The function should return boolean `true` if the content is valid, and `false` if it is invalid. You may also return a string when the module content is invalid, and this string will be displayed as an error message. If just the boolean `false` is returned, the default error message will be `"Invalid Input"`.
