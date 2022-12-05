@@ -67,7 +67,7 @@ function ManageRequests() {
           <p>Review and Manage Privacy Requests / Data Subject Requests (DSR) all in one place.</p>
           <p>View past requests and responses. Integrate the component in your own customer management tool.</p>
           <div className={styles.indexCtas}>
-            <Link className="button button--primary" to="/docs/interfaces/dci">
+            <Link className="button button--primary" to="/docs/interfaces/bridge">
               Learn how it works
             </Link>
           </div>
@@ -114,7 +114,7 @@ function ComplianceTimeline() {
           <p>Quickly review a timeline of privacy-related events before approving a Privacy Request.</p>
           <p>All in one place to demonstrate compliance in case of control</p>
           <div className={styles.indexCtas}>
-            <Link className="button button--primary" to="/docs/interfaces/dci">
+            <Link className="button button--primary" to="/docs/interfaces/bridge">
               Learn more about it
             </Link>
           </div>
