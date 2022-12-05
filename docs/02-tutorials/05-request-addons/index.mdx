@@ -10,62 +10,112 @@ Addons define a UI step and submit function that occur before (**pre-form addon*
 
 ## Creating an Addon
 
-Addons are created by slotting a `<bldn-request-addon>` into `<bldn-privacy-portal>`, just as you would slot `<li>` elements into a `<ul>`.
+Addons are created by slotting a `<bldn-request-addon>` into `<bldn-privacy-portal>`, just as you would slot `<li>` elements into a `<ul>`. In this tutorial, we will create a simple addon that allows a user to upload an ID document after filling out their privacy request.
 
-We will start by adding an addon element to the Privacy Portal we exposed in [step one](/docs/tutorials/intro/prci-set-up) of our [intro tutorial](/docs/tutorials/intro).
+We will start with [this](https://github.com/blindnet-io/devkit-quickstart/blob/main/tutorials/addons/addons-start.html) HTML file that simply exposes a `<privacy-portal>`. See our [intro tutorial](/docs/tutorials/intro) for more info on exposing the portal.
 
 ```html
   <bldn-privacy-portal id="devkit">
-    <bldn-request-addon id="my-document-addon"></bldn-request-addon>
+    <bldn-request-addon id="id-addon"></bldn-request-addon>
   </bldn-privacy-portal>
 ```
 
-### Set When It Occurs
+### Set When it Occurs
 
 First, decide whether the addon will occur before our action form (`slot="preFormAddon"`), or after (`slot="postFormAddon"`).
 
 ```html
   <bldn-privacy-portal id="devkit">
-    <bldn-request-addon id="my-document-addon" slot="postFormAddon"></bldn-request-addon>
+    <bldn-request-addon id="id-addon" slot="postFormAddon"></bldn-request-addon>
   </bldn-privacy-portal>
 ```
 
 ### Define an HTML Display
 
+Now, within the addon we'll define an HTML template for the ID upload interface. We also use some styles from [bootstrap](https://getbootstrap.com/), but this is optional.
+
 ```html
   <bldn-privacy-portal id="devkit">
-    <bldn-request-addon id="my-document-addon" slot="postFormAddon">
-      <div>
+    
+    <!-- Addon wrapper element -->
+      <bldn-request-addon id="id-addon" slot="postFormModule">
+        
+        <!-- Must load bootstrap and apply styles within shadow DOM -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <style>
+          #id-addon-container {
+            max-width: 400px;
+            padding: 2em;
+            margin: 2em auto 1em auto;
+            border: 2px dashed #979797;
+            border-radius: 10px;
+            color: #1F1F1F;
+            font-size: 1em;
+          }
 
-      </div>
-    </bldn-request-addon>
+          .mb-3 {
+            margin: 0em auto!important;
+            max-width: 75%;
+          }
+
+          h2 {
+            font-size: 1.25em;
+            margin-bottom: 2em;
+          }
+
+          p {
+            margin-bottom: 2.75em;
+          }
+
+        </style>
+
+        <!-- Define a template for our addon -->
+        <div id="id-addon-container">
+          <h2>ID Document Upload</h2>
+          <p>Please upload a copy of your valid identity document.</p>
+          <div class="mb-3">
+            <input class="form-control" type="file" id="id-file">
+          </div>
+        </div>
+
+      </bldn-request-addon>
   </bldn-privacy-portal>
 ```
 
 ### Define a Submit Function
 
+Last, we define a submit function which queries the content of our addon and returns one of:
+- `true`: The addon content is valid
+- `false`: The addon content is not valid (will display a default `"Invalid Input"` error message)
+- `<error-string>`: The addon content is not valid and the `<error-string>` should be displayed
+
+In this case, we return `true` if the file input exists and a file was uploaded. Otherwise, we return a custom error string.
+
 ```html
 <script>
   /**
-   * Verify that a file was uploaded
-   */
+    * Verify that a file was uploaded
+    */
   function verifyFileInput() {
-    
-    // Get the input element
-    const fileInput = document.getElementById('')
 
-    // Check if a file was added
+    // Get the input element
+    const fileInput = this.querySelector("#id-file")
+    
+    // Check if a file was added, returning a custom error message if not
     return (fileInput && fileInput.value !== "") ? true : "You must upload an ID document!"
   }
 
   // Add listener to the Privacy Portal element
-  document.getElementById("my-document-addon").onSubmit = verifyFileInput()
+  document.getElementById("id-addon").onSubmit = verifyFileInput
 </script>
 ```
 
 ### Test it Out
 
-The full code for this example is available [here].
+At this point, we can use the portal to build a privacy request and add an ID document through our addon.
+
+The full code for this example is available [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/tutorials/addons/addons-end.html).
 
 ## More Addons
 
@@ -96,4 +146,4 @@ In the example below, `pre-addon-1` would occur first in the pre-form phase, fol
   </bldn-privacy-portal>
 ```
 
-See our [examples](./addons/examples) page for more addons you can use!
+See our full addon documentation [here](/docs/interfaces/privacy-portal/addons) and our [examples](https://github.com/blindnet-io/devkit-quickstart/tree/main/examples/privacy-portal/addons) page for more addons you can use!
