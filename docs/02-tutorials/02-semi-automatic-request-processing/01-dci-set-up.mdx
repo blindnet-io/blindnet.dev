@@ -8,7 +8,7 @@ tags: [tutorial]
 An additional Privacy Component for the Web, called the "Bridge", is here to help you handle these requests.
 It offers a simple interface to allow relevant members of your organization (e.g. system administrators or DPOs) to manage all privacy requests related matters.
 
-To add the Bridge Web Component to your project, simply follow the same steps as for the Privacy Portal one, but with the `@blindnet/dci` npm package, and `<bldn-bridge>` HTML custom element.
+To add the Bridge Web Component to your project, simply follow the same steps as for the Privacy Portal one, but with the `@blindnet/bridge` npm package, and `<bldn-bridge>` HTML custom element.
 
 ```html
 <!DOCTYPE html>
@@ -28,8 +28,8 @@ To add the Bridge Web Component to your project, simply follow the same steps as
 
     <bldn-bridge computation-base-url="http://localhost:9000/v0"></bldn-bridge>
 
-    <script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module" ></script>
-    <script src="https://unpkg.com/@blindnet/dci/dist/index.core.min.js?module" type="module" ></script>
+    <script src="https://unpkg.com/@blindnet/privacy-portal/dist/index.core.min.js?module" type="module" ></script>
+    <script src="https://unpkg.com/@blindnet/bridge/dist/index.core.min.js?module" type="module" ></script>
   </body>
 </html>
 ```
@@ -61,8 +61,8 @@ Instead, we recommend setting the global configuration via the `BlindnetCore.con
 
     <bldn-bridge></bldn-bridge>
 
-    <script src="https://unpkg.com/@blindnet/prci/dist/index.core.min.js?module" type="module" ></script>
-    <script src="https://unpkg.com/@blindnet/dci/dist/index.core.min.js?module" type="module" ></script>
+    <script src="https://unpkg.com/@blindnet/privacy-portal/dist/index.core.min.js?module" type="module" ></script>
+    <script src="https://unpkg.com/@blindnet/bridge/dist/index.core.min.js?module" type="module" ></script>
 
     <script type="module">
       globalThis.BlindnetCore.configure({
