@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: 1. Expose the Privacy Request Interface
+title: 1. Expose the Privacy Portal
 description: Enable your users to create privacy requests
 tags: [tutorial]
 ---
@@ -13,18 +13,18 @@ See [Using Web Components](/docs/interfaces/install/using-web-components) for mo
 
 :::
 
-The first component we'll use is the [Privacy Request Capture Interface (PRCI)](/docs/interfaces/prci ), an entry point for submitting and viewing [Privacy Requests](/docs/references/lexicon#privacy-request).
+The first component we'll use is the [Privacy Portal](/docs/interfaces/privacy-portal ), an entry point for submitting and viewing [Privacy Requests](/docs/references/lexicon#privacy-request).
 
-For this section of the tutorial, we will start with the simple static frontend available [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/intro-start.html).
+For this section of the tutorial, we will start with the simple static frontend available [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/tutorials/intro/web/intro-start.html).
 
 ## Load the Bundle
 
-First we'll load the PRCI bundle (included in the [`@blindnet/prci`](https://www.npmjs.com/package/@blindnet/prci) npm package) from the [jsdelivr](https://www.jsdelivr.com/) CDN:
+First we'll load the Privacy Portal bundle (included in the [`@blindnet/privacy-portal`](https://www.npmjs.com/package/@blindnet/privacy-portal) npm package) from the [jsdelivr](https://www.jsdelivr.com/) CDN:
 
 ```html
 <head>
   ...
-  <script src="https://cdn.jsdelivr.net/npm/@blindnet/prci@latest/dist/index.all.min.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@blindnet/privacy-portal@latest/dist/index.all.min.js" type="module"></script>
   ...
 </head>
 ```
@@ -43,12 +43,12 @@ Your specific context might be different. This is why each Privacy Component for
 
 ## Add the Interface
 
-Now, let's expose the `<bldn-priv-request>` custom element:
+Now, let's expose the `<bldn-privacy-portal>` custom element:
 
 ```html
 <body>
   <h1>Privacy Request Portal</h1>
-  <bldn-priv-request id="devkit"></bldn-priv-request>
+  <bldn-privacy-portal id="devkit"></bldn-privacy-portal>
 </body>
 ```
 
@@ -56,17 +56,17 @@ At this point you should see the request interface, which you can use to build y
 
 ## Listen for Requests
 
-After we build our request and click submit, the PRCI will fire an [event](/docs/interfaces/prci/events) containing the JSON representation of the request.
+After we build our request and click submit, the Privacy Portal will fire an [event](/docs/interfaces/privacy-portal/events) containing the JSON representation of the request.
 
 You can listen for and use this event in your application by adding an [event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener):
 
 ```html
 <body>
   <h1>Privacy Request Portal</h1>
-  <bldn-priv-request id="devkit"></bldn-priv-request>
+  <bldn-privacy-portal id="devkit"></bldn-privacy-portal>
   <script>
     /**
-      * Log the request within the event emitted by the PRCI
+      * Log the request within the event emitted by the Privacy Portal
       * @param e {CustomEvent}
       */
     function catchRequest(e) {
@@ -81,7 +81,7 @@ You can listen for and use this event in your application by adding an [event li
       console.log(request)
     }
 
-    // Add listener to the PRCI element
+    // Add listener to the Privacy Portal element
     const email = document.getElementById("devkit").addEventListener("bldn-request-builder:request-created", catchRequest)
   </script>
 </body>

@@ -1,0 +1,62 @@
+---
+title: Parameters
+sidebar_position: 1
+tags: [Privacy Portal, web-components]
+description: Attributes and CSS Variables
+---
+
+## Attributes
+
+#### `actions`
+
+A list of allowed [PRIV Actions](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#actions).
+
+#### `data-categories`
+
+A list of allowed [data categories](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#data-categories) for `ACCESS`, `DELETE`, `OBJECT`, and `RESTRICT` requests.
+
+#### `request-id`
+
+The ID of a submitted privacy request. The Privacy Portal will fetch and display the status of this request when first rendered.
+
+#### `computation-base-url`
+
+The base URL of a [computation engine](/docs/computation) instance.
+
+See [usage without PCE](./usage-without-pce) for info on how the Privacy Portal functions when this attribute isn't passed.
+
+#### `api-token`
+
+A token to be included in all `computation-api` requests made by the Privacy Portal.
+
+## CSS Variables
+
+All global PC4W style variables are used by the Privacy Portal and can be redefined by setting the following:
+
+`--bldn-privacy-portal-background`
+
+`--bldn-privacy-portal-font-size-small`
+
+`--bldn-privacy-portal-font-size-medium`
+
+`--bldn-privacy-portal-font-size-large`
+
+`--bldn-privacy-portal-font-family`
+
+`--bldn-privacy-portal-color-primary`
+
+`--bldn-privacy-portal-color-positive`
+
+`--bldn-privacy-portal-color-negative`
+
+`--bldn-privacy-portal-color-warning`
+
+`--bldn-privacy-portal-color-lightest`
+
+`--bldn-privacy-portal-color-light`
+
+`--bldn-privacy-portal-color-medium`
+
+`--bldn-privacy-portal-color-dark`
+
+`--bldn-privacy-portal-color-darkest`

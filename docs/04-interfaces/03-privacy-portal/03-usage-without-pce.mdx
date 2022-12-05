@@ -1,0 +1,17 @@
+---
+title: Usage Without PCE
+sidebar_position: 3
+tags: [Privacy Portal, web-components]
+description: Standalone Usage
+---
+
+The Privacy Portal component can be used without an associated Privacy Computation Engine. The example below exposes a Privacy Portal element on a static HTML page.
+
+```html
+<body>
+  <bldn-privacy-portal></bldn-privacy-portal>
+  <script src="https://cdn.jsdelivr.net/npm/@blindnet/prci@0.12.3/dist/index.all.min.js" type="module"></script>
+</body>
+```
+
+When a request is filled out and submitted, the Privacy Portal will emit the [`bldn-privacy-portal:request-created`](./events#bldn-privacy-portalrequest-created) event. You may catch this event and handle it in your system.
