@@ -1,0 +1,22 @@
+---
+title: Events
+sidebar_position: 2
+tags: [Privacy Portal, web-components]
+description: Capture Created Requests
+---
+
+The following [custom events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent) are emitted by the Privacy Portal.
+
+See [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/tutorials/intro/web/expose-request-interface-event-listener.html) for an example of how to catch these events, from our [intro tutorial](/docs/tutorials/intro).
+
+#### `bldn-request-builder:request-created`
+
+Emitted after the user clicks submit request. Contains a [`CreatePrivacyRequestPayload`](https://devkit-pce-staging.azurewebsites.net/swagger/#/).
+
+Details: `{request: ...}`
+
+#### `bldn-request-builder:request-sent`
+
+Emitted after a request is submitted and the PCE responds with a request ID. The [`computation-base-url`](./parameters#computation-base-url) and [`api-token`](./parameters#api-token) attributes must be set for a request to be sent to the PCE and this event to fire.
+
+Details: `{request-id: ...}`

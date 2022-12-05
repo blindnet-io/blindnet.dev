@@ -67,7 +67,7 @@ function ManageRequests() {
           <p>Review and Manage Privacy Requests / Data Subject Requests (DSR) all in one place.</p>
           <p>View past requests and responses. Integrate the component in your own customer management tool.</p>
           <div className={styles.indexCtas}>
-            <Link className="button button--primary" to="/docs/interfaces/dci">
+            <Link className="button button--primary" to="/docs/interfaces/bridge">
               Learn how it works
             </Link>
           </div>
@@ -88,9 +88,9 @@ function RegisterConsents() {
           <img className={styles.twoColumns__illustration} src="img/product/consent.png" />
         </div>
         <div className={styles.twoColumns__column}>
-          <h2>Keep Track fo Consents</h2>
+          <h2>Keep Track of Consents</h2>
           <p>Rich consent metadata, and our metadata language <a href="https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md" target="_blank">PRIV</a> enable a whole new world of automation.</p>
-          <p>Define Retention Policies using the same metadata language as Consents and other privacy-related Events. They apply them automatically.</p>
+          <p>Define Retention Policies using the same metadata language as Consents and other privacy-related Events. Then apply them automatically.</p>
           <div className={styles.indexCtas}>
             <Link className="button button--primary" to="/docs/tutorials/intro">
               Get Started!
@@ -114,7 +114,7 @@ function ComplianceTimeline() {
           <p>Quickly review a timeline of privacy-related events before approving a Privacy Request.</p>
           <p>All in one place to demonstrate compliance in case of control</p>
           <div className={styles.indexCtas}>
-            <Link className="button button--primary" to="/docs/interfaces/dci">
+            <Link className="button button--primary" to="/docs/interfaces/bridge">
               Learn more about it
             </Link>
           </div>

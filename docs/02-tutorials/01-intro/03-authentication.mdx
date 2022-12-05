@@ -8,16 +8,16 @@ tags: [tutorial]
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Now that we have exposed a [Privacy Request Capture Interface](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/expose-request-interface.html)
+Now that we have exposed a [Privacy Portal](https://github.com/blindnet-io/devkit-quickstart/blob/main/tutorials/intro/web/expose-request-interface.html)
 and set up the Privacy Computation Engine, we need to authenticate users so that these two components can communicate.
 
 ## Create a server that generates tokens
 
-We need a server that generates tokens for the Privacy Request Capture Interface to use in its requests to the Privacy
+We need a server that generates tokens for the Privacy Portal to use in its requests to the Privacy
 Computation Engine.
 
-We provide two bare-bones implementations, one in [Java](https://github.com/blindnet-io/devkit-quickstart/tree/main/server/java)
-and one in [Node.js](https://github.com/blindnet-io/devkit-quickstart/tree/main/server/node).
+We provide two bare-bones implementations, one in [Java](https://github.com/blindnet-io/devkit-quickstart/tree/main/tutorials/intro/server/java)
+and one in [Node.js](https://github.com/blindnet-io/devkit-quickstart/tree/main/tutorials/intro/server/node).
 
 <Tabs groupId="lang-server">
 <TabItem value="node" label="Node.js" default>
@@ -36,7 +36,7 @@ yarn start
 <TabItem value="java" label="Java">
 
 Clone the [devkit-quickstart](https://github.com/blindnet-io/devkit-quickstart) repository using Git and copy
-(or `cd` into) the `server/java` directory. Then, use Maven to compile and run the server.
+(or `cd` into) the `/tutorials/intro/server/java` directory. Then, use Maven to compile and run the server.
 
 ```bash
 git clone https://github.com/blindnet-io/devkit-quickstart
@@ -97,7 +97,7 @@ First we'll add a simple email input and submit button from [bootstrap](https://
   </div>
 
   <div id="devkit_request_wrapper" class="disabled">
-    <bldn-priv-request id="devkit"></bldn-priv-request>
+    <bldn-privacy-portal id="devkit"></bldn-privacy-portal>
   </div>
 
 </div>
@@ -122,12 +122,12 @@ Next, add a `submit()` function which is called when the user clicks the button 
 </script>
 ```
 
-This function gets a [user token](/docs/authentication/tokens) for the email entered, then sets the `api-token` attribute of the PRCI.
+This function gets a [user token](/docs/authentication/tokens) for the email entered, then sets the `api-token` attribute of the Privacy Portal.
 
 :::tip Checkpoint
 
-Now we can build a privacy request in the PRCI and send it to the PCE for processing. Great!
+Now we can build a privacy request in the Privacy Portal and send it to the PCE for processing. Great!
 
-The HTML file with our work so far can be found [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/add-authentication.html).
+The HTML file with our work so far can be found [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/tutorials/intro/web/add-authentication.html).
 
 :::

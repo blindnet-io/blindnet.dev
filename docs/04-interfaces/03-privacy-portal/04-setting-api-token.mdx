@@ -1,0 +1,48 @@
+---
+title: Setting API Token
+sidebar_position: 3
+tags: [Privacy Portal, web-components]
+description: Authenticate for use with PCE
+---
+
+The API token used by the Privacy Portal can be set in multiple ways depending on your use-case.
+
+For all of these methods, let's assume we have a Privacy Portal element exposed as follows:
+
+```html
+<body>
+  <bldn-privacy-portal id='prci'></bldn-privacy-portal>
+  <script src="https://cdn.jsdelivr.net/npm/@blindnet/prci@0.12.3/dist/index.all.min.js" type="module"></script>
+</body>
+```
+
+## Via Attribute
+
+### In HTML Template
+
+When using [Lit templates](https://lit.dev/docs/templates/overview/) or a templating language such as [JSX](https://reactjs.org/docs/introducing-jsx.html).
+
+#### Lit
+
+```html
+<bldn-privacy-portal id='prci' api-token=${token}></bldn-privacy-portal>
+```
+
+#### React
+
+```jsx
+<bldn-privacy-portal id='prci' api-token={token}></bldn-privacy-portal>
+```
+
+### In Javascript
+
+See the [authentication step](/docs/tutorials/intro/authentication) of the [intro tutorial](/docs/tutorials/intro) for a full example of this method.
+
+```js
+function submit() {
+  fetch(`http://some-domain/token-endpoint`)
+    .then(token => {
+      document.getElementById('prci').setAttribute('api-token', `${token}`)
+    })
+}
+```
