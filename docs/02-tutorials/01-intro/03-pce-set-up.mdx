@@ -1,0 +1,59 @@
+---
+sidebar_position: 3
+title: 3. Configure Application's privacy settings
+description: Configure Application's privacy settings
+tags: [tutorial]
+---
+
+You can configure the Application's privacy settings in the [dashboard](https://stage.dashboard.blindnet.io/).  
+
+From the list of applications, open the one you wish to configure and select the **Privacy Configuration** tab.
+
+:::note
+While there are multiple configuration units, in this tutorial we will configure the **General information**, **Request resolution strategy** and **Legal bases**.
+:::
+
+### Configure General information
+
+:::info
+User's can retrieve application's general information when making `TRANSPARENCY` requests.
+:::
+
+Click on the **General information** item and fill out the form. Save the changes.  
+
+### Configure Request resolution strategy
+
+:::info
+Most of the request types can be automated using the blindnet devkit. We will make the devkit respond to `TRANSPARENCY` requests automatically.  
+:::
+
+Click on the **Request resolution strategy** item and change the value of the **Transparency** field to `automatic`. Save the changes.
+
+### Configure Legal bases
+
+:::note
+We will configure a `CONSENT` legal base that covers *using user's email address for advertising purposes*. Later in the tutorial, a user will "give" their consent using the created consent's `ID`.
+:::
+
+Click on the **Legal bases** tab and then on the **New legal base** button.  
+Give it the **Name** and select `CONSENT` as it's **Type**.
+
+From the **Data categories** list, select `CONTACT.EMAIL`  
+From the **Processing categories** list, select `USING`  
+From the **Processing purposes** list, select `ADVERTISING`  
+
+:::note
+You can select multiple values by holding the `CTRL` key.
+:::
+
+Hit the **Save** button.
+
+> A new legal base is now created.
+
+From the list of legal bases, click on the `CONSENT` you just created and make a note of it's `ID`. You'll use it later in this tutorial.
+
+:::tip Checkpoint
+
+We have created and configured a devkit application. In the next steps, you'll learn how use it with the real world use-case.
+
+:::

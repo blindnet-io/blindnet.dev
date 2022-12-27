@@ -1,0 +1,43 @@
+---
+sidebar_position: 2
+title: 2. Create a devkit application
+description: Create a devkit application
+tags: [tutorial]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Devkit applications are managed using the **blindnet Dashboard**, found on [stage.dashboard.blindnet.io](https://stage.dashboard.blindnet.io).
+
+:::info
+In order to automate privacy requests, you need to have an active devkit application.  
+:::
+
+## Step 1: Register
+
+Head over to the [registration page](https://stage.dashboard.blindnet.io/register) and create an account.
+You'll get an email message to verify your email address.
+
+## Step 2: Create an Application group
+
+After you verify your account, first, you need to create an **application group**.
+
+:::info
+An **Application group** is a container for your devkit applications. Applications in the same group share the same authentication key but their settings and scopes are independent.  
+Usually, all of your applications will be in a single group.
+:::
+
+Specify your group's **name** and **key**.
+
+:::note
+The key is generated locally (in the browser window) but you can provide your own.  
+Make sure to `copy` and `save` the **key** as blindnet does not store it. If you lose the **key**, a new one has to be generated.
+:::
+
+## Step 3: Create an Application
+
+Click on the `New App` button to create an **Application**.  
+After the **Application** is created, open it from the list of applications and you'll find it's `ID`.
+
+Now, you should have the Groups's `key` and Application's `ID`. We will use them in the later steps of the tutorial to authenticate the users.

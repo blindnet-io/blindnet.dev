@@ -1,0 +1,143 @@
+---
+sidebar_position: 4
+title: 4. Add Authentication
+description: Unlock more request types by enabling users to identify themselves
+tags: [tutorial]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Now that we have exposed a [Privacy Portal](https://github.com/blindnet-io/devkit-quickstart/blob/main/tutorials/intro/web/1-expose-request-interface-event-listener.html) and configured the **Application**, we need to authenticate users so that these two components can communicate.
+
+## Create a server to generates tokens
+
+Tokens are generated on the server, using the `key` we got while [creating an application group](./dashboard#step-2-create-an-application-group).
+
+We provide two bare-bones implementations of servers, one in [Java](https://github.com/blindnet-io/devkit-quickstart/tree/main/tutorials/intro/server/java)
+and one in [Node.js](https://github.com/blindnet-io/devkit-quickstart/tree/main/tutorials/intro/server/node).
+
+<Tabs groupId="lang-server">
+<TabItem value="node" label="Node.js" default>
+
+Clone the [devkit-quickstart](https://github.com/blindnet-io/devkit-quickstart) repository and install the dependencies.
+
+```bash
+git clone https://github.com/blindnet-io/devkit-quickstart
+cd devkit-quickstart/tutorials/intro/server/node
+yarn install
+```
+
+In the `src/index.js` file, set the `appId` and `key` variables with the Application's `ID` and `key` you obtained in the step [2. Create a devkit application](./02-dashboard.mdx).
+
+```js
+const appId = '<YOUR_APPLICATION_ID>'
+const key = '<YOUR_APPLICATION_KEY>'
+```
+
+Start the server.
+
+```bash
+yarn start
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+Clone the [devkit-quickstart](https://github.com/blindnet-io/devkit-quickstart) repository and start the server.
+
+```bash
+git clone https://github.com/blindnet-io/devkit-quickstart
+cd devkit-quickstart/tutorials/intro/server/java
+```
+
+In the `src/index.js` file, set the `appId` and `key` variables with the Application's `ID` and `key` you obtained in the step [2. Create a devkit application](./02-dashboard.mdx).
+
+```java
+String appId = "<YOUR_APPLICATION_ID>";
+String key = "<YOUR_APPLICATION_KEY>;
+```
+
+Start the server.
+
+```bash
+mvn compile exec:java
+```
+
+</TabItem>
+</Tabs>
+
+## Request a token on the frontend
+
+Now that our server can handle token requests, let's fetch one on the frontend.
+
+### Add an Email Input
+
+First we'll add a simple email input and submit button from [bootstrap](https://getbootstrap.com/docs/5.2/forms/input-group/).
+
+```html
+
+<body>
+  <style>
+    .disabled {
+      background-color: white;
+      filter: alpha(opacity=50);
+      opacity: 0.5;
+      -moz-opacity: 0.50;
+      z-index: 20;
+      pointer-events: none;
+    }
+  </style>
+
+  <h1>Privacy Request Portal</h1>
+
+  <div style="padding: 3vh 25%;">
+    <input id="email-field" type="text" placeholder="Email Address">
+    <button type="button" id="button-addon2" onclick="submit()">Submit</button>
+  </div>
+
+  <div id="devkit_request_wrapper" class="disabled">
+    <bldn-privacy-portal id="devkit"></bldn-privacy-portal>
+  </div>
+
+  ...
+</body>
+```
+
+### Get the token
+
+Next, add a `submit()` function which is called when the user clicks the button we added above.  
+Get the generated token from the server and set it as the attribe `api-token` of the `bldn-privacy-portal` component.
+
+```html
+<script>
+  function submit() {
+    const email = document.getElementById("email-field").value
+
+    fetch(`http://localhost:3000/token/user/${email}`)
+      .then(resp => resp.text())
+      .then(token => {
+        console.log(token)
+
+        document.getElementById('devkit').setAttribute('api-token', token)
+        document.getElementById('devkit_request_wrapper').classList.remove("disabled")
+      })
+  }
+</script>
+```
+
+You should see the token printed in the console. You can use [jwt.io](https://jwt.io) to decode it.
+
+:::caution In the real world
+
+The bare-bones implementations provided are for demonstration and testing purposes only.
+
+In the real world, you would need to verify the users' identity before issuing the tokens.
+
+:::
+
+:::tip Checkpoint
+Now we can build a privacy request in the Privacy Portal submit it processing. Great!
+
+The HTML file with our work so far can be found [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/tutorials/intro/web/2-add-authentication.html).
+:::
