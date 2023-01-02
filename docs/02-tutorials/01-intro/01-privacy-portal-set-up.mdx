@@ -5,7 +5,7 @@ description: Enable your users to create privacy requests
 tags: [tutorial]
 ---
 
-User interfaces for the blindnet devkit (aka _[Privacy Components for the Web](https://github.com/blindnet-io/privacy-components-web)_) are delivered as standard [Web Components](https://www.webcomponents.org/introduction) available both on NPM and through a CDN.
+User interfaces for the blindnet devkit (aka _[Blindnet web modules](https://github.com/blindnet-io/privacy-components-web)_) are delivered as standard [Web Components](https://www.webcomponents.org/introduction) available both on NPM and through a CDN.
 
 :::info
 
@@ -13,9 +13,9 @@ See [Using Web Components](/docs/interfaces/install/using-web-components) for mo
 
 :::
 
-The first component we'll use is the [Privacy Portal](/docs/interfaces/privacy-portal ), an entry point for submitting and viewing [Privacy Requests](/docs/references/lexicon#privacy-request).
+The first component we'll use is the [Privacy Portal](/docs/interfaces/privacy-portal), an entry point for submitting and viewing [Privacy Requests](/docs/references/lexicon#privacy-request).
 
-For this section of the tutorial, we will start with the simple static frontend available [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/tutorials/intro/web/intro-start.html).
+For this section of the tutorial, we will start with the simple static frontend available [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/tutorials/intro/web/0-intro-start.html).
 
 ## Load the Bundle
 
@@ -58,7 +58,7 @@ At this point you should see the request interface, which you can use to build y
 
 After we build our request and click submit, the Privacy Portal will fire an [event](/docs/interfaces/privacy-portal/events) containing the JSON representation of the request.
 
-You can listen for and use this event in your application by adding an [event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener):
+You can catch this event in your application by adding an [event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener):
 
 ```html
 <body>
@@ -82,7 +82,7 @@ You can listen for and use this event in your application by adding an [event li
     }
 
     // Add listener to the Privacy Portal element
-    const email = document.getElementById("devkit").addEventListener("bldn-request-builder:request-created", catchRequest)
+    document.getElementById("devkit").addEventListener("bldn-request-builder:request-created", catchRequest)
   </script>
 </body>
 ```
@@ -91,8 +91,8 @@ You can listen for and use this event in your application by adding an [event li
 
 We can now build a privacy request and capture the emitted request object.
 
-The HTML file with our work so far can be found [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/web/expose-request-interface-event-listener.html).
+The HTML file with our work so far can be found [here](https://github.com/blindnet-io/devkit-quickstart/blob/main/tutorials/intro/web/1-expose-request-interface-event-listener.html).
 
 :::
 
-Next, let's set up the [Privacy Computation Engine](./pce-set-up).
+Next, let's [create a devkit application](./dashboard).

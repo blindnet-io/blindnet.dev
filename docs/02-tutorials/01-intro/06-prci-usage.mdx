@@ -1,0 +1,36 @@
+---
+sidebar_position: 6
+title: 6. Make a Request
+description: Test out your Privacy Stack!
+tags: [tutorial]
+---
+
+import ReactPlayer from 'react-player'
+
+Now, let's test it out! Open the [static page](https://github.com/blindnet-io/devkit-quickstart/blob/main/tutorials/intro/web/3-handle-consent.html) we just created.
+
+## Identify Yourself
+
+Enter your email and hit submit to get a blindnet token and enable the interface.
+
+<ReactPlayer playing loop muted width url='/video/identify-yourself.webm'/>
+
+:::note
+
+In this tutorial we disable the Privacy Portal until a token is passed to illustrate the use of the [Privacy Portal](/docs/interfaces/privacy-portal) in combination with the devkit Application. It is also possible to use the Privacy Portal by itself, as we do in [part one](./privacy-portal-set-up). 
+
+:::
+
+## Build the Request
+
+First, select an [action](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/RFC-PRIV.md#actions) which describes the purpose of our request. See [here](https://github.com/blindnet-io/product-management/blob/main/refs/schemas/priv/dictionary/actions/en.actions.json) for a description of all possible actions.
+
+Select **Transparency** to build a request about data processing information and practices.
+
+<ReactPlayer playing loop muted width height url='/video/make-request.webm'/>
+
+## View the Response
+
+After submitting the request, view the response containing the requested information.
+
+<ReactPlayer playing loop muted height url='/video/view-response.webm'/>
