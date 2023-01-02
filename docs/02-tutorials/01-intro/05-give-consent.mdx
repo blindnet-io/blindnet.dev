@@ -1,13 +1,13 @@
 ---
-sidebar_position: 4
-title: 4. Handle consents
+sidebar_position: 5
+title: 5. Handle consents
 description: Give consent for processing of user's personal data
 tags: [tutorial]
 ---
 
-In this step, a user will give consent to your application for using their email address for advertising.
+In this step, a user will give consent for using their email address for advertising in your application.  
 
-Following request from the [events API](#) registers a consent for a user.
+Following request registers a consent for a user.
 
 ```bash
 curl --request POST 'https://stage.computing.blindnet.io/v0/user-events/consent' \
@@ -18,7 +18,7 @@ curl --request POST 'https://stage.computing.blindnet.io/v0/user-events/consent'
   }'
 ```
 
-Invoke the endpoint after you have authenticated a user. Use the consent id, obtained during [legal base configuration step](/docs/tutorials/intro/pce-set-up#configure-a-retention-policy).
+Invoke the endpoint after you have authenticated a user. Use the consent id, obtained during [legal base configuration step](/docs/tutorials/intro/pce-set-up#configure-legal-bases) in place of `id_of_the_consent_legal_base`.
 
 ```html
 <script>
@@ -28,7 +28,7 @@ Invoke the endpoint after you have authenticated a user. Use the consent id, obt
     fetch(`http://localhost:3000/token/user/${email}`)
       .then(resp => resp.text())
       .then(token => {
-        document.getElementById('devkit').setAttribute('api-token', `${token}`)
+        document.getElementById('devkit').setAttribute('api-token', token)
         document.getElementById('devkit_request_wrapper').classList.remove("disabled")
 
         return fetch('https://stage.computing.blindnet.io/v0/user-events/consent', {
@@ -44,4 +44,4 @@ Invoke the endpoint after you have authenticated a user. Use the consent id, obt
 </script>
 ```
 
-The given consent is now stored in the PCE. A user will see it in the Privacy Request Interface and it will be visible in the Compliance Timeline when rewieving a privacy request.
+The given consent is now stored. A user will see it in the Privacy Request Interface.
