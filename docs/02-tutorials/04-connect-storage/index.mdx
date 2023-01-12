@@ -13,12 +13,134 @@ To take full advantage of the automation functionalities offered by blindnet dev
 If you do, user's data will be automatically obtained from your storage and delivered to the user in case of the `ACCESS` request, or automatically deleted should a `DELETE` request get accepted.
 Configuring a connector might save you a lot of time when there is a request to be processed.
 
-> :construction_worker: writing in progress
+The [Connector Manager](/docs/storage/connector-manager) is here to transform and forward requests from the
+[Privacy Computation Engine](/docs/computation) to [Storage Connectors](/docs/storage/connectors) that interact
+with your actual storage, be it a database, an object storage service, or anything else.
 
-A [Data Access Component](/docs/storage/data-access) is here to transform requests from the [Privacy Computation Engine](/docs/computation) to efficiently execute automated operations on your data storage.
+Blindnet provides [Global Connectors](/docs/storage/global-connectors) for some common services and databases
+(and third-party contributions are always welcome!) but you might prefer to use a custom connector, for example if
+your storage implementation is specific to your project.
 
-For that, we'll set up a dedicated demo storage service in Java, and connect it to the Capture Component using the [Java Storage Connector library](https://github.com/blindnet-io/storage-connector-java).
+For that, we'll set up a dedicated demo storage service in Java, and write a custom connector using the
+[Java Storage Connector library](https://github.com/blindnet-io/storage-connector-java).
 
-<!-- FIXME: set up a dedicated project and detail development and release steps -->
+## Setup
 
-Code for this demo stage service can be found in the `example` directory in the librarie's repository: [github.com/blindnet-io/storage-connector-java > `example`](https://github.com/blindnet-io/storage-connector-java/tree/develop/example).
+Source code for this demo storage service can be found in the `example` directory in the library repository:
+[github.com/blindnet-io/storage-connector-java > `example`](https://github.com/blindnet-io/storage-connector-java/tree/develop/example).
+
+The following steps require **git**, a recent (17+) **Java Development Kit** and **Maven.**
+
+Clone this repository:
+
+```bash
+git clone https://github.com/blindnet-io/storage-connector-java
+```
+
+Run `mvn package` from the root of the repo to build both the library and the demo.
+
+The demo can be run easily using `java`:
+
+```bash
+cd example
+java -jar target/storage-connector-java-example-1.0.0-SNAPSHOT.jar
+```
+
+Let's see how it works.
+
+## Backend storage
+
+This demo project uses the [H2 in-memory database](https://h2database.com) and the Java [Jdbi](https://jdbi.org) library
+for easier access.
+
+The `User` class maps to our database entries. The code there is in no way Blindnet-specific: you can use any storage
+solution to write a Custom Connector.
+Our users are made of a unique email address, first and last names, and an optional byte array representing a file.
+
+```java
+public record User(String firstName, String lastName, String email, byte[] proof) {
+    public String fullName() {
+        return firstName() + " " + lastName();
+    }
+
+    public interface Dao {
+        @SqlUpdate("CREATE TABLE users (first_name varchar, last_name varchar, email varchar, proof varbinary)")
+        void createTable();
+
+        @SqlUpdate("INSERT INTO users (first_name, last_name, email, proof) VALUES (?, ?, ?, ?)")
+        void insert(String firstName, String lastName, String email, byte[] proof);
+
+        @SqlQuery("SELECT * FROM users WHERE email=?")
+        User findByEmail(String email);
+    }
+}
+```
+
+The `Database` class contains the code that establishes the connection to the database, and also holds the data access
+object for our User model. On startup, we insert some dummy data for John Doe.
+
+```java
+public class Database {
+    public static User.Dao users;
+
+    static void init() throws IOException {
+        Jdbi jdbi = Jdbi.create("jdbc:h2:mem:blindnet;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false");
+        jdbi.installPlugin(new SqlObjectPlugin());
+
+        jdbi.registerRowMapper(new User.Mapper());
+        users = jdbi.onDemand(User.Dao.class);
+        users.createTable();
+        users.insert("John", "Doe", "john.doe@example.com",
+                Objects.requireNonNull(Database.class.getResourceAsStream("/john_doe_proof.pdf")).readAllBytes());
+    }
+}
+```
+
+## Connector implementation
+
+Finally, the actual custom connector code can be found in the `Main` class.
+
+```java
+StorageConnector.create(TOKEN)
+        .setDataRequestHandler(new MappingRequestHandler.Builder<User>()
+                .setSubjectMapper(Database.users::findByEmail)
+                .addSelectorType("CONTACT.EMAIL", User::email)
+                .addSelectorType("NAME", User::fullName)
+                .addSelectorTypeBinary("OTHER-DATA.PROOF", u -> BinaryData.fromArray(u.proof()))
+                .build())
+        .start();
+```
+
+Here, we are using the high-level API provided by the library. The `MappingRequestHandler` will
+automatically process requests and map them from Blindnet-specific language (selectors, data categories,
+data subjects, etc.) to app-specific objects.
+
+The `TOKEN` variable value should be replaced with the connector token obtained on the Dashboard.
+
+Let's explain the code above.
+
+```java
+.setSubjectMapper(Database.users::findByEmail)
+```
+
+This sets the function used for mapping a user ID to an object in the application. Here, we are using the
+`findByEmail` function defined in the `User` class.
+
+```java
+.addSelectorType("CONTACT.EMAIL", User::email)
+.addSelectorType("NAME", User::fullName)
+.addSelectorTypeBinary("OTHER-DATA.PROOF", u -> BinaryData.fromArray(u.proof()))
+```
+
+This part is the most important one: it defines accessor functions used in `ACCESS` requests to automatically fetch
+the requested data.
+
+Selector types (like `CONTACT.EMAIL` and `NAME`) are mapped to member methods of the user object. For binary data,
+we need to use a small wrapper (`BinaryData.fromArray` instead of directly returning the array).
+
+```java
+.start();
+```
+
+When configuration is done, calling `.start()` on the `StorageConnector` object establishes the connection to the
+Connector Manager. The connector will then start receiving and processing requests.
